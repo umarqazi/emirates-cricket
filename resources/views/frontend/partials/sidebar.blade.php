@@ -180,11 +180,11 @@
             </ul>
         </li>
         <li>
-            <a href="{{route('sponcer')}}">
+            <a href="{{route('sponsor')}}">
                     <span>
                         <img class="nav-icon" src="{{ URL::asset('frontend/assets/images/sponcer.png') }}" alt="">
                     </span>
-                <span>Sponcers</span>
+                <span>Sponsors</span>
             </a>
         </li>
         <li>

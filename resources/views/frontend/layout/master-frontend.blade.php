@@ -12,12 +12,6 @@
 
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/assets/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/assets/css/slick.css') }} ">
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/assets/css/slick-theme.css') }} ">
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/assets/css/jquery.mCustomScrollbar.min.css') }} ">
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/assets/css/jquery.fancybox.min.css') }} ">
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/assets/css/animate.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/assets/css/tabs.css') }}">
 
     {{-- Custom Css --}}
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/assets/css/style.css') }}">
@@ -45,6 +39,12 @@
 
 @include('frontend.partials.footer')
 
+<link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/assets/css/slick.css') }} ">
+<link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/assets/css/slick-theme.css') }} ">
+<link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/assets/css/jquery.mCustomScrollbar.min.css') }} ">
+<link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/assets/css/jquery.fancybox.min.css') }} ">
+<link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/assets/css/animate.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/assets/css/tabs.css') }}">
 
 <script src="{{ URL::asset('frontend/assets/js/jquery-3.2.1.min.js') }} "></script>
 <script src="{{ URL::asset('frontend/assets/js/bootstrap.min.js') }} "></script>
