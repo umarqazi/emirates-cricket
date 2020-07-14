@@ -13,91 +13,102 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*------------------------------------------------------------------*/
+/*---------------------------FRONTEND ROUTES------------------------*/
+/*------------------------------------------------------------------*/
+Route::get('/', static function () {
     return view('frontend.index');
 })->name('home');
 
-Route::get('/about', function () {
+Route::get('/about', static function () {
     return view('frontend.about');
 })->name('about');
 
-Route::get('/contact', function () {
+Route::get('/contact', static function () {
     return view('frontend.contact-us');
 })->name('contact');
 
-Route::get('/development', function () {
+Route::get('/development', static function () {
     return view('frontend.development');
 })->name('development');
 
-Route::get('/development-pathway', function () {
+Route::get('/development-pathway', static function () {
     return view('frontend.development-pathway');
 })->name('development-pathway');
 
-Route::get('/download', function () {
+Route::get('/download', static function () {
     return view('frontend.download');
 })->name('download');
 
-Route::get('/emirati-development-program', function () {
+Route::get('/emirati-development-program', static function () {
     return view('frontend.emirati-development-program');
 })->name('emirati-development-program');
 
-Route::get('/fan-club', function () {
+Route::get('/fan-club', static function () {
     return view('frontend.fan-club');
 })->name('fan-club');
 
-Route::get('/fixtures', function () {
+Route::get('/fixtures', static function () {
     return view('frontend.fixtures');
 })->name('fixtures');
 
-Route::get('/galleries', function () {
+Route::get('/galleries', static function () {
     return view('frontend.galleries');
 })->name('galleries');
 
-Route::get('/gallery', function () {
+Route::get('/gallery', static function () {
     return view('frontend.gallery');
 })->name('gallery');
 
-Route::get('/news', function () {
+Route::get('/news', static function () {
     return view('frontend.news');
 })->name('news');
 
-Route::get('/payment', function () {
+Route::get('/payment', static function () {
     return view('frontend.payment');
 })->name('payment');
 
-Route::get('/player-registration', function () {
+Route::get('/player-registration', static function () {
     return view('frontend.player-registration');
 })->name('player-registration');
 
-Route::get('/sponsor', function () {
+Route::get('/sponsor', static function () {
     return view('frontend.sponsor');
 })->name('sponsor');
 
-Route::get('/team', function () {
+Route::get('/team', static function () {
     return view('frontend.teams');
 })->name('team');
 
-Route::get('/tournament-registration', function () {
+Route::get('/tournament-registration', static function () {
     return view('frontend.tournament-registration');
 })->name('tournament-registration');
 
-Route::get('/uae-mens', function () {
+Route::get('/uae-mens', static function () {
     return view('frontend.uae-mens');
 })->name('uae-mens');
 
-Route::get('/uae-womens', function () {
+Route::get('/uae-womens', static function () {
     return view('frontend.uae-womens');
 })->name('uae-womens');
 
-Route::get('/under-19', function () {
+Route::get('/under-19', static function () {
     return view('frontend.under-19');
 })->name('under-19');
 
 
-Route::group(['prefix' => 'admin'], function () {
+/*------------------------------------------------------------------*/
+/*---------------------------ADMIN ROUTES---------------------------*/
+/*------------------------------------------------------------------*/
+
+Route::group(['prefix' => 'admin'], static function () {
 
     Auth::routes();
 
-});
+    Route::get('/dashboard', static function () {
+        return view('backend.dashboard');
+    })->name('dashboard');
 
-Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('home');
+
+});
