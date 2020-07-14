@@ -113,7 +113,7 @@
                             </div>
                             <div>
                                 <div class="post-inner">
-                                    <img src="{{ URL::asset('frontend/frontend/assets/images/sefton-marks.png') }}" alt="">
+                                    <img src="{{ URL::asset('frontend/assets/images/sefton-marks.png') }}" alt="">
                                     <p class="date">
                                         <a href="#">May 14, 2020</a>
                                     </p>
