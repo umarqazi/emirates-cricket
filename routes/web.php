@@ -92,3 +92,12 @@ Route::get('/uae-womens', function () {
 Route::get('/under-19', function () {
     return view('frontend.under-19');
 })->name('under-19');
+
+
+Route::group(['prefix' => 'admin'], function () {
+
+    Auth::routes();
+
+});
+
+Route::get('/home', 'HomeController@index')->name('home');
