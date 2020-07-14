@@ -96,11 +96,19 @@ Route::get('/under-19', static function () {
     return view('frontend.under-19');
 })->name('under-19');
 
+
 /*------------------------------------------------------------------*/
 /*---------------------------ADMIN ROUTES---------------------------*/
 /*------------------------------------------------------------------*/
-Route::prefix('admin')->group(static function () {
+
+Route::group(['prefix' => 'admin'], static function () {
+
+    Auth::routes();
+
     Route::get('/dashboard', static function () {
         return view('backend.dashboard');
     })->name('dashboard');
+
+    Route::get('/home', 'HomeController@index')->name('home');
+
 });
