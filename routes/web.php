@@ -105,10 +105,16 @@ Route::group(['prefix' => 'admin'], static function () {
 
     Auth::routes();
 
-    Route::get('/dashboard', static function () {
-        return view('backend.dashboard');
-    })->name('dashboard');
+    Route::group(['middleware' => ['web', 'auth']], function () {
 
-    Route::get('/home', 'HomeController@index')->name('home');
+        Route::get('/dashboard', static function () {
+            return view('backend.dashboard');
+        })->name('dashboard');
 
+        Route::get('/calendar', static function () {
+            return view('backend.calendar');
+        })->name('calendar');
+
+
+    });
 });
