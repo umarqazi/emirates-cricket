@@ -105,10 +105,24 @@ Route::group(['prefix' => 'admin'], static function () {
 
     Auth::routes();
 
-    Route::get('/dashboard', static function () {
-        return view('backend.dashboard');
-    })->name('dashboard');
+    Route::group(['middleware' => ['web', 'auth']], static function () {
 
-    Route::get('/home', 'HomeController@index')->name('home');
+        Route::get('/dashboard', static function () {
+            return view('backend.dashboard');
+        })->name('dashboard');
 
+        Route::get('/calendar', static function () {
+            return view('backend.calendar');
+        })->name('calendar');
+
+        Route::get('/news-list', static function () {
+            return view('backend.news.index');
+        })->name('news-list');
+
+        Route::get('/add-news', static function () {
+            return view('backend.news.create');
+        })->name('add-news');
+
+
+    });
 });

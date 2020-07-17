@@ -9,3 +9,15 @@ NOTE:
 ------
 PLACE HERE YOUR OWN CSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
 WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+.invalid-feedback{
+    color: #e40000;
+}
+
+.login-email-error{
+    padding-left: 45px;
+}
+
+.alert-success{
+    color:#155724;
+}
