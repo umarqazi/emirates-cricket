@@ -1,11 +1,12 @@
 @extends('backend.layout.master-backend')
 
-@section('styles')
+@section('title')
+    <title>Calendar | Admin Panel</title>
+@endsection
 
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/flag-icon.min.css')}}">
+@section('styles')
     <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/fullcalendar.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/app-calendar.css')}}">
-
 @endsection
 
 

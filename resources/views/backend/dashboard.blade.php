@@ -1,9 +1,12 @@
 @extends('backend.layout.master-backend')
 
+@section('title')
+    <title>Dashboard | Admin Panel</title>
+@endsection
+
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/dashboard.min.css')}}">
 @endsection
-
 
 @section('content')
     <div class="col s12">
