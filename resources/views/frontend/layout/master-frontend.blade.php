@@ -8,10 +8,16 @@
 
     <title>Emirates Cricket Academy</title>
 
+    @yield('title')
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/assets/css/font-awesome.min.css') }}">
+
+    {{-- Load Section Styles Start --}}
+    @yield('styles')
+    {{-- Load Section Styles End --}}
 
     {{-- Custom Css --}}
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/assets/css/style.css') }}">
@@ -52,6 +58,11 @@
 <script src="{{ URL::asset('frontend/assets/js/jquery.fancybox.min.js') }} "></script>
 <script src="{{ URL::asset('frontend/assets/js/jquery.multipurpose_tabcontent.js') }} "></script>
 <script src="{{ URL::asset('frontend/assets/js/slick.js') }} "></script>
+
+{{-- Load Section Scripts Start --}}
+@yield('scripts')
+{{-- Load Section Scripts End --}}
+
 <script src="{{ URL::asset('frontend/assets/js/custom.js') }} "></script>
 </body>
 </html>

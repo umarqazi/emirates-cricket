@@ -425,7 +425,7 @@
                                 <div class="col-md-6">
                                     <div class="custom-checkboxes">
                                         <input type="checkbox" id="agreement">
-                                        <label class="tems-label" for="agreement">I agree to the <span>Privacy & Policy</span></label>
+                                        <label class="terms-label" for="agreement">I agree to the <span>Privacy & Policy</span></label>
                                     </div>
                                     <div class="registration-form">
                                         <img src="" alt="">
