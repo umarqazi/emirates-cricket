@@ -68,9 +68,8 @@ Route::get('/payment', static function () {
     return view('frontend.payment');
 })->name('payment');
 
-Route::get('/player-registration', static function () {
-    return view('frontend.player-registration');
-})->name('player-registration');
+Route::get('/player-registration', 'PlayerController@create')->name('player-registration');
+Route::post('/player-registration', 'PlayerController@store')->name('submit-player-registration');
 
 Route::get('/sponsor', static function () {
     return view('frontend.sponsor');

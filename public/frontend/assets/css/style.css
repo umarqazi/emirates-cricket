@@ -233,7 +233,6 @@ textarea{
     height: 160px;
 }
 select{
-    color: #b1b1b1;
     background-image: url("../images/down-chevron.png");
     background-repeat: no-repeat;
     background-position: 95% center;
@@ -1204,6 +1203,14 @@ ul.registration-list li:before{
     display: flex;
     align-items: center;
 }
+.invalid-feedback {
+    display: block !important;
+    width: 100% !important;
+    font-size: 100%;
+    padding-top: 15px;
+    margin-top: 0;
+    color: red;
+}
 .player-registration h2{
     display: block;
 }
@@ -1325,7 +1332,7 @@ ul.registration-list li:before{
 .agreement{
     margin: 30px 0px;
 }
-label.tems-label span {
+label.terms-label span {
     color: #8D0303;
     opacity: 0.8;
 }

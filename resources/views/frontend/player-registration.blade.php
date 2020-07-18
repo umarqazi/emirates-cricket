@@ -1,5 +1,13 @@
 @extends('frontend.layout.master-frontend')
 
+@section('title')
+    <title>Player Registration Form</title>
+@endsection
+
+@section('styles')
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/assets/css/datepicker.min.css') }}">
+@endsection
+
 @section('content')
 
     <!--   top bar     -->
@@ -44,88 +52,136 @@
 
             <div class="general-information">
                 <h2>General Information</h2>
-                <form>
+                <form method="POST" action="{{route('submit-player-registration')}}">
+                    @csrf
+
                     <div class="row">
                         <div class="col-md-6 col-lg-4">
                             <div class="input-row">
                                 <label>First name</label>
-                                <input type="text">
+                                <input type="text" class="@error('first_name') is-invalid @enderror" name="first_name" placeholder="Enter First Name" value="{{old('first_name')}}">
+
+                                @error('first_name')
+                                <span class="invalid-feedback login-email-error" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="input-row">
                                 <label>Last name</label>
-                                <input type="text">
+                                <input type="text" class="@error('last_name') is-invalid @enderror" name="last_name" placeholder="Enter Last Name" value="{{old('last_name')}}">
+
+                                @error('last_name')
+                                <span class="invalid-feedback login-email-error" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="input-row">
                                 <label>Date of birth</label>
-                                <input type="text" class="date-calender">
+                                <input type="text" class="datepicker-here date-calender @error('dob') is-invalid @enderror" name="dob" placeholder="21-06-1994" value="{{old('dob')}}">
+
+                                @error('dob')
+                                <span class="invalid-feedback login-email-error" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="input-row">
                                 <label>Email</label>
-                                <input type="email">
+                                <input type="email" class="@error('email') is-invalid @enderror" name="email" placeholder="Enter Email" value="{{old('email')}}">
+
+                                @error('email')
+                                <span class="invalid-feedback login-email-error" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="input-row">
                                 <label>Mobile no.</label>
-                                <input type="number">
+                                <input type="number" class="@error('mobile') is-invalid @enderror" name="mobile" placeholder="Enter Mobile No" value="{{old('mobile')}}">
+
+                                @error('mobile')
+                                <span class="invalid-feedback login-email-error" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="input-row">
                                 <label>Nationality</label>
-                                <select>
-                                    <option>Dubai</option>
-                                    <option>Pakistan</option>
-                                    <option>England</option>
+                                <select name="nationality" class="@error('nationality') is-invalid @enderror">
+                                    <option value="">Select a Nationality</option>
+                                    @foreach(config('constants.nations') as $nation)
+                                        <option value="{{$nation}}" {{old('nationality') === $nation ? 'selected' : ''}}>{{$nation}}</option>
+                                    @endforeach
                                 </select>
+
+                                @error('nationality')
+                                <span class="invalid-feedback login-email-error" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="input-row">
                                 <label>Emirates Living in</label>
-                                <select>
-                                    <option>Dubai</option>
-                                    <option>Pakistan</option>
-                                    <option>England</option>
+                                <select name="living_in" class="@error('living_in') is-invalid @enderror">
+                                    @foreach(config('constants.states') as $state)
+                                        <option value="{{$state}}" {{old('living_in') === $state ? 'selected' : ''}}>{{$state}}</option>
+                                    @endforeach
                                 </select>
+
+                                @error('living_in')
+                                <span class="invalid-feedback login-email-error" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="input-row">
                                 <label>Visa Status</label>
-                                <select>
-                                    <option>On</option>
-                                    <option>Off</option>
+                                <select name="visa_status" class="@error('visa_status') is-invalid @enderror">
+                                    <option value="1" {{old('visa_status') === 1 ? 'selected' : ''}}>On</option>
+                                    <option value="0" {{old('visa_status') === 0 ? 'selected' : ''}}>Off</option>
                                 </select>
+
+                                @error('visa_status')
+                                <span class="invalid-feedback login-email-error" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="input-row">
                                 <label>Emirate most likely to be playing with</label>
                                 <div class="playing-checkbox">
-                                    <div class="custom-checkboxes">
-                                        <input type="checkbox" id="abudhabi">
-                                        <label for="abudhabi">Abu dhabi</label>
-                                    </div>
-                                    <div class="custom-checkboxes">
-                                        <input type="checkbox" id="dubai">
-                                        <label for="dubai">dubai</label>
-                                    </div>
-                                    <div class="custom-checkboxes">
-                                        <input type="checkbox" id="sharjah">
-                                        <label for="sharjah">dubai</label>
-                                    </div>
-                                    <div class="custom-checkboxes">
-                                        <input type="checkbox" id="ajman">
-                                        <label for="ajman">Ajman</label>
-                                    </div>
+                                    @foreach(config('constants.states') as $state)
+
+                                        <div class="custom-checkboxes">
+                                            <input type="radio" class="@error('playing_with') is-invalid @enderror" name="playing_with" id="{{$state}}" value="{{$state}}" {{old('playing_with') === $state ? 'checked' : ''}}>
+                                            <label for="{{$state}}">{{$state}}</label>
+                                        </div>
+                                    @endforeach
                                 </div>
+
+                                @error('playing_with')
+                                <span class="invalid-feedback login-email-error" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -135,7 +191,7 @@
                             <div class="form-drag-wrapper">
                                 <label>Upload file</label>
                                 <div class="custom-drag-file">
-                                    <input type="file" multiple>
+                                    <input type="file" name="files" multiple>
                                     <img src="{{ URL::asset('frontend/assets/images/pdf-img.png') }}" alt="">
                                     <p>Drag your files</p>
                                 </div>
@@ -153,8 +209,14 @@
                                             </span>
                                         </div>
                                     </label>
-                                    <input id="file-upload" name='upload_cont_img' type="file" style="display:none;">
+                                    <input id="file-upload" name='photo' type="file" style="display:none;">
                                 </div>
+
+                                @error('photo')
+                                <span class="invalid-feedback login-email-error" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -162,22 +224,42 @@
                     <div class="row">
                         <div class="col-md-6 col-lg-8">
                             <label>Your message</label>
-                            <textarea placeholder="Write your message"></textarea>
+                            <textarea name="message" placeholder="Write your message">{{old('message')}}</textarea>
+
+                            @error('message')
+                            <span class="invalid-feedback login-email-error" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+
                             <div class="agreement">
                                 <div class="custom-checkboxes">
-                                    <input type="checkbox" id="agreement">
-                                    <label class="tems-label" for="agreement">I agree to the <span>Terms & Conditions</span></label>
+                                    <input type="checkbox" class="terms-and-condition" id="agreement">
+                                    <label class="terms-label" for="agreement">I agree to the <span>Terms & Conditions</span></label>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="submit-btn">
-                        <input type="submit" class="btn input-submit" value="Register">
+                        <input type="submit" class="btn input-submit player-registration" value="Register">
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
+@endsection
+
+@section('scripts')
+    <script src="{{ URL::asset('frontend/assets/js/datepicker.min.js') }} "></script>
+    <script src="{{ URL::asset('frontend/assets/js/datepicker.en.js') }} "></script>
+    <script>
+        $('.datepicker-here').datepicker({
+            language: 'en',
+            maxDate: new Date(),
+            autoClose: true,
+            dateFormat: 'dd/mm/yyyy',
+        });
+    </script>
 @endsection

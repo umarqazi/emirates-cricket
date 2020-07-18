@@ -1,6 +1,8 @@
 /* Document Ready Starts */
 $(document).ready(function () {
 
+    $('.player-registration').attr('disabled', true);
+
     // mobile menu toggle
     $('.mobile-btn').click(function(){
         $('.mobile-btn').toggleClass('rotate-btn');
@@ -128,7 +130,15 @@ $(document).ready(function () {
 
     $(".tournament-registration-accordian").champ({
         plugin_type :  "accordion"
-    })
+    });
+
+    $('.terms-and-condition').bind('click', function () {
+        if ($(this).is(':checked')) {
+            $('.player-registration').attr('disabled', false);
+        } else {
+            $('.player-registration').attr('disabled', true);
+        }
+    });
 
 
 });
