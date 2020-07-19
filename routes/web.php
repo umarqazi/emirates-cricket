@@ -24,9 +24,8 @@ Route::get('/about', static function () {
     return view('frontend.about');
 })->name('about');
 
-Route::get('/contact', static function () {
-    return view('frontend.contact-us');
-})->name('contact');
+Route::get('/contact', 'ContactController@create')->name('contact');
+Route::post('/contact', 'ContactController@store')->name('submit-contact-form');
 
 Route::get('/development', static function () {
     return view('frontend.development');
@@ -121,7 +120,12 @@ Route::group(['prefix' => 'admin'], static function () {
         Route::get('/add-news', static function () {
             return view('backend.news.create');
         })->name('add-news');
-
+        /*Route::get('/contact-list', 'ContactController@index')->name('contact-list');
+        Route::get('/contact-list/{id}', 'ContactController@view')->name('view-contact');
+        Route::get('/contact-list/{id}', 'ContactController@edit')->name('edit-contact');
+        Route::post('/contact-list/{id}', 'ContactController@update')->name('update-contact');
+        Route::delete('/contact-list{id}', 'ContactController@destroy')->name('delete-contact');*/
+        Route::resource('contact', 'ContactController');
 
     });
 });
