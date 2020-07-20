@@ -6,6 +6,7 @@
 
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/assets/css/datepicker.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/assets/css/croppie.css') }}">
 @endsection
 
 @section('content')
@@ -52,7 +53,14 @@
 
             <div class="general-information">
                 <h2>General Information</h2>
-                <form method="POST" action="{{route('submit-player-registration')}}">
+
+                @if(session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
+
+                <form method="POST" action="{{route('submit-player-registration')}}" autocomplete="off" enctype="multipart/form-data">
                     @csrf
 
                     <div class="row">
@@ -121,8 +129,8 @@
                                 <label>Nationality</label>
                                 <select name="nationality" class="@error('nationality') is-invalid @enderror">
                                     <option value="">Select a Nationality</option>
-                                    @foreach(config('constants.nations') as $nation)
-                                        <option value="{{$nation}}" {{old('nationality') === $nation ? 'selected' : ''}}>{{$nation}}</option>
+                                    @foreach($countries as $country)
+                                        <option value="{{$country->id}}" {{old('nationality') === $country->id ? 'selected' : ''}}>{{$country->name}}</option>
                                     @endforeach
                                 </select>
 
@@ -137,6 +145,7 @@
                             <div class="input-row">
                                 <label>Emirates Living in</label>
                                 <select name="living_in" class="@error('living_in') is-invalid @enderror">
+                                    <option value="">Select Emirate</option>
                                     @foreach(config('constants.states') as $state)
                                         <option value="{{$state}}" {{old('living_in') === $state ? 'selected' : ''}}>{{$state}}</option>
                                     @endforeach
@@ -153,8 +162,9 @@
                             <div class="input-row">
                                 <label>Visa Status</label>
                                 <select name="visa_status" class="@error('visa_status') is-invalid @enderror">
-                                    <option value="1" {{old('visa_status') === 1 ? 'selected' : ''}}>On</option>
-                                    <option value="0" {{old('visa_status') === 0 ? 'selected' : ''}}>Off</option>
+                                    <option value="">Select Status</option>
+                                    <option value="1" {{old('visa_status') === 1 ? 'selected' : ''}}>Residence/Employment</option>
+                                    <option value="0" {{old('visa_status') === 0 ? 'selected' : ''}}>Visit Visa</option>
                                 </select>
 
                                 @error('visa_status')
@@ -200,6 +210,11 @@
                         <div class="col-md-6 col-lg-4">
                             <div class="choose-file-wrapper">
                                 <label>Headshot photo</label>
+
+                                <div id="upload_image" style="height:300px;">
+                                    <img src="{{ empty(old('photo')) ? asset('frontend/assets/images/dummy.jpg') : asset('temp/'.old('photo'))}}" class="dummy_photo">
+                                </div>
+
                                 <div class="upload-btn-wrapper">
                                     <label for="file-upload" class="custom-file-upload">
                                         No file chosen
@@ -209,7 +224,8 @@
                                             </span>
                                         </div>
                                     </label>
-                                    <input id="file-upload" name='photo' type="file" style="display:none;">
+                                    <input id="file-upload" type="button" style="display:none;" data-toggle="modal" data-target="#myModal">
+                                    <input type="hidden" name="photo" id="player_cropped_photo" value="{{old('photo')}}">
                                 </div>
 
                                 @error('photo')
@@ -245,6 +261,43 @@
                         <input type="submit" class="btn input-submit player-registration" value="Register">
                     </div>
                 </form>
+
+
+                <!-- Modal -->
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Upload image</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div id="select_image" style="width:350px"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <label for="pwd">Please Select An Image</label>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <input type="file" id="upload">
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <button class="btn btn-success upload_result">Upload Image</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                        {{-- Modal Ends --}}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -252,9 +305,15 @@
 @endsection
 
 @section('scripts')
+    <script>
+        var player_registration_url = "{{route('upload-player-headshot-photo')}}";
+    </script>
     <script src="{{ URL::asset('frontend/assets/js/datepicker.min.js') }} "></script>
     <script src="{{ URL::asset('frontend/assets/js/datepicker.en.js') }} "></script>
+    <script src="{{ URL::asset('frontend/assets/js/croppie.min.js') }} "></script>
+    <script src="{{ URL::asset('frontend/assets/js/player-registration.js') }} "></script>
     <script>
+
         $('.datepicker-here').datepicker({
             language: 'en',
             maxDate: new Date(),

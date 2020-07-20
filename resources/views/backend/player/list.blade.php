@@ -1,0 +1,136 @@
+@extends('backend.layout.master-backend')
+
+@section('title')
+    <title>Player List| Admin Panel</title>
+@endsection
+
+@section('styles')
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/flag-icon.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/jquery.dataTables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/responsive.dataTables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/select.dataTables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/data-tables.css')}}">
+@endsection
+
+@section('content')
+    <div class="col s12">
+        <div class="container">
+            <div id="breadcrumbs-wrapper" data-image="{{url('backend/assets/images/gallery/breadcrumb-bg.jpg')}}">
+                <!-- Search for small screen-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12 m6 l6">
+                            <h5 class="breadcrumbs-title mt-0 mb-0">Player Registration List</h5>
+                        </div>
+                        <div class="col s12 m6 l6 right-align-md">
+                            <ol class="breadcrumbs mb-0">
+                                <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a>
+                                </li>
+                                <li class="breadcrumb-item active">Player Registration List
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="container">
+                    <div class="section section-data-tables">
+                        <!-- Page Length Options -->
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <h4 class="card-title">Player</h4>
+
+                                        @if(session()->has('success'))
+                                            <div class="card-alert card green">
+                                                <div class="card-content white-text">
+                                                    <p>{{ session()->get('success') }}</p>
+                                                </div>
+                                                <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                        @endif
+
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <table id="page-length-option" class="display">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Nationality</th>
+                                                        <th>Visa Status</th>
+                                                        <th>Date</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    @if(!empty($players))
+                                                        @foreach($players as $player)
+                                                            <tr>
+                                                                <td>{{$player->first_name.' '.$player->last_name}}</td>
+                                                                <td>{{$player->country->name}}</td>
+                                                                @if($player->visa_status == 0)
+                                                                    <td>Visit</td>
+                                                                @else
+                                                                    <td>Residence</td>
+                                                                @endif
+                                                                <td>{{date('d/m/Y', strtotime($player->created_at))}}</td>
+                                                                <td>
+                                                                    <a href="{{route('player.show', $player->id)}}">view</a>
+                                                                    {{--                                                                    <a href="{{route('contact.edit', $player->id)}}">edit</a>--}}
+
+                                                                    <form method="post" class="delete-form" action="{{ route('player.destroy', $player->id) }}">
+                                                                        @csrf
+                                                                        @method('DELETE')
+
+                                                                        <button type="submit" style="background-color: red; color: #fff; border: none;" class="btn btn-sm delete-submit-btn">del</button>
+                                                                    </form>
+                                                                    {{--                                                                    <a href="{{route('contact.destroy', $player->id)}}">delete</a>--}}
+                                                                    {{--<a href="#"><i class="material-icons">eye</i></a>
+                                                                    <a href="#"><i class="material-icons">pencil</i></a>
+                                                                    <a href="#"><i class="material-icons">trash</i></a>--}}
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    @else
+                                                        <tr>
+                                                            <td colspan="6" class="center">No Contacts Available...</td>
+                                                        </tr>
+                                                    @endif
+                                                    </tbody>
+                                                    <tfoot>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Nationality</th>
+                                                        <th>Visa Status</th>
+                                                        <th>Date</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--end container-->
+        @endsection
+
+        @section('scripts')
+            <!-- BEGIN VENDOR JS-->
+                <!-- BEGIN PAGE VENDOR JS-->
+                <script src="{{URL::asset('backend/assets/js/jquery.dataTables.min.js')}}"></script>
+                <script src="{{URL::asset('backend/assets/js/dataTables.responsive.min.js')}}"></script>
+                <script src="{{URL::asset('backend/assets/js/dataTables.select.min.js')}}"></script>
+                <script src="{{URL::asset('backend/assets/js/data-tables.js')}}"></script>
+                <!-- END PAGE VENDOR JS-->
+@endsection

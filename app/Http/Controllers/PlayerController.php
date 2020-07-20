@@ -3,16 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PlayerRegistration;
+use App\Services\CountryService;
 use App\Services\PlayerService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PlayerController extends Controller
 {
     public $player_service;
+    public $country_service;
 
     public function __construct()
     {
         $this->player_service = new PlayerService;
+        $this->country_service = new CountryService();
     }
 
     /**
@@ -22,7 +26,8 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        //
+        $players = $this->player_service->all();
+        return view('backend.player.list', compact('players'));
     }
 
     /**
@@ -32,20 +37,22 @@ class PlayerController extends Controller
      */
     public function create()
     {
-        return view('frontend.player-registration');
+        $countries = $this->country_service->all();
+        return view('frontend.player-registration', compact('countries'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(PlayerRegistration $request): \Illuminate\Http\Response
+    public function store(PlayerRegistration $request): \Illuminate\Http\RedirectResponse
     {
-        dd($request->all());
-        $player = $this->player_service->store($request->all());
-        return redirect()->back()->with('success','Your Request for Registration has been submitted Successfully!');
+        $response = $this->player_service->store($request->except('_token'));
+        if ($response) {
+            return redirect()->back()->with('success', 'Your Request for Registration has been submitted Successfully!');
+        }
     }
 
     /**
@@ -56,7 +63,10 @@ class PlayerController extends Controller
      */
     public function show($id)
     {
-        //
+        $player = $this->player_service->find($id);
+        $countries = $this->country_service->all();
+
+        return view('backend.player.show', compact('player', 'countries'));
     }
 
     /**
@@ -90,6 +100,27 @@ class PlayerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $response = $this->player_service->delete($id);
+        if ($response) {
+            return redirect()->back()->with('success', 'Player Record has been Deleted!');
+        }
+    }
+
+    public function uploadHeadShotPhoto(Request $request) {
+        $data = $request->image;
+
+        list($type, $data) = explode(';', $data);
+        list(, $data)      = explode(',', $data);
+
+        $data = base64_decode($data);
+        $imageName = time().'.png';
+        $path = 'uploads/temp/';
+
+        if (!Storage::disk('public')->exists($path)) {
+            Storage::disk('public')->makeDirectory($path);
+        }
+
+        Storage::disk('public')->put($path.$imageName, $data);
+        echo $imageName;
     }
 }
