@@ -31,7 +31,9 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-10 col-lg-8">
-                        <form class="contact-form-inner">
+                        <form class="contact-form-inner" method="POST" action="{{route('submit-contact-form')}}">
+                            @csrf
+
                             <div class="row no-gutters">
                                 <div class="col-lg-5">
                                     <div class="contact-left">
@@ -55,21 +57,52 @@
                                 <div class="col-lg-7">
                                     <div class="contact-form-fields">
                                         <h4>Get in Touch</h4>
+
+                                        @if(session()->has('success'))
+                                            <div class="alert alert-success">
+                                                {{ session()->get('success') }}
+                                            </div>
+                                        @endif
+
                                         <div class="input-row">
                                             <label>Name</label>
-                                            <input type="text">
+                                            <input type="text" class="@error('name') is-invalid @enderror" name="name" placeholder="Enter Name" value="{{old('name')}}" required>
+
+                                            @error('name')
+                                            <span class="invalid-feedback login-email-error" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                         <div class="input-row">
                                             <label>Email</label>
-                                            <input type="email">
+                                            <input type="text" class="@error('email') is-invalid @enderror" name="email" placeholder="Enter Email" value="{{old('email')}}" required>
+
+                                            @error('email')
+                                            <span class="invalid-feedback login-email-error" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                         <div class="input-row">
                                             <label>Subject</label>
-                                            <input type="text">
+                                            <input type="text" class="@error('subject') is-invalid @enderror" name="subject" placeholder="Enter Subject" value="{{old('subject')}}" required>
+
+                                            @error('subject')
+                                            <span class="invalid-feedback login-email-error" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                         <div class="input-row">
                                             <label>Your Message</label>
-                                            <textarea placeholder="Write your message"></textarea>
+                                            <textarea class="@error('message') is-invalid @enderror" name="message" placeholder="Write your message" required>{{old('message')}}</textarea>
+
+                                            @error('message')
+                                            <span class="invalid-feedback login-email-error" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                         <div class="submit-contact">
                                             <input type="submit" class="btn input-submit" value="Submit">

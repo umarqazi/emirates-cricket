@@ -21,3 +21,8 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 .alert-success{
     color:#155724;
 }
+
+.delete-form{
+    display: inline-block;
+    margin-left: 5px;
+}

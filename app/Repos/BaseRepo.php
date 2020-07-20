@@ -14,11 +14,11 @@ class BaseRepo implements IRepo
 
     public function update($model, $data, $id)
     {
-        // TODO: Implement update() method.
+        return $model::where('id', $id)->update($data);
     }
 
     public function destroy($model, $id)
     {
-        // TODO: Implement destroy() method.
+        return $model::where('id', $id)->delete();
     }
 }

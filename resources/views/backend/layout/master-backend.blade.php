@@ -150,7 +150,6 @@
                 </ul>
             </div>
         </li>
-
         <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">News</span></a>
             <div class="collapsible-body">
                 <ul class="collapsible collapsible-sub" data-collapsible="accordion">
@@ -161,7 +160,14 @@
                 </ul>
             </div>
         </li>
-
+        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Contact Requests</span></a>
+            <div class="collapsible-body">
+                <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                    <li><a class="collapsible-body" href="{{route('contact.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Contact List</span></a>
+                    </li>
+                </ul>
+            </div>
+        </li>
         <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Team Registration</span></a>
             <div class="collapsible-body">
                 <ul class="collapsible collapsible-sub" data-collapsible="accordion">
@@ -222,6 +228,22 @@
 
 <!-- BEGIN THEME  JS-->
 <script src="{{URL::asset('backend/assets/js/plugins.js')}}" type="text/javascript"></script>
+<script src="{{URL::asset('backend/assets/js/ckeditor5-build-classic/ckeditor.js')}}" type="text/javascript"></script>
+
+<script>
+    $(document).ready(function () {
+        ClassicEditor
+            .create( document.querySelector( '.ckeditor' ) )
+            .then( editor => {
+                console.log( editor );
+            } )
+            .catch( error => {
+                if(error) {
+                    console.error( error );
+                }
+            } );
+    });
+</script>
 
 {{-- Load Section Scripts Start --}}
 
