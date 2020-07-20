@@ -27,14 +27,14 @@ class PlayerRegistration extends FormRequest
             'first_name' => 'required|max:255',
             'last_name'  => 'required|max:255',
             'email'      => 'required|email|max:255',
-            'dob'        => 'required|date',
+            'dob'        => 'required|date_format:d/m/Y|before:today',
             'mobile'     => 'required',
             'nationality'=> 'required',
             'living_in'  => 'required',
             'visa_status'=> 'required',
             'playing_with'=>'required',
             'files'      => 'nullable|mimes:jpg,jpeg,png',
-            'photo'      => 'required|mimes:jpg,jpeg,png',
+            'photo'      => 'required',
             'message'    => 'required',
         ];
     }

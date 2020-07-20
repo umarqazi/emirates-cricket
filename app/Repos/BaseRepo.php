@@ -6,6 +6,13 @@ namespace App\Repos;
 
 class BaseRepo implements IRepo
 {
+    public function all($model) {
+        return $model::all();
+    }
+
+    public function find($model , $id) {
+        return $model::find($id);
+    }
 
     public function store($model, $data)
     {

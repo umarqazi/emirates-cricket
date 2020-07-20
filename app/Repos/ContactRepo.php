@@ -6,7 +6,6 @@ namespace App\Repos;
 
 class ContactRepo extends BaseRepo
 {
-
     public function all($model)
     {
         return $model::all();

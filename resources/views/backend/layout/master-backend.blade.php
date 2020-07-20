@@ -182,9 +182,9 @@
         <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Player Registration</span></a>
             <div class="collapsible-body">
                 <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                    <li><a class="collapsible-body" href="{{route('news-list')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span></span>Player List</a>
+                    <li><a class="collapsible-body" href="{{route('player.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span></span>Player List</a>
                     </li>
-                    <li><a class="collapsible-body" href="{{route('add-news')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
+                    <li><a class="collapsible-body" href="{{route('player.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
                     </li>
                 </ul>
             </div>
