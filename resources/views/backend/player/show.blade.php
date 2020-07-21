@@ -44,13 +44,13 @@
                                     @csrf
                                     @method('PUT')
 
-{{--                                    @if(file_exists(asset('storage/uploads/players/'.$player->id.'/'.$player->photo)))--}}
+                                    @if(file_exists(public_path('storage/uploads/players/'.$player->id.'/'.$player->photo)))
                                         <div class="row">
                                             <div class="col m4 s4 offset-m8 mb-1 right-align">
                                                 <img class="dummy_photo" src="{{asset('storage/uploads/players/'.$player->id.'/'.$player->photo)}}">
                                             </div>
                                         </div>
-{{--                                    @endif--}}
+                                    @endif
                                     <div class="row">
                                         <div class="input-field col m6 s12">
                                             <input id="first_name01" type="text" name="first_name" value="{{$player->first_name}}">

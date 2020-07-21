@@ -28,81 +28,31 @@
                 <div class="col-lg-10">
                     <div class="latest-news international-news">
 
-                        <div class="news-inner-content">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="international-news-image">
-                                        <img src="{{ URL::asset('frontend/assets/images/inernational_news.png') }}" alt="">
+                        @if(!empty($news))
+                            @foreach($news as $new)
+                                <div class="news-inner-content">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="international-news-image">
+                                                <img src="{{ URL::asset('storage/uploads/news/'.$new->id.'/'.$new->image) }}" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="international-news-content">
+                                                <h4>{{$new->title}}</h4>
+                                                <p> {!! \Illuminate\Support\Str::limit($new->text, 500) !!} </p>
+                                                <p class="read-more">
+                                                    <a href="#" tabindex="0">Read more</a>
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-8">
-                                    <div class="international-news-content">
-                                        <h4>Media Accreditation Open For Asia Cup 2018</h4>
-                                        <p>Media Accreditation is now open for the Asia Cup 2018. Accreditation is open for BONAFIDE media ONLY, application DOES NOT automatically give approval. Asia Cup management's decision on approvals and subsequent accreditation to cover the event is FINAL with no correspondence being entered into. The LAST DATE for submission is Wednesday 5th September 2018. Applications submitted after this date will not be entertained.FINAL with no correspondence being entered into. The LAST DATE for submission is Wednesday 5th September 2018. Applications submitted after this date will not be entertained.</p>
-                                        <p class="read-more">
-                                            <a href="#" tabindex="0">Read more</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            @endforeach
+                        @endif
 
-                        <div class="news-inner-content">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="international-news-image">
-                                        <img src="{{ URL::asset('frontend/assets/images/inernational_news.png') }}" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="international-news-content">
-                                        <h4>Media Accreditation Open For Asia Cup 2018</h4>
-                                        <p>Media Accreditation is now open for the Asia Cup 2018. Accreditation is open for BONAFIDE media ONLY, application DOES NOT automatically give approval. Asia Cup management's decision on approvals and subsequent accreditation to cover the event is FINAL with no correspondence being entered into. The LAST DATE for submission is Wednesday 5th September 2018. Applications submitted after this date will not be entertained.FINAL with no correspondence being entered into. The LAST DATE for submission is Wednesday 5th September 2018. Applications submitted after this date will not be entertained.</p>
-                                        <p class="read-more">
-                                            <a href="#" tabindex="0">Read more</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="news-inner-content">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="international-news-image">
-                                        <img src="{{ URL::asset('frontend/assets/images/inernational_news.png') }}" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="international-news-content">
-                                        <h4>Media Accreditation Open For Asia Cup 2018</h4>
-                                        <p>Media Accreditation is now open for the Asia Cup 2018. Accreditation is open for BONAFIDE media ONLY, application DOES NOT automatically give approval. Asia Cup management's decision on approvals and subsequent accreditation to cover the event is FINAL with no correspondence being entered into. The LAST DATE for submission is Wednesday 5th September 2018. Applications submitted after this date will not be entertained.FINAL with no correspondence being entered into. The LAST DATE for submission is Wednesday 5th September 2018. Applications submitted after this date will not be entertained.</p>
-                                        <p class="read-more">
-                                            <a href="#" tabindex="0">Read more</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="news-inner-content">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="international-news-image">
-                                        <img src="{{ URL::asset('frontend/assets/images/inernational_news.png') }}" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="international-news-content">
-                                        <h4>Media Accreditation Open For Asia Cup 2018</h4>
-                                        <p>Media Accreditation is now open for the Asia Cup 2018. Accreditation is open for BONAFIDE media ONLY, application DOES NOT automatically give approval. Asia Cup management's decision on approvals and subsequent accreditation to cover the event is FINAL with no correspondence being entered into. </p>
-                                        <p>The LAST DATE for submission is Wednesday 5th September 2018. Applications submitted after this date will not be entertained.FINAL with no correspondence being entered into. The LAST DATE for submission is Wednesday 5th September 2018. Applications submitted after this date will not be entertained.</p>
-                                        <p class="read-more">
-                                            <a href="#" tabindex="0">Read more</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="paginated_results">
+                            {{ $news->links() }}
                         </div>
                     </div>
                 </div>

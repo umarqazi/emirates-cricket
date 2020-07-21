@@ -59,9 +59,7 @@ Route::get('/gallery', static function () {
     return view('frontend.gallery');
 })->name('gallery');
 
-Route::get('/news', static function () {
-    return view('frontend.news');
-})->name('news');
+Route::get('/news', 'NewsController@frontendNews')->name('news');
 
 Route::get('/payment', static function () {
     return view('frontend.payment');
@@ -114,21 +112,9 @@ Route::group(['prefix' => 'admin'], static function () {
             return view('backend.calendar');
         })->name('calendar');
 
-        Route::get('/news-list', static function () {
-            return view('backend.news.index');
-        })->name('news-list');
-
-        Route::get('/add-news', static function () {
-            return view('backend.news.create');
-        })->name('add-news');
-        /*Route::get('/contact-list', 'ContactController@index')->name('contact-list');
-        Route::get('/contact-list/{id}', 'ContactController@view')->name('view-contact');
-        Route::get('/contact-list/{id}', 'ContactController@edit')->name('edit-contact');
-        Route::post('/contact-list/{id}', 'ContactController@update')->name('update-contact');
-        Route::delete('/contact-list{id}', 'ContactController@destroy')->name('delete-contact');*/
         Route::resource('contact', 'ContactController');
-
         Route::resource('/player', 'PlayerController');
+        Route::resource('/news', 'NewsController');
 
     });
 });

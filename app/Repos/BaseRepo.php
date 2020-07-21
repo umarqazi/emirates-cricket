@@ -6,8 +6,12 @@ namespace App\Repos;
 
 class BaseRepo implements IRepo
 {
-    public function all($model) {
-        return $model::all();
+    public function all($model, $column = 'created_at' ,$order = 'desc') {
+        return $model::orderBy($column, $order)->get();
+    }
+
+    public function paginatedRecords($model, $records, $column = 'created_at', $order = 'desc') {
+        return $model::orderBy($column, $order)->paginate($records);
     }
 
     public function find($model , $id) {

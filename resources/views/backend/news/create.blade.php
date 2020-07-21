@@ -14,15 +14,15 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m6 l6">
-                    <h5 class="breadcrumbs-title mt-0 mb-0">Form Layouts</h5>
+                    <h5 class="breadcrumbs-title mt-0 mb-0">Add News</h5>
                 </div>
                 <div class="col s12 m6 l6 right-align-md">
                     <ol class="breadcrumbs mb-0">
                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a>
                         </li>
-                        <li class="breadcrumb-item"><a href="#">Form</a>
+                        <li class="breadcrumb-item"><a href="{{route('player.index')}}">News List</a>
                         </li>
-                        <li class="breadcrumb-item active">Form Layouts
+                        <li class="breadcrumb-item active">Add New News
                         </li>
                     </ol>
                 </div>
@@ -32,13 +32,6 @@
     <div class="col s12">
         <div class="container">
             <div class="section">
-
-                <div class="card">
-                    <div class="card-content">
-                        <p class="caption mb-0">Includes predefined classes for easy form layout options.</p>
-                    </div>
-                </div>
-
                 <!--Basic Form-->
 
                 <!-- jQuery Plugin Initialization -->
@@ -47,73 +40,58 @@
                     <div class="col s12 m12 l12">
                         <div id="Form-advance" class="card card card-default scrollspy">
                             <div class="card-content">
-                                <h4 class="card-title">Form Advance</h4>
-                                <form class="col s12">
+                                <form class="col s12" method="POST" action="{{route('news.store')}}" enctype="multipart/form-data">
+                                    @csrf
+
                                     <div class="row">
-                                        <div class="input-field col m6 s12">
-                                            <input id="first_name01" type="text">
-                                            <label for="first_name01">First Name</label>
-                                        </div>
-                                        <div class="input-field col m6 s12">
-                                            <input id="last_name" type="text">
-                                            <label for="last_name">Last Name</label>
+                                        <div class="input-field col m12 s12">
+                                            <input id="title" type="text" name="title" class="validate @error('title') invalid @enderror" value="{{old('title')}}">
+                                            <label for="title">News Title</label>
+
+                                            @error('title')
+                                            <span class="invalid-feedback login-email-error" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                     </div>
+
                                     <div class="row">
+                                        <div class="col s12">News Description</div>
                                         <div class="input-field col s12">
-                                            <input id="email5" type="email">
-                                            <label for="email">Email</label>
+                                            <textarea id="message5" class="ckeditor @error('text') invalid @enderror" name="text" rows="15" placeholder="Type News Description in here...">{{old('text')}}</textarea>
+
+                                            @error('text')
+                                            <span class="invalid-feedback login-email-error" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                     </div>
+
                                     <div class="row">
-                                        <div class="input-field col s12">
-                                            <input id="password6" type="password">
-                                            <label for="password">Password</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col m6 s12">
-                                            <select>
-                                                <option value="" disabled selected>Choose your profile</option>
-                                                <option value="1">Manager</option>
-                                                <option value="2">Developer</option>
-                                                <option value="3">Business</option>
-                                            </select>
-                                            <label>Select Profile</label>
-                                        </div>
-                                        <div class="input-field col m6 s12">
-                                            <input type="date" class="datepicker" id="dob">
-                                            <label for="dob">DOB</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col m6 s12 file-field input-field">
-                                            <div class="btn float-right">
+                                        <div class="file-field input-field">
+                                            <div class="btn">
                                                 <span>File</span>
-                                                <input type="file">
+                                                <input type="file" name="image" class="validate @error('image') invalid @enderror">
                                             </div>
                                             <div class="file-path-wrapper">
                                                 <input class="file-path validate" type="text">
                                             </div>
-                                        </div>
-                                        <div class="input-field col m6 s12">
-                                            <span>Range</span>
-                                            <p class="range-field">
-                                                <input type="range" id="test5" min="0" max="100" />
-                                            </p>
+
+                                            @error('image')
+                                            <span class="invalid-feedback login-email-error" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                     </div>
+
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <textarea id="message5" class="materialize-textarea"></textarea>
-                                            <label for="message">Message</label>
-                                        </div>
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Submit
-                                                    <i class="material-icons right">send</i>
-                                                </button>
-                                            </div>
+                                            <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Create News
+                                                <i class="material-icons right">send</i>
+                                            </button>
                                         </div>
                                     </div>
                                 </form>

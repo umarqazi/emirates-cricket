@@ -4,7 +4,7 @@
 namespace App\Repos;
 
 
-class ContactRepo extends BaseRepo
+class NewsRepo extends BaseRepo
 {
 
 }

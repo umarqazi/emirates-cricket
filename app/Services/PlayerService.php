@@ -47,7 +47,7 @@ class PlayerService {
         $name = $this->player_repo->find(Player::class, $id)->photo;
         $result = $this->player_repo->destroy(Player::class, $id);
         if ($result) {
-            Storage::deleteDirectory('uploads/players/'.$id.$name);
+            File::deleteDirectory(public_path('storage/uploads/players/'.$id.'/'));
         }
         return true;
     }
