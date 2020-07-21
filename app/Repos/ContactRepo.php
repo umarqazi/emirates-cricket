@@ -11,7 +11,7 @@ class ContactRepo extends BaseRepo
         return $model::all();
     }
 
-    public function find($model, int $id)
+    public function find($model,$id)
     {
         return $model::find($id);
     }
