@@ -143,9 +143,9 @@
         <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Users</span></a>
             <div class="collapsible-body">
                 <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                    <li><a class="collapsible-body" href="{{route('news-list')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Users List</span></a>
+                    <li><a class="collapsible-body" href="{{route('news.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Users List</span></a>
                     </li>
-                    <li><a class="collapsible-body" href="{{route('add-news')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
+                    <li><a class="collapsible-body" href="{{route('news.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
                     </li>
                 </ul>
             </div>
@@ -153,9 +153,9 @@
         <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">News</span></a>
             <div class="collapsible-body">
                 <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                    <li><a class="collapsible-body" href="{{route('news-list')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>News List</span></a>
+                    <li><a class="collapsible-body" href="{{route('news.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>News List</span></a>
                     </li>
-                    <li><a class="collapsible-body" href="{{route('add-news')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
+                    <li><a class="collapsible-body" href="{{route('news.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
                     </li>
                 </ul>
             </div>
@@ -171,9 +171,9 @@
         <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Team Registration</span></a>
             <div class="collapsible-body">
                 <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                    <li><a class="collapsible-body" href="{{route('news-list')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Team List</span></a>
+                    <li><a class="collapsible-body" href="{{route('news.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Team List</span></a>
                     </li>
-                    <li><a class="collapsible-body" href="{{route('add-news')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
+                    <li><a class="collapsible-body" href="{{route('news.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
                     </li>
                 </ul>
             </div>

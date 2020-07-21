@@ -1,7 +1,7 @@
 @extends('backend.layout.master-backend')
 
 @section('title')
-    <title>Edit News| Admin Panel</title>
+    <title>Show News Detail| Admin Panel</title>
 @endsection
 
 @section('styles')
@@ -14,7 +14,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m6 l6">
-                    <h5 class="breadcrumbs-title mt-0 mb-0">Edit News</h5>
+                    <h5 class="breadcrumbs-title mt-0 mb-0">News Detail</h5>
                 </div>
                 <div class="col s12 m6 l6 right-align-md">
                     <ol class="breadcrumbs mb-0">
@@ -22,7 +22,7 @@
                         </li>
                         <li class="breadcrumb-item"><a href="{{route('player.index')}}">News List</a>
                         </li>
-                        <li class="breadcrumb-item active">Edit News
+                        <li class="breadcrumb-item active">News Detail
                         </li>
                     </ol>
                 </div>
@@ -40,9 +40,8 @@
                     <div class="col s12 m12 l12">
                         <div id="Form-advance" class="card card card-default scrollspy">
                             <div class="card-content">
-                                <form class="col s12" method="POST" action="{{route('news.update', $news->id)}}" enctype="multipart/form-data">
+                                <form class="col s12">
                                     @csrf
-                                    @method('PUT')
 
                                     @if(file_exists(public_path('storage/uploads/news/'.$news->id.'/'.$news->image)))
                                         <div class="row">
@@ -54,53 +53,15 @@
 
                                     <div class="row">
                                         <div class="input-field col m12 s12">
-                                            <input id="title" type="text" name="title" class="validate @error('title') invalid @enderror" value="{{$news->title}}">
+                                            <input id="title" type="text" name="title" class="validate" value="{{$news->title}}">
                                             <label for="title">News Title</label>
-
-                                            @error('title')
-                                            <span class="invalid-feedback login-email-error" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col s12">News Description</div>
                                         <div class="input-field col s12">
-                                            <textarea id="message5" class="ckeditor @error('text') invalid @enderror" name="text" rows="15" placeholder="Type News Description in here...">{!! $news->text !!}</textarea>
-
-                                            @error('text')
-                                            <span class="invalid-feedback login-email-error" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="file-field input-field">
-                                            <div class="btn">
-                                                <span>File</span>
-                                                <input type="file" name="image" class="validate @error('image') invalid @enderror">
-                                            </div>
-                                            <div class="file-path-wrapper">
-                                                <input class="file-path validate" type="text">
-                                            </div>
-
-                                            @error('image')
-                                            <span class="invalid-feedback login-email-error" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Update News
-                                                <i class="material-icons right">send</i>
-                                            </button>
+                                            <textarea id="message5" class="ckeditor" name="text" rows="15" placeholder="Type News Description in here...">{!! $news->text !!}</textarea>
                                         </div>
                                     </div>
                                 </form>
