@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Contact;
+use App\Http\Requests\ContactReply;
 use App\Http\Requests\ContactUs;
+use App\Notifications\ContactReplyMail;
 use App\Services\ContactService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ContactController extends Controller
 {
@@ -20,7 +23,7 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): \Illuminate\Http\Response
     {
         $contacts = $this->contact_service->all();
         return view('backend.contact.list', compact('contacts'));
@@ -31,7 +34,7 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): \Illuminate\Http\Response
     {
         return view('frontend.contact-us');
     }
@@ -54,7 +57,7 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id): \Illuminate\Http\Response
     {
         $contact = $this->contact_service->find($id);
 
@@ -69,7 +72,7 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id): ?\Illuminate\Http\Response
     {
         //
     }
@@ -79,14 +82,18 @@ class ContactController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(ContactReply $request, $id): ?\Illuminate\Http\RedirectResponse
     {
-        dd($request->all());
-        $response = $this->contact_service->update($id, $request->only('reply'));
+        $response = $this->contact_service->update($id, $request->except(['_token', '_method', 'action']));
         if ($response) {
-            $this->contact_service->update($id, array('status' => Contact::$Replied));
+            $contact = $this->contact_service->find($id);
+            /* Notify User about the Reply */
+            $contact->notify(new ContactReplyMail($contact));
+
+            /* Update Contact after Reply */
+            $this->contact_service->update($id, array('status' => Contact::$Replied, 'replied_by' => Auth::id()));
             return redirect()->back()->with('success','Contact Reply has been Submitted Successfully!');
         } else {
             return redirect()->back()->with('error','Failed to Submit Reply!');
@@ -99,7 +106,7 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id): \Illuminate\Http\Response
     {
         $contact = $this->contact_service->delete($id);
         return redirect()->back()->with('success','Contact Request has been Deleted Successfully!');

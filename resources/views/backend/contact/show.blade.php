@@ -40,36 +40,69 @@
                     <div class="col s12 m12 l12">
                         <div id="Form-advance" class="card card card-default scrollspy">
                             <div class="card-content">
+
+                                @include('frontend.partials.session-messages')
+
                                 <form class="col s12" method="POST" action="{{route('contact.update', $contact->id)}}">
                                     @csrf
                                     @method('PUT')
 
                                     <div class="row">
                                         <div class="input-field col m6 s12">
-                                            <input id="first_name01" type="text" name="name" value="{{$contact->name}}">
+                                            <input id="first_name01" type="text" name="name" class="validate @error('name') invalid @enderror" value="{{$contact->name}}">
                                             <label for="first_name01">Name</label>
+
+                                            @error('name')
+                                            <span class="invalid-feedback login-email-error" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                         <div class="input-field col m6 s12">
-                                            <input id="last_name" type="text" name="email" value="{{$contact->email}}">
+                                            <input id="last_name" type="text" name="email" class="validate @error('email') invalid @enderror" value="{{$contact->email}}">
                                             <label for="last_name">Email</label>
+
+                                            @error('email')
+                                            <span class="invalid-feedback login-email-error" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <input id="email5" type="text" name="subject" value="{{$contact->subject}}">
+                                            <input id="email5" type="text" name="subject" class="validate @error('subject') invalid @enderror" value="{{$contact->subject}}">
                                             <label for="email">Subject</label>
+
+                                            @error('subject')
+                                            <span class="invalid-feedback login-email-error" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <textarea id="message5" class="materialize-textarea">{{$contact->message}}</textarea>
+                                            <textarea id="message5" name="message" class="materialize-textarea validate @error('message') invalid @enderror">{{$contact->message}}</textarea>
                                             <label for="message">Message</label>
+
+                                            @error('message')
+                                            <span class="invalid-feedback login-email-error" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <textarea id="message5" class="ckeditor" name="reply" rows="15" placeholder="Type your reply in here..."></textarea>
+                                            <textarea id="message5" class="ckeditor" name="reply" rows="15" placeholder="Type your reply in here...">{{$contact->reply ?: ''}}</textarea>
+
+                                            @error('title')
+                                            <span class="invalid-feedback login-email-error" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="row">
