@@ -21,9 +21,9 @@ class ContactController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
-    public function index(): \Illuminate\Http\Response
+    public function index(): \Illuminate\View\View
     {
         $contacts = $this->contact_service->all();
         return view('backend.contact.list', compact('contacts'));
@@ -32,9 +32,9 @@ class ContactController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
-    public function create(): \Illuminate\Http\Response
+    public function create(): \Illuminate\View\View
     {
         return view('frontend.contact-us');
     }
@@ -55,9 +55,9 @@ class ContactController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
-    public function show($id): \Illuminate\Http\Response
+    public function show($id): \Illuminate\View\View
     {
         $contact = $this->contact_service->find($id);
 
