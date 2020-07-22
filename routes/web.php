@@ -69,9 +69,7 @@ Route::get('/player-registration', 'PlayerController@create')->name('player-regi
 Route::post('/player-registration', 'PlayerController@store')->name('submit-player-registration');
 Route::post('/upload-player-headshot-photo', 'PlayerController@uploadHeadShotPhoto')->name('upload-player-headshot-photo');
 
-Route::get('/sponsor', static function () {
-    return view('frontend.sponsor');
-})->name('sponsor');
+Route::get('/sponsor', 'SponsorController@frontendSponsors')->name('sponsor');
 
 Route::get('/team', static function () {
     return view('frontend.teams');
@@ -115,6 +113,7 @@ Route::group(['prefix' => 'admin'], static function () {
         Route::resource('contact', 'ContactController');
         Route::resource('/player', 'PlayerController');
         Route::resource('/news', 'NewsController');
+        Route::resource('/sponsor', 'SponsorController');
 
     });
 });
