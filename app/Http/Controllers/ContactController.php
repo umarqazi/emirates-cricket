@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Contact;
+use App\Http\Requests\ContactReply;
 use App\Http\Requests\ContactUs;
+use App\Notifications\ContactReplyMail;
 use App\Services\ContactService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ContactController extends Controller
 {
@@ -81,12 +84,16 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ContactReply $request, $id)
     {
-        dd($request->all());
-        $response = $this->contact_service->update($id, $request->only('reply'));
+        $response = $this->contact_service->update($id, $request->except(['_token', '_method', 'action']));
         if ($response) {
-            $this->contact_service->update($id, array('status' => Contact::$Replied));
+            $contact = $this->contact_service->find($id);
+            /* Notify User about the Reply */
+            $contact->notify(new ContactReplyMail($contact));
+
+            /* Update Contact after Reply */
+            $this->contact_service->update($id, array('status' => Contact::$Replied, 'replied_by' => Auth::id()));
             return redirect()->back()->with('success','Contact Reply has been Submitted Successfully!');
         } else {
             return redirect()->back()->with('error','Failed to Submit Reply!');
