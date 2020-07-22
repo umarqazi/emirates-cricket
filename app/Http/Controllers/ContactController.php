@@ -23,7 +23,7 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): \Illuminate\Http\Response
     {
         $contacts = $this->contact_service->all();
         return view('backend.contact.list', compact('contacts'));
@@ -34,7 +34,7 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): \Illuminate\Http\Response
     {
         return view('frontend.contact-us');
     }
@@ -57,7 +57,7 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id): \Illuminate\Http\Response
     {
         $contact = $this->contact_service->find($id);
 
@@ -72,7 +72,7 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id): ?\Illuminate\Http\Response
     {
         //
     }
@@ -82,9 +82,9 @@ class ContactController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(ContactReply $request, $id)
+    public function update(ContactReply $request, $id): ?\Illuminate\Http\RedirectResponse
     {
         $response = $this->contact_service->update($id, $request->except(['_token', '_method', 'action']));
         if ($response) {
@@ -106,7 +106,7 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id): \Illuminate\Http\Response
     {
         $contact = $this->contact_service->delete($id);
         return redirect()->back()->with('success','Contact Request has been Deleted Successfully!');
