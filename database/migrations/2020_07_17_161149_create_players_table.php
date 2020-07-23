@@ -26,7 +26,7 @@ class CreatePlayersTable extends Migration
             $table->string('playing_with');
             $table->text('message');
             $table->string('photo');
-            $table->boolean('status')->default(false);
+            $table->boolean('status');
             $table->timestamps();
         });
     }

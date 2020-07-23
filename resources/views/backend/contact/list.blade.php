@@ -73,20 +73,16 @@
                                                                     <td>Replied</td>
                                                                 @endif
                                                                 <td>{{date('d/m/Y', strtotime($contact->created_at))}}</td>
+
                                                                 <td>
-                                                                    <a href="{{route('contact.show', $contact->id)}}">view</a>
-                                                                    {{--                                                                    <a href="{{route('contact.edit', $contact->id)}}">edit</a>--}}
+                                                                    <a href="{{route('contact.show', $contact->id)}}"><i class="material-icons">visibility</i></a>
 
                                                                     <form method="post" class="delete-form" action="{{ route('contact.destroy', $contact->id) }}">
                                                                         @csrf
                                                                         @method('DELETE')
 
-                                                                        <button type="submit" style="background-color: red; color: #fff; border: none;" class="btn btn-sm delete-submit-btn">delete</button>
+                                                                        <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
                                                                     </form>
-                                                                    {{--                                                                    <a href="{{route('contact.destroy', $contact->id)}}">delete</a>--}}
-                                                                    {{--<a href="#"><i class="material-icons">eye</i></a>
-                                                                    <a href="#"><i class="material-icons">pencil</i></a>
-                                                                    <a href="#"><i class="material-icons">trash</i></a>--}}
                                                                 </td>
                                                             </tr>
                                                         @endforeach

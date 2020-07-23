@@ -20,7 +20,7 @@
                     <ol class="breadcrumbs mb-0">
                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a>
                         </li>
-                        <li class="breadcrumb-item"><a href="{{route('player.index')}}">Sponsor List</a>
+                        <li class="breadcrumb-item"><a href="{{route('sponsor.index')}}">Sponsor List</a>
                         </li>
                         <li class="breadcrumb-item active">Edit Sponsor
                         </li>

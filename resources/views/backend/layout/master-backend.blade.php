@@ -17,6 +17,7 @@
     <!-- BEGIN: VENDOR CSS-->
     <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/vendors.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/flag-icon.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/sweetalert.css')}}">
     <!-- END: VENDOR CSS-->
     <!-- BEGIN: Page Level CSS-->
     <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/materialize.min.css')}}">
@@ -241,26 +242,12 @@
 <script src="{{URL::asset('backend/assets/js/plugins.js')}}" type="text/javascript"></script>
 <script src="{{URL::asset('backend/assets/js/ckeditor5-build-classic/ckeditor.js')}}" type="text/javascript"></script>
 
-<script>
-    $(document).ready(function () {
-        ClassicEditor
-            .create( document.querySelector( '.ckeditor' ) )
-            .then( editor => {
-                console.log( editor );
-            } )
-            .catch( error => {
-                if(error) {
-                    console.error( error );
-                }
-            } );
-    });
-</script>
-
 {{-- Load Section Scripts Start --}}
 
 @yield('scripts')
 
 {{-- Load Section Scripts End --}}
+<script src="{{URL::asset('backend/assets/js/sweetalert.min.js')}}" type="text/javascript"></script>
 <script src="{{URL::asset('backend/assets/js/custom-script.js')}}" type="text/javascript"></script>
 <!-- END THEME  JS-->
 </body>

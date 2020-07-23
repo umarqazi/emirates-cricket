@@ -111,7 +111,12 @@ Route::group(['prefix' => 'admin'], static function () {
         })->name('calendar');
 
         Route::resource('contact', 'ContactController');
+
+        /* Player Registration Request */
         Route::resource('/player', 'PlayerController');
+        Route::get('/approve-request/{id}', 'PlayerController@approveRequest')->name('approve-player');
+        Route::get('/decline-request/{id}', 'PlayerController@declineRequest')->name('decline-player');
+
         Route::resource('/news', 'NewsController');
         Route::resource('/sponsor', 'SponsorController');
 

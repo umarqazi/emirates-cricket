@@ -20,7 +20,7 @@
                     <ol class="breadcrumbs mb-0">
                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a>
                         </li>
-                        <li class="breadcrumb-item"><a href="{{route('player.index')}}">News List</a>
+                        <li class="breadcrumb-item"><a href="{{route('news.index')}}">News List</a>
                         </li>
                         <li class="breadcrumb-item active">News Detail
                         </li>
