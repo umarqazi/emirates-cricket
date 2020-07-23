@@ -12,8 +12,14 @@ use Illuminate\Support\Facades\Auth;
 
 class ContactController extends Controller
 {
+    /**
+     * @var ContactService
+     */
     public $contact_service;
 
+    /**
+     * ContactController constructor.
+     */
     public function __construct()
     {
         $this->contact_service = new ContactService();

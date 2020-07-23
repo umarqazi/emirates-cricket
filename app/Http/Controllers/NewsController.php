@@ -11,8 +11,14 @@ use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
 {
+    /**
+     * @var NewsService
+     */
     public $news_service;
 
+    /**
+     * NewsController constructor.
+     */
     public function __construct()
     {
         $this->news_service = new NewsService();

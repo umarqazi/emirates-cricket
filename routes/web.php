@@ -119,6 +119,7 @@ Route::group(['prefix' => 'admin'], static function () {
 
         Route::resource('/news', 'NewsController');
         Route::resource('/sponsor', 'SponsorController');
+        Route::resource('/gallery', 'GalleryController');
 
     });
 });

@@ -11,8 +11,14 @@ use Illuminate\Support\Facades\Storage;
 
 class SponsorController extends Controller
 {
+    /**
+     * @var SponsorService
+     */
     public $sponsor_service;
 
+    /**
+     * SponsorController constructor.
+     */
     public function __construct()
     {
         $this->sponsor_service = new SponsorService();

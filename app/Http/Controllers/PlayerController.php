@@ -11,9 +11,16 @@ use Illuminate\Support\Facades\Storage;
 
 class PlayerController extends Controller
 {
+    /**
+     * @var PlayerService
+     * @var CountryService
+     */
     public $player_service;
     public $country_service;
 
+    /**
+     * PlayerController constructor.
+     */
     public function __construct()
     {
         $this->player_service = new PlayerService;
