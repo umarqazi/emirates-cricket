@@ -53,98 +53,158 @@
                                     @endif
                                     <div class="row">
                                         <div class="input-field col m6 s12">
-                                            <input id="first_name01" type="text" name="first_name" value="{{$player->first_name}}">
+                                            <input id="first_name01" type="text" class="@error('first_name') invalid @enderror" name="first_name" value="{{$player->first_name}}">
                                             <label for="first_name01">First Name</label>
+
+                                            @error('first_name')
+                                            <span class="invalid-feedback login-email-error" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
 
                                         <div class="input-field col m6 s12">
-                                            <input id="first_name01" type="text" name="last_name" value="{{$player->last_name}}">
+                                            <input id="first_name01" type="text" class="@error('last_name') is-invalid @enderror" name="last_name" value="{{$player->last_name}}">
                                             <label for="first_name01">Last Name</label>
+
+                                            @error('last_name')
+                                            <span class="invalid-feedback login-email-error" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col m6 s12">
-                                            <input id="last_name" type="text" name="email" value="{{$player->email}}">
+                                            <input id="last_name" type="text" name="email" class="@error('email') invalid @enderror" value="{{$player->email}}">
                                             <label for="last_name">Email</label>
+
+                                            @error('email')
+                                            <span class="invalid-feedback login-email-error" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
 
                                         <div class="input-field col m6 s12">
-                                            <input id="last_name" type="text" name="mobile" value="{{$player->mobile}}">
+                                            <input id="last_name" type="text" class="@error('mobile') invalid @enderror" name="mobile" value="{{$player->mobile}}">
                                             <label for="last_name">Mobile</label>
+
+                                            @error('mobile')
+                                            <span class="invalid-feedback login-email-error" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col m6 s12">
-                                            <input id="dob" type="text" name="dob" value="{{$player->dob}}">
+                                            <input id="dob" type="text" name="dob" class="@error('dob') invalid @enderror" value="{{$player->dob}}">
                                             <label for="dob">Date Of Birth</label>
+
+                                            @error('dob')
+                                            <span class="invalid-feedback login-email-error" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
 
                                         <div class="input-field col m6 s12">
-                                            <select name="">
-                                                <option value="" disabled selected>Select Emirate</option>
+                                            <select name="living_in" class="@error('living_in') invalid @enderror">
+                                                <option value="" disabled selected>Select Emirate Living In</option>
                                                 @foreach(config('constants.states') as $state)
-                                                    <option value="{{$state}}">{{$state}}</option>
+                                                    <option value="{{$state}}" {{$player->living_in === $state ? 'selected' : ''}}>{{$state}}</option>
                                                 @endforeach
                                             </select>
                                             <label>Select Emirate</label>
+
+                                            @error('living_in')
+                                            <span class="invalid-feedback login-email-error" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col m6 s12">
-                                            <select>
-                                                <option value="" disabled selected>Choose Country</option>
+                                            <select name="nationality" class="@error('nationality') is-invalid @enderror">
+                                                <option value="" disabled selected>Choose Nationality</option>
                                                 @foreach($countries as $country)
                                                     <option value="{{$country->id}}" {{$player->nationality === $country->id ? 'selected' : ''}}>{{$country->name}}</option>
                                                 @endforeach
                                             </select>
-                                            <label>Select Country</label>
+                                            <label>Select Nationality</label>
+
+                                            @error('nationality')
+                                            <span class="invalid-feedback login-email-error" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
 
                                         <div class="input-field col m6 s12">
-                                            <select>
+                                            <select name="visa_status" class="@error('visa_status') invalid @enderror">
                                                 <option value="" disabled selected>Choose Visa Status</option>
                                                 <option value="1" {{$player->visa_status === 1 ? 'selected' : ''}}>Residence/Employment</option>
                                                 <option value="0" {{$player->visa_status === 0 ? 'selected' : ''}}>Visit Visa</option>
                                             </select>
                                             <label>Select Visa Status</label>
+
+                                            @error('visa_status')
+                                            <span class="invalid-feedback login-email-error" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col m12 s12">
-                                            <select name="">
+                                            <select name="playing_with" class="@error('playing_with') invalid @enderror">
                                                 <option value="" disabled selected>Select Emirate Playing With</option>
                                                 @foreach(config('constants.states') as $state)
                                                     <option value="{{$state}}" {{$player->playing_with === $state ? 'selected' : ''}}>{{$state}}</option>
                                                 @endforeach
                                             </select>
-                                            <label>Select Emirate</label>
+                                            <label>Select Emirate Playing With</label>
+
+                                            @error('playing_with')
+                                            <span class="invalid-feedback login-email-error" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <textarea id="message5" class="materialize-textarea">{{$player->message}}</textarea>
+                                            <textarea id="message5" name="message" class="materialize-textarea @error('message') invalid @enderror">{{$player->message}}</textarea>
                                             <label for="message">Message</label>
+
+                                            @error('message')
+                                            <span class="invalid-feedback login-email-error" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <button class="btn green waves-effect waves-light right mr-1" name="action">Approve
-                                                <i class="material-icons right">send</i>
-                                            </button>
-
-                                            <button class="btn red waves-effect waves-light right mr-1" name="action">Decline
-                                                <i class="material-icons right">send</i>
-                                            </button>
-
                                             <button class="btn cyan waves-effect waves-light right mr-1" type="submit" name="action">Update
                                                 <i class="material-icons right">send</i>
                                             </button>
+
+                                            <a href="{{route('approve-player', $player->id)}}" class="btn green waves-effect waves-light right mr-1" name="action">Approve
+                                                <i class="material-icons right">check</i>
+                                            </a>
+
+                                            <a href="{{route('decline-player', $player->id)}}" class="btn red waves-effect waves-light right mr-1" name="action">Decline
+                                                <i class="material-icons right">close</i>
+                                            </a>
                                         </div>
                                     </div>
                                 </form>

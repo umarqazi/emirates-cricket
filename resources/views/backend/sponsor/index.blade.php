@@ -70,14 +70,14 @@
                                                                 <td>{{$sponsor->website}}</td>
                                                                 <td>{{date('d/m/Y', strtotime($sponsor->created_at))}}</td>
                                                                 <td>
-                                                                    <a href="{{route('sponsor.show', $sponsor->id)}}">view</a>
-                                                                    <a href="{{route('sponsor.edit', $sponsor->id)}}">edit</a>
+                                                                    <a href="{{route('sponsor.show', $sponsor->id)}}"><i class="material-icons">visibility</i></a>
+                                                                    <a href="{{route('sponsor.edit', $sponsor->id)}}"><i class="material-icons">edit</i></a>
 
                                                                     <form method="post" class="delete-form" action="{{ route('sponsor.destroy', $sponsor->id) }}">
                                                                         @csrf
                                                                         @method('DELETE')
 
-                                                                        <button type="submit" style="background-color: red; color: #fff; border: none;" class="btn btn-sm delete-submit-btn">del</button>
+                                                                        <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
                                                                     </form>
                                                                 </td>
                                                             </tr>

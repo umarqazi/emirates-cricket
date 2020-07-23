@@ -68,14 +68,14 @@
                                                                 <td>{{$new->title}}</td>
                                                                 <td>{{date('d/m/Y', strtotime($new->created_at))}}</td>
                                                                 <td>
-                                                                    <a href="{{route('news.show', $new->id)}}">view</a>
-                                                                    <a href="{{route('news.edit', $new->id)}}">edit</a>
+                                                                    <a href="{{route('news.show', $new->id)}}"><i class="material-icons">visibility</i></a>
+                                                                    <a href="{{route('news.edit', $new->id)}}"><i class="material-icons">edit</i></a>
 
                                                                     <form method="post" class="delete-form" action="{{ route('news.destroy', $new->id) }}">
                                                                         @csrf
                                                                         @method('DELETE')
 
-                                                                        <button type="submit" style="background-color: red; color: #fff; border: none;" class="btn btn-sm delete-submit-btn">del</button>
+                                                                        <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
                                                                     </form>
                                                                 </td>
                                                             </tr>

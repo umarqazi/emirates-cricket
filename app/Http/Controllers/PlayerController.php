@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PlayerRegistration;
+use App\Notifications\PlayerRegistrationNotification;
 use App\Services\CountryService;
 use App\Services\PlayerService;
 use Illuminate\Http\Request;
@@ -49,8 +50,9 @@ class PlayerController extends Controller
      */
     public function store(PlayerRegistration $request): \Illuminate\Http\RedirectResponse
     {
-        $response = $this->player_service->store($request->except('_token'));
-        if ($response) {
+        $player = $this->player_service->store($request->except('_token'));
+        if ($player) {
+            $player->notify(new PlayerRegistrationNotification($player));
             return redirect()->back()->with('success', 'Your Request for Registration has been submitted Successfully!');
         }
     }
@@ -122,5 +124,19 @@ class PlayerController extends Controller
 
         Storage::disk('public')->put($path.$imageName, $data);
         echo $imageName;
+    }
+
+    public function approveRequest($id) {
+        $status = $this->player_service->approveRequest($id);
+        if ($status) {
+            return redirect()->route('player.index')->with('success', 'Player Request has been Approved!');
+        }
+    }
+
+    public function declineRequest($id) {
+        $status = $this->player_service->declineRequest($id);
+        if ($status) {
+            return redirect()->route('player.index')->with('success', 'Player Request has been Declined!');
+        }
     }
 }

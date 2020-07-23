@@ -3,11 +3,19 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Player extends Model
 {
+    use Notifiable;
+
+    /* Visa Status Types */
     public static $Residence = 1;
     public static $Visit = 0;
+
+    /* Player Status Types */
+    public static $Approved = 1;
+    public static $Declined = 0;
 
     /**
      * The attributes that are mass assignable.

@@ -54,6 +54,7 @@
                                                         <th>Nationality</th>
                                                         <th>Visa Status</th>
                                                         <th>Date</th>
+                                                        <th>Status</th>
                                                         <th>Actions</th>
                                                     </tr>
                                                     </thead>
@@ -68,21 +69,25 @@
                                                                 @else
                                                                     <td>Residence</td>
                                                                 @endif
+
                                                                 <td>{{date('d/m/Y', strtotime($player->created_at))}}</td>
+                                                                @if($player->status == 0)
+                                                                    <td>Declined</td>
+                                                                @elseif($player->status == 1)
+                                                                <td>Approved</td>
+                                                                @else
+                                                                    <td>Pending</td>
+                                                                @endif
+
                                                                 <td>
-                                                                    <a href="{{route('player.show', $player->id)}}">view</a>
-                                                                    {{--                                                                    <a href="{{route('contact.edit', $player->id)}}">edit</a>--}}
+                                                                    <a href="{{route('player.show', $player->id)}}"><i class="material-icons">visibility</i></a>
 
                                                                     <form method="post" class="delete-form" action="{{ route('player.destroy', $player->id) }}">
                                                                         @csrf
                                                                         @method('DELETE')
 
-                                                                        <button type="submit" style="background-color: red; color: #fff; border: none;" class="btn btn-sm delete-submit-btn">del</button>
+                                                                        <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
                                                                     </form>
-                                                                    {{--                                                                    <a href="{{route('contact.destroy', $player->id)}}">delete</a>--}}
-                                                                    {{--<a href="#"><i class="material-icons">eye</i></a>
-                                                                    <a href="#"><i class="material-icons">pencil</i></a>
-                                                                    <a href="#"><i class="material-icons">trash</i></a>--}}
                                                                 </td>
                                                             </tr>
                                                         @endforeach
@@ -98,6 +103,7 @@
                                                         <th>Nationality</th>
                                                         <th>Visa Status</th>
                                                         <th>Date</th>
+                                                        <th>Status</th>
                                                         <th>Actions</th>
                                                     </tr>
                                                     </tfoot>
