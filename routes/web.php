@@ -16,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 /*------------------------------------------------------------------*/
 /*---------------------------FRONTEND ROUTES------------------------*/
 /*------------------------------------------------------------------*/
-Route::get('/', static function () {
-    return view('frontend.index');
-})->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/about', static function () {
     return view('frontend.about');
