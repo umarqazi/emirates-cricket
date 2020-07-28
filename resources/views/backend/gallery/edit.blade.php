@@ -165,7 +165,7 @@
                     console.log(filepath);
                     this.options.addedfile.call(this, file)
                     file.previewElement.classList.add('dz-complete')
-                    $('form').append('<input type="hidden" name="gallery-images[]" value="' + file.file_name + '">')
+                    $('form').append('<input type="hidden" name="gallery-images[]" value="' + file.name + '">')
                 }
                 @endif
             }
