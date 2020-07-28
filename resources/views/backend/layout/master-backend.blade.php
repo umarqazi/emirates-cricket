@@ -18,6 +18,7 @@
     <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/vendors.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/flag-icon.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/sweetalert.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/dropzone.min.css')}}">
     <!-- END: VENDOR CSS-->
     <!-- BEGIN: Page Level CSS-->
     <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/materialize.min.css')}}">
@@ -161,6 +162,16 @@
                 </ul>
             </div>
         </li>
+        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Social Gallery</span></a>
+            <div class="collapsible-body">
+                <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                    <li><a class="collapsible-body" href="{{route('gallery.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Gallery List</span></a>
+                    </li>
+                    <li><a class="collapsible-body" href="{{route('gallery.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New Gallery</span></a>
+                    </li>
+                </ul>
+            </div>
+        </li>
 
         <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Sponsor</span></a>
             <div class="collapsible-body">
@@ -241,6 +252,7 @@
 <!-- BEGIN THEME  JS-->
 <script src="{{URL::asset('backend/assets/js/plugins.js')}}" type="text/javascript"></script>
 <script src="{{URL::asset('backend/assets/js/ckeditor5-build-classic/ckeditor.js')}}" type="text/javascript"></script>
+<script src="{{URL::asset('backend/assets/js/dropzone.min.js')}}" type="text/javascript"></script>
 
 {{-- Load Section Scripts Start --}}
 

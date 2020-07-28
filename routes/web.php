@@ -51,9 +51,7 @@ Route::get('/fixtures', static function () {
     return view('frontend.fixtures');
 })->name('fixtures');
 
-Route::get('/galleries', static function () {
-    return view('frontend.galleries');
-})->name('galleries');
+Route::get('/galleries', 'GalleryController@frontendGalleries')->name('galleries');
 
 Route::get('/gallery', static function () {
     return view('frontend.gallery');
@@ -119,6 +117,10 @@ Route::group(['prefix' => 'admin'], static function () {
 
         Route::resource('/news', 'NewsController');
         Route::resource('/sponsor', 'SponsorController');
+
+        /* Gallery Related Routes in here... */
+        Route::resource('/gallery', 'GalleryController');
+        Route::post('/gallery-images', 'GalleryController@uploadGalleryImages')->name('gallery.images');
 
     });
 });
