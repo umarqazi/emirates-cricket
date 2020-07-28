@@ -44,7 +44,7 @@ class PlayerRegistrationNotification extends Notification
     {
         return (new MailMessage)
             ->line('Hi '.$this->player->first_name.' '.$this->player->last_name)
-            ->line('Thank you for your Player Registration at Emirates Cricket Academy. We have Received your request.')
+            ->line('Thank you for your Player Registration at Emirates Cricket Board. We have Received your request.')
             ->line('Our representative will update your request soon.')
             ->line('Thank you for using our application!');
     }
