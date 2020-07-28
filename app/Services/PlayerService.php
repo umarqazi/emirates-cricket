@@ -30,6 +30,7 @@ class PlayerService {
         $params['dob'] = Carbon::parse(Carbon::createFromFormat('d/m/Y', $params['dob']))->format('Y-m-d');
         $player = $this->player_repo->store(Player::class, $params);
         if(!empty($player)) {
+
             /* Move file to storage path */
             $old_path = 'uploads/temp/'.$player->photo;
             $new_path = 'uploads/players/'.$player->id.'/';

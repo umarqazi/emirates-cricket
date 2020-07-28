@@ -20,13 +20,13 @@
                 <div class="container">
                     <div class="row">
                         <div class="col s12 m6 l6">
-                            <h5 class="breadcrumbs-title mt-0 mb-0">News List</h5>
+                            <h5 class="breadcrumbs-title mt-0 mb-0">Gallery List</h5>
                         </div>
                         <div class="col s12 m6 l6 right-align-md">
                             <ol class="breadcrumbs mb-0">
                                 <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a>
                                 </li>
-                                <li class="breadcrumb-item active">News List
+                                <li class="breadcrumb-item active">Gallery List
                                 </li>
                             </ol>
                         </div>
@@ -41,7 +41,7 @@
                             <div class="col s12">
                                 <div class="card">
                                     <div class="card-content">
-                                        <h4 class="card-title">News</h4>
+                                        <h4 class="card-title">Gallery</h4>
 
                                         @include('frontend.partials.session-messages')
 
@@ -51,27 +51,27 @@
                                                     <thead>
                                                     <tr>
                                                         <th>Image</th>
-                                                        <th>Title</th>
-                                                        <th>Creation Date</th>
+                                                        <th>Gallery Title</th>
+                                                        <th>Date</th>
                                                         <th>Actions</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    @if(!empty($news))
-                                                        @foreach($news as $new)
+                                                    @if(!empty($galleries))
+                                                        @foreach($galleries as $gallery)
                                                             <tr>
                                                                 <td>
-                                                                    @if(file_exists(public_path('storage/uploads/news/'.$new->id.'/'.$new->image)))
-                                                                        <img src="{{asset('storage/uploads/news/'.$new->id.'/'.$new->image)}}" width="40px" height="40px">
+                                                                    @if(file_exists(public_path('storage/uploads/gallery/'.$gallery->id.'/'.$gallery->image)))
+                                                                        <img src="{{asset('storage/uploads/gallery/'.$gallery->id.'/'.$gallery->image)}}" width="40px" height="40px">
                                                                     @endif
                                                                 </td>
-                                                                <td>{{$new->title}}</td>
-                                                                <td>{{date('d/m/Y', strtotime($new->created_at))}}</td>
+                                                                <td>{{ \Illuminate\Support\Str::limit($gallery->title, 50)}}</td>
+                                                                <td>{{date('d/m/Y', strtotime($gallery->created_at))}}</td>
                                                                 <td>
-                                                                    <a href="{{route('news.show', $new->id)}}"><i class="material-icons">visibility</i></a>
-                                                                    <a href="{{route('news.edit', $new->id)}}"><i class="material-icons">edit</i></a>
+                                                                    <a href="{{route('gallery.show', $gallery->id)}}"><i class="material-icons">visibility</i></a>
+                                                                    <a href="{{route('gallery.edit', $gallery->id)}}"><i class="material-icons">edit</i></a>
 
-                                                                    <form method="post" class="delete-form" action="{{ route('news.destroy', $new->id) }}">
+                                                                    <form method="post" class="delete-form" action="{{ route('gallery.destroy', $gallery->id) }}">
                                                                         @csrf
                                                                         @method('DELETE')
 
@@ -82,15 +82,15 @@
                                                         @endforeach
                                                     @else
                                                         <tr>
-                                                            <td colspan="4" class="center">No News Available...</td>
+                                                            <td colspan="4" class="center">No Gallery Available...</td>
                                                         </tr>
                                                     @endif
                                                     </tbody>
                                                     <tfoot>
                                                     <tr>
                                                         <th>Image</th>
-                                                        <th>Title</th>
-                                                        <th>Creation Date</th>
+                                                        <th>Gallery Title</th>
+                                                        <th>Date</th>
                                                         <th>Actions</th>
                                                     </tr>
                                                     </tfoot>

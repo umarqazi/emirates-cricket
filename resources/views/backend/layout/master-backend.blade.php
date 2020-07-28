@@ -18,6 +18,7 @@
     <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/vendors.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/flag-icon.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/sweetalert.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/dropzone.min.css')}}">
     <!-- END: VENDOR CSS-->
     <!-- BEGIN: Page Level CSS-->
     <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/materialize.min.css')}}">
@@ -251,6 +252,7 @@
 <!-- BEGIN THEME  JS-->
 <script src="{{URL::asset('backend/assets/js/plugins.js')}}" type="text/javascript"></script>
 <script src="{{URL::asset('backend/assets/js/ckeditor5-build-classic/ckeditor.js')}}" type="text/javascript"></script>
+<script src="{{URL::asset('backend/assets/js/dropzone.min.js')}}" type="text/javascript"></script>
 
 {{-- Load Section Scripts Start --}}
 
