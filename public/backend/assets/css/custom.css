@@ -30,3 +30,19 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     max-width: 300px;
     max-height: 250px;
 }
+.team-player-section .heading .title p{
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 30px;
+}
+.team-player-section .heading .heading-icon a{
+    padding: 5px;
+    background: #00BCD4;
+    float: right;
+    line-height: 30px;
+    border-radius: 30px;
+    color: #fff;
+    width: 34px;
+    height: 36px;
+}

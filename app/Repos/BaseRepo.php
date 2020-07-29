@@ -10,6 +10,10 @@ class BaseRepo implements IRepo
         return $model::orderBy($column, $order)->get();
     }
 
+    public function getOne($model, $where = array() , $column = 'created_at' ,$order = 'desc') {
+        return $model::where($where)->orderBy($column, $order)->first();
+    }
+
     public function paginatedRecords($model, $records, $column = 'created_at', $order = 'desc') {
         return $model::orderBy($column, $order)->paginate($records);
     }

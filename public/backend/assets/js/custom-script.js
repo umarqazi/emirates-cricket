@@ -47,4 +47,67 @@ $(document).ready(function () {
             }
         })
     });
+
+    /* SWEETALERT ADD NEW PLAYER BUTTON */
+    $(".add-player-btn").bind("click", function(e) {
+        swal({
+            text: 'Please Enter Player Name:',
+            content: "input",
+            button: {
+                text: "Create!",
+                closeModal: false,
+            },
+        })
+            .then(name => {
+                if (!name) throw null;
+            })
+            .then(name => {
+                return name.json();
+            })
+            .then(name => {
+                console.log(name);
+                const movie = name.results[0];
+
+                var player_name = name;
+                var type = $(this).attr('data-type');
+                if (value === false) return false;
+                else if (value === "") {
+                    swal("You need to write something!", "", "error");
+                    return false;
+                } else {
+                    $.ajax({
+                        type: "POST",
+                        url: team_player_url,
+                        data: {'player_name': player_name, 'type': type},
+                        success: function(result){
+                            $("").html(result);
+                        }
+                    });
+                }
+            })
+            .catch(err => {
+                if (err) {
+                    swal("Oh noes!", "The AJAX request failed!", "error");
+                } else {
+                    swal.stopLoading();
+                    swal.close();
+                }
+            });
+/*
+        swal("Please Enter Player Name:", {
+            content: "input",
+        })
+            .then((value) => {
+                var player_name = value;
+                var type = $(this).attr('data-type');
+                if (value === false) return false;
+                else if (value === "") {
+                    swal("You need to write something!", "", "error");
+                    return false;
+                } else {
+                    $.ajax()
+                    swal(`You typed: ${value}`);
+                }
+            });*/
+    });
 });

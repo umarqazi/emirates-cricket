@@ -22,6 +22,7 @@
     <!-- END: VENDOR CSS-->
     <!-- BEGIN: Page Level CSS-->
     <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/materialize.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/style.css')}}">
     <!-- END: Page Level CSS-->
 
@@ -162,6 +163,18 @@
                 </ul>
             </div>
         </li>
+        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Teams</span></a>
+            <div class="collapsible-body">
+                <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                    <li><a class="collapsible-body" href="{{route('uae-mens')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>UAE Mens Team</span></a>
+                    </li>
+                    <li><a class="collapsible-body" href="{{route('uae-womens')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>UAE Womens Team</span></a>
+                    </li>
+                    <li><a class="collapsible-body" href="{{route('u-19')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>U-19 Team</span></a>
+                    </li>
+                </ul>
+            </div>
+        </li>
         <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Social Gallery</span></a>
             <div class="collapsible-body">
                 <ul class="collapsible collapsible-sub" data-collapsible="accordion">
@@ -224,9 +237,9 @@
 <!-- BEGIN: Page Main-->
 <div id="main">
     <div class="row">
-    {{--LOAD PAGE CONTENT IN HERE--}}
-    @yield('content')
-    {{--LOAD PAGE CONTENT IN HERE--}}
+        {{--LOAD PAGE CONTENT IN HERE--}}
+        @yield('content')
+        {{--LOAD PAGE CONTENT IN HERE--}}
     </div>
 </div>
 </div>
@@ -253,6 +266,7 @@
 <script src="{{URL::asset('backend/assets/js/plugins.js')}}" type="text/javascript"></script>
 <script src="{{URL::asset('backend/assets/js/ckeditor5-build-classic/ckeditor.js')}}" type="text/javascript"></script>
 <script src="{{URL::asset('backend/assets/js/dropzone.min.js')}}" type="text/javascript"></script>
+<script src="{{URL::asset('backend/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
 
 {{-- Load Section Scripts Start --}}
 

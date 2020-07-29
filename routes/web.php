@@ -122,5 +122,13 @@ Route::group(['prefix' => 'admin'], static function () {
         Route::resource('/gallery', 'GalleryController');
         Route::post('/gallery-images', 'GalleryController@uploadGalleryImages')->name('gallery.images');
 
+        /* All Teams Routes in here... */
+        Route::resource('/team', 'TeamController');
+        Route::get('/uae-mens', 'TeamController@uaeMens')->name('uae-mens');
+        Route::get('/uae-womens', 'TeamController@uaeWomens')->name('uae-womens');
+        Route::get('/u-19', 'TeamController@under19')->name('u-19');
+
+        /* All Team Player Routes */
+        Route::resource('/team-player', 'TeamPlayerController');
     });
 });
