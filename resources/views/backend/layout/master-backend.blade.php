@@ -143,7 +143,7 @@
         </li>
         <li class="navigation-header"><a class="navigation-header-text">Pages </a><i class="navigation-header-icon material-icons">more_horiz</i>
         </li>
-        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Users</span></a>
+        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">person_outline</i><span class="menu-title" data-i18n="">Users</span></a>
             <div class="collapsible-body">
                 <ul class="collapsible collapsible-sub" data-collapsible="accordion">
                     <li><a class="collapsible-body" href="{{route('news.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Users List</span></a>
@@ -153,7 +153,7 @@
                 </ul>
             </div>
         </li>
-        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">News</span></a>
+        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">assignment</i><span class="menu-title" data-i18n="">News</span></a>
             <div class="collapsible-body">
                 <ul class="collapsible collapsible-sub" data-collapsible="accordion">
                     <li><a class="collapsible-body" href="{{route('news.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>News List</span></a>
@@ -163,7 +163,7 @@
                 </ul>
             </div>
         </li>
-        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Teams</span></a>
+        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">people</i><span class="menu-title" data-i18n="">Teams</span></a>
             <div class="collapsible-body">
                 <ul class="collapsible collapsible-sub" data-collapsible="accordion">
                     <li><a class="collapsible-body" href="{{route('uae-mens')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>UAE Mens Team</span></a>
@@ -175,7 +175,7 @@
                 </ul>
             </div>
         </li>
-        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Social Gallery</span></a>
+        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">photo_library</i><span class="menu-title" data-i18n="">Social Gallery</span></a>
             <div class="collapsible-body">
                 <ul class="collapsible collapsible-sub" data-collapsible="accordion">
                     <li><a class="collapsible-body" href="{{route('gallery.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Gallery List</span></a>
@@ -186,7 +186,7 @@
             </div>
         </li>
 
-        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Sponsor</span></a>
+        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">thumbs_up_down</i><span class="menu-title" data-i18n="">Sponsor</span></a>
             <div class="collapsible-body">
                 <ul class="collapsible collapsible-sub" data-collapsible="accordion">
                     <li><a class="collapsible-body" href="{{route('sponsor.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Sponsor List</span></a>
@@ -196,7 +196,7 @@
                 </ul>
             </div>
         </li>
-        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Contact Requests</span></a>
+        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">contact_phone</i><span class="menu-title" data-i18n="">Contact Requests</span></a>
             <div class="collapsible-body">
                 <ul class="collapsible collapsible-sub" data-collapsible="accordion">
                     <li><a class="collapsible-body" href="{{route('contact.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Contact List</span></a>
@@ -204,7 +204,7 @@
                 </ul>
             </div>
         </li>
-        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Team Registration</span></a>
+        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">description</i><span class="menu-title" data-i18n="">Team Registration</span></a>
             <div class="collapsible-body">
                 <ul class="collapsible collapsible-sub" data-collapsible="accordion">
                     <li><a class="collapsible-body" href="{{route('news.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Team List</span></a>
@@ -215,7 +215,7 @@
             </div>
         </li>
 
-        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Player Registration</span></a>
+        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">assignment_ind</i><span class="menu-title" data-i18n="">Player Registration</span></a>
             <div class="collapsible-body">
                 <ul class="collapsible collapsible-sub" data-collapsible="accordion">
                     <li><a class="collapsible-body" href="{{route('player.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span></span>Player List</a>
@@ -236,7 +236,7 @@
 
 <!-- BEGIN: Page Main-->
 <div id="main">
-    <div class="row">
+    <div class="container">
         {{--LOAD PAGE CONTENT IN HERE--}}
         @yield('content')
         {{--LOAD PAGE CONTENT IN HERE--}}

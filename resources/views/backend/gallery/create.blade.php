@@ -57,8 +57,8 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col s12">Gallery Description</div>
-                                        <div class="input-field col s12">
+                                        <div class="col-12">Gallery Description</div>
+                                        <div class="input-field col-12">
                                             <textarea id="message5" class="ckeditor @error('text') invalid @enderror" name="text" rows="15" placeholder="Type Gallery Description in here...">{{old('text')}}</textarea>
 
                                             @error('text')
@@ -71,7 +71,7 @@
 
                                     <div class="row">
                                         <div class="file-field input-field">
-                                            <div class="btn">
+                                            <div class="btn custom-file-button">
                                                 <span>Featured Image</span>
                                                 <input type="file" name="image" class="validate @error('image') invalid @enderror">
                                             </div>

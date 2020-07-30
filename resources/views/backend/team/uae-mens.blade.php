@@ -54,8 +54,8 @@
                                                             @csrf
 
                                                             <div class="row">
-                                                                <div class="col s12">UAE Men Description</div>
-                                                                <div class="input-field col s12">
+                                                                <div class="col-12">UAE Men Description</div>
+                                                                <div class="input-field col-12">
                                                                     <textarea id="message5" class="ckeditor @error('description') invalid @enderror" name="description" rows="15" placeholder="Type News Description in here...">{{$team->description}}</textarea>
 
                                                                     @error('description')
