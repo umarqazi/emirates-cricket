@@ -49,6 +49,7 @@ $(document).ready(function () {
     });
 
     /* SWEETALERT ADD NEW PLAYER BUTTON */
+/*
     $(".add-player-btn").bind("click", function(e) {
         swal({
             text: 'Please Enter Player Name:',
@@ -93,7 +94,7 @@ $(document).ready(function () {
                     swal.close();
                 }
             });
-/*
+/!*
         swal("Please Enter Player Name:", {
             content: "input",
         })
@@ -108,6 +109,7 @@ $(document).ready(function () {
                     $.ajax()
                     swal(`You typed: ${value}`);
                 }
-            });*/
+            });*!/
     });
+*/
 });
