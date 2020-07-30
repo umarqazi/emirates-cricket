@@ -52,3 +52,24 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     justify-content: center;
     align-items: center;
 }
+.modal-open .modal.custom-add-modal{
+    background: transparent !important;
+    box-shadow: none !important;
+}
+.modal-open .modal.custom-add-modal .modal-title {
+    margin-top: 0;
+    padding-bottom: 10px;
+}
+.modal-open .modal.custom-add-modal .modal-header {
+    padding: 0;
+    margin-bottom: 15px;
+}
+.modal-open .modal.custom-add-modal .modal-content {
+    padding: 20px 20px;
+}
+.modal-open .modal.custom-add-modal .modal-body{
+    padding: 0;
+}
+.modal-open .modal.custom-add-modal .modal-body .add_player_input {
+    margin-bottom: 30px;
+}

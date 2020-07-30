@@ -87,8 +87,27 @@
                                                             <p>Players List</p>
                                                         </span>
                                                         <span class="heading-icon">
-                                                        <a class="waves-effect waves-light btn add-player-btn" data-type="{{\App\Team::$Mens}}" href="#"><i class="material-icons">add</i></a>
+                                                        <a class="waves-effect waves-light btn add-player-btn" data-type="{{\App\Team::$Mens}}" href="#" data-toggle="modal" data-target="#addplayermodal"><i class="material-icons">add</i></a>
                                                         </span>
+
+                                                        <!-- Modal -->
+                                                        <div class="modal fade custom-add-modal" id="addplayermodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Please Enter Player Name</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <input type="text" name="player_name" class="validate add_player_input">
+                                                                        <button type="submit" class="btn cyan waves-effect waves-light right">Create!</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
                                                     </div>
 
                                                     <table id="page-length-option" class="display team-player-table">
