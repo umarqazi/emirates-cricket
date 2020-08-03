@@ -56,6 +56,7 @@
                                                             <div class="row">
                                                                 <div class="col-12">UAE Men Description</div>
                                                                 <div class="input-field col-12">
+                                                                    <label for="message5"></label>
                                                                     <textarea id="message5" class="ckeditor @error('description') invalid @enderror" name="description" rows="15" placeholder="Type News Description in here...">{{$team->description}}</textarea>
 
                                                                     @error('description')
@@ -87,10 +88,10 @@
                                                             <p>Players List</p>
                                                         </span>
                                                         <span class="heading-icon">
-                                                        <a class="waves-effect waves-light btn add-player-btn" data-type="{{\App\Team::$Mens}}" href="#" data-toggle="modal" data-target="#addplayermodal"><i class="material-icons">add</i></a>
+                                                        <a class="waves-effect waves-light btn add-player-btn" href="#" data-toggle="modal" data-target="#addplayermodal"><i class="material-icons">add</i></a>
                                                         </span>
 
-                                                        <!-- Modal -->
+                                                        <!-- Create Modal -->
                                                         <div class="modal fade custom-add-modal" id="addplayermodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">
@@ -101,13 +102,42 @@
                                                                         </button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        <input type="text" name="player_name" class="validate add_player_input">
-                                                                        <button type="submit" class="btn cyan waves-effect waves-light right">Create!</button>
+                                                                        <form id="create-team-player-form" method="POST" action="">
+                                                                            <input type="text" name="name" class="validate add_player_input" required>
+                                                                            <span class="form-error name"></span>
+
+                                                                            <input type="hidden" name="team_id" value="{{$team->id}}">
+                                                                            <button type="submit" class="btn cyan waves-effect waves-light right create-player">Create!</button>
+                                                                        </form>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
 
+                                                        {{--Edit Modal--}}
+                                                        <div class="modal fade custom-add-modal" id="editplayermodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Please Edit Player Name</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form id="edit-team-player-form" method="POST" action="">
+                                                                            @method('PUT')
+
+                                                                            <input type="text" name="name" class="validate edit_player_input" required>
+                                                                            <span class="form-error name"></span>
+
+                                                                            <input type="hidden" name="team_id" value="{{$team->id}}">
+                                                                            <button type="submit" class="btn cyan waves-effect waves-light right create-player">Create!</button>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
 
                                                     <table id="page-length-option" class="display team-player-table">
@@ -120,11 +150,12 @@
                                                         </thead>
                                                         <tbody>
                                                         @if(!empty($team->players))
-                                                            @foreach($team->players as $player)
-                                                                <tr>
+                                                            @foreach($team->players as $key=> $player)
+                                                                <tr class="team-player-{{$player->id}}">
+                                                                    <td>{{$key + 1}}</td>
                                                                     <td>{{$player->name}}</td>
                                                                     <td>
-                                                                        <a href="{{route('player.show', $player->id)}}"><i class="material-icons">visibility</i></a>
+                                                                        <a href="{{route('player.edit', $player->id)}}" ><i class="material-icons">edit</i></a>
 
                                                                         <form method="post" class="delete-form" action="{{ route('player.destroy', $player->id) }}">
                                                                             @csrf
@@ -161,13 +192,13 @@
             </div>
 
             <!--end container-->
-        @endsection
+            @endsection
 
-        @section('scripts')
-            <script>
-                var team_player_url = "{{route('team-player.store')}}";
-            </script>
-            <!-- BEGIN VENDOR JS-->
+            @section('scripts')
+                <script>
+                    var team_player_url = "{{route('team-player.store')}}";
+                </script>
+                <!-- BEGIN VENDOR JS-->
                 <!-- BEGIN PAGE VENDOR JS-->
                 <script src="{{URL::asset('backend/assets/js/jquery.dataTables.min.js')}}"></script>
                 <script src="{{URL::asset('backend/assets/js/dataTables.responsive.min.js')}}"></script>

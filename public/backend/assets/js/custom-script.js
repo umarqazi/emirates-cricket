@@ -49,67 +49,55 @@ $(document).ready(function () {
     });
 
     /* SWEETALERT ADD NEW PLAYER BUTTON */
-/*
-    $(".add-player-btn").bind("click", function(e) {
-        swal({
-            text: 'Please Enter Player Name:',
-            content: "input",
-            button: {
-                text: "Create!",
-                closeModal: false,
-            },
-        })
-            .then(name => {
-                if (!name) throw null;
-            })
-            .then(name => {
-                return name.json();
-            })
-            .then(name => {
-                console.log(name);
-                const movie = name.results[0];
 
-                var player_name = name;
-                var type = $(this).attr('data-type');
-                if (value === false) return false;
-                else if (value === "") {
-                    swal("You need to write something!", "", "error");
-                    return false;
-                } else {
-                    $.ajax({
-                        type: "POST",
-                        url: team_player_url,
-                        data: {'player_name': player_name, 'type': type},
-                        success: function(result){
-                            $("").html(result);
-                        }
-                    });
-                }
-            })
-            .catch(err => {
-                if (err) {
-                    swal("Oh noes!", "The AJAX request failed!", "error");
-                } else {
-                    swal.stopLoading();
-                    swal.close();
-                }
-            });
-/!*
-        swal("Please Enter Player Name:", {
-            content: "input",
-        })
-            .then((value) => {
-                var player_name = value;
-                var type = $(this).attr('data-type');
-                if (value === false) return false;
-                else if (value === "") {
-                    swal("You need to write something!", "", "error");
-                    return false;
-                } else {
-                    $.ajax()
-                    swal(`You typed: ${value}`);
-                }
-            });*!/
+    $(".create-player").bind("click", function(e) {
+
     });
-*/
+
+
+    $("#create-team-player-form").submit(function (event) {
+        event.preventDefault();
+        var form_data = new FormData($('#create-team-player-form')[0]);
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: team_player_url,
+            type: "POST",
+            data: form_data,
+            dataType: "JSON",
+            cache: false,
+            contentType: false,
+            processData: false,
+            beforeSend: function () {
+                $('.create-player').attr('disabled', true).text('Loading....');
+                $('#organizer-form .form-error').html('');
+            },
+            success: function (resp) {
+                if (resp.type == "success") {
+                    $('#create-team-player-form')[0].reset();
+                    $('#create-team-player-form .form-error').html('');
+                    // $('.team-player-table > tbody:last-child').append(resp.data);
+                    $('#addplayermodal').modal('toggle');
+                    window.location.reload();
+                } else {
+
+                }
+                $('.create-player').attr('disabled', false).text('Save');
+            },
+            error: function (response) {
+                var respObj = response.responseJSON;
+                // showToaster('error', respObj.message);
+                errors = respObj.errors;
+                var keys = Object.keys(errors);
+                var count = keys.length;
+                for (var i = 0; i < count; i++) {
+                    $('.' + keys[i]).html(errors[keys[i]]).focus();
+                }
+                $('.create-player').attr('disabled', false).text('Save');
+            }
+        });
+    })
 });

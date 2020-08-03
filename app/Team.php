@@ -19,4 +19,8 @@ class Team extends Model
     protected $fillable = [
         'type', 'description',
     ];
+
+    public function players() {
+        return $this->hasMany(TeamPlayer::class);
+    }
 }

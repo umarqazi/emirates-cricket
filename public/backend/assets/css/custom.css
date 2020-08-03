@@ -14,6 +14,10 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     color: #e40000;
 }
 
+.form-error{
+    color: #e40000;
+}
+
 .login-email-error{
     padding-left: 45px;
 }
@@ -71,5 +75,8 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     padding: 0;
 }
 .modal-open .modal.custom-add-modal .modal-body .add_player_input {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+}
+.modal-open .modal.custom-add-modal .modal-body .create-player {
+    margin-top: 30px;
 }

@@ -22,6 +22,10 @@ class BaseRepo implements IRepo
         return $model::find($id);
     }
 
+    public function count($model) {
+        return $model::count();
+    }
+
     public function store($model, $data)
     {
         return $model::create($data);
