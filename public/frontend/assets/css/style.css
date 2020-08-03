@@ -528,7 +528,7 @@ body.sidebar-collapse .content-section {
     margin-top: 5px;
     animation: marquee 25s linear infinite;
 }
-.item-collection-1 {
+.item-collection {
     position: relative;
     left: 0%;
     animation: swap 55s linear infinite;
@@ -545,21 +545,12 @@ body.sidebar-collapse .content-section {
 .marquee-content:hover {
     animation-play-state: paused
 }
-.item1 {
+.item-collection .item {
     display: inline-block;
     font-size: 16px;
     line-height: 16px;
     vertical-align: top;
     margin-left: 20px;
-    color: #fff;
-    text-transform: capitalize;
-}
-.item2 {
-    display: inline-block;
-    font-size: 16px;
-    vertical-align: top;
-    margin-left: 20px;
-    line-height: 16px;
     color: #fff;
     text-transform: capitalize;
 }
