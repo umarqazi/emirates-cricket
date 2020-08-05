@@ -1,7 +1,7 @@
 @extends('backend.layout.master-backend')
 
 @section('title')
-    <title>Add News| Admin Panel</title>
+    <title>Edit Permission| Admin Panel</title>
 @endsection
 
 @section('styles')
@@ -14,15 +14,15 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m6 l6">
-                    <h5 class="breadcrumbs-title mt-0 mb-0">Add News</h5>
+                    <h5 class="breadcrumbs-title mt-0 mb-0">Edit Permission</h5>
                 </div>
                 <div class="col s12 m6 l6 right-align-md">
                     <ol class="breadcrumbs mb-0">
                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a>
                         </li>
-                        <li class="breadcrumb-item"><a href="{{route('player.index')}}">News List</a>
+                        <li class="breadcrumb-item"><a href="{{route('news.index')}}">Permission List</a>
                         </li>
-                        <li class="breadcrumb-item active">Add New News
+                        <li class="breadcrumb-item active">Edit Permission
                         </li>
                     </ol>
                 </div>
@@ -40,46 +40,32 @@
                     <div class="col s12 m12 l12">
                         <div id="Form-advance" class="card card card-default scrollspy">
                             <div class="card-content">
-                                <form class="col s12" method="POST" action="{{route('news.store')}}" enctype="multipart/form-data">
+                                <form class="col s12" method="POST" action="{{route('permission.update', $permission->id)}}">
                                     @csrf
+                                    @method('PUT')
 
                                     <div class="row">
-                                        <div class="input-field col m12 s12">
-                                            <input id="title" type="text" name="title" class="validate @error('title') invalid @enderror" value="{{old('title')}}">
-                                            <label for="title">News Title</label>
+                                        <div class="input-field col m6 s12">
+                                            <input id="title" type="text" name="name" class="validate @error('name') invalid @enderror" value="{{$permission->name}}">
+                                            <label for="title">Permission Name</label>
 
-                                            @error('title')
+                                            @error('name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
                                         </div>
-                                    </div>
 
-                                    <div class="row">
-                                        <div class="col s12">News Description</div>
-                                        <div class="input-field col s12">
-                                            <textarea id="message5" class="ckeditor @error('text') invalid @enderror" name="text" rows="15" placeholder="Type News Description in here...">{{old('text')}}</textarea>
+                                        <div class="input-field col m6 s12">
+                                            <select name="module" class="@error('module') invalid @enderror">
+                                                <option value="" disabled selected>Select Module</option>
+                                                @foreach(config('constants.modules') as $module)
+                                                    <option value="{{$module}}" {{$permission->module === $module ? 'selected' : ''}}>{{$module}}</option>
+                                                @endforeach
+                                            </select>
+                                            <label>Select Module</label>
 
-                                            @error('text')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="file-field input-field">
-                                            <div class="btn">
-                                                <span>File</span>
-                                                <input type="file" name="image" class="validate @error('image') invalid @enderror">
-                                            </div>
-                                            <div class="file-path-wrapper">
-                                                <input class="file-path validate" type="text">
-                                            </div>
-
-                                            @error('image')
+                                            @error('module')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -89,7 +75,7 @@
 
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <button class="btn cyan waves-effect waves-light right" type="submit">Create News
+                                            <button class="btn cyan waves-effect waves-light right" type="submit">Update Permission
                                                 <i class="material-icons right">send</i>
                                             </button>
                                         </div>

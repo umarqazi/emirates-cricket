@@ -53,7 +53,7 @@
                                             <label for="first_name01">Name</label>
 
                                             @error('name')
-                                            <span class="invalid-feedback login-email-error" role="alert">
+                                            <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
@@ -63,7 +63,7 @@
                                             <label for="last_name">Email</label>
 
                                             @error('email')
-                                            <span class="invalid-feedback login-email-error" role="alert">
+                                            <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
@@ -75,7 +75,7 @@
                                             <label for="email">Subject</label>
 
                                             @error('subject')
-                                            <span class="invalid-feedback login-email-error" role="alert">
+                                            <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
@@ -87,7 +87,7 @@
                                             <label for="message">Message</label>
 
                                             @error('message')
-                                            <span class="invalid-feedback login-email-error" role="alert">
+                                            <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
@@ -99,7 +99,7 @@
                                             <textarea id="message5" class="ckeditor" name="reply" rows="15" placeholder="Type your reply in here...">{{$contact->reply ?: ''}}</textarea>
 
                                             @error('title')
-                                            <span class="invalid-feedback login-email-error" role="alert">
+                                            <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
@@ -107,7 +107,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Submit Reply
+                                            <button class="btn cyan waves-effect waves-light right" type="submit">Submit Reply
                                                 <i class="material-icons right">send</i>
                                             </button>
                                         </div>

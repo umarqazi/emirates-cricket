@@ -38,4 +38,16 @@ return [
         'Zimbabwe',
     ],
 
+    'modules' => [
+        'User',
+        'Role',
+        'Permission',
+        'News',
+        'Gallery',
+        'Sponsor',
+        'Contact Request',
+        'Team Registration',
+        'Player Registration'
+    ],
+
 ];

@@ -31,21 +31,25 @@
         <div class="container">
             <div id="forgot-password" class="row">
                 <div class="col s12 m6 l4 z-depth-4 offset-m4 card-panel border-radius-6 forgot-card bg-opacity-8">
-                    <form class="login-form" method="POST" action="{{ route('password.update')  }}">
+                    <form class="login-form" method="POST" action="{{ route('storePassword') }}">
                         @csrf
 
                         <input type="hidden" name="token" value="{{ empty($token) ? '' : $token }}">
 
                         <div class="row">
                             <div class="input-field col s12">
-                                <h5 class="ml-4">{{ __('Reset Password') }}</h5>
+                                <h5 class="ml-4">Set Password</h5>
 
-                                @if (session('status'))
-                                    <div class="alert alert-success" role="alert">
-                                        {{ session('status') }}
+                                @if(session()->has('success'))
+                                    <div class="card-alert card green">
+                                        <div class="card-content white-text">
+                                            <p>{{ session()->get('success') }}</p>
+                                        </div>
+                                        <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
                                     </div>
                                 @endif
-
                             </div>
                         </div>
                         <div class="row margin">
@@ -86,13 +90,14 @@
                         <div class="row">
                             <div class="input-field col s12">
                                 <button type="submit" class="btn waves-effect waves-light border-round gradient-45deg-purple-deep-orange col s12 mb-1">
-                                    {{ __('Reset Password') }}
+                                    Set Password
                                 </button>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="input-field col s6 m6 l6">
-                                <p class="margin medium-small"><a href="{{route('login')}}">Login</a></p>
+                                <b><p class="margin medium-small"><a href="{{route('login')}}">Login</a></p></b>
                             </div>
                             <div class="input-field col s6 m6 l6">
                                 {{--                                <p class="margin right-align medium-small"><a href="user-register.html">Register</a></p>--}}

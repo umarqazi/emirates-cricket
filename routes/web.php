@@ -122,5 +122,13 @@ Route::group(['prefix' => 'admin'], static function () {
         Route::resource('/gallery', 'GalleryController');
         Route::post('/gallery-images', 'GalleryController@uploadGalleryImages')->name('gallery.images');
 
+        /* User Management */
+        Route::resource('/user', 'UserController');
+        Route::resource('/role', 'RoleController');
+        Route::resource('/permission', 'PermissionController');
     });
 });
+
+/* Set User Password Routes */
+Route::get('/user/set/password/{token}', 'UserController@setPassword')->name('setPassword');
+Route::post('/store/password', 'UserController@storePassword')->name('storePassword');

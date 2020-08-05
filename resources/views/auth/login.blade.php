@@ -37,6 +37,13 @@
                         <div class="row">
                             <div class="input-field col s12">
                                 <h5 class="ml-4">Sign in</h5>
+
+                                @if (session('success'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+
                             </div>
                         </div>
                         <div class="row margin">

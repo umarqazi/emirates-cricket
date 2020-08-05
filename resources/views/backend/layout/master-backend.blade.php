@@ -145,9 +145,30 @@
         <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Users</span></a>
             <div class="collapsible-body">
                 <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                    <li><a class="collapsible-body" href="{{route('news.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Users List</span></a>
+                    <li><a class="collapsible-body" href="{{route('user.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Users List</span></a>
                     </li>
-                    <li><a class="collapsible-body" href="{{route('news.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
+                    <li><a class="collapsible-body" href="{{route('user.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Role</span></a>
+            <div class="collapsible-body">
+                <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                    <li><a class="collapsible-body" href="{{route('role.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Role List</span></a>
+                    </li>
+                    <li><a class="collapsible-body" href="{{route('role.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Permission</span></a>
+            <div class="collapsible-body">
+                <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                    <li><a class="collapsible-body" href="{{route('permission.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Permission List</span></a>
+                    </li>
+                    <li><a class="collapsible-body" href="{{route('permission.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
                     </li>
                 </ul>
             </div>
