@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //$updates = Update::all();
-
+        $updates = [];
         View::share('marqueeUpdates', $updates);
     }
 }
