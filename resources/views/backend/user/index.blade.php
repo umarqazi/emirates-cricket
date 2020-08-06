@@ -64,7 +64,7 @@
                                                                 <td>{{$user->email}}</td>
                                                                 <td>{{!$user->roles->isEmpty() ? $user->roles->pluck('name')[0] : ''}}</td>
                                                                 <td>
-                                                                    <a href="{{route('user.show', $user->id)}}"><i class="material-icons">visibility</i></a>
+{{--                                                                    <a href="{{route('user.show', $user->id)}}"><i class="material-icons">visibility</i></a>--}}
                                                                     <a href="{{route('user.edit', $user->id)}}"><i class="material-icons">edit</i></a>
 
                                                                     <form method="post" class="delete-form" action="{{ route('user.destroy', $user->id) }}">

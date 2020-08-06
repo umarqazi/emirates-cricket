@@ -66,7 +66,7 @@
                                                     <thead>
                                                     <tr>
                                                         <th>Modules</th>
-                                                        <th colspan="4">Permissions</th>
+                                                        <th colspan="5">Permissions</th>
                                                     </tr>
                                                     </thead>
                                                     @foreach($permissions as $key=>$permission)
@@ -77,7 +77,7 @@
                                                                     <span><b>{{strtoupper($key)}}</b></span>
                                                                 </label>
                                                             </th>
-                                                            @for($i=0;$i<=3;$i++)
+                                                            @for($i=0;$i<=4;$i++)
                                                                 @if(!empty($permission[$i]))
                                                                     <th width="20%">
                                                                         <label>
@@ -94,7 +94,7 @@
                                                     <tfoot>
                                                     <tr>
                                                         <th>Modules</th>
-                                                        <th colspan="4">Permissions</th>
+                                                        <th colspan="5">Permissions</th>
                                                     </tr>
                                                     </tfoot>
                                                 </table>

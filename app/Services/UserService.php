@@ -26,7 +26,7 @@ class UserService
         return $this->user_repo->paginatedRecords(User::class, 2);
     }
 
-    public function find($id){
+    public function find($id) {
         return $this->user_repo->find(User::class, $id);
     }
 
