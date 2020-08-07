@@ -528,7 +528,7 @@ body.sidebar-collapse .content-section {
     margin-top: 5px;
     animation: marquee 25s linear infinite;
 }
-.item-collection-1 {
+.item-collection {
     position: relative;
     left: 0%;
     animation: swap 55s linear infinite;
@@ -545,21 +545,12 @@ body.sidebar-collapse .content-section {
 .marquee-content:hover {
     animation-play-state: paused
 }
-.item1 {
+.item-collection .item {
     display: inline-block;
     font-size: 16px;
     line-height: 16px;
     vertical-align: top;
     margin-left: 20px;
-    color: #fff;
-    text-transform: capitalize;
-}
-.item2 {
-    display: inline-block;
-    font-size: 16px;
-    vertical-align: top;
-    margin-left: 20px;
-    line-height: 16px;
     color: #fff;
     text-transform: capitalize;
 }
@@ -1568,7 +1559,7 @@ label.terms-label span {
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0px 3px 10px #00000029;
-    background: #fff;
+    background: #8D0303;
 }
 .contact-left {
     background: #8D0303;
@@ -1597,6 +1588,7 @@ label.terms-label span {
 }
 .contact-form-fields {
     padding: 25px;
+    background: #fff;
 }
 .contact-form-fields h4{
     font-size: 32px;
@@ -1683,31 +1675,163 @@ footer#footer p {
 /*+++++++  Responsiveness  ++++++++*/
 @media(max-width: 1599px){
     h1{
-        font-size: 40px;
+        font-size: 32px;
         margin-bottom: 30px;
+    }
+    h2{
+        font-size: 25px;
+    }
+    h2:before{
+        width: 65px;
     }
     h4{
         font-size: 20px;
+    }
+    .btn{
+        font-size: 16px;
+        line-height: 18px;
+        padding: 16px 16px;
+    }
+    input[type="text"], input[type="email"], input[type="number"], input[type="tel"], textarea, select{
+        padding: 15px 35px 15px 20px;
+    }
+    textarea{
+        height: 140px;
+    }
+    label{
+        font-size: 16px;
     }
     .breadcrumb{
         margin-bottom: 40px;
     }
     .team-content .btn{
-        padding: 25px 35px;
-        font-size: 20px;
+        padding: 20px 25px;
+        font-size: 18px;
     }
     .team-content h4{
         font-size: 18px;
         margin-bottom: 20px;
+    }
+    .logo .header-logo {
+        max-width: 100px;
+        max-height: 130px;
+    }
+    ul.sidebar-nav li a{
+        font-size: 15px;
+        padding: 16px 20px;
+    }
+    ul.sidebar-nav li a .nav-icon{
+        max-width: 18px;
+    }
+    .red-box{
+        padding: 20px 20px 30px;
+        min-height: 210px;
+    }
+    .red-box h3{
+        font-size: 18px;
+        margin-bottom: 10px;
+        min-height: 60px;
+    }
+    .red-box h3 img{
+        max-width: 30px;
+    }
+    .sidebar{
+        max-width: 250px;
+    }
+    .content-section{
+        max-width: calc(100% - 250px);
+    }
+    body.sidebar-collapse .sidebar{
+        left: -250px;
+    }
+    .red-box .btn{
+        font-size: 16px;
+        bottom: -18px;
+        max-width: 150px;
+    }
+    .top-bar{
+        padding: 15px 10px;
+    }
+    .top-bar .pacific-logo{
+        max-height: 58px;
+    }
+    .banner-content {
+        margin-top: -80px;
+        margin-bottom: 75px;
+    }
+    .tabs-section ul.tab_list li{
+        font-size: 20px;
+        padding: 20px 10px;
+    }
+    table.table p{
+        font-size: 15px;
+    }
+    table.table p span{
+        font-size: 16px;
+    }
+    .company-logo img {
+        max-width: 40px;
+    }
+    .team-matches p img{
+        max-width: 40px;
+    }
+    .nav-button{
+        top: 21%;
+    }
+    .download-file{
+        min-height: 240px;
+    }
+    .download-file img{
+        max-width: 65px;
+    }
+    .custom-drag-file img{
+        max-width: 140px;
+    }
+    .custom-drag-file p{
+        font-size: 16px;
+    }
+    .custom-drag-file{
+        height: 220px;
+    }
+    .tournament-registration-accordian.tab_wrapper.accordion .content_wrapper .accordian_header{
+        font-size: 24px;
+    }
+    .teams-section h5{
+        font-size: 18px;
+    }
+    .registration-form img{
+        max-width: 70px;
+    }
+    .contact-info{
+        margin-bottom: 40px;
+    }
+    .contact-info i{
+        margin-bottom: 15px;
+    }
+    .contact-info h6{
+        font-size: 22px;
+        margin-bottom: 12px;
+    }
+    ul.sub-menu{
+        padding: 10px 0px;
+        right: -250px;
+        min-width: 250px;
+    }
+    ul.sub-menu li{
+        margin-bottom: 0;
+    }
+    ul.sub-menu li a{
+        align-items: flex-start;
+        padding: 10px 20px;
+    }
+    ul.sub-menu li a i {
+        margin-right: 10px;
     }
 }
 
 @media (max-width: 1365px){
     .red-box{
         padding: 20px 20px 30px;
-    }
-    .red-box h3{
-        font-size: 20px;
     }
     .post-inner h5{
         font-size: 18px;

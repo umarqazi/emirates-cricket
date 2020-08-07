@@ -8,6 +8,7 @@ use App\Http\Requests\UserRequest;
 use App\Notifications\SetPasswordNotification;
 use App\Services\RoleService;
 use App\Services\UserService;
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -28,6 +29,8 @@ class UserController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', User::class);
+
         $users = $this->user_service->all();
         return view('backend.user.index', compact('users'));
     }

@@ -18,6 +18,7 @@ class UserPolicy
      */
     public function viewAny(User $user)
     {
+        dd('viewAny');
         if ($user->can('List User')) {
             return true;
         }

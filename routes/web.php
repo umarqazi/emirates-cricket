@@ -96,6 +96,7 @@ Route::get('/under-19', static function () {
 
 Route::group(['prefix' => 'admin'], static function () {
 
+    Route::redirect('/', '/admin/login');
     Auth::routes();
 
     Route::group(['middleware' => ['web', 'auth']], static function () {
@@ -116,6 +117,7 @@ Route::group(['prefix' => 'admin'], static function () {
         Route::get('/decline-request/{id}', 'PlayerController@declineRequest')->name('decline-player');
 
         Route::resource('/news', 'NewsController');
+        Route::resource('/update', 'UpdateController');
         Route::resource('/sponsor', 'SponsorController');
 
         /* Gallery Related Routes in here... */

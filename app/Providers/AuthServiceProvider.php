@@ -17,6 +17,7 @@ use App\Policies\SponsorPolicy;
 use App\Policies\UserPolicy;
 use App\Sponsor;
 use App\User;
+use Illuminate\Auth\Access\Response;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Spatie\Permission\Models\Permission;
