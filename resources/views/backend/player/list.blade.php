@@ -74,20 +74,24 @@
                                                                 @if($player->status == 0)
                                                                     <td>Declined</td>
                                                                 @elseif($player->status == 1)
-                                                                <td>Approved</td>
+                                                                    <td>Approved</td>
                                                                 @else
                                                                     <td>Pending</td>
                                                                 @endif
 
                                                                 <td>
-                                                                    <a href="{{route('player.show', $player->id)}}"><i class="material-icons">visibility</i></a>
+                                                                    @can('Show Player')
+                                                                        <a href="{{route('player.show', $player->id)}}"><i class="material-icons">visibility</i></a>
+                                                                    @endcan
 
-                                                                    <form method="post" class="delete-form" action="{{ route('player.destroy', $player->id) }}">
-                                                                        @csrf
-                                                                        @method('DELETE')
+                                                                    @can('Delete Player')
+                                                                        <form method="post" class="delete-form" action="{{ route('player.destroy', $player->id) }}">
+                                                                            @csrf
+                                                                            @method('DELETE')
 
-                                                                        <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
-                                                                    </form>
+                                                                            <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
+                                                                        </form>
+                                                                    @endcan
                                                                 </td>
                                                             </tr>
                                                         @endforeach

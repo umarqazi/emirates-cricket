@@ -18,10 +18,9 @@ class UserPolicy
      */
     public function viewAny(User $user)
     {
-        dd('viewAny');
-        if ($user->can('List User')) {
-            return true;
-        }
+        return $user->can('List User')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -33,9 +32,9 @@ class UserPolicy
      */
     public function view(User $user, User $model)
     {
-        if ($user->can('Show User')) {
-            return true;
-        }
+        return $user->can('Show User')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -46,9 +45,9 @@ class UserPolicy
      */
     public function create(User $user)
     {
-        if ($user->can('Create User')) {
-            return true;
-        }
+        return $user->can('Create User')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -60,10 +59,9 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
-        dd('update');
-        if ($user->can('Edit User')) {
-            return true;
-        }
+        return $user->can('Edit User') && $user->id !== $model->id
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -75,9 +73,9 @@ class UserPolicy
      */
     public function delete(User $user, User $model)
     {
-        if ($user->can('Delete User')) {
-            return true;
-        }
+        return $user->can('Delete User') && $user->id !== $model->id
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**

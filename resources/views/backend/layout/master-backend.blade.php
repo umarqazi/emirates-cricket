@@ -220,16 +220,16 @@
             <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Update</span></a>
                 <div class="collapsible-body">
                     <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                        @can('List Update'))
-                        <li>
-                            <a class="collapsible-body" href="{{route('update.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Updates List</span></a>
-                        </li>
+                        @can('List Update')
+                            <li>
+                                <a class="collapsible-body" href="{{route('update.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Updates List</span></a>
+                            </li>
                         @endcan
 
-                        @can('Create Update'))
-                        <li>
-                            <a class="collapsible-body" href="{{route('update.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New Update</span></a>
-                        </li>
+                        @can('Create Update')
+                            <li>
+                                <a class="collapsible-body" href="{{route('update.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New Update</span></a>
+                            </li>
                         @endcan
                     </ul>
                 </div>

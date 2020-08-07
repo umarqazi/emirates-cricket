@@ -62,15 +62,22 @@
                                                                 <td>{{\Illuminate\Support\Str::limit($update->title, 50)}}</td>
                                                                 <td>{{date('d/m/Y', strtotime($update->created_at))}}</td>
                                                                 <td>
-                                                                    <a href="{{route('update.show', $update->id)}}"><i class="material-icons">visibility</i></a>
-                                                                    <a href="{{route('update.edit', $update->id)}}"><i class="material-icons">edit</i></a>
+                                                                    @can('Show Update')
+                                                                        <a href="{{route('update.show', $update->id)}}"><i class="material-icons">visibility</i></a>
+                                                                    @endcan
 
-                                                                    <form method="post" class="delete-form" action="{{ route('update.destroy', $update->id) }}">
-                                                                        @csrf
-                                                                        @method('DELETE')
+                                                                    @can('Edit Update')
+                                                                        <a href="{{route('update.edit', $update->id)}}"><i class="material-icons">edit</i></a>
+                                                                    @endcan
 
-                                                                        <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
-                                                                    </form>
+                                                                    @can('Delete Update')
+                                                                        <form method="post" class="delete-form" action="{{ route('update.destroy', $update->id) }}">
+                                                                            @csrf
+                                                                            @method('DELETE')
+
+                                                                            <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
+                                                                        </form>
+                                                                    @endcan
                                                                 </td>
                                                             </tr>
                                                         @endforeach

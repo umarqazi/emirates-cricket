@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Auth\Access\Response;
 use Spatie\Permission\Models\Role;
 
 class RolePolicy
@@ -18,9 +19,9 @@ class RolePolicy
      */
     public function viewAny(User $user)
     {
-        if ($user->can('List Role')) {
-            return true;
-        }
+        return $user->can('List Role')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -32,9 +33,9 @@ class RolePolicy
      */
     public function view(User $user, Role $role)
     {
-        if ($user->can('Show Role')) {
-            return true;
-        }
+        return $user->can('Show Role')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -45,9 +46,9 @@ class RolePolicy
      */
     public function create(User $user)
     {
-        if ($user->can('Create Role')) {
-            return true;
-        }
+        return $user->can('Create Role')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -59,9 +60,9 @@ class RolePolicy
      */
     public function update(User $user, Role $role)
     {
-        if ($user->can('Edit Role')) {
-            return true;
-        }
+        return $user->can('Edit Role')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -73,9 +74,9 @@ class RolePolicy
      */
     public function delete(User $user, Role $role)
     {
-        if ($user->can('Delete Role')) {
-            return true;
-        }
+        return $user->can('Delete Role')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**

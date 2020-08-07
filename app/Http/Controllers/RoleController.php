@@ -6,6 +6,7 @@ use App\Http\Requests\RoleRequest;
 use App\Services\PermissionService;
 use App\Services\RoleService;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
@@ -14,6 +15,9 @@ class RoleController extends Controller
 
     public function __construct()
     {
+        /* Check User Permission to Perform Action */
+        $this->authorizeResource(Role::class, 'role');
+
         $this->role_service = new RoleService();
         $this->permission_service = new PermissionService();
     }

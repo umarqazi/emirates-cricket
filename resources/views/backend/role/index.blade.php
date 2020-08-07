@@ -60,15 +60,22 @@
                                                             <tr>
                                                                 <td>{{$role->name}}</td>
                                                                 <td>
-                                                                    <a href="{{route('role.show', $role->id)}}"><i class="material-icons">visibility</i></a>
-                                                                    <a href="{{route('role.edit', $role->id)}}"><i class="material-icons">edit</i></a>
+                                                                    @can('Show Role')
+                                                                        <a href="{{route('role.show', $role->id)}}"><i class="material-icons">visibility</i></a>
+                                                                    @endcan
 
-                                                                    <form method="post" class="delete-form" action="{{ route('role.destroy', $role->id) }}">
-                                                                        @csrf
-                                                                        @method('DELETE')
+                                                                    @can('Edit Role')
+                                                                        <a href="{{route('role.edit', $role->id)}}"><i class="material-icons">edit</i></a>
+                                                                    @endcan
 
-                                                                        <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
-                                                                    </form>
+                                                                    @can('Delete Role')
+                                                                        <form method="post" class="delete-form" action="{{ route('role.destroy', $role->id) }}">
+                                                                            @csrf
+                                                                            @method('DELETE')
+
+                                                                            <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
+                                                                        </form>
+                                                                    @endcan
                                                                 </td>
                                                             </tr>
                                                         @endforeach

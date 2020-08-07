@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateSponsor;
 use App\Http\Requests\UpdateSponsor;
 use App\Services\SponsorService;
+use App\Sponsor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -21,6 +22,9 @@ class SponsorController extends Controller
      */
     public function __construct()
     {
+        /* Check User Permission to Perform Action */
+        $this->authorizeResource(Sponsor::class, 'sponsor');
+
         $this->sponsor_service = new SponsorService();
     }
 

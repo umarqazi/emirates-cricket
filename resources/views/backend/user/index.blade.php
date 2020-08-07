@@ -64,15 +64,18 @@
                                                                 <td>{{$user->email}}</td>
                                                                 <td>{{!$user->roles->isEmpty() ? $user->roles->pluck('name')[0] : ''}}</td>
                                                                 <td>
-{{--                                                                    <a href="{{route('user.show', $user->id)}}"><i class="material-icons">visibility</i></a>--}}
-                                                                    <a href="{{route('user.edit', $user->id)}}"><i class="material-icons">edit</i></a>
+                                                                    @can('Edit User')
+                                                                        <a href="{{route('user.edit', $user->id)}}"><i class="material-icons">edit</i></a>
+                                                                    @endcan
 
-                                                                    <form method="post" class="delete-form" action="{{ route('user.destroy', $user->id) }}">
-                                                                        @csrf
-                                                                        @method('DELETE')
+                                                                    @can('Delete User')
+                                                                        <form method="post" class="delete-form" action="{{ route('user.destroy', $user->id) }}">
+                                                                            @csrf
+                                                                            @method('DELETE')
 
-                                                                        <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
-                                                                    </form>
+                                                                            <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
+                                                                        </form>
+                                                                    @endcan
                                                                 </td>
                                                             </tr>
                                                         @endforeach

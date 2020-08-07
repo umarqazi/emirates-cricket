@@ -18,6 +18,9 @@ class UserController extends Controller
 
     public function __construct()
     {
+        /* Check User Permission to Perform Action */
+        $this->authorizeResource(User::class, 'user');
+
         $this->user_service = new UserService();
         $this->role_service = new RoleService();
     }
@@ -29,8 +32,6 @@ class UserController extends Controller
      */
     public function index()
     {
-        $this->authorize('viewAny', User::class);
-
         $users = $this->user_service->all();
         return view('backend.user.index', compact('users'));
     }

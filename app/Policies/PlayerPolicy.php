@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Player;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Auth\Access\Response;
 
 class PlayerPolicy
 {
@@ -18,9 +19,9 @@ class PlayerPolicy
      */
     public function viewAny(User $user)
     {
-        if ($user->can('List Player Registration')) {
-            return true;
-        }
+        return $user->can('List Player Registration')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -32,9 +33,9 @@ class PlayerPolicy
      */
     public function view(User $user, Player $player)
     {
-        if ($user->can('Edit Player Registration')) {
-            return true;
-        }
+        return $user->can('Edit Player Registration')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -57,9 +58,9 @@ class PlayerPolicy
      */
     public function update(User $user, Player $player)
     {
-        if ($user->can('Edit Player Registration')) {
-            return true;
-        }
+        return $user->can('Edit Player Registration')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -71,9 +72,9 @@ class PlayerPolicy
      */
     public function delete(User $user, Player $player)
     {
-        if ($user->can('Delete Player Registration')) {
-            return true;
-        }
+        return $user->can('Delete Player Registration')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**

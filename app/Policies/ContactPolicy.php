@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Contact;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Auth\Access\Response;
 
 class ContactPolicy
 {
@@ -18,9 +19,9 @@ class ContactPolicy
      */
     public function viewAny(User $user)
     {
-        if ($user->can('List Contact')) {
-            return true;
-        }
+        return $user->can('List Contact')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -32,9 +33,9 @@ class ContactPolicy
      */
     public function view(User $user, Contact $contact)
     {
-        if ($user->can('Show Contact')) {
-            return true;
-        }
+        return $user->can('Show Contact')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -45,9 +46,9 @@ class ContactPolicy
      */
     public function create(User $user)
     {
-        if ($user->can('')) {
-            return true;
-        }
+        return $user->can('Create Contact')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -59,9 +60,9 @@ class ContactPolicy
      */
     public function update(User $user, Contact $contact)
     {
-        if ($user->can('Edit Contact')) {
-            return true;
-        }
+        return $user->can('Edit Contact')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -73,9 +74,9 @@ class ContactPolicy
      */
     public function delete(User $user, Contact $contact)
     {
-        if ($user->can('Delete Contact')) {
-            return true;
-        }
+        return $user->can('Delete Contact')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**

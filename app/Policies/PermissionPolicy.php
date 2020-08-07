@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Auth\Access\Response;
 use Spatie\Permission\Models\Permission;
 
 class PermissionPolicy
@@ -18,9 +19,9 @@ class PermissionPolicy
      */
     public function viewAny(User $user)
     {
-        if ($user->can('List Permission')) {
-            return true;
-        }
+        return $user->can('List Permission')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -32,9 +33,9 @@ class PermissionPolicy
      */
     public function view(User $user, Permission $permission)
     {
-        if ($user->can('Show Permission')) {
-            return true;
-        }
+        return $user->can('Show Permission')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -45,9 +46,9 @@ class PermissionPolicy
      */
     public function create(User $user)
     {
-        if ($user->can('Create Permission')) {
-            return true;
-        }
+        return $user->can('Create Permission')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -59,9 +60,9 @@ class PermissionPolicy
      */
     public function update(User $user, Permission $permission)
     {
-        if ($user->can('Edit Permission')) {
-            return true;
-        }
+        return $user->can('Edit Permission')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -73,9 +74,9 @@ class PermissionPolicy
      */
     public function delete(User $user, Permission $permission)
     {
-        if ($user->can('Delete Permission')) {
-            return true;
-        }
+        return $user->can('Delete Permission')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**

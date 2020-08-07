@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\NewsRequest;
 use App\Http\Requests\UpdateNewsRequest;
+use App\News;
 use App\Services\NewsService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -21,6 +22,9 @@ class NewsController extends Controller
      */
     public function __construct()
     {
+        /* Check User Permission to Perform Action */
+        $this->authorizeResource(News::class, 'news');
+
         $this->news_service = new NewsService();
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PlayerRegistration;
 use App\Notifications\PlayerRegistrationNotification;
+use App\Player;
 use App\Services\CountryService;
 use App\Services\PlayerService;
 use Illuminate\Http\Request;
@@ -23,6 +24,9 @@ class PlayerController extends Controller
      */
     public function __construct()
     {
+        /* Check User Permission to Perform Action */
+        $this->authorizeResource(Player::class, 'player');
+
         $this->player_service = new PlayerService;
         $this->country_service = new CountryService();
     }

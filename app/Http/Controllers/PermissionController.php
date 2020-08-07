@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PermissionRequest;
 use App\Services\PermissionService;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
 {
@@ -12,6 +13,9 @@ class PermissionController extends Controller
 
     public function __construct()
     {
+        /* Check User Permission to Perform Action */
+        $this->authorizeResource(Permission::class, 'permission');
+
         $this->permission_service = new PermissionService();
     }
 

@@ -68,15 +68,22 @@
                                                                 <td>{{$new->title}}</td>
                                                                 <td>{{date('d/m/Y', strtotime($new->created_at))}}</td>
                                                                 <td>
-                                                                    <a href="{{route('news.show', $new->id)}}"><i class="material-icons">visibility</i></a>
-                                                                    <a href="{{route('news.edit', $new->id)}}"><i class="material-icons">edit</i></a>
+                                                                    @can('Show News')
+                                                                        <a href="{{route('news.show', $new->id)}}"><i class="material-icons">visibility</i></a>
+                                                                    @endcan
 
-                                                                    <form method="post" class="delete-form" action="{{ route('news.destroy', $new->id) }}">
-                                                                        @csrf
-                                                                        @method('DELETE')
+                                                                    @can('Edit News')
+                                                                        <a href="{{route('news.edit', $new->id)}}"><i class="material-icons">edit</i></a>
+                                                                    @endcan
 
-                                                                        <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
-                                                                    </form>
+                                                                    @can('Delete News')
+                                                                        <form method="post" class="delete-form" action="{{ route('news.destroy', $new->id) }}">
+                                                                            @csrf
+                                                                            @method('DELETE')
+
+                                                                            <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
+                                                                        </form>
+                                                                    @endcan
                                                                 </td>
                                                             </tr>
                                                         @endforeach

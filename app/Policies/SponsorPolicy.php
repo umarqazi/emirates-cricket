@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Sponsor;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Auth\Access\Response;
 
 class SponsorPolicy
 {
@@ -18,9 +19,9 @@ class SponsorPolicy
      */
     public function viewAny(User $user)
     {
-        if ($user->can('List Sponsor')) {
-            return true;
-        }
+        return $user->can('List Sponsor')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -32,9 +33,9 @@ class SponsorPolicy
      */
     public function view(User $user, Sponsor $sponsor)
     {
-        if ($user->can('Show Sponsor')) {
-            return true;
-        }
+        return $user->can('Show Sponsor')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -45,9 +46,9 @@ class SponsorPolicy
      */
     public function create(User $user)
     {
-        if ($user->can('Create Sponsor')) {
-            return true;
-        }
+        return $user->can('Create Sponsor')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -59,9 +60,9 @@ class SponsorPolicy
      */
     public function update(User $user, Sponsor $sponsor)
     {
-        if ($user->can('Edit Sponsor')) {
-            return true;
-        }
+        return $user->can('Edit Sponsor')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -73,9 +74,9 @@ class SponsorPolicy
      */
     public function delete(User $user, Sponsor $sponsor)
     {
-        if ($user->can('Delete Sponsor')) {
-            return true;
-        }
+        return $user->can('Delete Sponsor')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**

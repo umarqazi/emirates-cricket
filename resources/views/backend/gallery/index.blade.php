@@ -1,7 +1,7 @@
 @extends('backend.layout.master-backend')
 
 @section('title')
-    <title>News List| Admin Panel</title>
+    <title>Gallery List| Admin Panel</title>
 @endsection
 
 @section('styles')
@@ -68,15 +68,22 @@
                                                                 <td>{{ \Illuminate\Support\Str::limit($gallery->title, 50)}}</td>
                                                                 <td>{{date('d/m/Y', strtotime($gallery->created_at))}}</td>
                                                                 <td>
-                                                                    <a href="{{route('gallery.show', $gallery->id)}}"><i class="material-icons">visibility</i></a>
-                                                                    <a href="{{route('gallery.edit', $gallery->id)}}"><i class="material-icons">edit</i></a>
+                                                                    @can('Show Gallery')
+                                                                        <a href="{{route('gallery.show', $gallery->id)}}"><i class="material-icons">visibility</i></a>
+                                                                    @endcan
 
-                                                                    <form method="post" class="delete-form" action="{{ route('gallery.destroy', $gallery->id) }}">
-                                                                        @csrf
-                                                                        @method('DELETE')
+                                                                    @can('Edit Gallery')
+                                                                        <a href="{{route('gallery.edit', $gallery->id)}}"><i class="material-icons">edit</i></a>
+                                                                    @endcan
 
-                                                                        <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
-                                                                    </form>
+                                                                    @can('Delete Gallery')
+                                                                        <form method="post" class="delete-form" action="{{ route('gallery.destroy', $gallery->id) }}">
+                                                                            @csrf
+                                                                            @method('DELETE')
+
+                                                                            <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
+                                                                        </form>
+                                                                    @endcan
                                                                 </td>
                                                             </tr>
                                                         @endforeach

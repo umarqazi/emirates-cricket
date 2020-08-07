@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Gallery;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Auth\Access\Response;
 
 class GalleryPolicy
 {
@@ -18,9 +19,9 @@ class GalleryPolicy
      */
     public function viewAny(User $user)
     {
-        if ($user->can('List Gallery')) {
-            return true;
-        }
+        return $user->can('List Gallery')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -32,9 +33,9 @@ class GalleryPolicy
      */
     public function view(User $user, Gallery $gallery)
     {
-        if ($user->can('Show Gallery')) {
-            return true;
-        }
+        return $user->can('Show Gallery')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -45,9 +46,9 @@ class GalleryPolicy
      */
     public function create(User $user)
     {
-        if ($user->can('Create Gallery')) {
-            return true;
-        }
+        return $user->can('Create Gallery')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -59,9 +60,9 @@ class GalleryPolicy
      */
     public function update(User $user, Gallery $gallery)
     {
-        if ($user->can('Edit Gallery')) {
-            return true;
-        }
+        return $user->can('Edit Gallery')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -73,9 +74,9 @@ class GalleryPolicy
      */
     public function delete(User $user, Gallery $gallery)
     {
-        if ($user->can('Delete Gallery')) {
-            return true;
-        }
+        return $user->can('Delete Gallery')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**

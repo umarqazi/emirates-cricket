@@ -22,6 +22,9 @@ class ContactController extends Controller
      */
     public function __construct()
     {
+        /* Check User Permission to Perform Action */
+        $this->authorizeResource(Contact::class, 'contact');
+
         $this->contact_service = new ContactService();
     }
     /**

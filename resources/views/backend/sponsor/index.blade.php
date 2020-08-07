@@ -70,15 +70,22 @@
                                                                 <td>{{$sponsor->website}}</td>
                                                                 <td>{{date('d/m/Y', strtotime($sponsor->created_at))}}</td>
                                                                 <td>
-                                                                    <a href="{{route('sponsor.show', $sponsor->id)}}"><i class="material-icons">visibility</i></a>
-                                                                    <a href="{{route('sponsor.edit', $sponsor->id)}}"><i class="material-icons">edit</i></a>
+                                                                    @can('Show Sponsor')
+                                                                        <a href="{{route('sponsor.show', $sponsor->id)}}"><i class="material-icons">visibility</i></a>
+                                                                    @endcan
 
-                                                                    <form method="post" class="delete-form" action="{{ route('sponsor.destroy', $sponsor->id) }}">
-                                                                        @csrf
-                                                                        @method('DELETE')
+                                                                    @can('Edit Sponsor')
+                                                                        <a href="{{route('sponsor.edit', $sponsor->id)}}"><i class="material-icons">edit</i></a>
+                                                                    @endcan
 
-                                                                        <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
-                                                                    </form>
+                                                                    @can('Delete Sponsor')
+                                                                        <form method="post" class="delete-form" action="{{ route('sponsor.destroy', $sponsor->id) }}">
+                                                                            @csrf
+                                                                            @method('DELETE')
+
+                                                                            <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
+                                                                        </form>
+                                                                    @endcan
                                                                 </td>
                                                             </tr>
                                                         @endforeach

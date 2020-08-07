@@ -2,12 +2,12 @@
 
 namespace App\Policies;
 
-use App\News;
+use App\Update;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Auth\Access\Response;
 
-class NewsPolicy
+class UpdatePolicy
 {
     use HandlesAuthorization;
 
@@ -19,7 +19,7 @@ class NewsPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('List News')
+        return $user->can('List Update')
             ? Response::allow()
             : Response::deny('You aren\'t Authorized to perform this Action.');
     }
@@ -28,14 +28,14 @@ class NewsPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\User  $user
-     * @param  \App\News  $news
+     * @param  \App\Update  $update
      * @return mixed
      */
-    public function view(User $user, News $news)
+    public function view(User $user, Update $update)
     {
-        return $user->can('Show News')
-        ? Response::allow()
-        : Response::deny('You aren\'t Authorized to perform this Action.');
+        return $user->can('Show Update')
+            ? Response::allow()
+            : Response::deny('You aren\'t Authorized to perform this Action.');
     }
 
     /**
@@ -46,7 +46,7 @@ class NewsPolicy
      */
     public function create(User $user)
     {
-        return $user->can('Create News')
+        return $user->can('Create Update')
             ? Response::allow()
             : Response::deny('You aren\'t Authorized to perform this Action.');
     }
@@ -55,12 +55,12 @@ class NewsPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\User  $user
-     * @param  \App\News  $news
+     * @param  \App\Update  $update
      * @return mixed
      */
-    public function update(User $user, News $news)
+    public function update(User $user, Update $update)
     {
-        return $user->can('Edit News')
+        return $user->can('Edit Update')
             ? Response::allow()
             : Response::deny('You aren\'t Authorized to perform this Action.');
     }
@@ -69,12 +69,12 @@ class NewsPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\News  $news
+     * @param  \App\Update  $update
      * @return mixed
      */
-    public function delete(User $user, News $news)
+    public function delete(User $user, Update $update)
     {
-        return $user->can('Delete News')
+        return $user->can('Delete Update')
             ? Response::allow()
             : Response::deny('You aren\'t Authorized to perform this Action.');
     }
@@ -83,10 +83,10 @@ class NewsPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\User  $user
-     * @param  \App\News  $news
+     * @param  \App\Update  $update
      * @return mixed
      */
-    public function restore(User $user, News $news)
+    public function restore(User $user, Update $update)
     {
         //
     }
@@ -95,10 +95,10 @@ class NewsPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\User  $user
-     * @param  \App\News  $news
+     * @param  \App\Update  $update
      * @return mixed
      */
-    public function forceDelete(User $user, News $news)
+    public function forceDelete(User $user, Update $update)
     {
         //
     }

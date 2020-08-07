@@ -62,14 +62,18 @@
                                                                 <td>{{$permission->name}}</td>
                                                                 <td>{{$permission->module}}</td>
                                                                 <td>
-                                                                    <a href="{{route('permission.edit', $permission->id)}}"><i class="material-icons">edit</i></a>
+                                                                    @can('Edit Permission')
+                                                                        <a href="{{route('permission.edit', $permission->id)}}"><i class="material-icons">edit</i></a>
+                                                                    @endcan
 
-                                                                    <form method="post" class="delete-form" action="{{ route('permission.destroy', $permission->id) }}">
-                                                                        @csrf
-                                                                        @method('DELETE')
+                                                                    @can('Delete Permission')
+                                                                        <form method="post" class="delete-form" action="{{ route('permission.destroy', $permission->id) }}">
+                                                                            @csrf
+                                                                            @method('DELETE')
 
-                                                                        <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
-                                                                    </form>
+                                                                            <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
+                                                                        </form>
+                                                                    @endcan
                                                                 </td>
                                                             </tr>
                                                         @endforeach

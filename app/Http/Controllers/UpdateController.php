@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateRequest;
 use App\Services\UpdateService;
+use App\Update;
 use Illuminate\Http\Request;
 
 class UpdateController extends Controller
@@ -12,6 +13,9 @@ class UpdateController extends Controller
 
     public function __construct()
     {
+        /* Check User Permission to Perform Action */
+        $this->authorizeResource(Update::class, 'update');
+
         $this->update_service = new UpdateService();
     }
 
