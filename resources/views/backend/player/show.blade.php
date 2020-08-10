@@ -1,7 +1,7 @@
 @extends('backend.layout.master-backend')
 
 @section('title')
-    <title>Show Contact Detail| Admin Panel</title>
+    <title>Show Player Detail| Admin Panel</title>
 @endsection
 
 @section('styles')
@@ -40,7 +40,7 @@
                     <div class="col s12 m12 l12">
                         <div id="Form-advance" class="card card card-default scrollspy">
                             <div class="card-content">
-                                <form class="col s12" method="POST" action="{{route('contact.update', $player->id)}}">
+                                <form class="col s12" method="POST" action="{{route('player.update', $player->id)}}">
                                     @csrf
                                     @method('PUT')
 
@@ -192,21 +192,23 @@
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <button class="btn cyan waves-effect waves-light right mr-1" type="submit">Update
-                                                <i class="material-icons right">send</i>
-                                            </button>
+                                    @can('Edit Player Registration')
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <button class="btn cyan waves-effect waves-light right mr-1" type="submit">Update
+                                                    <i class="material-icons right">send</i>
+                                                </button>
 
-                                            <a href="{{route('approve-player', $player->id)}}" class="btn green waves-effect waves-light right mr-1">Approve
-                                                <i class="material-icons right">check</i>
-                                            </a>
+                                                <a href="{{route('approve-player', $player->id)}}" class="btn green waves-effect waves-light right mr-1">Approve
+                                                    <i class="material-icons right">check</i>
+                                                </a>
 
-                                            <a href="{{route('decline-player', $player->id)}}" class="btn red waves-effect waves-light right mr-1">Decline
-                                                <i class="material-icons right">close</i>
-                                            </a>
+                                                <a href="{{route('decline-player', $player->id)}}" class="btn red waves-effect waves-light right mr-1">Decline
+                                                    <i class="material-icons right">close</i>
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endcan
                                 </form>
                             </div>
                         </div>

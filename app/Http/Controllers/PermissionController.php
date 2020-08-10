@@ -58,7 +58,7 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Permission $permission)
     {
         //
     }
@@ -69,9 +69,8 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Permission $permission)
     {
-        $permission = $this->permission_service->find($id);
         return view('backend.permission.edit', compact('permission'));
     }
 
@@ -82,9 +81,9 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PermissionRequest $request, $id)
+    public function update(PermissionRequest $request, Permission $permission)
     {
-        $this->permission_service->update($request->except(['_token', 'action', '_method']), $id);
+        $this->permission_service->update($request->except(['_token', 'action', '_method']), $permission->id);
         return redirect()->route('permission.index')->with('success', 'Permission has been Updated Successfully!');
     }
 
@@ -94,9 +93,9 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Permission $permission)
     {
-        $this->permission_service->delete($id);
+        $this->permission_service->delete($permission->id);
         return redirect()->route('permission.index')->with('success', 'Permission has been Deleted Successfully!');
     }
 }

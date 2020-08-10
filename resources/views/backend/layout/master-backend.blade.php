@@ -248,7 +248,7 @@
 
                         @if(auth()->user()->can('Create Gallery'))
                             <li>
-                                <a class="collapsible-body" href="{ {route('gallery.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New Gallery</span></a>
+                                <a class="collapsible-body" href="{{route('gallery.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New Gallery</span></a>
                             </li>
                         @endif
                     </ul>
@@ -276,7 +276,7 @@
             </li>
         @endif
 
-        @if(auth()->user()->can('List contact'))
+        @if(auth()->user()->can('List Contact'))
             <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Contact Requests</span></a>
                 <div class="collapsible-body">
                     <ul class="collapsible collapsible-sub" data-collapsible="accordion">

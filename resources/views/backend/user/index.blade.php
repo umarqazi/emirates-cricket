@@ -50,10 +50,10 @@
                                                 <table id="page-length-option" class="display">
                                                     <thead>
                                                     <tr>
-                                                        <th>Name</th>
-                                                        <th>Email</th>
-                                                        <th>Role</th>
-                                                        <th>Actions</th>
+                                                        <th width="20%">Name</th>
+                                                        <th width="40%">Email</th>
+                                                        <th width="20%">Role</th>
+                                                        <th width="20%">Actions</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>

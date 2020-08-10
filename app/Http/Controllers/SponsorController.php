@@ -81,9 +81,8 @@ class SponsorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Sponsor $sponsor)
     {
-        $sponsor = $this->sponsor_service->find($id);
         return view('backend.sponsor.show', compact('sponsor'));
     }
 
@@ -93,9 +92,8 @@ class SponsorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Sponsor $sponsor)
     {
-        $sponsor = $this->sponsor_service->find($id);
         return view('backend.sponsor.edit', compact('sponsor'));
     }
 
@@ -106,11 +104,10 @@ class SponsorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSponsor $request, $id)
+    public function update(UpdateSponsor $request, Sponsor $sponsor)
     {
-//        dd($request->all());
         $params = $request->except('_token', '_method', 'action');
-        $oldImageName = $this->sponsor_service->find($id)->image;
+        $oldImageName = $this->sponsor_service->find($sponsor->id)->image;
         $file = '';
         $imageName = '';
 
@@ -123,17 +120,17 @@ class SponsorController extends Controller
             $params['image'] = $oldImageName;
         }
 
-        $news = $this->sponsor_service->update($params, $id);
+        $news = $this->sponsor_service->update($params, $sponsor->id);
         if (!empty($news) && $request->hasFile('image')) {
 
-            $path = 'uploads/sponsor/'.$id.'/';
+            $path = 'uploads/sponsor/'.$sponsor->id.'/';
 
             if (!Storage::disk('public')->exists($path)) {
                 Storage::disk('public')->makeDirectory($path);
             }
 
             /* Delete Old Image */
-            File::delete(public_path('storage/uploads/sponsor/'.$id.'/'.$oldImageName));
+            File::delete(public_path('storage/uploads/sponsor/'.$sponsor->id.'/'.$oldImageName));
 
             /* Upload New Image */
             Storage::disk('public')->putFileAs($path, $file, $imageName);
@@ -147,9 +144,9 @@ class SponsorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id): \Illuminate\Http\RedirectResponse
+    public function destroy(Sponsor $sponsor): \Illuminate\Http\RedirectResponse
     {
-        $this->sponsor_service->delete($id);
+        $this->sponsor_service->delete($sponsor->id);
         return redirect()->back()->with('success', 'Sponsor has been Deleted Successfully!');
     }
 

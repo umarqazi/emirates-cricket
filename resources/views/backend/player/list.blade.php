@@ -80,11 +80,11 @@
                                                                 @endif
 
                                                                 <td>
-                                                                    @can('Show Player')
+{{--                                                                    @can('Show Player Registration')--}}
                                                                         <a href="{{route('player.show', $player->id)}}"><i class="material-icons">visibility</i></a>
-                                                                    @endcan
+{{--                                                                    @endcan--}}
 
-                                                                    @can('Delete Player')
+                                                                    @can('Delete Player Registration')
                                                                         <form method="post" class="delete-form" action="{{ route('player.destroy', $player->id) }}">
                                                                             @csrf
                                                                             @method('DELETE')

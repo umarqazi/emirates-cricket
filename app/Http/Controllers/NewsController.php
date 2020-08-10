@@ -81,9 +81,8 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(News $news)
     {
-        $news = $this->news_service->find($id);
         return view('backend.news.show', compact('news'));
     }
 
@@ -93,9 +92,8 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(News $news)
     {
-        $news = $this->news_service->find($id);
         return view('backend.news.edit', compact('news'));
     }
 
@@ -106,10 +104,10 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateNewsRequest $request, $id): \Illuminate\Http\RedirectResponse
+    public function update(UpdateNewsRequest $request, News $news): \Illuminate\Http\RedirectResponse
     {
         $params = $request->except('_token', '_method', 'action');
-        $oldImageName = $this->news_service->find($id)->image;
+        $oldImageName = $this->news_service->find($news->id)->image;
         $file = '';
         $imageName = '';
 
@@ -122,17 +120,17 @@ class NewsController extends Controller
             $params['image'] = $oldImageName;
         }
 
-        $news = $this->news_service->update($params, $id);
+        $news = $this->news_service->update($params, $news->id);
         if (!empty($news) && $request->hasFile('image')) {
 
-            $path = 'uploads/news/'.$id.'/';
+            $path = 'uploads/news/'.$news->id.'/';
 
             if (!Storage::disk('public')->exists($path)) {
                 Storage::disk('public')->makeDirectory($path);
             }
 
             /* Delete Old Image */
-            File::delete(public_path('storage/uploads/news/'.$id.'/'.$oldImageName));
+            File::delete(public_path('storage/uploads/news/'.$news->id.'/'.$oldImageName));
 
             /* Upload New Image */
             Storage::disk('public')->putFileAs($path, $file, $imageName);
@@ -146,10 +144,12 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id): \Illuminate\Http\RedirectResponse
+    public function destroy(News $news): \Illuminate\Http\RedirectResponse
     {
-        $news = $this->news_service->delete($id);
-        return redirect()->back()->with('success', 'News has been Deleted Successfully!');
+        $status = $this->news_service->delete($news->id);
+        if (!empty($status)) {
+            return redirect()->back()->with('success', 'News has been Deleted Successfully!');
+        }
     }
 
     public function frontendNews() {

@@ -87,10 +87,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
         $roles = $this->role_service->all();
-        $user = $this->user_service->find($id);
         return view('backend.user.edit', compact('roles', 'user'));
     }
 
@@ -101,11 +100,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserRequest $request, $id)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        $status = $this->user_service->update($request->except(['_token', '_method', 'role']), $id);
+        $status = $this->user_service->update($request->except(['_token', '_method', 'role']), $user->id);
         if (!empty($status)) {
-            $user = $this->user_service->find($id);
             $role = $this->role_service->find($request->role);
             $roles = array($role->name);
             $user->syncRoles($roles);
@@ -119,10 +117,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $user = $this->user_service->delete($id);
-        if (!empty($user)) {
+        $status = $this->user_service->delete($user->id);
+        if (!empty($status)) {
             return redirect()->route('user.index')->with('success', 'User has been Deleted Successfully!');
         }
     }

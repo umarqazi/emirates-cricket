@@ -44,6 +44,12 @@ class PlayerService {
         }
     }
 
+    public function update($params, $id)
+    {
+        $params['dob'] = Carbon::parse(Carbon::createFromFormat('Y-m-d', $params['dob']))->format('Y-m-d');
+        return $this->player_repo->update(Player::class, $params, $id);
+    }
+
     public function delete($id) {
         $name = $this->player_repo->find(Player::class, $id)->photo;
         $result = $this->player_repo->destroy(Player::class, $id);

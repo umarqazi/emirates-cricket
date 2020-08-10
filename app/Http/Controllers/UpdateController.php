@@ -27,7 +27,7 @@ class UpdateController extends Controller
     public function index()
     {
         $updates = $this->update_service->all();
-       return view('backend.update.index', compact('updates'));
+        return view('backend.update.index', compact('updates'));
     }
 
     /**
@@ -60,9 +60,8 @@ class UpdateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Update $update)
     {
-        $update = $this->update_service->find($id);
         return view('backend.update.show', compact('update'));
     }
 
@@ -72,9 +71,8 @@ class UpdateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Update $update)
     {
-        $update = $this->update_service->find($id);
         return view('backend.update.edit', compact('update'));
     }
 
@@ -85,10 +83,9 @@ class UpdateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRequest $request, $id)
+    public function update(UpdateRequest $request, Update $update)
     {
-//        dd($request->all());
-        $update = $this->update_service->update($request->except(['_token', '_method', 'action']), $id);
+        $update = $this->update_service->update($request->except(['_token', '_method', 'action']), $update->id);
 
         if (!empty($update)) {
             return redirect()->route('update.index')->with('success', 'An Update has been Updated Successfully!');
@@ -101,9 +98,11 @@ class UpdateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Update $update)
     {
-        $update = $this->update_service->delete($id);
-        return redirect()->back()->with('success', 'An Update has been Deleted Successfully!');
+        $status = $this->update_service->delete($update->id);
+        if (!empty($status)) {
+            return redirect()->back()->with('success', 'An Update has been Deleted Successfully!');
+        }
     }
 }
