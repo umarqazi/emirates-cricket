@@ -32,7 +32,7 @@
                 <span>About</span>
             </a>
             <i class="fa fa-chevron-down"></i>
-            <ul class="sub-menu about-sections">
+            <ul class="sub-menu">
                 <li>
                     <a href="#">
                         <i class=" fa-angle-double-right"></i>
