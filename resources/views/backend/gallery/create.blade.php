@@ -49,7 +49,7 @@
                                             <label for="title">Gallery Title</label>
 
                                             @error('title')
-                                            <span class="invalid-feedback login-email-error" role="alert">
+                                            <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
@@ -62,7 +62,7 @@
                                             <textarea id="message5" class="ckeditor @error('text') invalid @enderror" name="text" rows="15" placeholder="Type Gallery Description in here...">{{old('text')}}</textarea>
 
                                             @error('text')
-                                            <span class="invalid-feedback login-email-error" role="alert">
+                                            <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
@@ -80,7 +80,7 @@
                                             </div>
 
                                             @error('image')
-                                            <span class="invalid-feedback login-email-error" role="alert">
+                                            <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
@@ -96,7 +96,7 @@
 
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Create New Gallery
+                                            <button class="btn cyan waves-effect waves-light right" type="submit">Create New Gallery
                                                 <i class="material-icons right">send</i>
                                             </button>
                                         </div>

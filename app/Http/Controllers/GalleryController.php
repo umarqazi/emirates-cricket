@@ -25,6 +25,9 @@ class GalleryController extends Controller
      */
     public function __construct()
     {
+        /* Check User Permission to Perform Action */
+        $this->authorizeResource(Gallery::class, 'gallery');
+
         $this->gallery_service = new GalleryService();
         $this->image_service = new ImageService();
     }
@@ -83,9 +86,8 @@ class GalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Gallery $gallery)
     {
-        $gallery = $this->gallery_service->find($id);
         return view('backend.gallery.show', compact('gallery'));
     }
 
@@ -95,9 +97,8 @@ class GalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Gallery $gallery)
     {
-        $gallery = $this->gallery_service->find($id);
         return view('backend.gallery.edit', compact('gallery'));
     }
 
@@ -108,9 +109,9 @@ class GalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CreateGallery $request, $id)
+    public function update(CreateGallery $request, Gallery $gallery)
     {
-        dd($id);
+        dd($gallery);
 
         $params = $request->except('_token', '_method', 'action');
         $oldImageName = $this->gallery_service->find($id)->image;
@@ -177,9 +178,9 @@ class GalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id): ?\Illuminate\Http\RedirectResponse
+    public function destroy(Gallery $gallery): ?\Illuminate\Http\RedirectResponse
     {
-        $response = $this->gallery_service->delete($id);
+        $response = $this->gallery_service->delete($gallery->id);
         if ($response) {
             return redirect()->back()->with('success', 'Gallery has been Deleted!');
         }

@@ -55,7 +55,7 @@
                                 <label for="email" class="center-align">{{ __('E-Mail Address') }}</label>
 
                                 @error('email')
-                                <span class="invalid-feedback login-email-error" role="alert">
+                                <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
@@ -69,7 +69,7 @@
                                 <label for="password" class="center-align">{{ __('Password') }}</label>
 
                                 @error('password')
-                                <span class="invalid-feedback login-email-error" role="alert">
+                                <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
