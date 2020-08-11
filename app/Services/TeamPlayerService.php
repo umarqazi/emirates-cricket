@@ -46,11 +46,6 @@ class TeamPlayerService
 
     public function delete($id): bool
     {
-        $name = $this->team_player_repo->find(TeamPlayer::class, $id)->image;
-        $result = $this->team_player_repo->destroy(TeamPlayer::class, $id);
-        if ($result) {
-            File::deleteDirectory(public_path('storage/uploads/sponsor/'.$id.'/'));
-        }
-        return true;
+        return $this->team_player_repo->destroy(TeamPlayer::class, $id);
     }
 }

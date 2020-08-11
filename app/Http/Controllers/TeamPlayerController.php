@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PlayerRequest;
 use App\Services\TeamPlayerService;
 use App\Services\TeamService;
+use App\TeamPlayer;
 use Illuminate\Http\Request;
 
 class TeamPlayerController extends Controller
@@ -34,7 +35,8 @@ class TeamPlayerController extends Controller
      */
     public function create()
     {
-        //
+        $teams = $this->team_service->all();
+        return view('backend.team-player.create', compact('teams'));
     }
 
     /**
@@ -45,15 +47,11 @@ class TeamPlayerController extends Controller
      */
     public function store(PlayerRequest $request)
     {
-        $player = $this->team_player_service->store($request->all());
-        $count = $this->team_player_service->count();
-        $data = view('backend.partials.add-team-player-row', ['player' => $player, 'count' => $count]);
-
-        return response()->json([
-            'type'      =>  'success',
-            'msg'       =>  'Player has been Created Successfully!',
-            'data'      =>  $data
-        ]);
+        $params = $request->except(['_token', 'team']);
+        $team_id =  $request->team;
+        $params['team_id'] = $team_id;
+        $this->team_player_service->store($params);
+        return redirect()->route('team.show', $team_id)->with('success', 'Player Has been Added Successfully!');
     }
 
     /**
@@ -75,7 +73,9 @@ class TeamPlayerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $player = $this->team_player_service->find($id);
+        $teams = $this->team_service->all();
+        return view('backend.team-player.edit', compact('player', 'teams'));
     }
 
     /**
@@ -85,9 +85,13 @@ class TeamPlayerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PlayerRequest $request, $id)
     {
-        //
+        $params = $request->except(['_token', '_method' , 'team']);
+        $team_id = $request->team;
+        $params['team_id'] = $team_id;
+        $this->team_player_service->update($params, $id);
+        return redirect()->route('team.show', $team_id)->with('success', 'Player Has been Updated Successfully!');
     }
 
     /**
@@ -98,6 +102,8 @@ class TeamPlayerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->team_player_service->delete($id);
+        return redirect()->back()->with('success', 'Player Has been Deleted Successfully!');
+
     }
 }

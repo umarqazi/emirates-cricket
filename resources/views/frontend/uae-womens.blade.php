@@ -25,7 +25,7 @@
     <div class="teams-section">
         <div class="container">
             <div class="team-content">
-                <h4>The UAE Women’s team is the team that represents the United Arab Emirates (UAE) in international and regional cricket matches. In July 2007, the UAE Women’s team made their international debut in the Asian Cricket Council’s (ACC) Women’s Tournament, which was played in Malaysia.</h4>
+                <h4>{!! $team->description !!}</h4>
                 <a href="#" class="btn">Uae Women's</a>
             </div>
 
@@ -41,26 +41,18 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Humaira Tasneem</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Chamani Seneviratne</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Subha Srinivasan</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>Neha Sharma</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td>Kavisha Kumari</td>
-                                </tr>
+                                @if(!$team->players->isEmpty())
+                                    @foreach($team->players as $key=>$player)
+                                        <tr>
+                                            <th scope="row">{{$key + 1}}</th>
+                                            <td>{{$player->name}}</td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <tr>
+                                        <th colspan="2" class="text-center">No Player Selected Yet.</th>
+                                    </tr>
+                                @endif
                                 </tbody>
                             </table>
                         </div>

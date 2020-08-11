@@ -58,7 +58,7 @@
                                             <label for="title">Gallery Title</label>
 
                                             @error('title')
-                                            <span class="invalid-feedback login-email-error" role="alert">
+                                            <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
@@ -71,7 +71,7 @@
                                             <textarea id="message5" class="ckeditor @error('text') invalid @enderror" name="text" rows="15" placeholder="Type Gallery Description in here...">{!! $gallery->text !!}</textarea>
 
                                             @error('text')
-                                            <span class="invalid-feedback login-email-error" role="alert">
+                                            <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
@@ -89,7 +89,7 @@
                                             </div>
 
                                             @error('image')
-                                            <span class="invalid-feedback login-email-error" role="alert">
+                                            <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror

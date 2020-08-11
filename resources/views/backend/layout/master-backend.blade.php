@@ -169,11 +169,11 @@
         <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">people</i><span class="menu-title" data-i18n="">Teams</span></a>
             <div class="collapsible-body">
                 <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                    <li><a class="collapsible-body" href="{{route('uae-mens')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>UAE Mens Team</span></a>
+                    <li>
+                        <a class="collapsible-body" href="{{route('team.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Teams List</span></a>
                     </li>
-                    <li><a class="collapsible-body" href="{{route('uae-womens')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>UAE Womens Team</span></a>
-                    </li>
-                    <li><a class="collapsible-body" href="{{route('u-19')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>U-19 Team</span></a>
+                    <li>
+                        <a class="collapsible-body" href="{{route('team-player.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New Player</span></a>
                     </li>
                 </ul>
             </div>

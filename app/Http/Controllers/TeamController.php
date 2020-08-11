@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TeamRequest;
 use App\Services\TeamPlayerService;
 use App\Services\TeamService;
 use App\Team;
@@ -25,7 +26,8 @@ class TeamController extends Controller
      */
     public function index()
     {
-        //
+        $teams = $this->team_service->all();
+        return view('backend.team.index', compact('teams'));
     }
 
     /**
@@ -55,9 +57,9 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Team $team)
     {
-        //
+        return view('backend.team.show', compact('team'));
     }
 
     /**
@@ -78,9 +80,10 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TeamRequest $request, $id)
     {
-        //
+        $this->team_service->update($request->except(['_token', '_method']), $id);
+        return redirect()->route('team.show', $id)->with('success', 'Team Description has been Updated!');
     }
 
     /**
@@ -89,23 +92,24 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Team $team)
     {
-        //
+        $this->team_service->delete($team->id);
+        return redirect()->route('team.index')->with('success', 'Team has been Deleted!');
     }
 
     public function uaeMens() {
         $team = $this->team_service->getOne(array('type' => Team::$Mens));
-        return view('backend.team.uae-mens', compact('team'));
+        return view('frontend.uae-mens', compact('team'));
     }
 
     public function uaeWomens() {
-        $team = $this->team_service->get(array('type' => Team::$Womens));
-        return view('backend.team.uae-womens', compact('team'));
+        $team = $this->team_service->getOne(array('type' => Team::$Womens));
+        return view('frontend.uae-womens', compact('team'));
     }
 
     public function under19() {
-        $team = $this->team_service->get(array('type' => Team::$U19));
-        return view('backend.team.u-19', compact('team'));
+        $team = $this->team_service->getOne(array('type' => Team::$U19));
+        return view('frontend.under-19', compact('team'));
     }
 }

@@ -1,7 +1,7 @@
 @extends('backend.layout.master-backend')
 
 @section('title')
-    <title>Player List| Admin Panel</title>
+    <title>Teams List| Admin Panel</title>
 @endsection
 
 @section('styles')
@@ -20,13 +20,13 @@
                 <div class="container">
                     <div class="row">
                         <div class="col s12 m6 l6">
-                            <h5 class="breadcrumbs-title mt-0 mb-0">Player Registration List</h5>
+                            <h5 class="breadcrumbs-title mt-0 mb-0">Teams List</h5>
                         </div>
                         <div class="col s12 m6 l6 right-align-md">
                             <ol class="breadcrumbs mb-0">
                                 <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a>
                                 </li>
-                                <li class="breadcrumb-item active">Player Registration List
+                                <li class="breadcrumb-item active">Teams List
                                 </li>
                             </ol>
                         </div>
@@ -41,7 +41,7 @@
                             <div class="col s12">
                                 <div class="card">
                                     <div class="card-content">
-                                        <h4 class="card-title">Player</h4>
+                                        <h4 class="card-title">Team List</h4>
 
                                         @include('frontend.partials.session-messages')
 
@@ -50,39 +50,21 @@
                                                 <table id="page-length-option" class="display">
                                                     <thead>
                                                     <tr>
+                                                        <th>S. No</th>
                                                         <th>Name</th>
-                                                        <th>Nationality</th>
-                                                        <th>Visa Status</th>
-                                                        <th>Date</th>
-                                                        <th>Status</th>
                                                         <th>Actions</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    @if(!empty($players))
-                                                        @foreach($players as $player)
+                                                    @if(!empty($teams))
+                                                        @foreach($teams as $key=>$team)
                                                             <tr>
-                                                                <td>{{$player->first_name.' '.$player->last_name}}</td>
-                                                                <td>{{$player->country->name}}</td>
-                                                                @if($player->visa_status == 0)
-                                                                    <td>Visit</td>
-                                                                @else
-                                                                    <td>Residence</td>
-                                                                @endif
-
-                                                                <td>{{date('d/m/Y', strtotime($player->created_at))}}</td>
-                                                                @if($player->status == 0)
-                                                                    <td>Declined</td>
-                                                                @elseif($player->status == 1)
-                                                                <td>Approved</td>
-                                                                @else
-                                                                    <td>Pending</td>
-                                                                @endif
-
+                                                                <td>{{$key + 1}}</td>
+                                                                <td>{{$team->name}}</td>
                                                                 <td>
-                                                                    <a href="{{route('player.show', $player->id)}}"><i class="material-icons">visibility</i></a>
+                                                                    <a href="{{route('team.show', $team->id)}}"><i class="material-icons">visibility</i></a>
 
-                                                                    <form method="post" class="delete-form" action="{{ route('player.destroy', $player->id) }}">
+                                                                    <form method="post" class="delete-form" action="{{ route('team.destroy', $team->id) }}">
                                                                         @csrf
                                                                         @method('DELETE')
 
@@ -93,17 +75,14 @@
                                                         @endforeach
                                                     @else
                                                         <tr>
-                                                            <td colspan="6" class="center">No Contacts Available...</td>
+                                                            <td colspan="4" class="center">No Team Available...</td>
                                                         </tr>
                                                     @endif
                                                     </tbody>
                                                     <tfoot>
                                                     <tr>
+                                                        <th>S. No</th>
                                                         <th>Name</th>
-                                                        <th>Nationality</th>
-                                                        <th>Visa Status</th>
-                                                        <th>Date</th>
-                                                        <th>Status</th>
                                                         <th>Actions</th>
                                                     </tr>
                                                     </tfoot>

@@ -20,13 +20,13 @@
                 <div class="container">
                     <div class="row">
                         <div class="col s12 m6 l6">
-                            <h5 class="breadcrumbs-title mt-0 mb-0">UAE Men Team</h5>
+                            <h5 class="breadcrumbs-title mt-0 mb-0">{{$team->name}}</h5>
                         </div>
                         <div class="col s12 m6 l6 right-align-md">
                             <ol class="breadcrumbs mb-0">
                                 <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a>
                                 </li>
-                                <li class="breadcrumb-item active">UAE Men Team
+                                <li class="breadcrumb-item active">{{$team->name}}
                                 </li>
                             </ol>
                         </div>
@@ -41,7 +41,7 @@
                             <div class="col s12">
                                 <div class="card">
                                     <div class="card-content">
-                                        <h4 class="card-title">UAE Men Team</h4>
+                                        <h4 class="card-title">{{$team->name}}</h4>
 
                                         @include('frontend.partials.session-messages')
 
@@ -52,24 +52,25 @@
                                                     <div class="card-content">
                                                         <form class="col s12" method="POST" action="{{route('team.update', $team->id)}}">
                                                             @csrf
+                                                            @method('PUT')
 
                                                             <div class="row">
-                                                                <div class="col-12">UAE Men Description</div>
+                                                                <div class="col-12">{{$team->name}} Description</div>
                                                                 <div class="input-field col-12">
                                                                     <label for="message5"></label>
                                                                     <textarea id="message5" class="ckeditor @error('description') invalid @enderror" name="description" rows="15" placeholder="Type News Description in here...">{{$team->description}}</textarea>
 
                                                                     @error('description')
-                                                                    <span class="invalid-feedback login-email-error" role="alert">
+                                                                    <div class="invalid-feedback" role="alert">
                                                                         <strong>{{ $message }}</strong>
-                                                                    </span>
+                                                                    </div>
                                                                     @enderror
                                                                 </div>
                                                             </div>
 
                                                             <div class="row">
                                                                 <div class="input-field col s12">
-                                                                    <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Update Description
+                                                                    <button class="btn cyan waves-effect waves-light right" type="submit">Update Description
                                                                         <i class="material-icons right">send</i>
                                                                     </button>
                                                                 </div>
@@ -85,59 +86,11 @@
                                                 <div class="team-player-section">
                                                     <div class="heading">
                                                         <span class="title">
-                                                            <p>Players List</p>
+                                                            <p>{{$team->name}} Players List</p>
                                                         </span>
                                                         <span class="heading-icon">
-                                                        <a class="waves-effect waves-light btn add-player-btn" href="#" data-toggle="modal" data-target="#addplayermodal"><i class="material-icons">add</i></a>
+                                                        <a class="waves-effect waves-light btn add-player-btn" href="{{route('team-player.create')}}"><i class="material-icons">add</i></a>
                                                         </span>
-
-                                                        <!-- Create Modal -->
-                                                        <div class="modal fade custom-add-modal" id="addplayermodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalLabel">Please Enter Player Name</h5>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                            <span aria-hidden="true">&times;</span>
-                                                                        </button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <form id="create-team-player-form" method="POST" action="">
-                                                                            <input type="text" name="name" class="validate add_player_input" required>
-                                                                            <span class="form-error name"></span>
-
-                                                                            <input type="hidden" name="team_id" value="{{$team->id}}">
-                                                                            <button type="submit" class="btn cyan waves-effect waves-light right create-player">Create!</button>
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        {{--Edit Modal--}}
-                                                        <div class="modal fade custom-add-modal" id="editplayermodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog" role="document">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalLabel">Please Edit Player Name</h5>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                            <span aria-hidden="true">&times;</span>
-                                                                        </button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <form id="edit-team-player-form" method="POST" action="">
-                                                                            @method('PUT')
-
-                                                                            <input type="text" name="name" class="validate edit_player_input" required>
-                                                                            <span class="form-error name"></span>
-
-                                                                            <input type="hidden" name="team_id" value="{{$team->id}}">
-                                                                            <button type="submit" class="btn cyan waves-effect waves-light right create-player">Create!</button>
-                                                                        </form>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                     </div>
 
                                                     <table id="page-length-option" class="display team-player-table">
@@ -155,9 +108,9 @@
                                                                     <td>{{$key + 1}}</td>
                                                                     <td>{{$player->name}}</td>
                                                                     <td>
-                                                                        <a href="{{route('player.edit', $player->id)}}" ><i class="material-icons">edit</i></a>
+                                                                        <a href="{{route('team-player.edit', $player->id)}}" ><i class="material-icons">edit</i></a>
 
-                                                                        <form method="post" class="delete-form" action="{{ route('player.destroy', $player->id) }}">
+                                                                        <form method="post" class="delete-form" action="{{ route('team-player.destroy', $player->id) }}">
                                                                             @csrf
                                                                             @method('DELETE')
 
