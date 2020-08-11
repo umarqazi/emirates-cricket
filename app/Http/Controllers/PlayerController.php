@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PlayerRegistration;
 use App\Notifications\PlayerRegistrationNotification;
+use App\Player;
 use App\Services\CountryService;
 use App\Services\PlayerService;
 use Illuminate\Http\Request;
@@ -23,6 +24,9 @@ class PlayerController extends Controller
      */
     public function __construct()
     {
+        /* Check User Permission to Perform Action */
+        $this->authorizeResource(Player::class, 'player');
+
         $this->player_service = new PlayerService;
         $this->country_service = new CountryService();
     }
@@ -43,7 +47,7 @@ class PlayerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createPlayerRegistration()
     {
         $countries = $this->country_service->all();
         return view('frontend.player-registration', compact('countries'));
@@ -55,7 +59,7 @@ class PlayerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(PlayerRegistration $request): \Illuminate\Http\RedirectResponse
+    public function storePlayerRegistration(PlayerRegistration $request): \Illuminate\Http\RedirectResponse
     {
         $player = $this->player_service->store($request->except('_token'));
         if ($player) {
@@ -70,9 +74,8 @@ class PlayerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Player $player)
     {
-        $player = $this->player_service->find($id);
         $countries = $this->country_service->all();
 
         return view('backend.player.show', compact('player', 'countries'));
@@ -84,7 +87,7 @@ class PlayerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Player $player)
     {
         //
     }
@@ -96,9 +99,12 @@ class PlayerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Player $player)
     {
-        //
+        $player = $this->player_service->update($request->except(['_token', '_method']), $player->id);
+        if ($player) {
+            return redirect()->route('player.index')->with('success', 'Player Request has been Updated Successfully!');
+        }
     }
 
     /**
@@ -107,9 +113,9 @@ class PlayerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Player $player)
     {
-        $response = $this->player_service->delete($id);
+        $response = $this->player_service->delete($player->id);
         if ($response) {
             return redirect()->back()->with('success', 'Player Record has been Deleted!');
         }

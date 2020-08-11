@@ -49,7 +49,7 @@
                                             <label for="title">Gallery Title</label>
 
                                             @error('title')
-                                            <span class="invalid-feedback login-email-error" role="alert">
+                                            <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
@@ -62,7 +62,7 @@
                                             <textarea id="message5" class="ckeditor @error('text') invalid @enderror" name="text" rows="15" placeholder="Type Gallery Description in here...">{{old('text')}}</textarea>
 
                                             @error('text')
-                                            <span class="invalid-feedback login-email-error" role="alert">
+                                            <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
@@ -70,7 +70,7 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="file-field input-field">
+                                        <div class="file-field input-field col-12">
                                             <div class="btn custom-file-button">
                                                 <span>Featured Image</span>
                                                 <input type="file" name="image" class="validate @error('image') invalid @enderror">
@@ -80,7 +80,7 @@
                                             </div>
 
                                             @error('image')
-                                            <span class="invalid-feedback login-email-error" role="alert">
+                                            <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
@@ -88,7 +88,7 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col s12"><b>Upload Gallery Images</b></div>
+                                        <div class="col-12"><b>Upload Gallery Images</b></div>
                                         <div class="input-field col m12 s12 dropzone" id="image-dropzone">
 
                                         </div>
@@ -96,7 +96,7 @@
 
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Create New Gallery
+                                            <button class="btn cyan waves-effect waves-light right" type="submit">Create New Gallery
                                                 <i class="material-icons right">send</i>
                                             </button>
                                         </div>

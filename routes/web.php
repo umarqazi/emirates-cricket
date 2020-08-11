@@ -24,8 +24,8 @@ Route::get('/about', static function () {
     return view('frontend.about');
 })->name('about');
 
-Route::get('/contact', 'ContactController@create')->name('contact');
-Route::post('/contact', 'ContactController@store')->name('submit-contact-form');
+Route::get('/contact', 'ContactController@createContact')->name('contact');
+Route::post('/contact', 'ContactController@storeContact')->name('submit-contact-form');
 
 Route::get('/development', static function () {
     return view('frontend.development');
@@ -63,8 +63,8 @@ Route::get('/payment', static function () {
     return view('frontend.payment');
 })->name('payment');
 
-Route::get('/player-registration', 'PlayerController@create')->name('player-registration');
-Route::post('/player-registration', 'PlayerController@store')->name('submit-player-registration');
+Route::get('/player-registration', 'PlayerController@createPlayerRegistration')->name('player-registration');
+Route::post('/player-registration', 'PlayerController@storePlayerRegistration')->name('submit-player-registration');
 Route::post('/upload-player-headshot-photo', 'PlayerController@uploadHeadShotPhoto')->name('upload-player-headshot-photo');
 
 Route::get('/sponsor', 'SponsorController@frontendSponsors')->name('sponsor');
@@ -104,8 +104,8 @@ Route::group(['prefix' => 'admin'], static function () {
 
         /* Player Registration Request */
         Route::resource('/player', 'PlayerController');
-        Route::get('/approve-request/{id}', 'PlayerController@approveRequest')->name('approve-player');
-        Route::get('/decline-request/{id}', 'PlayerController@declineRequest')->name('decline-player');
+        Route::get('/player/approve-request/{id}', 'PlayerController@approveRequest')->name('approve-player');
+        Route::get('/player/decline-request/{id}', 'PlayerController@declineRequest')->name('decline-player');
 
         Route::resource('/news', 'NewsController');
         Route::resource('/update', 'UpdateController');
@@ -120,5 +120,14 @@ Route::group(['prefix' => 'admin'], static function () {
 
         /* All Team Player Routes */
         Route::resource('/team-player', 'TeamPlayerController');
+
+        /* User Management */
+        Route::resource('/user', 'UserController');
+        Route::resource('/role', 'RoleController');
+        Route::resource('/permission', 'PermissionController');
     });
 });
+
+/* Set User Password Routes */
+Route::get('/user/set/password/{token}', 'UserController@setPassword')->name('setPassword');
+Route::post('/store/password', 'UserController@storePassword')->name('storePassword');

@@ -75,14 +75,18 @@
                                                                 <td>{{date('d/m/Y', strtotime($contact->created_at))}}</td>
 
                                                                 <td>
-                                                                    <a href="{{route('contact.show', $contact->id)}}"><i class="material-icons">visibility</i></a>
+                                                                    @can('Show Contact')
+                                                                        <a href="{{route('contact.show', $contact->id)}}"><i class="material-icons">visibility</i></a>
+                                                                    @endcan
 
-                                                                    <form method="post" class="delete-form" action="{{ route('contact.destroy', $contact->id) }}">
-                                                                        @csrf
-                                                                        @method('DELETE')
+                                                                    @can('Delete Contact')
+                                                                        <form method="post" class="delete-form" action="{{ route('contact.destroy', $contact->id) }}">
+                                                                            @csrf
+                                                                            @method('DELETE')
 
-                                                                        <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
-                                                                    </form>
+                                                                            <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
+                                                                        </form>
+                                                                    @endcan
                                                                 </td>
                                                             </tr>
                                                         @endforeach

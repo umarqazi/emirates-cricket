@@ -69,7 +69,7 @@
                                             <input type="text" class="@error('name') is-invalid @enderror" name="name" placeholder="Enter Name" value="{{old('name')}}" required>
 
                                             @error('name')
-                                            <span class="invalid-feedback login-email-error" role="alert">
+                                            <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
@@ -79,7 +79,7 @@
                                             <input type="text" class="@error('email') is-invalid @enderror" name="email" placeholder="Enter Email" value="{{old('email')}}" required>
 
                                             @error('email')
-                                            <span class="invalid-feedback login-email-error" role="alert">
+                                            <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror

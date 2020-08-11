@@ -105,7 +105,7 @@
 
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <button class="btn cyan waves-effect waves-light right" type="submit" name="action"> Edit Gallery
+                                            <button class="btn cyan waves-effect waves-light right" type="submit"> Edit Gallery
                                                 <i class="material-icons right">send</i>
                                             </button>
                                         </div>

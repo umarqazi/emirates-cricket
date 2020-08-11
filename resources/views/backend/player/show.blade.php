@@ -1,7 +1,7 @@
 @extends('backend.layout.master-backend')
 
 @section('title')
-    <title>Show Contact Detail| Admin Panel</title>
+    <title>Show Player Detail| Admin Panel</title>
 @endsection
 
 @section('styles')
@@ -40,7 +40,7 @@
                     <div class="col s12 m12 l12">
                         <div id="Form-advance" class="card card card-default scrollspy">
                             <div class="card-content">
-                                <form class="col s12" method="POST" action="{{route('contact.update', $player->id)}}">
+                                <form class="col s12" method="POST" action="{{route('player.update', $player->id)}}">
                                     @csrf
                                     @method('PUT')
 
@@ -57,7 +57,7 @@
                                             <label for="first_name01">First Name</label>
 
                                             @error('first_name')
-                                            <span class="invalid-feedback login-email-error" role="alert">
+                                            <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
@@ -68,7 +68,7 @@
                                             <label for="first_name01">Last Name</label>
 
                                             @error('last_name')
-                                            <span class="invalid-feedback login-email-error" role="alert">
+                                            <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
@@ -81,7 +81,7 @@
                                             <label for="last_name">Email</label>
 
                                             @error('email')
-                                            <span class="invalid-feedback login-email-error" role="alert">
+                                            <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
@@ -92,7 +92,7 @@
                                             <label for="last_name">Mobile</label>
 
                                             @error('mobile')
-                                            <span class="invalid-feedback login-email-error" role="alert">
+                                            <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
@@ -105,7 +105,7 @@
                                             <label for="dob">Date Of Birth</label>
 
                                             @error('dob')
-                                            <span class="invalid-feedback login-email-error" role="alert">
+                                            <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
@@ -121,7 +121,7 @@
                                             <label>Select Emirate</label>
 
                                             @error('living_in')
-                                            <span class="invalid-feedback login-email-error" role="alert">
+                                            <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
@@ -139,7 +139,7 @@
                                             <label>Select Nationality</label>
 
                                             @error('nationality')
-                                            <span class="invalid-feedback login-email-error" role="alert">
+                                            <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
@@ -154,7 +154,7 @@
                                             <label>Select Visa Status</label>
 
                                             @error('visa_status')
-                                            <span class="invalid-feedback login-email-error" role="alert">
+                                            <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
@@ -172,7 +172,7 @@
                                             <label>Select Emirate Playing With</label>
 
                                             @error('playing_with')
-                                            <span class="invalid-feedback login-email-error" role="alert">
+                                            <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
@@ -185,28 +185,30 @@
                                             <label for="message">Message</label>
 
                                             @error('message')
-                                            <span class="invalid-feedback login-email-error" role="alert">
+                                            <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <button class="btn cyan waves-effect waves-light right mr-1" type="submit" name="action">Update
-                                                <i class="material-icons right">send</i>
-                                            </button>
+                                    @can('Edit Player Registration')
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <button class="btn cyan waves-effect waves-light right mr-1" type="submit">Update
+                                                    <i class="material-icons right">send</i>
+                                                </button>
 
-                                            <a href="{{route('approve-player', $player->id)}}" class="btn green waves-effect waves-light right mr-1" name="action">Approve
-                                                <i class="material-icons right">check</i>
-                                            </a>
+                                                <a href="{{route('approve-player', $player->id)}}" class="btn green waves-effect waves-light right mr-1">Approve
+                                                    <i class="material-icons right">check</i>
+                                                </a>
 
-                                            <a href="{{route('decline-player', $player->id)}}" class="btn red waves-effect waves-light right mr-1" name="action">Decline
-                                                <i class="material-icons right">close</i>
-                                            </a>
+                                                <a href="{{route('decline-player', $player->id)}}" class="btn red waves-effect waves-light right mr-1">Decline
+                                                    <i class="material-icons right">close</i>
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endcan
                                 </form>
                             </div>
                         </div>

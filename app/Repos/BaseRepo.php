@@ -18,12 +18,21 @@ class BaseRepo implements IRepo
         return $model::orderBy($column, $order)->paginate($records);
     }
 
+    public function groupedBy($model, $groupBy, $column = 'created_at', $order = 'desc') {
+        return $model::groupBy($groupBy)->orderBy($column, $order)->get();
+    }
+
     public function find($model , $id) {
         return $model::find($id);
     }
 
-    public function count($model) {
+    public function count($model)
+    {
         return $model::count();
+    }
+
+    public function findByToken($model , $token) {
+        return $model::where('token', $token)->first();
     }
 
     public function store($model, $data)

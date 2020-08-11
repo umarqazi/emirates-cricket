@@ -56,14 +56,8 @@
                     <li><a class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);" data-target="profile-dropdown"><span class="avatar-status avatar-online"><img src="{{URL::asset('backend/assets/images/avatar/avatar-7.png')}} " alt="avatar"><i></i></span></a></li>
                     <li><a class="waves-effect waves-block waves-light sidenav-trigger" href="#" data-target="slide-out-right"><i class="material-icons">format_indent_increase</i></a></li>
                 </ul>
-                <!-- translation-button-->
-            {{--<ul class="dropdown-content" id="translation-dropdown">
-                <li><a class="grey-text text-darken-1" href="#!"><i class="flag-icon flag-icon-gb"></i> English</a></li>
-                <li><a class="grey-text text-darken-1" href="#!"><i class="flag-icon flag-icon-fr"></i> French</a></li>
-                <li><a class="grey-text text-darken-1" href="#!"><i class="flag-icon flag-icon-cn"></i> Chinese</a></li>
-                <li><a class="grey-text text-darken-1" href="#!"><i class="flag-icon flag-icon-de"></i> German</a></li>
-            </ul>--}}
-            <!-- notifications-dropdown-->
+
+                <!-- notifications-dropdown-->
                 <ul class="dropdown-content" id="notifications-dropdown">
                     <li>
                         <h6>NOTIFICATIONS<span class="new badge">5</span></h6>
@@ -85,13 +79,11 @@
                         <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">1 week ago</time>
                     </li>
                 </ul>
+
                 <!-- profile-dropdown-->
                 <ul class="dropdown-content" id="profile-dropdown">
-                    <li><a class="grey-text text-darken-1" href="user-profile-page.html"><i class="material-icons">person_outline</i> Profile</a></li>
-                    {{--                    <li><a class="grey-text text-darken-1" href="app-chat.html"><i class="material-icons">chat_bubble_outline</i> Chat</a></li>--}}
-                    {{--                    <li><a class="grey-text text-darken-1" href="page-faq.html"><i class="material-icons">help_outline</i> Help</a></li>--}}
+                    <li><a class="grey-text text-darken-1" href="#"><i class="material-icons">person_outline</i> Profile</a></li>
                     <li class="divider"></li>
-                    {{--                    <li><a class="grey-text text-darken-1" href="user-lock-screen.html"><i class="material-icons">lock_outline</i> Lock</a></li>--}}
                     <li>
                         <a class="dropdown-item grey-text text-darken-1" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
@@ -138,108 +130,225 @@
         </li>
         <li class="navigation-header"><a class="navigation-header-text">Applications</a><i class="navigation-header-icon material-icons">more_horiz</i>
         </li>
-        <li class="bold"><a class="waves-effect waves-cyan " href="app-email.html"><i class="material-icons">mail_outline</i><span class="menu-title" data-i18n="">Mail</span><span class="badge new badge pill pink accent-2 float-right mr-10">5</span></a>
+        <li class="bold"><a class="waves-effect waves-cyan " href="#"><i class="material-icons">mail_outline</i><span class="menu-title" data-i18n="">Mail</span><span class="badge new badge pill pink accent-2 float-right mr-10">5</span></a>
         </li>
         <li class="bold"><a class="waves-effect waves-cyan " href="{{route('calendar')}}"><i class="material-icons">today</i><span class="menu-title" data-i18n="">Calendar</span></a>
         </li>
         <li class="navigation-header"><a class="navigation-header-text">Pages </a><i class="navigation-header-icon material-icons">more_horiz</i>
         </li>
-        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">person_outline</i><span class="menu-title" data-i18n="">Users</span></a>
-            <div class="collapsible-body">
-                <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                    <li><a class="collapsible-body" href="{{route('news.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Users List</span></a>
-                    </li>
-                    <li><a class="collapsible-body" href="{{route('news.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
-                    </li>
-                </ul>
-            </div>
-        </li>
 
-        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">assignment</i><span class="menu-title" data-i18n="">News</span></a>
-            <div class="collapsible-body">
-                <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                    <li><a class="collapsible-body" href="{{route('news.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>News List</span></a>
-                    </li>
-                    <li><a class="collapsible-body" href="{{route('news.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New News</span></a>
-                    </li>
-                </ul>
-            </div>
-        </li>
+        @if(auth()->user()->can('List User') || auth()->user()->can('Create User'))
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Users</span></a>
+                <div class="collapsible-body">
+                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                        @if(auth()->user()->can('List User'))
+                            <li>
+                                <a class="collapsible-body" href="{{route('user.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Users List</span></a>
+                            </li>
+                        @endif
 
-        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">people</i><span class="menu-title" data-i18n="">Teams</span></a>
-            <div class="collapsible-body">
-                <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                    <li>
-                        <a class="collapsible-body" href="{{route('team.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Teams List</span></a>
-                    </li>
-                    <li>
-                        <a class="collapsible-body" href="{{route('team-player.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New Player</span></a>
-                    </li>
-                </ul>
-            </div>
-        </li>
+                        @if(auth()->user()->can('Create User'))
+                            <li>
+                                <a class="collapsible-body" href="{{route('user.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
+            </li>
+        @endif
 
-        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Update</span></a>
-            <div class="collapsible-body">
-                <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                    <li><a class="collapsible-body" href="{{route('update.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Updates List</span></a>
-                    </li>
-                    <li><a class="collapsible-body" href="{{route('update.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New Update</span></a>
-                    </li>
-                </ul>
-            </div>
-        </li>
+        @if(auth()->user()->can('List Role') || auth()->user()->can('Create Role'))
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Role</span></a>
+                <div class="collapsible-body">
+                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
 
-        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">photo_library</i><span class="menu-title" data-i18n="">Social Gallery</span></a>
-            <div class="collapsible-body">
-                <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                    <li><a class="collapsible-body" href="{{route('gallery.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Gallery List</span></a>
-                    </li>
-                    <li><a class="collapsible-body" href="{{route('gallery.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New Gallery</span></a>
-                    </li>
-                </ul>
-            </div>
-        </li>
+                        @if(auth()->user()->can('List Role'))
+                            <li>
+                                <a class="collapsible-body" href="{{route('role.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Role List</span></a>
+                            </li>
+                        @endif
 
-        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">thumbs_up_down</i><span class="menu-title" data-i18n="">Sponsor</span></a>
-            <div class="collapsible-body">
-                <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                    <li><a class="collapsible-body" href="{{route('sponsor.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Sponsor List</span></a>
-                    </li>
-                    <li><a class="collapsible-body" href="{{route('sponsor.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New Sponsor</span></a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">contact_phone</i><span class="menu-title" data-i18n="">Contact Requests</span></a>
-            <div class="collapsible-body">
-                <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                    <li><a class="collapsible-body" href="{{route('contact.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Contact List</span></a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">description</i><span class="menu-title" data-i18n="">Team Registration</span></a>
-            <div class="collapsible-body">
-                <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                    <li><a class="collapsible-body" href="{{route('news.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Team List</span></a>
-                    </li>
-                    <li><a class="collapsible-body" href="{{route('news.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
-                    </li>
-                </ul>
-            </div>
-        </li>
+                        @if(auth()->user()->can('Create Role'))
+                            <li>
+                                <a class="collapsible-body" href="{{route('role.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
+            </li>
+        @endif
 
-        <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">assignment_ind</i><span class="menu-title" data-i18n="">Player Registration</span></a>
-            <div class="collapsible-body">
-                <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                    <li><a class="collapsible-body" href="{{route('player.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span></span>Player List</a>
-                    </li>
-                    <li><a class="collapsible-body" href="{{route('player.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
-                    </li>
-                </ul>
-            </div>
-        </li>
+        @if(auth()->user()->can('List Permission') || auth()->user()->can('Create Permission'))
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Permission</span></a>
+                <div class="collapsible-body">
+                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                        @if(auth()->user()->can('List Permission'))
+                            <li>
+                                <a class="collapsible-body" href="{{route('permission.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Permission List</span></a>
+                            </li>
+                        @endif
+
+                        @if(auth()->user()->can('Create Permission'))
+                            <li>
+                                <a class="collapsible-body" href="{{route('permission.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
+            </li>
+        @endif
+
+        @if(auth()->user()->can('List Team') || auth()->user()->can('Create Team'))
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">people</i><span class="menu-title" data-i18n="">Teams</span></a>
+                <div class="collapsible-body">
+                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                        @can('List Team')
+                            <li>
+                                <a class="collapsible-body" href="{{route('team.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Teams List</span></a>
+                            </li>
+                        @endcan
+
+                        @can('Create Team')
+                            <li>
+                                <a class="collapsible-body" href="{{route('team-player.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New Player</span></a>
+                            </li>
+                        @endcan
+                    </ul>
+                </div>
+            </li>
+        @endif
+
+        @if(auth()->user()->can('List News') || auth()->user()->can('Create News'))
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">News</span></a>
+                <div class="collapsible-body">
+                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                        @if(auth()->user()->can('List News'))
+                            <li>
+                                <a class="collapsible-body" href="{{route('news.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>News List</span></a>
+                            </li>
+                        @endif
+
+                        @if(auth()->user()->can('Create News'))
+                            <li>
+                                <a class="collapsible-body" href="{{route('news.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New News</span></a>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
+            </li>
+        @endif
+
+        @if(auth()->user()->can('List Update') || auth()->user()->can('Create Update'))
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Update</span></a>
+                <div class="collapsible-body">
+                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                        @can('List Update')
+                            <li>
+                                <a class="collapsible-body" href="{{route('update.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Updates List</span></a>
+                            </li>
+                        @endcan
+
+                        @can('Create Update')
+                            <li>
+                                <a class="collapsible-body" href="{{route('update.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New Update</span></a>
+                            </li>
+                        @endcan
+                    </ul>
+                </div>
+            </li>
+        @endif
+
+        @if(auth()->user()->can('List Gallery') || auth()->user()->can('Create Gallery'))
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Social Gallery</span></a>
+                <div class="collapsible-body">
+                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                        @if(auth()->user()->can('List Gallery'))
+                            <li>
+                                <a class="collapsible-body" href="{{route('gallery.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Gallery List</span></a>
+                            </li>
+                        @endif
+
+                        @if(auth()->user()->can('Create Gallery'))
+                            <li>
+                                <a class="collapsible-body" href="{{route('gallery.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New Gallery</span></a>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
+            </li>
+        @endif
+
+        @if(auth()->user()->can('List Sponsor') || auth()->user()->can('Create Sponsor'))
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Sponsor</span></a>
+                <div class="collapsible-body">
+                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                        @if(auth()->user()->can('List Sponsor'))
+                            <li>
+                                <a class="collapsible-body" href="{{route('sponsor.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Sponsor List</span></a>
+                            </li>
+                        @endif
+
+                        @if(auth()->user()->can('Create Sponsor'))
+                            <li>
+                                <a class="collapsible-body" href="{{route('sponsor.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New Sponsor</span></a>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
+            </li>
+        @endif
+
+        @if(auth()->user()->can('List Contact'))
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Contact Requests</span></a>
+                <div class="collapsible-body">
+                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                        <li><a class="collapsible-body" href="{{route('contact.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Contact List</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        @endif
+
+        @if(auth()->user()->can('List Team Registration') || auth()->user()->can('Edit Team Registration'))
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Team Registration</span></a>
+                <div class="collapsible-body">
+                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                        @if(auth()->user()->can('List Team Registration'))
+                            <li>
+                                <a class="collapsible-body" href="{{route('news.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Team List</span></a>
+                            </li>
+                        @endif
+
+                        @if(auth()->user()->can('Edit Team Registration'))
+                            <li>
+                                <a class="collapsible-body" href="{{route('news.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
+            </li>
+        @endif
+
+        @if(auth()->user()->can('List Player Registration') || auth()->user()->can('Edit Player Registration'))
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Player Registration</span></a>
+                <div class="collapsible-body">
+                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+
+                        @if(auth()->user()->can('List Player Registration'))
+                            <li>
+                                <a class="collapsible-body" href="{{route('player.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span></span>Player List</a>
+                            </li>
+                        @endif
+
+                        @if(auth()->user()->can('Edit Player Registration'))
+                            <li>
+                                <a class="collapsible-body" href="{{route('player.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
+            </li>
+        @endif
         <li class="navigation-header"><a class="navigation-header-text">Charts &amp; Maps </a><i class="navigation-header-icon material-icons">more_horiz</i>
         </li>
         <li class="navigation-header"><a class="navigation-header-text">Misc </a><i class="navigation-header-icon material-icons">more_horiz</i>
@@ -251,6 +360,7 @@
 
 <!-- BEGIN: Page Main-->
 <div id="main">
+
     <div class="container">
         {{--LOAD PAGE CONTENT IN HERE--}}
         @yield('content')
