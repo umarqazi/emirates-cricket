@@ -26,7 +26,7 @@
     <div class="teams-section">
         <div class="container">
             <div class="team-content">
-                <h4>The UAE Under 19 (U19’s) team is the team that represents the United Arab Emirates (UAE) in all U19 official and unofficial cricket matches. UAE’s U19’s recently competed in the 2015 ACC Premier Tournament where they finished 4th.</h4>
+                <h4>{!! $team->description !!}</h4>
                 <a href="#" class="btn">Uae 19 Men's</a>
             </div>
 
@@ -42,26 +42,18 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Vriitya Aravind</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Osama Hassan</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Alishan Sharafu</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>Wasi Shah</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td>Akasha Tahir</td>
-                                </tr>
+                                @if(!$team->players->isEmpty())
+                                    @foreach($team->players as $key=>$player)
+                                        <tr>
+                                            <th scope="row">{{$key + 1}}</th>
+                                            <td>{{$player->name}}</td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <tr>
+                                        <th colspan="2" class="text-center">No Player Selected Yet.</th>
+                                    </tr>
+                                @endif
                                 </tbody>
                             </table>
                         </div>

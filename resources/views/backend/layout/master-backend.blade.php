@@ -8,6 +8,7 @@
     <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google.">
     <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template, eCommerce dashboard, analytic dashboard">
     <meta name="author" content="ThemeSelect">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @yield('title')
 
@@ -22,6 +23,7 @@
     <!-- END: VENDOR CSS-->
     <!-- BEGIN: Page Level CSS-->
     <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/materialize.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/style.css')}}">
     <!-- END: Page Level CSS-->
 
@@ -196,6 +198,26 @@
             </li>
         @endif
 
+        @if(auth()->user()->can('List Team') || auth()->user()->can('Create Team Player'))
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">people</i><span class="menu-title" data-i18n="">Teams</span></a>
+                <div class="collapsible-body">
+                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                        @can('List Team')
+                            <li>
+                                <a class="collapsible-body" href="{{route('team.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Teams List</span></a>
+                            </li>
+                        @endcan
+
+                        @can('Create Team Player')
+                            <li>
+                                <a class="collapsible-body" href="{{route('team-player.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New Player</span></a>
+                            </li>
+                        @endcan
+                    </ul>
+                </div>
+            </li>
+        @endif
+
         @if(auth()->user()->can('List News') || auth()->user()->can('Create News'))
             <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">News</span></a>
                 <div class="collapsible-body">
@@ -327,7 +349,6 @@
                 </div>
             </li>
         @endif
-
         <li class="navigation-header"><a class="navigation-header-text">Charts &amp; Maps </a><i class="navigation-header-icon material-icons">more_horiz</i>
         </li>
         <li class="navigation-header"><a class="navigation-header-text">Misc </a><i class="navigation-header-icon material-icons">more_horiz</i>
@@ -339,7 +360,8 @@
 
 <!-- BEGIN: Page Main-->
 <div id="main">
-    <div class="row">
+
+    <div class="container">
         {{--LOAD PAGE CONTENT IN HERE--}}
         @yield('content')
         {{--LOAD PAGE CONTENT IN HERE--}}
@@ -369,6 +391,7 @@
 <script src="{{URL::asset('backend/assets/js/plugins.js')}}" type="text/javascript"></script>
 <script src="{{URL::asset('backend/assets/js/ckeditor5-build-classic/ckeditor.js')}}" type="text/javascript"></script>
 <script src="{{URL::asset('backend/assets/js/dropzone.min.js')}}" type="text/javascript"></script>
+<script src="{{URL::asset('backend/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
 
 {{-- Load Section Scripts Start --}}
 

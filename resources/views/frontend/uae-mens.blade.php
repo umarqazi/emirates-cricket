@@ -25,7 +25,7 @@
     <div class="teams-section">
         <div class="container">
             <div class="team-content">
-                <h4>The UAE senior Men’s team is the team that represents the United Arab Emirates (UAE) in all official and unofficial cricket matches. UAE Men’s became an affiliate member of the International Cricket Council (ICC) in 1989 and an associate member in 1990. The UAE also gained ODI status, through to 2018.</h4>
+                <h4>{!! $team->description !!}</h4>
                 <a href="#" class="btn">Uae Men's</a>
             </div>
 
@@ -41,26 +41,18 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Muhammad Naveed</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Rohan Mustafa</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Ashfaq Ahmed</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>Shaiman Anwar</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td>Rameez Shahzad</td>
-                                </tr>
+                                @if(!$team->players->isEmpty())
+                                    @foreach($team->players as $key=>$player)
+                                        <tr>
+                                            <th scope="row">{{$key + 1}}</th>
+                                            <td>{{$player->name}}</td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <tr>
+                                        <th colspan="2" class="text-center">No Player Selected Yet.</th>
+                                    </tr>
+                                @endif
                                 </tbody>
                             </table>
                         </div>

@@ -119,7 +119,7 @@
             <i class="fa fa-chevron-down"></i>
             <ul class="sub-menu">
                 <li>
-                    <a href="{{route('uae-mens')}}">
+                    <a href="{{route('uae-men')}}">
                             <span>
                                 <img class="nav-icon" src="{{ URL::asset('frontend/assets/images/batsman.png') }}" alt="">
                             </span>
@@ -127,7 +127,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('uae-womens')}}">
+                    <a href="{{route('uae-women')}}">
                             <span>
                                 <img class="nav-icon" src="{{ URL::asset('frontend/assets/images/women.png') }}" alt="">
                             </span>

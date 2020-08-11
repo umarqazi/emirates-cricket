@@ -77,18 +77,9 @@ Route::get('/tournament-registration', static function () {
     return view('frontend.tournament-registration');
 })->name('tournament-registration');
 
-Route::get('/uae-mens', static function () {
-    return view('frontend.uae-mens');
-})->name('uae-mens');
-
-Route::get('/uae-womens', static function () {
-    return view('frontend.uae-womens');
-})->name('uae-womens');
-
-Route::get('/under-19', static function () {
-    return view('frontend.under-19');
-})->name('under-19');
-
+Route::get('/uae-men', 'TeamController@uaeMens')->name('uae-men');
+Route::get('/uae-women', 'TeamController@uaeWomens')->name('uae-women');
+Route::get('/under-19', 'TeamController@under19')->name('under-19');
 
 /*------------------------------------------------------------------*/
 /*---------------------------ADMIN ROUTES---------------------------*/
@@ -123,6 +114,12 @@ Route::group(['prefix' => 'admin'], static function () {
         /* Gallery Related Routes in here... */
         Route::resource('/gallery', 'GalleryController');
         Route::post('/gallery-images', 'GalleryController@uploadGalleryImages')->name('gallery.images');
+
+        /* All Teams Routes in here... */
+        Route::resource('/team', 'TeamController');
+
+        /* All Team Player Routes */
+        Route::resource('/team-player', 'TeamPlayerController');
 
         /* User Management */
         Route::resource('/user', 'UserController');

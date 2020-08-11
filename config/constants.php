@@ -46,6 +46,8 @@ return [
         'Gallery',
         'Sponsor',
         'Update',
+        'Team',
+        'Team Player',
         'Contact Request',
         'Team Registration',
         'Player Registration'
