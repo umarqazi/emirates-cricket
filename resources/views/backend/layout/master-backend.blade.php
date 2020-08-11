@@ -198,7 +198,7 @@
             </li>
         @endif
 
-        @if(auth()->user()->can('List Team') || auth()->user()->can('Create Team'))
+        @if(auth()->user()->can('List Team') || auth()->user()->can('Create Team Player'))
             <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">people</i><span class="menu-title" data-i18n="">Teams</span></a>
                 <div class="collapsible-body">
                     <ul class="collapsible collapsible-sub" data-collapsible="accordion">
@@ -208,7 +208,7 @@
                             </li>
                         @endcan
 
-                        @can('Create Team')
+                        @can('Create Team Player')
                             <li>
                                 <a class="collapsible-body" href="{{route('team-player.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New Player</span></a>
                             </li>

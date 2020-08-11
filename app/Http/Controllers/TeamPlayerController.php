@@ -21,6 +21,7 @@ class TeamPlayerController extends Controller
         $this->team_service = new TeamService();
         $this->team_player_service = new TeamPlayerService();
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -74,9 +75,9 @@ class TeamPlayerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(TeamPlayer $teamPlayer)
     {
-        $player = $this->team_player_service->find($id);
+        $player = $teamPlayer;
         $teams = $this->team_service->all();
         return view('backend.team-player.edit', compact('player', 'teams'));
     }
@@ -88,12 +89,12 @@ class TeamPlayerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PlayerRequest $request, $id)
+    public function update(PlayerRequest $request, TeamPlayer $teamPlayer)
     {
         $params = $request->except(['_token', '_method' , 'team']);
         $team_id = $request->team;
         $params['team_id'] = $team_id;
-        $this->team_player_service->update($params, $id);
+        $this->team_player_service->update($params, $teamPlayer->id);
         return redirect()->route('team.show', $team_id)->with('success', 'Player Has been Updated Successfully!');
     }
 
@@ -103,10 +104,9 @@ class TeamPlayerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(TeamPlayer $teamPlayer)
     {
-        $this->team_player_service->delete($id);
+        $this->team_player_service->delete($teamPlayer->id);
         return redirect()->back()->with('success', 'Player Has been Deleted Successfully!');
-
     }
 }

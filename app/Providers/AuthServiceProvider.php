@@ -6,8 +6,12 @@ use App\Contact;
 use App\Gallery;
 use App\News;
 use App\Player;
+use App\Policies\TeamPlayerPolicy;
+use App\Policies\TeamPolicy;
 use App\Policies\UpdatePolicy;
 use App\Sponsor;
+use App\Team;
+use App\TeamPlayer;
 use App\Update;
 use App\User;
 use App\Policies\ContactPolicy;
@@ -40,7 +44,9 @@ class AuthServiceProvider extends ServiceProvider
         Contact::class => ContactPolicy::class,
         Update::class => UpdatePolicy::class,
         Role::class => RolePolicy::class,
-        Permission::class => PermissionPolicy::class
+        Permission::class => PermissionPolicy::class,
+        Team::class => TeamPolicy::class,
+        TeamPlayer::class => TeamPlayerPolicy::class
     ];
 
     /**

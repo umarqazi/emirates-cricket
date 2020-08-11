@@ -68,74 +68,85 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="row">
-                                                                <div class="input-field col s12">
-                                                                    <button class="btn cyan waves-effect waves-light right" type="submit">Update Description
-                                                                        <i class="material-icons right">send</i>
-                                                                    </button>
+                                                            @can('Edit Team')
+                                                                <div class="row">
+                                                                    <div class="input-field col s12">
+                                                                        <button class="btn cyan waves-effect waves-light right" type="submit">Update Description
+                                                                            <i class="material-icons right">send</i>
+                                                                        </button>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
+                                                            @endcan
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="row">
-                                            <div class="col s12">
-                                                <div class="team-player-section">
-                                                    <div class="heading">
+                                        @can('List Team Player')
+                                            <div class="row">
+                                                <div class="col s12">
+                                                    <div class="team-player-section">
+                                                        <div class="heading">
                                                         <span class="title">
                                                             <p>{{$team->name}} Players List</p>
                                                         </span>
-                                                        <span class="heading-icon">
-                                                        <a class="waves-effect waves-light btn add-player-btn" href="{{route('team-player.create')}}"><i class="material-icons">add</i></a>
-                                                        </span>
-                                                    </div>
 
-                                                    <table id="page-length-option" class="display team-player-table">
-                                                        <thead>
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>Name</th>
-                                                            <th>Actions</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        @if(!empty($team->players))
-                                                            @foreach($team->players as $key=> $player)
-                                                                <tr class="team-player-{{$player->id}}">
-                                                                    <td>{{$key + 1}}</td>
-                                                                    <td>{{$player->name}}</td>
-                                                                    <td>
-                                                                        <a href="{{route('team-player.edit', $player->id)}}" ><i class="material-icons">edit</i></a>
+                                                            @can('Create Team Player')
+                                                                <span class="heading-icon">
+                                                                    <a class="waves-effect waves-light btn add-player-btn" href="{{route('team-player.create')}}"><i class="material-icons">add</i></a>
+                                                                </span>
+                                                            @endcan
+                                                        </div>
 
-                                                                        <form method="post" class="delete-form" action="{{ route('team-player.destroy', $player->id) }}">
-                                                                            @csrf
-                                                                            @method('DELETE')
-
-                                                                            <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
-                                                                        </form>
-                                                                    </td>
-                                                                </tr>
-                                                            @endforeach
-                                                        @else
-                                                            <tr class="empty-row">
-                                                                <td colspan="6" class="center">No Players Available...</td>
+                                                        <table id="page-length-option" class="display team-player-table">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th>Name</th>
+                                                                <th>Actions</th>
                                                             </tr>
-                                                        @endif
-                                                        </tbody>
-                                                        <tfoot>
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>Name</th>
-                                                            <th>Actions</th>
-                                                        </tr>
-                                                        </tfoot>
-                                                    </table>
+                                                            </thead>
+                                                            <tbody>
+                                                            @if(!empty($team->players))
+                                                                @foreach($team->players as $key=> $player)
+                                                                    <tr class="team-player">
+                                                                        <td>{{$key + 1}}</td>
+                                                                        <td>{{$player->name}}</td>
+                                                                        <td>
+                                                                            @can('Edit Team Player')
+                                                                                <a href="{{route('team-player.edit', $player->id)}}" ><i class="material-icons">edit</i></a>
+                                                                            @endcan
+
+                                                                            @can('Delete Team Player')
+                                                                                <form method="post" class="delete-form" action="{{ route('team-player.destroy', $player->id) }}">
+                                                                                    @csrf
+                                                                                    @method('DELETE')
+
+                                                                                    <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
+                                                                                </form>
+                                                                            @endcan
+                                                                        </td>
+                                                                    </tr>
+                                                                @endforeach
+                                                            @else
+                                                                <tr class="empty-row">
+                                                                    <td colspan="6" class="center">No Players Available...</td>
+                                                                </tr>
+                                                            @endif
+                                                            </tbody>
+                                                            <tfoot>
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th>Name</th>
+                                                                <th>Actions</th>
+                                                            </tr>
+                                                            </tfoot>
+                                                        </table>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endcan
                                     </div>
                                 </div>
                             </div>

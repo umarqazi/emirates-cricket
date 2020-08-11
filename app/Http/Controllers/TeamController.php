@@ -71,7 +71,7 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Team $team)
     {
         //
     }
@@ -83,10 +83,10 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TeamRequest $request, $id)
+    public function update(TeamRequest $request, Team $team)
     {
-        $this->team_service->update($request->except(['_token', '_method']), $id);
-        return redirect()->route('team.show', $id)->with('success', 'Team Description has been Updated!');
+        $this->team_service->update($request->except(['_token', '_method']), $team->id);
+        return redirect()->route('team.show', $team->id)->with('success', 'Team Description has been Updated!');
     }
 
     /**
