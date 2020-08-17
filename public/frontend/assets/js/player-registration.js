@@ -43,7 +43,6 @@ $(document).ready(function () {
                 type: "POST",
                 data: {"image":resp},
                 success: function (data) {
-                    console.log(data);
                     $('#player_cropped_photo').val(data);
                     $('.dummy_photo').remove();
                     html = '<img class="dummy_photo" src="' + resp + '" />';

@@ -138,7 +138,7 @@
         </li>
 
         @if(auth()->user()->can('List User') || auth()->user()->can('Create User'))
-            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Users</span></a>
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">person_outline</i><span class="menu-title" data-i18n="">Users</span></a>
                 <div class="collapsible-body">
                     <ul class="collapsible collapsible-sub" data-collapsible="accordion">
                         @if(auth()->user()->can('List User'))
@@ -179,7 +179,7 @@
         @endif
 
         @if(auth()->user()->can('List Permission') || auth()->user()->can('Create Permission'))
-            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Permission</span></a>
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">thumb_up</i><span class="menu-title" data-i18n="">Permission</span></a>
                 <div class="collapsible-body">
                     <ul class="collapsible collapsible-sub" data-collapsible="accordion">
                         @if(auth()->user()->can('List Permission'))
@@ -219,7 +219,7 @@
         @endif
 
         @if(auth()->user()->can('List News') || auth()->user()->can('Create News'))
-            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">News</span></a>
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">assignment</i><span class="menu-title" data-i18n="">News</span></a>
                 <div class="collapsible-body">
                     <ul class="collapsible collapsible-sub" data-collapsible="accordion">
                         @if(auth()->user()->can('List News'))
@@ -239,7 +239,7 @@
         @endif
 
         @if(auth()->user()->can('List Update') || auth()->user()->can('Create Update'))
-            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Update</span></a>
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">update</i><span class="menu-title" data-i18n="">Update</span></a>
                 <div class="collapsible-body">
                     <ul class="collapsible collapsible-sub" data-collapsible="accordion">
                         @can('List Update')
@@ -259,7 +259,7 @@
         @endif
 
         @if(auth()->user()->can('List Gallery') || auth()->user()->can('Create Gallery'))
-            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Social Gallery</span></a>
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">photo_library</i><span class="menu-title" data-i18n="">Social Gallery</span></a>
                 <div class="collapsible-body">
                     <ul class="collapsible collapsible-sub" data-collapsible="accordion">
                         @if(auth()->user()->can('List Gallery'))
@@ -279,7 +279,7 @@
         @endif
 
         @if(auth()->user()->can('List Sponsor') || auth()->user()->can('Create Sponsor'))
-            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Sponsor</span></a>
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">thumbs_up_down</i><span class="menu-title" data-i18n="">Sponsor</span></a>
                 <div class="collapsible-body">
                     <ul class="collapsible collapsible-sub" data-collapsible="accordion">
                         @if(auth()->user()->can('List Sponsor'))
@@ -299,7 +299,7 @@
         @endif
 
         @if(auth()->user()->can('List Contact'))
-            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Contact Requests</span></a>
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">contact_phone</i><span class="menu-title" data-i18n="">Contact Requests</span></a>
                 <div class="collapsible-body">
                     <ul class="collapsible collapsible-sub" data-collapsible="accordion">
                         <li><a class="collapsible-body" href="{{route('contact.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Contact List</span></a>
@@ -309,19 +309,19 @@
             </li>
         @endif
 
-        @if(auth()->user()->can('List Team Registration') || auth()->user()->can('Edit Team Registration'))
-            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Team Registration</span></a>
+        @if(auth()->user()->can('List Tournament Registration') || auth()->user()->can('Edit Tournament Registration'))
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">description</i><span class="menu-title" data-i18n="">Tournament Registration</span></a>
                 <div class="collapsible-body">
                     <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                        @if(auth()->user()->can('List Team Registration'))
+                        @if(auth()->user()->can('List Tournament Registration'))
                             <li>
-                                <a class="collapsible-body" href="{{route('news.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Team List</span></a>
+                                <a class="collapsible-body" href="{{route('tournament.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Tournament List</span></a>
                             </li>
                         @endif
 
-                        @if(auth()->user()->can('Edit Team Registration'))
+                        @if(auth()->user()->can('Edit Tournament Registration'))
                             <li>
-                                <a class="collapsible-body" href="{{route('news.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
+                                <a class="collapsible-body" href="#" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
                             </li>
                         @endif
                     </ul>
@@ -330,7 +330,7 @@
         @endif
 
         @if(auth()->user()->can('List Player Registration') || auth()->user()->can('Edit Player Registration'))
-            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Player Registration</span></a>
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">assignment_ind</i><span class="menu-title" data-i18n="">Player Registration</span></a>
                 <div class="collapsible-body">
                     <ul class="collapsible collapsible-sub" data-collapsible="accordion">
 

@@ -7,20 +7,19 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class PlayerRegistrationNotification extends Notification
+class TournamentRequestDeclinedNotification extends Notification
 {
     use Queueable;
-
-    public $player;
+    public $tournament;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($player)
+    public function __construct($tournament)
     {
-        $this->player = $player;
+        $this->tournament = $tournament;
     }
 
     /**
@@ -43,9 +42,8 @@ class PlayerRegistrationNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('Hi Mr. '.$this->player->first_name.' '.$this->player->last_name)
-            ->line('Thank you for Player Registration at Emirates Cricket Board. We have Received your request.')
-            ->line('Our representative will update your request soon.')
+            ->line('Hi Mr. '.$this->tournament->organizer_name)
+            ->line('Sorry! We can\'t Approve your Tournament Registration Request at Emirates Cricket Board.')
             ->line('Thank you for using our application!');
     }
 

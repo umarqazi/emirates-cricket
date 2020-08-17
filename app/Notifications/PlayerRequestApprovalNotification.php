@@ -7,10 +7,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class PlayerRegistrationNotification extends Notification
+class PlayerRequestApprovalNotification extends Notification
 {
     use Queueable;
-
     public $player;
 
     /**
@@ -44,8 +43,7 @@ class PlayerRegistrationNotification extends Notification
     {
         return (new MailMessage)
             ->line('Hi Mr. '.$this->player->first_name.' '.$this->player->last_name)
-            ->line('Thank you for Player Registration at Emirates Cricket Board. We have Received your request.')
-            ->line('Our representative will update your request soon.')
+            ->line('Congratulations! We have Approved your Player Registration Request at Emirates Cricket Board.')
             ->line('Thank you for using our application!');
     }
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PlayerRegistration;
 use App\Notifications\PlayerRegistrationNotification;
+use App\Notifications\PlayerRequestApprovalNotification;
+use App\Notifications\PlayerRequestDeclinedNotification;
 use App\Player;
 use App\Services\CountryService;
 use App\Services\PlayerService;
@@ -140,15 +142,23 @@ class PlayerController extends Controller
     }
 
     public function approveRequest($id) {
+        $player = $this->player_service->find($id);
         $status = $this->player_service->approveRequest($id);
         if ($status) {
+
+            /* Notify Player once Request Approves */
+            $player->notify(new PlayerRequestApprovalNotification($player));
             return redirect()->route('player.index')->with('success', 'Player Request has been Approved!');
         }
     }
 
     public function declineRequest($id) {
+        $player = $this->player_service->find($id);
         $status = $this->player_service->declineRequest($id);
         if ($status) {
+
+            /* Notify Player once Request Declines */
+            $player->notify(new PlayerRequestDeclinedNotification($player));
             return redirect()->route('player.index')->with('success', 'Player Request has been Declined!');
         }
     }

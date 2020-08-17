@@ -16,7 +16,16 @@ $(document).ready(function () {
     ClassicEditor
         .create( document.querySelector( '.ckeditor' ) )
         .then( editor => {
-            console.log( editor );
+        } )
+        .catch( error => {
+            if(error) {
+                console.error( error );
+            }
+        } );
+
+    ClassicEditor
+        .create( document.querySelector( '.ckeditor1' ) )
+        .then( editor => {
         } )
         .catch( error => {
             if(error) {

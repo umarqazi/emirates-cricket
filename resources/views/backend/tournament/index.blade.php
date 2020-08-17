@@ -1,7 +1,7 @@
 @extends('backend.layout.master-backend')
 
 @section('title')
-    <title>Player List| Admin Panel</title>
+    <title>Tournament List| Admin Panel</title>
 @endsection
 
 @section('styles')
@@ -20,13 +20,13 @@
                 <div class="container">
                     <div class="row">
                         <div class="col s12 m6 l6">
-                            <h5 class="breadcrumbs-title mt-0 mb-0">Player Registration List</h5>
+                            <h5 class="breadcrumbs-title mt-0 mb-0">Tournament Registration List</h5>
                         </div>
                         <div class="col s12 m6 l6 right-align-md">
                             <ol class="breadcrumbs mb-0">
                                 <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a>
                                 </li>
-                                <li class="breadcrumb-item active">Player Registration List
+                                <li class="breadcrumb-item active">Tournament Registration List
                                 </li>
                             </ol>
                         </div>
@@ -41,7 +41,7 @@
                             <div class="col s12">
                                 <div class="card">
                                     <div class="card-content">
-                                        <h4 class="card-title">Player</h4>
+                                        <h4 class="card-title">Tournament</h4>
 
                                         @include('frontend.partials.session-messages')
 
@@ -50,42 +50,41 @@
                                                 <table id="page-length-option" class="display">
                                                     <thead>
                                                     <tr>
-                                                        <th>Name</th>
-                                                        <th>Nationality</th>
-                                                        <th>Visa Status</th>
+                                                        <th>Organizer Name</th>
+                                                        <th>Company Name</th>
+                                                        <th>Tournament Name</th>
                                                         <th>Date</th>
                                                         <th>Status</th>
                                                         <th>Actions</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    @if(!empty($players))
-                                                        @foreach($players as $player)
+                                                    @if(!empty($tournaments))
+                                                        @foreach($tournaments as $tournament)
                                                             <tr>
-                                                                <td>{{$player->first_name.' '.$player->last_name}}</td>
-                                                                <td>{{$player->country->name}}</td>
-                                                                @if($player->visa_status == 0)
-                                                                    <td>Visit</td>
-                                                                @else
-                                                                    <td>Residence</td>
-                                                                @endif
-
-                                                                <td>{{date('d/m/Y', strtotime($player->created_at))}}</td>
-                                                                @if($player->status == 0)
+                                                                <td>{{$tournament->organizer_name}}</td>
+                                                                <td>{{$tournament->company_name}}</td>
+                                                                <td>{{$tournament->tournament_name}}</td>
+                                                                <td>{{date('d/m/Y', strtotime($tournament->created_at))}}</td>
+                                                                @if($tournament->status === 0)
                                                                     <td>Declined</td>
-                                                                @elseif($player->status == 1)
+                                                                @elseif($tournament->status === 1)
                                                                     <td>Approved</td>
                                                                 @else
                                                                     <td>Pending</td>
                                                                 @endif
 
                                                                 <td>
-                                                                    @can('Show Player Registration')
-                                                                        <a href="{{route('player.show', $player->id)}}"><i class="material-icons">visibility</i></a>
+                                                                    @can('Show Tournament Registration')
+                                                                        <a href="{{route('tournament.show', $tournament->id)}}"><i class="material-icons">visibility</i></a>
                                                                     @endcan
 
-                                                                    @can('Delete Player Registration')
-                                                                        <form method="post" class="delete-form" action="{{ route('player.destroy', $player->id) }}">
+                                                                    @can('Edit Tournament Registration')
+                                                                        <a href="{{route('tournament.edit', $tournament->id)}}"><i class="material-icons">edit</i></a>
+                                                                    @endcan
+
+                                                                    @can('Delete Tournament Registration')
+                                                                        <form method="post" class="delete-form" action="{{ route('tournament.destroy', $tournament->id) }}">
                                                                             @csrf
                                                                             @method('DELETE')
 
