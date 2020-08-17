@@ -71,7 +71,7 @@
                                                     </thead>
                                                     @foreach($permissions as $key=>$permission)
                                                         <tr>
-                                                            <th width="20%">
+                                                            <th width="15%">
                                                                 <label>
                                                                     <input type="checkbox" name="select_row" class="filled-in select_row">
                                                                     <span><b>{{strtoupper($key)}}</b></span>
@@ -79,7 +79,7 @@
                                                             </th>
                                                             @for($i=0;$i<=4;$i++)
                                                                 @if(!empty($permission[$i]))
-                                                                    <th width="20%">
+                                                                    <th width="17%">
                                                                         <label>
                                                                             <input type="checkbox" name="permission[]" class="filled-in" value="{{$permission[$i]['id']}}" {{!empty(old('permission')) && in_array($permission[$i]['id'], old('permission')) ? 'checked' : ''}}>
                                                                             <span>{{$permission[$i]['name']}}</span>

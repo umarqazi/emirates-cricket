@@ -135,8 +135,10 @@ $(document).ready(function () {
     $('.terms-and-condition').bind('click', function () {
         if ($(this).is(':checked')) {
             $('.player-registration').attr('disabled', false);
+            $('.tournament-registration').attr('disabled', false);
         } else {
             $('.player-registration').attr('disabled', true);
+            $('.tournament-registration').attr('disabled', true);
         }
     });
 

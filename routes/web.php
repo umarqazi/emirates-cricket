@@ -67,15 +67,16 @@ Route::get('/player-registration', 'PlayerController@createPlayerRegistration')-
 Route::post('/player-registration', 'PlayerController@storePlayerRegistration')->name('submit-player-registration');
 Route::post('/upload-player-headshot-photo', 'PlayerController@uploadHeadShotPhoto')->name('upload-player-headshot-photo');
 
+/* Tournament Registration */
+Route::get('/tournament-registration', 'TournamentController@createTournamentRegistration')->name('tournament-registration');
+Route::post('/tournament-registration', 'TournamentController@storeTournamentRegistration')->name('submit-tournament-registration');
+
+
 Route::get('/sponsor', 'SponsorController@frontendSponsors')->name('sponsor');
 
 Route::get('/team', static function () {
     return view('frontend.teams');
 })->name('team');
-
-Route::get('/tournament-registration', static function () {
-    return view('frontend.tournament-registration');
-})->name('tournament-registration');
 
 Route::get('/uae-men', 'TeamController@uaeMens')->name('uae-men');
 Route::get('/uae-women', 'TeamController@uaeWomens')->name('uae-women');
@@ -106,6 +107,12 @@ Route::group(['prefix' => 'admin'], static function () {
         Route::resource('/player', 'PlayerController');
         Route::get('/player/approve-request/{id}', 'PlayerController@approveRequest')->name('approve-player');
         Route::get('/player/decline-request/{id}', 'PlayerController@declineRequest')->name('decline-player');
+
+        /* Tournament Registration Request */
+        Route::resource('/tournament', 'TournamentController');
+        Route::get('/tournament/approve-request/{id}', 'TournamentController@approveRequest')->name('approve-tournament');
+        Route::get('/tournament/decline-request/{id}', 'TournamentController@declineRequest')->name('decline-tournament');
+        Route::get('/tournament/file/{id}/{name}', 'TournamentController@openFile')->name('tournament.file');
 
         Route::resource('/news', 'NewsController');
         Route::resource('/update', 'UpdateController');
