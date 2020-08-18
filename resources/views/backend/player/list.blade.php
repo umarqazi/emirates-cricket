@@ -71,9 +71,9 @@
                                                                 @endif
 
                                                                 <td>{{date('d/m/Y', strtotime($player->created_at))}}</td>
-                                                                @if($player->status == 0)
+                                                                @if($player->status === 0)
                                                                     <td>Declined</td>
-                                                                @elseif($player->status == 1)
+                                                                @elseif($player->status === 1)
                                                                     <td>Approved</td>
                                                                 @else
                                                                     <td>Pending</td>

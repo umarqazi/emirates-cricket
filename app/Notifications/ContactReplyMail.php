@@ -43,12 +43,10 @@ class ContactReplyMail extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('Reply from Emirates Cricket Board')
-            ->line('Subject for your Contact Was:'.$this->contact->subject)
-            ->line('Question for your Contact Was:'.$this->contact->message)
-            ->line('Reply:')
-            ->line($this->contact->reply)
-            ->line('Thank you for using our application!');
+            ->subject($this->contact->subject)
+            ->view(
+            'email-templates.contact-reply', ['contact' => $this->contact]
+        );
     }
 
     /**
