@@ -19,7 +19,7 @@
         .email-container {
             border: 1px solid #8D0305;
             width: 100%;
-            max-width: 576px;
+            max-width: 100%;
             margin: 10px auto;
             font-family: arial;
             overflow-x: hidden;
@@ -77,6 +77,9 @@
             font-size: 18px;
             text-transform: capitalize;
         }
+        .email-social-icon{
+            vertical-align: middle;
+        }
     </style>
 
 </head>
@@ -94,12 +97,24 @@
         <a href="#" class="email-btn">View More</a>
     </div>
     <div class="email-footer">
-        <a href="#" class="email-icon"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-        <a href="#" class="email-icon"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-        <a href="#" class="email-icon"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-        <a href="#" class="email-icon"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
-        <a href="#" class="email-icon"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-        <a href="#" class="email-icon"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+        <a href="#" class="email-icon">
+            <img class="email-social-icon" src="{{ URL::asset('frontend/assets/images/email-facebook.png') }}" alt="">
+        </a>
+        <a href="#" class="email-icon">
+            <img class="email-social-icon" src="{{ URL::asset('frontend/assets/images/email-instagram.png') }}" alt="">
+        </a>
+        <a href="#" class="email-icon">
+            <img class="email-social-icon" src="{{ URL::asset('frontend/assets/images/email-twitter.png') }}" alt="">
+        </a>
+        <a href="#" class="email-icon">
+            <img class="email-social-icon" src="{{ URL::asset('frontend/assets/images/email-youtube.png') }}" alt="">
+        </a>
+        <a href="#" class="email-icon">
+            <img class="email-social-icon" src="{{ URL::asset('frontend/assets/images/email-linkedin.png') }}" alt="">
+        </a>
+        <a href="#" class="email-icon">
+            <img class="email-social-icon" src="{{ URL::asset('frontend/assets/images/email-pinterest.png') }}" alt="">
+        </a>
         <p class="footer-text">Company Name</p>
         <p class="footer-text">Postal Address</p>
     </div>
