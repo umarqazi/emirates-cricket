@@ -16,8 +16,6 @@
         }
         .email-container {
             border: 1px solid #8D0305;
-            width: 100%;
-            max-width: 100%;
             margin: 10px auto;
             font-family: arial;
             overflow-x: hidden;
@@ -88,7 +86,7 @@
     <div class="email-content">
         <img class="header-logo" src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
         <h1>Set Your Password</h1>
-        <p>Hi Mr. {{$user->name}}</p>
+        <p>Hi Mr. {{$user->name . '!'}}</p>
         <p>Your Account has been created at Emirates Cricket Board.</p>
         <p>Please click below link, to set your Password.</p>
         <a href="{{route('setPassword', $this->user->token)}}" class="email-btn">Set Password</a>

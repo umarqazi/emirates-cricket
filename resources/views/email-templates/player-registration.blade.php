@@ -16,8 +16,6 @@
         }
         .email-container {
             border: 1px solid #8D0305;
-            width: 100%;
-            max-width: 100%;
             margin: 10px auto;
             font-family: arial;
             overflow-x: hidden;
@@ -88,7 +86,7 @@
     <div class="email-content">
         <img class="header-logo" src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
         <h1>Player Registration</h1>
-        <p>Hi Mr. {{$player->first_name.' '.$player->last_name}}</p>
+        <p>Hi Mr. {{$player->first_name.' '.$player->last_name . '!'}}</p>
         <p>Thank you for Player Registration at Emirates Cricket Board. We have Received your request.</p>
         <p>Our Representative will Update your request Soon.</p>
     </div>
