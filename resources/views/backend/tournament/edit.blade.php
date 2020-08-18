@@ -50,8 +50,8 @@
 
                                     <div class="row">
                                         <div class="input-field col m6 s6">
-                                            <input id="title" type="text" name="organizer_name" class="validate @error('organizer_name') invalid @enderror" value="{{$tournament->organizer_name}}">
-                                            <label for="title">Name of organizer</label>
+                                            <input type="text" name="organizer_name" class="validate @error('organizer_name') invalid @enderror" value="{{$tournament->organizer_name}}">
+                                            <label>Name of organizer</label>
 
                                             @error('organizer_name')
                                             <span class="invalid-feedback" role="alert">
@@ -61,8 +61,8 @@
                                         </div>
 
                                         <div class="input-field col m6 s6">
-                                            <input id="title" type="text" name="organizer_address" class="validate @error('organizer_address') invalid @enderror" value="{{$tournament->organizer_address}}">
-                                            <label for="title">Organizer Address</label>
+                                            <input type="text" name="organizer_address" class="validate @error('organizer_address') invalid @enderror" value="{{$tournament->organizer_address}}">
+                                            <label>Organizer Address</label>
 
                                             @error('organizer_address')
                                             <span class="invalid-feedback" role="alert">
@@ -74,8 +74,8 @@
 
                                     <div class="row">
                                         <div class="input-field col m6 s6">
-                                            <input id="title" type="text" name="organizer_telephone_no" class="validate @error('organizer_telephone_no') invalid @enderror" value="{{$tournament->organizer_telephone_no}}">
-                                            <label for="title">Telephone no.</label>
+                                            <input type="text" name="organizer_telephone_no" class="validate @error('organizer_telephone_no') invalid @enderror" value="{{$tournament->organizer_telephone_no}}">
+                                            <label>Telephone no.</label>
 
                                             @error('organizer_telephone_no')
                                             <span class="invalid-feedback" role="alert">
@@ -85,8 +85,8 @@
                                         </div>
 
                                         <div class="input-field col m6 s6">
-                                            <input id="title" type="text" name="organizer_mobile_no" class="validate @error('organizer_mobile_no') invalid @enderror" value="{{$tournament->organizer_mobile_no}}">
-                                            <label for="title">Mobile no.</label>
+                                            <input type="text" name="organizer_mobile_no" class="validate @error('organizer_mobile_no') invalid @enderror" value="{{$tournament->organizer_mobile_no}}">
+                                            <label>Mobile no.</label>
 
                                             @error('organizer_mobile_no')
                                             <span class="invalid-feedback" role="alert">
@@ -98,8 +98,8 @@
 
                                     <div class="row">
                                         <div class="input-field col m6 s6">
-                                            <input id="title" type="text" name="email" class="validate @error('email') invalid @enderror" value="{{$tournament->email}}">
-                                            <label for="title">Email</label>
+                                            <input type="text" name="email" class="validate @error('email') invalid @enderror" value="{{$tournament->email}}">
+                                            <label>Email</label>
 
                                             @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -126,8 +126,8 @@
 
                                     <div class="row">
                                         <div class="input-field col m6 s6">
-                                            <input id="title" type="text" name="company_name" class="validate @error('company_name') invalid @enderror" value="{{$tournament->company_name}}">
-                                            <label for="title">Company Name</label>
+                                            <input type="text" name="company_name" class="validate @error('company_name') invalid @enderror" value="{{$tournament->company_name}}">
+                                            <label>Company Name</label>
 
                                             @error('company_name')
                                             <span class="invalid-feedback" role="alert">
@@ -137,8 +137,8 @@
                                         </div>
 
                                         <div class="input-field col m6 s6">
-                                            <input id="title" type="text" name="company_address" class="validate @error('company_address') invalid @enderror" value="{{$tournament->company_address}}">
-                                            <label for="title">Company Address</label>
+                                            <input type="text" name="company_address" class="validate @error('company_address') invalid @enderror" value="{{$tournament->company_address}}">
+                                            <label>Company Address</label>
 
                                             @error('company_address')
                                             <span class="invalid-feedback" role="alert">
@@ -150,8 +150,8 @@
 
                                     <div class="row">
                                         <div class="input-field col m6 s6">
-                                            <input id="title" type="text" name="company_telephone_no" class="validate @error('company_telephone_no') invalid @enderror" value="{{$tournament->company_telephone_no}}">
-                                            <label for="title">Telephone no.</label>
+                                            <input type="text" name="company_telephone_no" class="validate @error('company_telephone_no') invalid @enderror" value="{{$tournament->company_telephone_no}}">
+                                            <label>Telephone no.</label>
 
                                             @error('company_telephone_no')
                                             <span class="invalid-feedback" role="alert">
@@ -161,8 +161,8 @@
                                         </div>
 
                                         <div class="input-field col m6 s6">
-                                            <input id="title" type="text" name="website" class="validate @error('website') invalid @enderror" value="{{$tournament->website}}">
-                                            <label for="title">Website</label>
+                                            <input type="text" name="website" class="validate @error('website') invalid @enderror" value="{{$tournament->website}}">
+                                            <label>Website</label>
 
                                             @error('website')
                                             <span class="invalid-feedback" role="alert">
@@ -174,8 +174,8 @@
 
                                     <div class="row">
                                         <div class="input-field col m6 s6">
-                                            <input id="title" type="text" name="tournament_name" class="validate @error('tournament_name') invalid @enderror" value="{{$tournament->tournament_name}}">
-                                            <label for="title">Name of Tournament</label>
+                                            <input type="text" name="tournament_name" class="validate @error('tournament_name') invalid @enderror" value="{{$tournament->tournament_name}}">
+                                            <label>Name of Tournament</label>
 
                                             @error('tournament_name')
                                             <span class="invalid-feedback" role="alert">
@@ -185,8 +185,8 @@
                                         </div>
 
                                         <div class="input-field col m6 s6">
-                                            <input id="title" type="text" name="proposed_date" class="validate @error('proposed_date') invalid @enderror" value="{{date('d/m/Y', strtotime($tournament->proposed_date))}}">
-                                            <label for="title">Proposed dates of Tournament</label>
+                                            <input type="text" name="proposed_date" class="validate @error('proposed_date') invalid @enderror" value="{{date('d/m/Y', strtotime($tournament->proposed_date))}}">
+                                            <label>Proposed dates of Tournament</label>
 
                                             @error('proposed_date')
                                             <span class="invalid-feedback" role="alert">
@@ -467,8 +467,8 @@
 
                                     <div class="row">
                                         <div class="input-field col m6 s6">
-                                            <input id="title" type="text" name="tournament_fees" class="validate @error('tournament_fees') invalid @enderror" value="{{$tournament->tournament_fees}}">
-                                            <label for="title">What Are The Tournament Fees For Each Participating Team?</label>
+                                            <input type="text" name="tournament_fees" class="validate @error('tournament_fees') invalid @enderror" value="{{$tournament->tournament_fees}}">
+                                            <label>What Are The Tournament Fees For Each Participating Team?</label>
 
                                             @error('tournament_fees')
                                             <span class="invalid-feedback" role="alert">
@@ -478,8 +478,8 @@
                                         </div>
 
                                         <div class="input-field col m6 s6">
-                                            <input id="title" type="text" name="proposed_prize" class="validate @error('proposed_prize') invalid @enderror" value="{{$tournament->proposed_prize}}">
-                                            <label for="title">Give Details Of The Proposed Prize Money Or Awards?</label>
+                                            <input type="text" name="proposed_prize" class="validate @error('proposed_prize') invalid @enderror" value="{{$tournament->proposed_prize}}">
+                                            <label>Give Details Of The Proposed Prize Money Or Awards?</label>
 
                                             @error('proposed_prize')
                                             <span class="invalid-feedback" role="alert">

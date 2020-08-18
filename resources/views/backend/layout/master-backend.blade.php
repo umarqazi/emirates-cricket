@@ -324,6 +324,10 @@
                                 <a class="collapsible-body" href="#" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
                             </li>
                         @endif
+
+                        <li>
+                            <a class="collapsible-body" href="{{route('tournament.export')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Export Tournaments</span></a>
+                        </li>
                     </ul>
                 </div>
             </li>
@@ -345,6 +349,10 @@
                                 <a class="collapsible-body" href="{{route('player.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
                             </li>
                         @endif
+
+                            <li>
+                                <a class="collapsible-body" href="{{route('player.export')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Export Players</span></a>
+                            </li>
                     </ul>
                 </div>
             </li>

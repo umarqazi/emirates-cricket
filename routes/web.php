@@ -104,11 +104,13 @@ Route::group(['prefix' => 'admin'], static function () {
         Route::resource('contact', 'ContactController');
 
         /* Player Registration Request */
+        Route::get('/player/export', 'PlayerController@export')->name('player.export');
         Route::resource('/player', 'PlayerController');
         Route::get('/player/approve-request/{id}', 'PlayerController@approveRequest')->name('approve-player');
         Route::get('/player/decline-request/{id}', 'PlayerController@declineRequest')->name('decline-player');
 
         /* Tournament Registration Request */
+        Route::get('/tournament/export', 'TournamentController@export')->name('tournament.export');
         Route::resource('/tournament', 'TournamentController');
         Route::get('/tournament/approve-request/{id}', 'TournamentController@approveRequest')->name('approve-tournament');
         Route::get('/tournament/decline-request/{id}', 'TournamentController@declineRequest')->name('decline-tournament');
