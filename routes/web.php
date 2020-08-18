@@ -145,10 +145,10 @@ Route::post('/store/password', 'UserController@storePassword')->name('storePassw
 Route::get('contact-reply', function (){
     return view('email-templates.contact-reply');
 });
-
+/*
 Route::get('player-registration', function (){
     return view('email-templates.player-registration');
-});
+});*/
 
 Route::get('player-registration-approved', function (){
     return view('email-templates.player-registration-approved');
@@ -162,9 +162,9 @@ Route::get('set-password', function (){
     return view('email-templates.set-password');
 });
 
-Route::get('tournament-registration', function (){
+/*Route::get('tournament-registration', function (){
     return view('email-templates.tournament-registration');
-});
+});*/
 
 Route::get('tournament-registration-approved', function (){
     return view('email-templates.tournament-registration-approved');

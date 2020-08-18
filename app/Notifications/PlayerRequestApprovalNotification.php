@@ -42,9 +42,10 @@ class PlayerRequestApprovalNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('Hi Mr. '.$this->player->first_name.' '.$this->player->last_name)
-            ->line('Congratulations! We have Approved your Player Registration Request at Emirates Cricket Board.')
-            ->line('Thank you for using our application!');
+            ->subject('Player Registration Approved')
+            ->view(
+                'email-templates.player-registration-approved', ['player' => $this->player]
+            );
     }
 
     /**

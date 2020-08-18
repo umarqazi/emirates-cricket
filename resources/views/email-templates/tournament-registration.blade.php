@@ -86,12 +86,10 @@
 <div class="email-container">
     <div class="email-content">
         <img class="header-logo" src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
-        <h1>tournament registration</h1>
-        <p>Add new pieces of content like text, images and buttons to your email by dragging the tiles on the left where you want them to go.</p>
-        <p>Add different layouts to your email by clicking on the green Add layout button below.</p>
-        <p>Add new pieces of content like text, images and buttons to your email by dragging the tiles on the left where you want them to go.</p>
-        <p>Add different layouts to your email by clicking on the green Add layout button below.</p>
-        <a href="#" class="email-btn">View More</a>
+        <h1>Tournament Registration</h1>
+        <p>Hi Mr. {{$tournament->organizer_name}}</p>
+        <p>Thank you for Tournament Registration at Emirates Cricket Board. We have Received your request.</p>
+        <p>Our Representative will update your Request Soon.</p>
     </div>
     <div class="email-footer">
         <a href="#" class="email-icon"><i class="fa fa-facebook" aria-hidden="true"></i></a>

@@ -42,9 +42,10 @@ class TournamentRequestDeclinedNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('Hi Mr. '.$this->tournament->organizer_name)
-            ->line('Sorry! We can\'t Approve your Tournament Registration Request at Emirates Cricket Board.')
-            ->line('Thank you for using our application!');
+            ->subject('Tournament Registration Request Declined')
+            ->view(
+                'email-templates.tournament-registration-declined', ['tournament' => $this->tournament]
+            );
     }
 
     /**

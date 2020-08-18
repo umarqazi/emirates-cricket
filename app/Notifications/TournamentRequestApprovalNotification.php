@@ -43,9 +43,13 @@ class TournamentRequestApprovalNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('Hi Mr. '.$this->tournament->organizer_name)
+            ->subject('Tournament Registration Request Approved')
+            ->view(
+                'email-templates.tournament-registration-approved', ['tournament' => $this->tournament]
+            );
+           /* ->line('Hi Mr. '.$this->tournament->organizer_name)
             ->line('Congratulations! We have Approved your Tournament Registration Request at Emirates Cricket Board.')
-            ->line('Thank you for using our application!');
+            ->line('Thank you for using our application!');*/
     }
 
     /**

@@ -43,10 +43,10 @@ class PlayerRegistrationNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('Hi Mr. '.$this->player->first_name.' '.$this->player->last_name)
-            ->line('Thank you for Player Registration at Emirates Cricket Board. We have Received your request.')
-            ->line('Our representative will update your request soon.')
-            ->line('Thank you for using our application!');
+            ->subject('Player Registration At Emirates Cricket Board')
+            ->view(
+                'email-templates.player-registration', ['player' => $this->player]
+            );
     }
 
     /**

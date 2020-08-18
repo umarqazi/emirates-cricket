@@ -42,10 +42,10 @@ class SetPasswordNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Set User Password')
-                    ->line('Your Account as been created at Emirates Cricket Board.')
-                    ->line('Please Click below to set your Password.')
-                    ->action('Set Password', route('setPassword', $this->user->token));
+            ->subject('Set User Password')
+            ->view(
+                'email-templates.set-password', ['user' => $this->user]
+            );
     }
 
     /**

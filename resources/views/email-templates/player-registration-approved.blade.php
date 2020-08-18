@@ -86,12 +86,9 @@
 <div class="email-container">
     <div class="email-content">
         <img class="header-logo" src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
-        <h1>player registration approved</h1>
-        <p>Add new pieces of content like text, images and buttons to your email by dragging the tiles on the left where you want them to go.</p>
-        <p>Add different layouts to your email by clicking on the green Add layout button below.</p>
-        <p>Add new pieces of content like text, images and buttons to your email by dragging the tiles on the left where you want them to go.</p>
-        <p>Add different layouts to your email by clicking on the green Add layout button below.</p>
-        <a href="#" class="email-btn">View More</a>
+        <h1>Player Registration Request Approved</h1>
+        <p>Hi Mr. {{$player->first_name.' '.$player->last_name}}</p>
+        <p>Congratulations! We have Approved your Player Registration Request at Emirates Cricket Board.</p>
     </div>
     <div class="email-footer">
         <a href="#" class="email-icon"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -100,7 +97,7 @@
         <a href="#" class="email-icon"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
         <a href="#" class="email-icon"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
         <a href="#" class="email-icon"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
-        <p class="footer-text">Company Name</p>
+        <p class="footer-text">{{env('APP_NAME')}}</p>
         <p class="footer-text">Postal Address</p>
     </div>
 </div>

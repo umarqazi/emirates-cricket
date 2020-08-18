@@ -42,10 +42,10 @@ class TournamentRegistrationNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('Hi Mr. '.$this->tournament->organizer_name)
-            ->line('Thank you for Tournament Registration at Emirates Cricket Board. We have Received your request.')
-            ->line('Our representative will update your request soon.')
-            ->line('Thank you for using our application!');
+            ->subject('Player Registration At Emirates Cricket Board')
+            ->view(
+                'email-templates.tournament-registration', ['tournament' => $this->tournament]
+            );
     }
 
     /**
