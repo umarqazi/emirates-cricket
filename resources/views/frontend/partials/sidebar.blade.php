@@ -145,7 +145,7 @@
             </ul>
         </li>
         <li>
-            <a href="{{route('download')}}">
+            <a href="{{route('development')}}">
                     <span>
                         <img class="nav-icon" src="{{ URL::asset('frontend/assets/images/development.png') }}" alt="">
                     </span>

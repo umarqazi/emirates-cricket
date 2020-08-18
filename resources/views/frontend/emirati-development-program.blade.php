@@ -27,7 +27,7 @@
         <div class="container">
             <div class="team-content">
                 <h4>With just over a million Emirati’s living in UAE, the Emirati Development Programme forms an important part of Emirates Cricket’s strategic plan in growing the game.</h4>
-                <a href="{{route('emirati-developent-program')}}" class="btn">Emirati Development Programme</a>
+                <a href="{{route('emirati-development-program')}}" class="btn">Emirati Development Programme</a>
             </div>
             <div class="developement-images">
                 <div class="row no-gutters">
