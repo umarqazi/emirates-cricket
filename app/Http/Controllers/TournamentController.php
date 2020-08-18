@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\TournamentExport;
 use App\Http\Requests\TournamentRequest;
 use App\Http\Requests\UpdateTournamentRequest;
 use App\Notifications\PlayerRegistrationNotification;
@@ -12,6 +13,7 @@ use App\Services\TournamentService;
 use App\Tournament;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TournamentController extends Controller
 {
@@ -210,5 +212,10 @@ class TournamentController extends Controller
             $tournament->notify(new TournamentRequestDeclinedNotification($tournament));
             return redirect()->route('tournament.index')->with('success', 'Tournament Request has been Declined!');
         }
+    }
+
+    public function export()
+    {
+        return Excel::download(new TournamentExport(), 'tournament-registrations.xlsx');
     }
 }

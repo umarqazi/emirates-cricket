@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PlayerExport;
 use App\Http\Requests\PlayerRegistration;
 use App\Notifications\PlayerRegistrationNotification;
 use App\Notifications\PlayerRequestApprovalNotification;
@@ -11,6 +12,7 @@ use App\Services\CountryService;
 use App\Services\PlayerService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PlayerController extends Controller
 {
@@ -161,5 +163,10 @@ class PlayerController extends Controller
             $player->notify(new PlayerRequestDeclinedNotification($player));
             return redirect()->route('player.index')->with('success', 'Player Request has been Declined!');
         }
+    }
+
+    public function export()
+    {
+        return Excel::download(new PlayerExport(), 'player-registrations.xlsx');
     }
 }
