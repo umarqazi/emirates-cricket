@@ -138,38 +138,3 @@ Route::group(['prefix' => 'admin'], static function () {
 /* Set User Password Routes */
 Route::get('/user/set/password/{token}', 'UserController@setPassword')->name('setPassword');
 Route::post('/store/password', 'UserController@storePassword')->name('storePassword');
-
-/*=============================================*/
-/* Email Templates Test Routes */
-/*=============================================*/
-Route::get('contact-reply', function (){
-    return view('email-templates.contact-reply');
-});
-/*
-Route::get('player-registration', function (){
-    return view('email-templates.player-registration');
-});*/
-
-Route::get('player-registration-approved', function (){
-    return view('email-templates.player-registration-approved');
-});
-
-Route::get('player-registration-declined', function (){
-    return view('email-templates.player-registration-declined');
-});
-
-Route::get('set-password', function (){
-    return view('email-templates.set-password');
-});
-
-/*Route::get('tournament-registration', function (){
-    return view('email-templates.tournament-registration');
-});*/
-
-Route::get('tournament-registration-approved', function (){
-    return view('email-templates.tournament-registration-approved');
-});
-
-Route::get('tournament-registration-declined', function (){
-    return view('email-templates.tournament-registration-declined');
-});
