@@ -88,6 +88,8 @@
         <h1>Tournament Registration Request Approval</h1>
         <p>Hi Mr. {{$this->tournament->organizer_name . '!'}}</p>
         <p>Congratulations! We have Approved your Tournament Registration Request at Emirates Cricket Board.</p>
+        <p>Please click the link Below to Proceed to Payment Page.</p>
+        <a href="{{route('payment')}}" class="email-btn">Proceed To Payment</a>
     </div>
     <div class="email-footer">
         <a href="#" class="email-icon">
