@@ -1,5 +1,13 @@
 @extends('frontend.layout.master-frontend')
 
+@section('title')
+    <title>Tournament Registration Form</title>
+@endsection
+
+@section('styles')
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/assets/css/datepicker.min.css') }}">
+@endsection
+
 @section('content')
 
     <!--   top bar     -->
@@ -198,10 +206,10 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-lg-6">
+                                <div class="col-md-6">
                                     <div class="input-row">
                                         <label>Proposed dates of Tournament</label>
-                                        <input type="text" class="datepicker date-calender @error('proposed_date') is-invalid @enderror" name="proposed_date" placeholder="01-01-2021" value="{{old('proposed_date')}}">
+                                        <input type="text" class="datepicker-here date-calender @error('proposed_date') is-invalid @enderror" name="proposed_date" placeholder="01-01-2021" value="{{old('proposed_date')}}">
 
                                         @error('proposed_date')
                                         <span class="invalid-feedback" role="alert">
@@ -649,7 +657,7 @@
     <script src="{{ URL::asset('frontend/assets/js/datepicker.min.js') }} "></script>
     <script src="{{ URL::asset('frontend/assets/js/datepicker.en.js') }} "></script>
     <script>
-        $('.datepicker').datepicker({
+        $('.datepicker-here').datepicker({
             language: 'en',
             maxDate: new Date(),
             autoClose: true,
