@@ -631,7 +631,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="register-btn">
-                                        <p>Total Cost: <span>200dh</span></p>
+                                        <p>Total Cost: <span>{{$setting->tournament_fees}}dh</span></p>
                                         <input type="submit" class="btn input-submit tournament-registration" value="Register" disabled="disabled">
                                     </div>
                                 </div>

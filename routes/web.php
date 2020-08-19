@@ -130,6 +130,9 @@ Route::group(['prefix' => 'admin'], static function () {
         /* All Team Player Routes */
         Route::resource('/team-player', 'TeamPlayerController');
 
+        /* App Setting Routes */
+        Route::resource('/setting', 'SettingController');
+
         /* User Management */
         Route::resource('/user', 'UserController');
         Route::resource('/role', 'RoleController');
