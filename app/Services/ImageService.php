@@ -26,8 +26,8 @@ class ImageService
     public function store($relation_model, $data): bool
     {
         $response = false;
-        foreach ($data['gallery-images'] as $imageName) {
-
+        foreach ($data['gallery-images'] as $imageName)
+        {
             $image = new Image();
             $image->name = $imageName;
             $status = $relation_model->images()->save($image);
@@ -37,6 +37,35 @@ class ImageService
                 /* Move file to storage path */
                 $old_path = 'uploads/temp/gallery-images/'.$imageName;
                 $new_path = 'uploads/gallery/'.$relation_model->id.'/';
+
+                if (Storage::disk('public')->exists($old_path)) {
+
+                    if (!Storage::disk('public')->exists($new_path)) {
+                        Storage::disk('public')->makeDirectory($new_path);
+                    }
+
+                    Storage::disk('public')->move($old_path, $new_path . $imageName);
+                }
+                $response = true;
+            }
+        }
+        return $response;
+    }
+
+    public function storeSliderImage($relation_model, $data): bool
+    {
+        $response = false;
+        foreach ($data['slider-images'] as $imageName)
+        {
+            $image = new Image();
+            $image->name = $imageName;
+            $status = $relation_model->images()->save($image);
+
+            if ($status) {
+
+                /* Move file to storage path */
+                $old_path = 'uploads/temp/homepage-slider-images/'.$imageName;
+                $new_path = 'uploads/homepage-slider/'.$relation_model->id.'/';
 
                 if (Storage::disk('public')->exists($old_path)) {
 

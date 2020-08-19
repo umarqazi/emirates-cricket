@@ -3,16 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SettingRequest;
+use App\Services\ImageService;
 use App\Services\SettingService;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller
 {
     public $setting_service;
+    public $image_service;
 
     public function __construct()
     {
         $this->setting_service = new SettingService();
+        $this->image_service = new ImageService();
     }
 
     /**
@@ -78,8 +81,13 @@ class SettingController extends Controller
      */
     public function update(SettingRequest $request, $id)
     {
-        $status = $this->setting_service->update($id, $request->except(['_token', '_method']));
+        $setting = $this->setting_service->first();
+        $params = $request->except(['_token', '_method', 'slider-images']);
+        $status = $this->setting_service->update($id, $params);
         if (!empty($status)) {
+
+            /* For Polymorphic Relation */
+            $this->image_service->storeSliderImage($setting, $request->except(['_token', '_method']));
             return redirect()->route('setting.create')->with('success', 'Setting ha been Updated!');
         }
     }
@@ -93,5 +101,25 @@ class SettingController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function uploadSliderImages(Request $request)
+    {
+        $path = public_path('storage/uploads/temp/homepage-slider-images');
+
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+
+        $file = $request->file('file');
+
+        $name = time().uniqid().'.'.trim($file->getClientOriginalExtension());
+
+        $file->move($path, $name);
+
+        return response()->json([
+            'name'          => $name,
+            'original_name' => $file->getClientOriginalName(),
+        ]);
     }
 }

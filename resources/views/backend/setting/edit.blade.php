@@ -59,8 +59,15 @@
                                     </div>
 
                                     <div class="row">
+                                        <div class="col-12"><b>Upload Homepage Slider Images <small>(Images must be of 1920 * 1000 Resolution)</small></b></div>
+                                        <div class="input-field col m12 s12 dropzone" id="image-dropzone">
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
                                         <div class="input-field col s12">
-                                            <button class="btn cyan waves-effect waves-light right" type="submit">Update Tournament Fee
+                                            <button class="btn cyan waves-effect waves-light right" type="submit">Update Settings
                                                 <i class="material-icons right">send</i>
                                             </button>
                                         </div>
@@ -82,4 +89,49 @@
     <!-- BEGIN PAGE VENDOR JS-->
     <script src="{{URL::asset('backend/assets/js/form-layouts.js')}}"></script>
     <!-- END PAGE VENDOR JS-->
+
+    <script>
+        var remove_path = "{{public_path('storage/uploads/temp/slider-images/')}}"
+        var path = "{{asset('storage/uploads/homepage-slider/'.$setting->id.'/')}}"
+
+        var uploadedDocumentMap = {}
+        Dropzone.options.imageDropzone = {
+            url: '{{ route('slider.images') }}',
+            maxFilesize: 5, // MB
+            addRemoveLinks: true,
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
+            success: function (file, response) {
+                $('form').append('<input type="hidden" name="slider-images[]" value="' + response.name + '">')
+                uploadedDocumentMap[file.name] = response.name
+            },
+            removedfile: function (file) {
+                file.previewElement.remove()
+                var name = ''
+                if (typeof file.file_name !== 'undefined') {
+                    name = file.file_name
+                } else {
+                    name = uploadedDocumentMap[file.name]
+                }
+                $('form').find('input[name="slider-images[]"][value="' + name + '"]').remove()
+            },
+            init: function () {
+                @if(isset($setting) && $setting->images)
+                let imageDropzone = this;
+
+                var files =
+                {!! json_encode($setting->images) !!}
+                    for (var i in files) {
+                    var file = files[i]
+                    var filename = files[i].name
+                    var filepath = path + '/' + filename
+
+                    imageDropzone.displayExistingFile(file, filepath);
+                    $('form').append('<input type="hidden" name="slider-images[]" value="' + file.name + '">')
+                }
+                @endif
+            }
+        }
+    </script>
 @endsection

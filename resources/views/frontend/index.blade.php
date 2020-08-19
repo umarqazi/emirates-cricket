@@ -6,28 +6,40 @@
     @include('frontend.partials.top-bar')
 
     <!--  banner sldier      -->
-    <div class="banner-slider slider-dots">
-        <div>
-            <div class="slider-image">
-                <img src="{{ URL::asset('frontend/assets/images/banner-slide1.png') }}" alt="">
+    @if(!$setting->images->isEmpty())
+        <div class="banner-slider slider-dots">
+            @foreach($setting->images as $image)
+                <div>
+                    <div class="slider-image">
+                        <img src="{{ URL::asset('storage/uploads/homepage-slider/'.$setting->id.'/'.$image->name) }}" alt="">
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    @else
+        <div class="banner-slider slider-dots">
+            <div>
+                <div class="slider-image">
+                    <img src="{{ URL::asset('frontend/assets/images/banner-slide1.png') }}" alt="">
+                </div>
+            </div>
+            <div>
+                <div class="slider-image">
+                    <img src="{{ URL::asset('frontend/assets/images/banner-slide1.png') }}" alt="">
+                </div>
+            </div>
+            <div>
+                <div class="slider-image">
+                    <img src="{{ URL::asset('frontend/assets/images/banner-slide1.png') }}" alt="">
+                </div>
+            </div>
+            <div>
+                <div class="slider-image">
+                    <img src="{{ URL::asset('frontend/assets/images/banner-slide1.png') }}" alt="">
+                </div>
             </div>
         </div>
-        <div>
-            <div class="slider-image">
-                <img src="{{ URL::asset('frontend/assets/images/banner-slide1.png') }}" alt="">
-            </div>
-        </div>
-        <div>
-            <div class="slider-image">
-                <img src="{{ URL::asset('frontend/assets/images/banner-slide1.png') }}" alt="">
-            </div>
-        </div>
-        <div>
-            <div class="slider-image">
-                <img src="{{ URL::asset('frontend/assets/images/banner-slide1.png') }}" alt="">
-            </div>
-        </div>
-    </div>
+    @endif
 
     <!-- banner content     -->
     <div class="banner-content">

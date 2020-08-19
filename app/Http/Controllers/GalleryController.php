@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Gallery;
 use App\Http\Requests\CreateGallery;
+use App\Http\Requests\UpdateGallery;
 use App\Image;
 use App\Services\GalleryService;
 use App\Services\ImageService;
@@ -67,6 +68,7 @@ class GalleryController extends Controller
 
         $gallery = $this->gallery_service->store($params);
         if (!empty($gallery)) {
+
             /* For Polymorphic Relation */
             $this->image_service->store($gallery, $params);
 
@@ -109,7 +111,7 @@ class GalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CreateGallery $request, Gallery $gallery)
+    public function update(UpdateGallery $request, Gallery $gallery)
     {
         dd($gallery);
 

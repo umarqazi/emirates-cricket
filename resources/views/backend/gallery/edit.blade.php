@@ -67,7 +67,7 @@
 
                                     <div class="row">
                                         <div class="col s12">Gallery Description</div>
-                                        <div class="input-field col s12">
+                                        <div class="input-field col-12">
                                             <textarea id="message5" class="ckeditor @error('text') invalid @enderror" name="text" rows="15" placeholder="Type Gallery Description in here...">{!! $gallery->text !!}</textarea>
 
                                             @error('text')
@@ -79,7 +79,7 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="file-field input-field">
+                                        <div class="file-field input-field col-12">
                                             <div class="btn">
                                                 <span>Featured Image</span>
                                                 <input type="file" name="image" class="validate @error('image') invalid @enderror">
@@ -97,7 +97,7 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col s12"><b>Upload Gallery Images</b></div>
+                                        <div class="col-12"><b>Upload Gallery Images</b></div>
                                         <div class="input-field col m12 s12 dropzone" id="image-dropzone">
 
                                         </div>
@@ -153,18 +153,17 @@
                 $('form').find('input[name="gallery-images[]"][value="' + name + '"]').remove()
             },
             init: function () {
-                    @if(isset($gallery) && $gallery->images)
+                @if(isset($gallery) && $gallery->images)
+                let imageDropzone = this;
+
                 var files =
                 {!! json_encode($gallery->images) !!}
                     for (var i in files) {
                     var file = files[i]
                     var filename = files[i].name
                     var filepath = path + '/' + filename
-                    console.log(file);
-                    console.log(filename);
-                    console.log(filepath);
-                    this.options.addedfile.call(this, file)
-                    file.previewElement.classList.add('dz-complete')
+
+                    imageDropzone.displayExistingFile(file, filepath);
                     $('form').append('<input type="hidden" name="gallery-images[]" value="' + file.name + '">')
                 }
                 @endif

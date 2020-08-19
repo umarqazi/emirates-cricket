@@ -120,6 +120,7 @@
     <!-- END PAGE VENDOR JS-->
 
     <script>
+        var remove_path = "{{public_path('storage/uploads/temp/gallery-images/')}}"
         var uploadedDocumentMap = {}
         Dropzone.options.imageDropzone = {
             url: '{{ route('gallery.images') }}',
