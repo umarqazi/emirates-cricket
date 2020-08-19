@@ -134,6 +134,9 @@ Route::group(['prefix' => 'admin'], static function () {
         Route::resource('/user', 'UserController');
         Route::resource('/role', 'RoleController');
         Route::resource('/permission', 'PermissionController');
+
+        /* Development Routes */
+        Route::resource('/development', 'DevelopmentController');
     });
 });
 
