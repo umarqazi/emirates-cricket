@@ -21,8 +21,8 @@ class SponsorService
         return $this->sponsor_repo->all(Sponsor::class);
     }
 
-    public function paginatedRecords() {
-        return $this->sponsor_repo->paginatedRecords(Sponsor::class, 3);
+    public function paginatedRecords($records = 3) {
+        return $this->sponsor_repo->paginatedRecords(Sponsor::class, $records);
     }
 
     public function find($id) {
