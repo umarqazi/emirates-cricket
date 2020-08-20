@@ -15,4 +15,10 @@ class Setting extends Model
     protected $fillable = [
         'tournament_fees',
     ];
+
+
+    public function images()
+    {
+        return $this->morphMany('App\Image', 'imageable');
+    }
 }

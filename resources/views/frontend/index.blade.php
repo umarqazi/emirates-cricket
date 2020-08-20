@@ -1,33 +1,49 @@
 @extends('frontend.layout.master-frontend')
 
+@section('title')
+    <title>Home Page</title>
+@endsection
+
 @section('content')
 
     <!--   top bar     -->
     @include('frontend.partials.top-bar')
 
     <!--  banner sldier      -->
-    <div class="banner-slider slider-dots">
-        <div>
-            <div class="slider-image">
-                <img src="{{ URL::asset('frontend/assets/images/banner-slide1.png') }}" alt="">
+    @if(!$setting->images->isEmpty())
+        <div class="banner-slider slider-dots">
+            @foreach($setting->images as $image)
+                <div>
+                    <div class="slider-image">
+                        <img src="{{ URL::asset('storage/uploads/homepage-slider/'.$setting->id.'/'.$image->name) }}" alt="">
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    @else
+        <div class="banner-slider slider-dots">
+            <div>
+                <div class="slider-image">
+                    <img src="{{ URL::asset('frontend/assets/images/banner-slide1.png') }}" alt="">
+                </div>
+            </div>
+            <div>
+                <div class="slider-image">
+                    <img src="{{ URL::asset('frontend/assets/images/banner-slide1.png') }}" alt="">
+                </div>
+            </div>
+            <div>
+                <div class="slider-image">
+                    <img src="{{ URL::asset('frontend/assets/images/banner-slide1.png') }}" alt="">
+                </div>
+            </div>
+            <div>
+                <div class="slider-image">
+                    <img src="{{ URL::asset('frontend/assets/images/banner-slide1.png') }}" alt="">
+                </div>
             </div>
         </div>
-        <div>
-            <div class="slider-image">
-                <img src="{{ URL::asset('frontend/assets/images/banner-slide1.png') }}" alt="">
-            </div>
-        </div>
-        <div>
-            <div class="slider-image">
-                <img src="{{ URL::asset('frontend/assets/images/banner-slide1.png') }}" alt="">
-            </div>
-        </div>
-        <div>
-            <div class="slider-image">
-                <img src="{{ URL::asset('frontend/assets/images/banner-slide1.png') }}" alt="">
-            </div>
-        </div>
-    </div>
+    @endif
 
     <!-- banner content     -->
     <div class="banner-content">
@@ -78,7 +94,7 @@
                 <div class="col-lg-9">
 
                     <!--   Latest News    -->
-                    @if(!empty($news))
+                    @if(!$news->isEmpty())
                         <div class="latest-news">
                             <div class="news-headinig">
                                 <h2>Latest News</h2>
@@ -126,7 +142,7 @@
                     </div>
 
                     <!--  Logo slider     -->
-                    @if(!empty($sponsors))
+                    @if(!$sponsors->isEmpty())
                         <div class="latest-news">
                             <div class="logo-sldier slider-dots">
                                 @foreach($sponsors as $sponsor)

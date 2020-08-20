@@ -130,6 +130,11 @@ Route::group(['prefix' => 'admin'], static function () {
 
         /* App Setting Routes */
         Route::resource('/setting', 'SettingController');
+        Route::post('/homepage-slider', 'SettingController@uploadSliderImages')->name('slider.images');
+
+        /* Dropzone JS Image Upload and Delete Routes */
+        Route::post('/image/upload', 'ImageController@uploadImage')->name('image.upload');
+        Route::post('image/delete','ImageController@deleteImage')->name('image.delete');
 
         /* User Management */
         Route::resource('/user', 'UserController');
