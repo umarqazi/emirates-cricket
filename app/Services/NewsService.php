@@ -23,8 +23,8 @@ class NewsService
         return $this->news_repo->all(News::class);
     }
 
-    public function paginatedRecords() {
-        return $this->news_repo->paginatedRecords(News::class, 2);
+    public function paginatedRecords($records = 4) {
+        return $this->news_repo->paginatedRecords(News::class, $records);
     }
 
     public function find($id) {
