@@ -120,28 +120,45 @@
     <!-- END PAGE VENDOR JS-->
 
     <script>
-        var remove_path = "{{public_path('storage/uploads/temp/gallery-images/')}}"
+        var path = "{{public_path('storage/uploads/temp/gallery-images/')}}"
         var uploadedDocumentMap = {}
         Dropzone.options.imageDropzone = {
             url: '{{ route('gallery.images') }}',
+            // params: {'path':path},
             maxFilesize: 5, // MB
             addRemoveLinks: true,
             headers: {
-                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function (file, response) {
                 $('form').append('<input type="hidden" name="gallery-images[]" value="' + response.name + '">')
                 uploadedDocumentMap[file.name] = response.name
             },
             removedfile: function (file) {
-                file.previewElement.remove()
                 var name = ''
                 if (typeof file.file_name !== 'undefined') {
                     name = file.file_name
                 } else {
                     name = uploadedDocumentMap[file.name]
                 }
-                $('form').find('input[name="gallery-images[]"][value="' + name + '"]').remove()
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: 'POST',
+                    url: '{{ route('image.delete') }}',
+                    data: {filename: name, filepath: path, deleteFromDB: false},
+                    success: function (data){
+                        console.log("File has been successfully removed!!");
+                        file.previewElement.remove();
+                        $('form').find('input[name="gallery-images[]"][value="' + name + '"]').remove()
+                    },
+                    error: function(e) {
+                        console.log(e);
+                    }});
+                var fileRef;
+                return (fileRef = file.previewElement) != null ?
+                    fileRef.parentNode.removeChild(file.previewElement) : void 0;
             },
             init: function () {
                     @if(isset($gallery) && $gallery->images)

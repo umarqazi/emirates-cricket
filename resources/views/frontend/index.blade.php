@@ -1,5 +1,9 @@
 @extends('frontend.layout.master-frontend')
 
+@section('title')
+    <title>Home Page</title>
+@endsection
+
 @section('content')
 
     <!--   top bar     -->
@@ -93,7 +97,7 @@
                     <div class="latest-news">
                         <div class="news-headinig">
                             <h2>Latest News</h2>
-                            <a href="#" class="btn">View More</a>
+                            <a href="{{route('news')}}" class="btn">View More</a>
                         </div>
                         <div class="news-slider slider-dots">
                             <div>

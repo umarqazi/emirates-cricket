@@ -113,10 +113,8 @@ class GalleryController extends Controller
      */
     public function update(UpdateGallery $request, Gallery $gallery)
     {
-        dd($gallery);
-
-        $params = $request->except('_token', '_method', 'action');
-        $oldImageName = $this->gallery_service->find($id)->image;
+        $params = $request->except('_token', '_method', 'gallery-images');
+        $galleryObj = $this->gallery_service->find($gallery->id);
         $file = '';
         $imageName = '';
 
@@ -126,52 +124,29 @@ class GalleryController extends Controller
             $file = $request->file('image');
             $params['image'] = $imageName;
         } else{
-            $params['image'] = $oldImageName;
+            $params['image'] = $galleryObj->image;
         }
 
-        $news = $this->gallery_service->update($params, $id);
+        $status = $this->gallery_service->update($params, $gallery->id);
 
         /* For Polymorphic Relation */
-        $this->image_service->store($gallery, $params);
+        $this->image_service->update($galleryObj, $request->except('_token', '_method'));
 
-        if (!empty($news) && $request->hasFile('image')) {
+        if (!empty($status) && $request->hasFile('image')) {
 
-            $path = 'uploads/gallery/'.$id.'/';
+            $path = 'uploads/gallery/'.$gallery->id.'/';
 
             if (!Storage::disk('public')->exists($path)) {
                 Storage::disk('public')->makeDirectory($path);
             }
 
             /* Delete Old Image */
-            File::delete(public_path('storage/uploads/gallery/'.$id.'/'.$oldImageName));
+            File::delete(public_path('storage/uploads/gallery/'.$gallery->id.'/'.$galleryObj->image));
 
             /* Upload New Image */
             Storage::disk('public')->putFileAs($path, $file, $imageName);
         }
-        return redirect()->route('news.index')->with('success', 'News has been Updated Successfully!');
-
-
-        $extension = $request->file('image')->getClientOriginalExtension();
-        $imageName = time().'.'.$extension;
-        $params = $request->except('_token');
-        $file = $request->file('image');
-        $params['image'] = $imageName;
-
-        $gallery = $this->gallery_service->store($params);
-        if (!empty($gallery)) {
-            /* For Polymorphic Relation */
-            $this->image_service->store($gallery, $params);
-
-            $path = 'uploads/gallery/'.$gallery->id.'/';
-            if (!Storage::disk('public')->exists($path)) {
-                Storage::disk('public')->makeDirectory($path);
-            }
-            Storage::disk('public')->putFileAs($path, $file, $imageName);
-        }
-
-        return redirect()->route('gallery.index')->with('success', 'Gallery has been Created Successfully!');
-
-
+        return redirect()->route('gallery.index')->with('success', 'Gallery has been Updated Successfully!');
     }
 
     /**

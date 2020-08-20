@@ -23,6 +23,10 @@ class ImageService
         $this->image_repo = new ImageRepo();
     }
 
+    public function find($name) {
+        return Image::where('name', $name)->get();
+    }
+
     public function store($relation_model, $data): bool
     {
         $response = false;
@@ -81,8 +85,33 @@ class ImageService
         return $response;
     }
 
-    public function update() {
+    public function update($relation_model, $data)
+    {
+        foreach ($data['gallery-images'] as $imageName)
+        {
+            $found = $this->find($imageName);
 
+            if ($found->isEmpty()) {
+                $image = new Image();
+                $image->name = $imageName;
+                $relation_model->images()->save($image);
+            }
+        }
+        return true;
     }
 
+    public function updateSliderImage($relation_model, $data)
+    {
+        foreach ($data['slider-images'] as $imageName)
+        {
+            $found = $this->find($imageName);
+
+            if ($found->isEmpty()) {
+                $image = new Image();
+                $image->name = $imageName;
+                $relation_model->images()->save($image);
+            }
+        }
+        return true;
+    }
 }

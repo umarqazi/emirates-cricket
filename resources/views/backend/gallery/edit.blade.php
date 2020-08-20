@@ -129,28 +129,49 @@
     <!-- END PAGE VENDOR JS-->
 
     <script>
+        var upload_path = "{{asset('storage/uploads/gallery/'.$gallery->id.'/')}}"
+        var path = "{{public_path('storage/uploads/gallery/'.$gallery->id.'/')}}"
         var uploadedDocumentMap = {}
-        var path = "{{asset('storage/uploads/gallery/'.$gallery->id.'/')}}"
         Dropzone.options.imageDropzone = {
-            url: '{{ route('gallery.images') }}',
+            url: '{{ route('image.upload') }}',
+            params: {'path':path},
             maxFilesize: 5, // MB
             addRemoveLinks: true,
             headers: {
-                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function (file, response) {
                 $('form').append('<input type="hidden" name="gallery-images[]" value="' + response.name + '">')
                 uploadedDocumentMap[file.name] = response.name
             },
             removedfile: function (file) {
-                file.previewElement.remove()
                 var name = ''
                 if (typeof file.file_name !== 'undefined') {
                     name = file.file_name
-                } else {
+                } else if (typeof uploadedDocumentMap[file.name] !== 'undefined') {
                     name = uploadedDocumentMap[file.name]
+                } else {
+                    name = file.name
                 }
-                $('form').find('input[name="gallery-images[]"][value="' + name + '"]').remove()
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: 'POST',
+                    url: '{{ route('image.delete') }}',
+                    data: {filename: name, filepath: path, deleteFromDB: true},
+                    success: function (data){
+                        console.log("File has been successfully removed!!");
+                        file.previewElement.remove();
+                        $('form').find('input[name="gallery-images[]"][value="' + name + '"]').remove()
+                    },
+                    error: function(e) {
+                        console.log(e);
+                    }});
+                var fileRef;
+                return (fileRef = file.previewElement) != null ?
+                    fileRef.parentNode.removeChild(file.previewElement) : void 0;
             },
             init: function () {
                 @if(isset($gallery) && $gallery->images)
@@ -161,7 +182,7 @@
                     for (var i in files) {
                     var file = files[i]
                     var filename = files[i].name
-                    var filepath = path + '/' + filename
+                    var filepath = upload_path + '/' + filename
 
                     imageDropzone.displayExistingFile(file, filepath);
                     $('form').append('<input type="hidden" name="gallery-images[]" value="' + file.name + '">')
