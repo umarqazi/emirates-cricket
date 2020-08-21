@@ -115,9 +115,18 @@
 @endsection
 
 @section('scripts')
+    {{--<script>
+        let storage_path = "{{public_path('storage/uploads/temp/gallery-images/')}}"
+        let upload_url = "{{ route('image.upload') }}"
+        let delete_url = "{{ route('image.delete') }}"
+        let addRemoveLinks = true
+        let uploadedDocumentMap = {}
+        let files = @if(isset($gallery) && $gallery->images) {!! json_encode($gallery->images) !!} @else [] @endif
+    </script>--}}
     <!-- BEGIN PAGE VENDOR JS-->
     <script src="{{URL::asset('backend/assets/js/form-layouts.js')}}"></script>
     <!-- END PAGE VENDOR JS-->
+{{--    <script src="{{URL::asset('backend/assets/js/dropzone-custom.js')}}" type="text/javascript"></script>--}}
 
     <script>
         var path = "{{public_path('storage/uploads/temp/gallery-images/')}}"
