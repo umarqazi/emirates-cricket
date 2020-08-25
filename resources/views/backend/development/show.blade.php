@@ -1,7 +1,7 @@
 @extends('backend.layout.master-backend')
 
 @section('title')
-    <title>Edit Development Detail| Admin Panel</title>
+    <title>Show Development Detail| Admin Panel</title>
 @endsection
 
 @section('styles')
@@ -14,7 +14,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m6 l6">
-                    <h5 class="breadcrumbs-title mt-0 mb-0">Edit Development Detail</h5>
+                    <h5 class="breadcrumbs-title mt-0 mb-0">Show Development Detail</h5>
                 </div>
                 <div class="col s12 m6 l6 right-align-md">
                     <ol class="breadcrumbs mb-0">
@@ -22,7 +22,7 @@
                         </li>
                         <li class="breadcrumb-item"><a href="{{route('development.index')}}">Development List</a>
                         </li>
-                        <li class="breadcrumb-item active">Edit Development Detail
+                        <li class="breadcrumb-item active">Show Development Detail
                         </li>
                     </ol>
                 </div>
@@ -43,9 +43,7 @@
 
                                 @include('frontend.partials.session-messages')
 
-                                <form class="col s12" method="POST" action="{{route('development.update', $development->id)}}">
-                                    @csrf
-                                    @method('PUT')
+                                <form class="col s12" method="POST">
 
                                     <div class="row">
                                         <div class="input-field col m6 s12">
@@ -61,7 +59,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <textarea id="message5" name="heading" class="ckeditor1 validate @error('heading') invalid @enderror">{{$development->heading}}</textarea>
+                                            <textarea id="message1" name="heading" class="ckeditor1 validate @error('heading') invalid @enderror">{{$development->heading}}</textarea>
 
                                             @error('heading')
                                             <span class="invalid-feedback" role="alert">
@@ -73,7 +71,7 @@
 
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <textarea id="message5" class="ckeditor" name="description" rows="15" placeholder="Type your reply in here...">{!! $development->description ?: '' !!}</textarea>
+                                            <textarea id="message2" class="ckeditor" name="description" rows="15" placeholder="Type your reply in here...">{!! $development->description ?: '' !!}</textarea>
 
                                             @error('description')
                                             <span class="invalid-feedback" role="alert">
@@ -84,18 +82,15 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-12"><b>Upload {{$development->title}} Gallery Images</b></div>
-                                        <div class="input-field col m12 s12 dropzone" id="image-dropzone">
+                                        @if(!$development->images->isEmpty())
+                                            <div class="col-12"><b>Upload {{$development->title}} Gallery Images</b></div>
+                                            <div class="input-field col m12 s12 dropzone" id="image-dropzone">
 
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <button class="btn cyan waves-effect waves-light right" type="submit">Update Development
-                                                <i class="material-icons right">send</i>
-                                            </button>
-                                        </div>
+                                            </div>
+                                        @else
+                                            <div class="col-12"><b>Upload Gallery Images</b></div>
+                                            <div class="center"><b>No Images have been Uploaded Yet.</b></div>
+                                        @endif
                                     </div>
                                 </form>
                             </div>
@@ -123,6 +118,7 @@
             url: '{{ route('image.upload') }}',
             params: {'path':storage_path},
             maxFilesize: 5, // MB
+            acceptedFiles:  ".png,.jpg,.jpeg",
             addRemoveLinks: true,
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

@@ -16,7 +16,7 @@ class Development extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'description',
+        'title', 'heading', 'description',
     ];
 
     public function images()

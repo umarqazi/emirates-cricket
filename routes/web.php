@@ -25,21 +25,15 @@ Route::get('/about', static function () {
 Route::get('/contact', 'ContactController@createContact')->name('contact');
 Route::post('/contact', 'ContactController@storeContact')->name('submit-contact-form');
 
-Route::get('/development', static function () {
-    return view('frontend.development');
-})->name('development');
-
-Route::get('/development-pathway', static function () {
-    return view('frontend.development-pathway');
-})->name('development-pathway');
+/* Development Routes */
+Route::get('/development', 'DevelopmentController@frontendMainDevelopmentPage')->name('development');
+Route::get('/development-pathway', 'DevelopmentController@frontendDevelopmentPathwayPage')->name('development-pathway');
+Route::get('/emirati-development-program', 'DevelopmentController@frontendEmiratiDevelopmentPage')->name('emirati-development-program');
 
 Route::get('/download', static function () {
     return view('frontend.download');
 })->name('download');
 
-Route::get('/emirati-development-program', static function () {
-    return view('frontend.emirati-development-program');
-})->name('emirati-development-program');
 
 Route::get('/fan-club', static function () {
     return view('frontend.fan-club');

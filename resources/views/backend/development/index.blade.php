@@ -60,6 +60,10 @@
                                                             <tr>
                                                                 <td>{{$development->title}}</td>
                                                                 <td>
+{{--                                                                    @can('Show Development')--}}
+                                                                        <a href="{{route('development.show', $development->id)}}"><i class="material-icons">visibility</i></a>
+{{--                                                                    @endcan--}}
+
 {{--                                                                    @can('Edit Development')--}}
                                                                         <a href="{{route('development.edit', $development->id)}}"><i class="material-icons">edit</i></a>
 {{--                                                                    @endcan--}}

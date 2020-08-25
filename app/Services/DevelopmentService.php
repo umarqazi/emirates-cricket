@@ -31,6 +31,12 @@ class DevelopmentService
         return $this->development_repo->find(Development::class, $id);
     }
 
+    public function findByType($type)
+    {
+        $where = array('type' => $type);
+        return $this->development_repo->getOne(Development::class, $where);
+    }
+
     public function update($id, $params)
     {
         return $this->development_repo->update(Development::class, $params, $id);
