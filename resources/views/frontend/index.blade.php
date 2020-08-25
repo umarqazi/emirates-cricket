@@ -1,33 +1,49 @@
 @extends('frontend.layout.master-frontend')
 
+@section('title')
+    <title>Home Page</title>
+@endsection
+
 @section('content')
 
     <!--   top bar     -->
     @include('frontend.partials.top-bar')
 
     <!--  banner sldier      -->
-    <div class="banner-slider slider-dots">
-        <div>
-            <div class="slider-image">
-                <img src="{{ URL::asset('frontend/assets/images/banner-slide1.png') }}" alt="">
+    @if(!$setting->images->isEmpty())
+        <div class="banner-slider slider-dots">
+            @foreach($setting->images as $image)
+                <div>
+                    <div class="slider-image">
+                        <img src="{{ URL::asset('storage/uploads/homepage-slider/'.$setting->id.'/'.$image->name) }}" alt="">
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    @else
+        <div class="banner-slider slider-dots">
+            <div>
+                <div class="slider-image">
+                    <img src="{{ URL::asset('frontend/assets/images/banner-slide1.png') }}" alt="">
+                </div>
+            </div>
+            <div>
+                <div class="slider-image">
+                    <img src="{{ URL::asset('frontend/assets/images/banner-slide1.png') }}" alt="">
+                </div>
+            </div>
+            <div>
+                <div class="slider-image">
+                    <img src="{{ URL::asset('frontend/assets/images/banner-slide1.png') }}" alt="">
+                </div>
+            </div>
+            <div>
+                <div class="slider-image">
+                    <img src="{{ URL::asset('frontend/assets/images/banner-slide1.png') }}" alt="">
+                </div>
             </div>
         </div>
-        <div>
-            <div class="slider-image">
-                <img src="{{ URL::asset('frontend/assets/images/banner-slide1.png') }}" alt="">
-            </div>
-        </div>
-        <div>
-            <div class="slider-image">
-                <img src="{{ URL::asset('frontend/assets/images/banner-slide1.png') }}" alt="">
-            </div>
-        </div>
-        <div>
-            <div class="slider-image">
-                <img src="{{ URL::asset('frontend/assets/images/banner-slide1.png') }}" alt="">
-            </div>
-        </div>
-    </div>
+    @endif
 
     <!-- banner content     -->
     <div class="banner-content">
@@ -78,69 +94,33 @@
                 <div class="col-lg-9">
 
                     <!--   Latest News    -->
-                    <div class="latest-news">
-                        <div class="news-headinig">
-                            <h2>Latest News</h2>
-                            <a href="#" class="btn">View More</a>
-                        </div>
-                        <div class="news-slider slider-dots">
-                            <div>
-                                <div class="post-inner">
-                                    <img src="{{ URL::asset('frontend/assets/images/marcus-wallis.png') }}" alt="">
-                                    <p class="date">
-                                        <a href="#">May 13, 2020</a>
-                                    </p>
-                                    <h5>Emirates Cricket Board appoints Subhan Ahmad as Advisor</h5>
-                                    <p>Emirates Cricket Board (ECB) has today confirmed that Subhan Ahmad has been appointed as the Advisor</p>
-                                    <p class="read-more">
-                                        <a href="#">Read more</a>
-                                    </p>
-                                </div>
+                    @if(!$news->isEmpty())
+                        <div class="latest-news">
+                            <div class="news-headinig">
+                                <h2>Latest News</h2>
+                                <a href="{{route('news')}}" class="btn">View More</a>
                             </div>
-
-                            <div>
-                                <div class="post-inner">
-                                    <img src="{{ URL::asset('frontend/assets/images/craig-hughes.png') }}" alt="">
-                                    <p class="date">
-                                        <a href="#">May 14, 2020</a>
-                                    </p>
-                                    <h5>Official T10 League Management Statement</h5>
-                                    <p>Clarification from T Ten Sports Management Chairman Shaji Ul Mulk on Abu Dhabi T10 & ICC ACU</p>
-                                    <p class="read-more">
-                                        <a href="#">Read more</a>
-                                    </p>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="post-inner">
-                                    <img src="{{ URL::asset('frontend/assets/images/sefton-marks.png') }}" alt="">
-                                    <p class="date">
-                                        <a href="#">May 14, 2020</a>
-                                    </p>
-                                    <h5>Official T10 League Management Statement</h5>
-                                    <p>Clarification from T Ten Sports Management Chairman Shaji Ul Mulk on Abu Dhabi T10 & ICC ACU</p>
-                                    <p class="read-more">
-                                        <a href="#">Read more</a>
-                                    </p>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="post-inner">
-                                    <img src="{{ URL::asset('frontend/assets/images/craig-hughes.png') }}" alt="">
-                                    <p class="date">
-                                        <a href="#">May 14, 2020</a>
-                                    </p>
-                                    <h5>Official T10 League Management Statement</h5>
-                                    <p>Clarification from T Ten Sports Management Chairman Shaji Ul Mulk on Abu Dhabi T10 & ICC ACU</p>
-                                    <p class="read-more">
-                                        <a href="#">Read more</a>
-                                    </p>
-                                </div>
+                            <div class="news-slider slider-dots">
+                                @foreach($news as $eachNews)
+                                    <div>
+                                        <div class="post-inner">
+                                            <img src="{{ URL::asset('storage/uploads/news/'.$eachNews->id.'/'.$eachNews->image) }}" alt="">
+                                            <p class="date">
+                                                <a href="#">{{date('M d, Y', strtotime($eachNews->created_at))}}</a>
+                                            </p>
+                                            <h5>{{$eachNews->title}}</h5>
+                                            <p>{!! \Illuminate\Support\Str::limit($eachNews->text, 50) !!}</p>
+                                            <p class="read-more">
+                                                <a href="#">Read more</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
-                    </div>
+                    @endif
 
-                    <!--     International news         -->
+                <!--     International news         -->
                     <div class="latest-news international-news">
                         <h2>International News</h2>
                         <div class="row">
@@ -162,30 +142,19 @@
                     </div>
 
                     <!--  Logo slider     -->
-                    <div class="latest-news">
-                        <div class="logo-sldier slider-dots">
-                            <div>
-                                <div class="logo-image">
-                                    <img src="{{ URL::asset('frontend/assets/images/pacificLogo.png') }}" alt="">
-                                </div>
-                            </div>
-                            <div>
-                                <div class="logo-image">
-                                    <img src="{{ URL::asset('frontend/assets/images/pincent.png') }}" alt="">
-                                </div>
-                            </div>
-                            <div>
-                                <div class="logo-image">
-                                    <img src="{{ URL::asset('frontend/assets/images/virat.png') }}" alt="">
-                                </div>
-                            </div>
-                            <div>
-                                <div class="logo-image">
-                                    <img src="{{ URL::asset('frontend/assets/images/pacificLogo.png') }}" alt="">
-                                </div>
+                    @if(!$sponsors->isEmpty())
+                        <div class="latest-news">
+                            <div class="logo-sldier slider-dots">
+                                @foreach($sponsors as $sponsor)
+                                    <div>
+                                        <div class="logo-image">
+                                            <img src="{{ URL::asset('storage/uploads/sponsor/'.$sponsor->id.'/'.$sponsor->image) }}" alt="">
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
 
                 <div class="col-lg-3">

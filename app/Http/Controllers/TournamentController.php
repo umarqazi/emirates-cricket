@@ -9,6 +9,7 @@ use App\Notifications\PlayerRegistrationNotification;
 use App\Notifications\TournamentRegistrationNotification;
 use App\Notifications\TournamentRequestApprovalNotification;
 use App\Notifications\TournamentRequestDeclinedNotification;
+use App\Services\SettingService;
 use App\Services\TournamentService;
 use App\Tournament;
 use Illuminate\Http\Request;
@@ -18,6 +19,7 @@ use Maatwebsite\Excel\Facades\Excel;
 class TournamentController extends Controller
 {
     public $tournament_service;
+    public $setting_service;
 
     public function __construct()
     {
@@ -25,6 +27,7 @@ class TournamentController extends Controller
         $this->authorizeResource(Tournament::class, 'tournament');
 
         $this->tournament_service = new TournamentService();
+        $this->setting_service = new SettingService();
     }
 
     /**
@@ -45,7 +48,8 @@ class TournamentController extends Controller
      */
     public function createTournamentRegistration()
     {
-        return view('frontend.tournament-registration');
+        $setting = $this->setting_service->first();
+        return view('frontend.tournament-registration', compact('setting'));
     }
 
     /**

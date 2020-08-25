@@ -368,6 +368,21 @@
                 </div>
             </li>
         @endif
+
+{{--        @if(auth()->user()->can('List Player Registration') || auth()->user()->can('Edit Player Registration'))--}}
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">settings</i><span class="menu-title" data-i18n="">Settings</span></a>
+                <div class="collapsible-body">
+                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+
+{{--                        @if(auth()->user()->can('List Player Registration'))--}}
+                            <li>
+                                <a class="collapsible-body" href="{{route('setting.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Setting</span></a>
+                            </li>
+{{--                        @endif--}}
+                    </ul>
+                </div>
+            </li>
+{{--        @endif--}}
         <li class="navigation-header"><a class="navigation-header-text">Charts &amp; Maps </a><i class="navigation-header-icon material-icons">more_horiz</i>
         </li>
         <li class="navigation-header"><a class="navigation-header-text">Misc </a><i class="navigation-header-icon material-icons">more_horiz</i>
