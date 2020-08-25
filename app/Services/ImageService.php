@@ -30,7 +30,7 @@ class ImageService
     public function store($relation_model, $data): bool
     {
         $response = false;
-        foreach ($data['gallery-images'] as $imageName)
+        foreach ($data['images'] as $imageName)
         {
             $image = new Image();
             $image->name = $imageName;
@@ -59,7 +59,7 @@ class ImageService
     public function storeSliderImage($relation_model, $data): bool
     {
         $response = false;
-        foreach ($data['slider-images'] as $imageName)
+        foreach ($data['images'] as $imageName)
         {
             $image = new Image();
             $image->name = $imageName;
@@ -87,7 +87,7 @@ class ImageService
 
     public function update($relation_model, $data)
     {
-        foreach ($data['gallery-images'] as $imageName)
+        foreach ($data['images'] as $imageName)
         {
             $found = $this->find($imageName);
 
@@ -102,7 +102,7 @@ class ImageService
 
     public function updateSliderImage($relation_model, $data)
     {
-        foreach ($data['slider-images'] as $imageName)
+        foreach ($data['images'] as $imageName)
         {
             $found = $this->find($imageName);
 

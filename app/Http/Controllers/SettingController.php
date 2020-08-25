@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SettingRequest;
 use App\Services\ImageService;
 use App\Services\SettingService;
+use App\Setting;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller
@@ -36,7 +37,12 @@ class SettingController extends Controller
     public function create()
     {
         $setting = $this->setting_service->first();
-        return view('backend.setting.edit', compact('setting'));
+
+        if (empty($setting)) {
+            return view('backend.setting.create');
+        } else {
+            return view('backend.setting.edit', compact('setting'));
+        }
     }
 
     /**
@@ -45,9 +51,17 @@ class SettingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SettingRequest $request)
     {
+        $params = $request->except(['_token', 'images']);
 
+        $setting = $this->setting_service->store($params);
+        if (!empty($setting)) {
+            /* For Polymorphic Relation */
+            $this->image_service->storeSliderImage($setting, $request->except(['_token']));
+
+            return redirect()->route('setting.create')->with('success', 'Setting has been Created!');
+        }
     }
 
     /**
@@ -79,15 +93,15 @@ class SettingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(SettingRequest $request, $id)
+    public function update(SettingRequest $request, Setting $setting)
     {
-        $setting = $this->setting_service->first();
-        $params = $request->except(['_token', '_method', 'slider-images']);
-        $status = $this->setting_service->update($id, $params);
-        if (!empty($status)) {
+        $settingObj = $this->setting_service->first();
+        $params = $request->except(['_token', '_method', 'images']);
 
+        $status = $this->setting_service->update($setting->id, $params);
+        if (!empty($status)) {
             /* For Polymorphic Relation */
-            $this->image_service->updateSliderImage($setting, $request->except(['_token', '_method']));
+            $this->image_service->updateSliderImage($settingObj, $request->except(['_token', '_method']));
             return redirect()->route('setting.create')->with('success', 'Setting ha been Updated!');
         }
     }

@@ -365,7 +365,7 @@
 
 {{--                        @if(auth()->user()->can('List Player Registration'))--}}
                             <li>
-                                <a class="collapsible-body" href="{{route('setting.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Tournament Fee</span></a>
+                                <a class="collapsible-body" href="{{route('setting.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Setting</span></a>
                             </li>
 {{--                        @endif--}}
                     </ul>

@@ -31,11 +31,11 @@ class ImageController extends Controller
 
     public function deleteImage(Request $request)
     {
-        $filename =  $request->get('filename');
+        $filename = $request->get('filename');
         Log::alert($filename);
-        $filepath =  $request->get('filepath');
+        $filepath = $request->get('filepath');
         Log::alert($filepath);
-        $deleteFromDB =  $request->get('deleteFromDB');
+        $deleteFromDB = $request->get('deleteFromDB');
         Log::alert($deleteFromDB);
 
         if (!empty($deleteFromDB)) {

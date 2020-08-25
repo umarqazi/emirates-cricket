@@ -1,5 +1,11 @@
-$(document).ready(function () {
-    debugger
+// $(document).load(function () {
+//     debugger
+/*let storage_path = "{{public_path('storage/uploads/temp/gallery-images/')}}"
+let upload_url = "{{ route('image.upload') }}"
+let delete_url = "{{ route('image.delete') }}"
+let addRemoveLinks = true
+let uploadedDocumentMap = {}
+let files = @if(isset($gallery) && $gallery->images) {!! json_encode($gallery->images) !!} @else [] @endif*/
     Dropzone.options.imageDropzone = {
         url: upload_url,
         params: {'path': storage_path},
@@ -31,7 +37,7 @@ $(document).ready(function () {
                 data: {filename: name, filepath: storage_path, deleteFromDB: false},
                 success: function (data){
                     file.previewElement.remove();
-                    $('form').find('input[name="gallery-images[]"][value="' + name + '"]').remove()
+                    $('form').find('input[name="images[]"][value="' + name + '"]').remove()
                 },
                 error: function(e) {
                     console.log(e);
@@ -41,14 +47,17 @@ $(document).ready(function () {
                 fileRef.parentNode.removeChild(file.previewElement) : void 0;
         },
         init: function () {
-            if (files.length === 0) {
-                for (var i=0; i<files.length; i++) {
+            if (files.length) {
+                for (var i=0; i < files.length; i++) {
                     var file = files[i]
-                    this.options.addedfile.call(this, file)
-                    file.previewElement.classList.add('dz-complete')
-                    $('form').append('<input type="hidden" name="images[]" value="' + file.file_name + '">')
+                    var filename = files[i].name
+                    var filepath = uploaded_path + '/' + filename
+                    console.log(file);
+                    console.log(filepath);
+                    imageDropzone.displayExistingFile(file, filepath);
+                    $('form').append('<input type="hidden" name="images[]" value="' + file.name + '">')
                 }
             }
         }
     }
-});
+// });
