@@ -309,6 +309,17 @@
             </li>
         @endif
 
+{{--        @if(auth()->user()->can('List Contact'))--}}
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">contact_phone</i><span class="menu-title" data-i18n="">Development</span></a>
+                <div class="collapsible-body">
+                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                        <li><a class="collapsible-body" href="{{route('development.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Development List</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+{{--        @endif--}}
+
         @if(auth()->user()->can('List Tournament Registration') || auth()->user()->can('Edit Tournament Registration'))
             <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">description</i><span class="menu-title" data-i18n="">Tournament Registration</span></a>
                 <div class="collapsible-body">
@@ -365,7 +376,7 @@
 
 {{--                        @if(auth()->user()->can('List Player Registration'))--}}
                             <li>
-                                <a class="collapsible-body" href="{{route('setting.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Tournament Fee</span></a>
+                                <a class="collapsible-body" href="{{route('setting.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Setting</span></a>
                             </li>
 {{--                        @endif--}}
                     </ul>

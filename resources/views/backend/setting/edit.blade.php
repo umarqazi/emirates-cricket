@@ -104,7 +104,7 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function (file, response) {
-                $('form').append('<input type="hidden" name="slider-images[]" value="' + response.name + '">')
+                $('form').append('<input type="hidden" name="images[]" value="' + response.name + '">')
                 uploadedDocumentMap[file.name] = response.name
             },
             removedfile: function (file) {
@@ -127,7 +127,7 @@
                     success: function (data){
                         console.log("File has been successfully removed!!");
                         file.previewElement.remove();
-                        $('form').find('input[name="slider-images[]"][value="' + name + '"]').remove()
+                        $('form').find('input[name="images[]"][value="' + name + '"]').remove()
                     },
                     error: function(e) {
                         console.log(e);
@@ -148,7 +148,7 @@
                     var filepath = upload_path + '/' + filename
 
                     imageDropzone.displayExistingFile(file, filepath);
-                    $('form').append('<input type="hidden" name="slider-images[]" value="' + file.name + '">')
+                    $('form').append('<input type="hidden" name="images[]" value="' + file.name + '">')
                 }
                 @endif
             }

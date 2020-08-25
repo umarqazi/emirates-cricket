@@ -1,7 +1,7 @@
 @extends('backend.layout.master-backend')
 
 @section('title')
-    <title>Add Gallery| Admin Panel</title>
+    <title>Edit Development Detail| Admin Panel</title>
 @endsection
 
 @section('styles')
@@ -14,15 +14,15 @@
         <div class="container">
             <div class="row">
                 <div class="col s12 m6 l6">
-                    <h5 class="breadcrumbs-title mt-0 mb-0">Add Gallery</h5>
+                    <h5 class="breadcrumbs-title mt-0 mb-0">Edit Development Detail</h5>
                 </div>
                 <div class="col s12 m6 l6 right-align-md">
                     <ol class="breadcrumbs mb-0">
                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a>
                         </li>
-                        <li class="breadcrumb-item"><a href="{{route('player.index')}}">Gallery List</a>
+                        <li class="breadcrumb-item"><a href="{{route('development.index')}}">Development List</a>
                         </li>
-                        <li class="breadcrumb-item active">Add New Gallery
+                        <li class="breadcrumb-item active">Edit Development Detail
                         </li>
                     </ol>
                 </div>
@@ -40,13 +40,17 @@
                     <div class="col s12 m12 l12">
                         <div id="Form-advance" class="card card card-default scrollspy">
                             <div class="card-content">
-                                <form class="col s12" method="POST" action="{{route('gallery.store')}}" enctype="multipart/form-data">
+
+                                @include('frontend.partials.session-messages')
+
+                                <form class="col s12" method="POST" action="{{route('development.update', $development->id)}}">
                                     @csrf
+                                    @method('PUT')
 
                                     <div class="row">
-                                        <div class="input-field col m12 s12">
-                                            <input id="title" type="text" name="title" class="validate @error('title') invalid @enderror" value="{{old('title')}}">
-                                            <label for="title">Gallery Title</label>
+                                        <div class="input-field col m6 s12">
+                                            <input id="first_name01" type="text" name="title" class="validate @error('title') invalid @enderror" value="{{$development->title}}">
+                                            <label for="first_name01">Title</label>
 
                                             @error('title')
                                             <span class="invalid-feedback" role="alert">
@@ -55,13 +59,11 @@
                                             @enderror
                                         </div>
                                     </div>
-
                                     <div class="row">
-                                        <div class="col-12">Gallery Description</div>
-                                        <div class="input-field col-12">
-                                            <textarea id="message5" class="ckeditor @error('text') invalid @enderror" name="text" rows="15" placeholder="Type Gallery Description in here...">{{old('text')}}</textarea>
+                                        <div class="input-field col s12">
+                                            <textarea id="message5" name="heading" class="ckeditor1 validate @error('heading') invalid @enderror">{{$development->heading}}</textarea>
 
-                                            @error('text')
+                                            @error('heading')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -70,16 +72,10 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="file-field input-field col-12">
-                                            <div class="btn custom-file-button">
-                                                <span>Featured Image</span>
-                                                <input type="file" name="image" class="validate @error('image') invalid @enderror">
-                                            </div>
-                                            <div class="file-path-wrapper">
-                                                <input class="file-path validate" type="text">
-                                            </div>
+                                        <div class="input-field col s12">
+                                            <textarea id="message5" class="ckeditor" name="description" rows="15" placeholder="Type your reply in here...">{!! $development->description ?: '' !!}</textarea>
 
-                                            @error('image')
+                                            @error('description')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -88,7 +84,7 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-12"><b>Upload Gallery Images</b></div>
+                                        <div class="col-12"><b>Upload {{$development->title}} Gallery Images</b></div>
                                         <div class="input-field col m12 s12 dropzone" id="image-dropzone">
 
                                         </div>
@@ -96,7 +92,7 @@
 
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <button class="btn cyan waves-effect waves-light right" type="submit">Create New Gallery
+                                            <button class="btn cyan waves-effect waves-light right" type="submit">Update Development
                                                 <i class="material-icons right">send</i>
                                             </button>
                                         </div>
@@ -120,11 +116,12 @@
     <!-- END PAGE VENDOR JS-->
 
     <script>
-        let storage_path = "{{public_path('storage/uploads/temp/gallery-images/')}}"
+        var uploaded_path = "{{asset('storage/uploads/development/'.$development->id.'/')}}"
+        let storage_path = "{{public_path('storage/uploads/development/'.$development->id.'/')}}"
         var uploadedDocumentMap = {}
         Dropzone.options.imageDropzone = {
             url: '{{ route('image.upload') }}',
-            params: {'path': storage_path},
+            params: {'path':storage_path},
             maxFilesize: 5, // MB
             addRemoveLinks: true,
             headers: {
@@ -138,16 +135,19 @@
                 var name = ''
                 if (typeof file.file_name !== 'undefined') {
                     name = file.file_name
-                } else {
+                } else if (typeof uploadedDocumentMap[file.name] !== 'undefined') {
                     name = uploadedDocumentMap[file.name]
+                } else {
+                    name = file.name
                 }
+
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     type: 'POST',
                     url: '{{ route('image.delete') }}',
-                    data: {filename: name, filepath: storage_path, deleteFromDB: false},
+                    data: {filename: name, filepath: storage_path, deleteFromDB: true},
                     success: function (data){
                         file.previewElement.remove();
                         $('form').find('input[name="images[]"][value="' + name + '"]').remove()
@@ -160,14 +160,18 @@
                     fileRef.parentNode.removeChild(file.previewElement) : void 0;
             },
             init: function () {
-                @if(isset($gallery) && $gallery->images)
-                var files = {!! json_encode($gallery->images) !!}
-                for (var i=0; i < files.length; i++) {
+                @if(isset($development) && $development->images)
+                let imageDropzone = this;
+
+                var files =
+                {!! json_encode($development->images) !!}
+                    for (var i in files) {
                     var file = files[i]
                     var filename = files[i].name
                     var filepath = uploaded_path + '/' + filename
+
                     imageDropzone.displayExistingFile(file, filepath);
-                    $('form').append('<input type="hidden" name="images[]" value="' + file.file_name + '">')
+                    $('form').append('<input type="hidden" name="images[]" value="' + file.name + '">')
                 }
                 @endif
             }

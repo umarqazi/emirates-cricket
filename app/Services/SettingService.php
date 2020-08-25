@@ -21,6 +21,11 @@ class SettingService
         return $this->setting_repo->first(Setting::class);
     }
 
+    public function store($params)
+    {
+        return $this->setting_repo->store(Setting::class, $params);
+    }
+
     public function update($id, $params)
     {
         return $this->setting_repo->update(Setting::class, $params, $id);

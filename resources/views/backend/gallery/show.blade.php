@@ -65,8 +65,8 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col s12">Gallery Description</div>
-                                        <div class="input-field col s12">
+                                        <div class="col-12">Gallery Description</div>
+                                        <div class="input-field col-12">
                                             <textarea id="message5" class="ckeditor @error('text') invalid @enderror" name="text" rows="15" placeholder="Type Gallery Description in here...">{!! $gallery->text !!}</textarea>
 
                                             @error('text')
@@ -78,13 +78,9 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col s12 mt-3"><b>Upload Gallery Images</b></div>
-                                        <div>
-                                            @foreach($gallery->images as $image)
-                                                @if(file_exists(public_path('storage/uploads/gallery/'.$gallery->id.'/'.$image->name)))
-                                                    <img src="{{asset('storage/uploads/gallery/'.$gallery->id.'/'.$image->name)}}" width="200px" height="200px">
-                                                @endif
-                                            @endforeach
+                                        <div class="col-12 mt-3"><b>Uploaded Gallery Images</b></div>
+                                        <div class="input-field col m12 s12 dropzone" id="image-dropzone">
+
                                         </div>
                                     </div>
                                 </form>
@@ -104,4 +100,66 @@
     <!-- BEGIN PAGE VENDOR JS-->
     <script src="{{URL::asset('backend/assets/js/form-layouts.js')}}"></script>
     <!-- END PAGE VENDOR JS-->
+
+    <script>
+        var uploaded_path = "{{asset('storage/uploads/gallery/'.$gallery->id.'/')}}"
+        let storage_path = "{{public_path('storage/uploads/gallery/'.$gallery->id.'/')}}"
+        var uploadedDocumentMap = {}
+        Dropzone.options.imageDropzone = {
+            url: '{{ route('image.upload') }}',
+            params: {'path':storage_path},
+            maxFilesize: 5, // MB
+            addRemoveLinks: false,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (file, response) {
+                $('form').append('<input type="hidden" name="images[]" value="' + response.name + '">')
+                uploadedDocumentMap[file.name] = response.name
+            },
+            removedfile: function (file) {
+                var name = ''
+                if (typeof file.file_name !== 'undefined') {
+                    name = file.file_name
+                } else if (typeof uploadedDocumentMap[file.name] !== 'undefined') {
+                    name = uploadedDocumentMap[file.name]
+                } else {
+                    name = file.name
+                }
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: 'POST',
+                    url: '{{ route('image.delete') }}',
+                    data: {filename: name, filepath: path, deleteFromDB: true},
+                    success: function (data){
+                        file.previewElement.remove();
+                        $('form').find('input[name="images[]"][value="' + name + '"]').remove()
+                    },
+                    error: function(e) {
+                        console.log(e);
+                    }});
+                var fileRef;
+                return (fileRef = file.previewElement) != null ?
+                    fileRef.parentNode.removeChild(file.previewElement) : void 0;
+            },
+            init: function () {
+                @if(isset($gallery) && $gallery->images)
+                let imageDropzone = this;
+
+                var files =
+                {!! json_encode($gallery->images) !!}
+                    for (var i in files) {
+                    var file = files[i]
+                    var filename = files[i].name
+                    var filepath = uploaded_path + '/' + filename
+                    imageDropzone.displayExistingFile(file, filepath);
+                    $('form').append('<input type="hidden" name="images[]" value="' + file.name + '">')
+                }
+                @endif
+            }
+        }
+    </script>
 @endsection
