@@ -113,7 +113,7 @@ class GalleryController extends Controller
      */
     public function update(UpdateGallery $request, Gallery $gallery)
     {
-        $params = $request->except('_token', '_method', 'gallery-images');
+        $params = $request->except('_token', '_method', 'images');
         $galleryObj = $this->gallery_service->find($gallery->id);
         $file = '';
         $imageName = '';

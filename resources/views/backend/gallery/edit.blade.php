@@ -127,21 +127,20 @@
     <!-- BEGIN PAGE VENDOR JS-->
     <script src="{{URL::asset('backend/assets/js/form-layouts.js')}}"></script>
     <!-- END PAGE VENDOR JS-->
-
     <script>
-        var upload_path = "{{asset('storage/uploads/gallery/'.$gallery->id.'/')}}"
-        var path = "{{public_path('storage/uploads/gallery/'.$gallery->id.'/')}}"
+        var uploaded_path = "{{asset('storage/uploads/gallery/'.$gallery->id.'/')}}"
+        let storage_path = "{{public_path('storage/uploads/gallery/'.$gallery->id.'/')}}"
         var uploadedDocumentMap = {}
         Dropzone.options.imageDropzone = {
             url: '{{ route('image.upload') }}',
-            params: {'path':path},
+            params: {'path':storage_path},
             maxFilesize: 5, // MB
             addRemoveLinks: true,
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function (file, response) {
-                $('form').append('<input type="hidden" name="gallery-images[]" value="' + response.name + '">')
+                $('form').append('<input type="hidden" name="images[]" value="' + response.name + '">')
                 uploadedDocumentMap[file.name] = response.name
             },
             removedfile: function (file) {
@@ -160,11 +159,10 @@
                     },
                     type: 'POST',
                     url: '{{ route('image.delete') }}',
-                    data: {filename: name, filepath: path, deleteFromDB: true},
+                    data: {filename: name, filepath: storage_path, deleteFromDB: true},
                     success: function (data){
-                        console.log("File has been successfully removed!!");
                         file.previewElement.remove();
-                        $('form').find('input[name="gallery-images[]"][value="' + name + '"]').remove()
+                        $('form').find('input[name="images[]"][value="' + name + '"]').remove()
                     },
                     error: function(e) {
                         console.log(e);
@@ -182,10 +180,10 @@
                     for (var i in files) {
                     var file = files[i]
                     var filename = files[i].name
-                    var filepath = upload_path + '/' + filename
+                    var filepath = uploaded_path + '/' + filename
 
                     imageDropzone.displayExistingFile(file, filepath);
-                    $('form').append('<input type="hidden" name="gallery-images[]" value="' + file.name + '">')
+                    $('form').append('<input type="hidden" name="images[]" value="' + file.name + '">')
                 }
                 @endif
             }
