@@ -116,6 +116,13 @@ Route::group(['prefix' => 'admin'], static function () {
         Route::resource('/gallery', 'GalleryController');
         Route::post('/gallery-images', 'GalleryController@uploadGalleryImages')->name('gallery.images');
 
+        /* Social Account Routes */
+        Route::resource('/social-accounts', 'SocialAccountController');
+
+        /* Facebook */
+        Route::get('facebook/callback','SocialAccountController@facebookCallback')->name('facebook.callback');
+        Route::get('get/facebook/posts','SocialAccountController@getLatestFacebookPosts')->name('facebook.get.posts');
+
         /* All Teams Routes in here... */
         Route::resource('/team', 'TeamController');
 

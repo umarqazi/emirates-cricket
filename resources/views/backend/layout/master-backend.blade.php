@@ -278,6 +278,20 @@
             </li>
         @endif
 
+{{--        @if(auth()->user()->can('List Gallery') || auth()->user()->can('Create Gallery'))--}}
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">photo_library</i><span class="menu-title" data-i18n="">Social Accounts</span></a>
+                <div class="collapsible-body">
+                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+{{--                        @if(auth()->user()->can('List Gallery'))--}}
+                            <li>
+                                <a class="collapsible-body" href="{{route('social-accounts.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Accounts List</span></a>
+                            </li>
+{{--                        @endif--}}
+                    </ul>
+                </div>
+            </li>
+{{--        @endif--}}
+
         @if(auth()->user()->can('List Sponsor') || auth()->user()->can('Create Sponsor'))
             <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">thumbs_up_down</i><span class="menu-title" data-i18n="">Sponsor</span></a>
                 <div class="collapsible-body">

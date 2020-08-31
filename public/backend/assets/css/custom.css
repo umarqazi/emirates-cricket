@@ -81,3 +81,10 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 .modal-open .modal.custom-add-modal .modal-body .create-player {
     margin-top: 30px;
 }
+.social-heading{
+    margin-bottom: 15px !important;
+}
+.social-title{
+    display: inline-block !important;
+    margin-bottom: 8px !important;
+}
