@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SocialAccountRequest;
 use App\Services\FacebookService;
+use App\Services\InstagramService;
 use App\Services\SocialAccountService;
 use App\Services\SocialPostService;
 use App\SocialAccount;
@@ -15,6 +16,7 @@ class SocialAccountController extends Controller
     public $social_account_service;
     public $social_post_service;
     public $facebook_service;
+    public $instagram_service;
     public $facebook;
 
     public function __construct()
@@ -22,6 +24,7 @@ class SocialAccountController extends Controller
         $this->social_account_service = new SocialAccountService();
         $this->social_post_service = new SocialPostService();
         $this->facebook_service = new FacebookService();
+        $this->instagram_service = new InstagramService();
         $this->facebook = new Facebook();
     }
 
@@ -65,8 +68,24 @@ class SocialAccountController extends Controller
      */
     public function show(SocialAccount $socialAccount)
     {
-        $loginUrl = $this->facebook_service->facebookLogin();
-        return view('backend.social-accounts.show', compact('socialAccount', 'loginUrl'));
+        if ($socialAccount->type === SocialAccount::$Facebook)
+        {
+            $loginUrl = $this->facebook_service->facebookLogin();
+            $fetchPostsRoute = route('facebook.get.posts');
+            $view = 'backend.social-accounts.facebook-show';
+
+        } elseif ($socialAccount->type === SocialAccount::$Instagram) {
+            $loginUrl = $this->instagram_service->instagramLogin();
+            $fetchPostsRoute = route('instagram.get.posts');
+            $view = 'backend.social-accounts.instagram-show';
+
+        } else {
+            $loginUrl = $this->facebook_service->facebookLogin();
+            $fetchPostsRoute = route('instagram.get.posts');
+            $view = 'backend.social-accounts.twitter-show';
+
+        }
+        return view($view, compact('socialAccount', 'loginUrl', 'fetchPostsRoute'));
     }
 
     /**
@@ -135,6 +154,34 @@ class SocialAccountController extends Controller
         $social_account = $this->social_account_service->findByType(SocialAccount::$Facebook);
         $data = $this->facebook_service->getPostsFromPage();
         $response = $this->social_post_service->storeLattestPosts($data, $social_account->id);
+        if ($response) {
+            return redirect()->route('social-accounts.show', $social_account->id)->with('success', 'Latest Posts have been successfully Fetched!');
+        }
+    }
+
+    public function instagramCallback() {
+        $social_account = $this->social_account_service->findByType(SocialAccount::$Instagram);
+        $tokens = $this->instagram_service->instagramCallback($_GET);
+
+        /* Update Tokens */
+        $params = array('page_access_token' => $tokens['page_access_token'] ,'long_lived_access_token' => $tokens['long_lived_access_token'], 'expires_in' => date('Y-m-d H:i:s', time() + $tokens['expires_in'])); /* Equals to 60days in Seconds */
+
+        $status = $this->social_account_service->update($params, $social_account->id);
+
+        if ($status) {
+            $media = $this->instagram_service->getUserMedia();
+            $response = $this->social_post_service->storeLattestPosts($media->data, $social_account->id);
+            if ($response) {
+                return redirect()->route('social-accounts.show', $social_account->id)->with('success', 'Latest Posts have been successfully Fetched!');
+            }
+        }
+    }
+
+    public function getLatestInstagramPosts() {
+        $social_account = $this->social_account_service->findByType(SocialAccount::$Instagram);
+//        $profile = $this->instagram_service->getUserProfile();
+        $media = $this->instagram_service->getUserMedia();
+        $response = $this->social_post_service->storeLattestPosts($media->data, $social_account->id);
         if ($response) {
             return redirect()->route('social-accounts.show', $social_account->id)->with('success', 'Latest Posts have been successfully Fetched!');
         }

@@ -175,6 +175,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         App\Providers\FacebookServiceProvider::class,
+        App\Providers\InstagramServiceProvider::class,
 
     ],
 
