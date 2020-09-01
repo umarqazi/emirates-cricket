@@ -46,10 +46,10 @@
 
                                             @if(\Carbon\Carbon::parse($socialAccount->expires_in)->isPast())
                                                 <a href="{{$loginUrl}}">
-                                                    <button class="btn cyan waves-effect waves-light right">Log In With Facebook</button>
+                                                    <button class="btn cyan waves-effect waves-light right">Log In With {{$socialAccount->name}}</button>
                                                 </a>
                                             @else
-                                                <a href="{{route('facebook.get.posts')}}">
+                                                <a href="{{$fetchPostsRoute}}">
                                                     <button class="btn cyan waves-effect waves-light right">Fetch Latest Posts
                                                         <i class="material-icons right">get_app</i>
                                                     </button>
@@ -83,7 +83,7 @@
                                                         @endforeach
                                                     @else
                                                         <tr>
-                                                            <td colspan="3" class="center">No Social Posts Available...</td>
+                                                            <td colspan="3" class="center">No Facebook Posts Available...</td>
                                                         </tr>
                                                     @endif
                                                     </tbody>

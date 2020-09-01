@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\FacebookService;
+use App\Services\InstagramService;
 use App\Services\SettingService;
 use App\Services\NewsService;
 use App\Services\SocialAccountService;
@@ -17,6 +18,7 @@ class HomeController extends Controller
     public $news_service;
     public $sponsor_service;
     public $facebook_service;
+    public $instagram_service;
     public $social_account_service;
     public $social_post_service;
 
@@ -31,6 +33,7 @@ class HomeController extends Controller
         $this->news_service = new NewsService();
         $this->sponsor_service = new SponsorService();
         $this->facebook_service = new FacebookService();
+        $this->instagram_service = new InstagramService();
         $this->social_account_service = new SocialAccountService();
         $this->social_post_service = new SocialPostService();
     }

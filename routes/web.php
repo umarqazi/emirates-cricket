@@ -123,6 +123,10 @@ Route::group(['prefix' => 'admin'], static function () {
         Route::get('facebook/callback','SocialAccountController@facebookCallback')->name('facebook.callback');
         Route::get('get/facebook/posts','SocialAccountController@getLatestFacebookPosts')->name('facebook.get.posts');
 
+        /* Instagram */
+        Route::get('instagram/callback','SocialAccountController@instagramCallback')->name('instagram.callback');
+        Route::get('get/instagram/posts','SocialAccountController@getLatestInstagramPosts')->name('instagram.get.posts');
+
         /* All Teams Routes in here... */
         Route::resource('/team', 'TeamController');
 
