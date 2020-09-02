@@ -176,6 +176,7 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         App\Providers\FacebookServiceProvider::class,
         App\Providers\InstagramServiceProvider::class,
+        App\Providers\TwitterServiceProvider::class,
 
     ],
 
