@@ -44,10 +44,7 @@ Route::get('/fixtures', static function () {
 })->name('fixtures');
 
 Route::get('/galleries', 'GalleryController@frontendGalleries')->name('galleries');
-
-Route::get('/gallery', static function () {
-    return view('frontend.gallery');
-})->name('gallery');
+Route::get('/gallery/{id}', 'GalleryController@frontendGallery')->name('gallery');
 
 Route::get('/news', 'NewsController@frontendNews')->name('news');
 

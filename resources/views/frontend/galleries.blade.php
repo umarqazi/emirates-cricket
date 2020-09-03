@@ -29,23 +29,25 @@
             <div class="row justify-content-center">
                 @if(!$galleries->isEmpty())
                     @foreach($galleries as $gallery)
-                    <div class="col-md-6 col-lg-4">
-                        <div class="images-folder">
-                            <div class="womens-team galleries">
-                                <a href="#">
-                                    <img src="{{ URL::asset('storage/uploads/gallery/'.$gallery->id.'/'.$gallery->image) }}" alt="">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="images-folder">
+                                <div class="womens-team galleries">
+                                    <a href="{{route('gallery', $gallery->id)}}">
+                                        <img src="{{ URL::asset('storage/uploads/gallery/'.$gallery->id.'/'.$gallery->image) }}" alt="">
+                                    </a>
+                                </div>
+                                <a href="{{route('gallery', $gallery->id)}}">
+                                    <p>{{$gallery->title}}</p>
                                 </a>
-                            </div>
-                            <p>{{$gallery->title}}</p>
-                            <div class="more-info">
-                                <a href="#">
-                                    <img src="{{ URL::asset('frontend/assets/images/gallery.png') }}" class="gallery-icon" alt="">
-                                    <span>More</span>
-                                </a>
-                                <a href="#">{{date('M d, Y', strtotime($gallery->created_at))}}</a>
+                                <div class="more-info">
+                                    <a href="{{route('gallery', $gallery->id)}}">
+                                        <img src="{{ URL::asset('frontend/assets/images/gallery.png') }}" class="gallery-icon" alt="">
+                                        <span>More</span>
+                                    </a>
+                                    <a href="#">{{date('M d, Y', strtotime($gallery->created_at))}}</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
                 @else
                     <div>
