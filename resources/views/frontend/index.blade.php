@@ -158,62 +158,106 @@
                 </div>
 
                 <div class="col-lg-3">
-                    <div class="twitter-cards">
-                        <h6>
-                            Tweets <span>by</span> <a href="#">@Emirates Cricket</a> <img src="{{ URL::asset('frontend/assets/images/twitter.png') }}" alt="">
-                        </h6>
-                        <div class="twitter-account-logo">
-                            <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
+                    @if(!empty($posts['twitter']))
+                        <div class="twitter-cards">
                             <h6>
-                                UAE Cricket Official
-                                <span>@EmiratesCricket</span>
+                                Tweets <span>by</span> <a href="#">@Emirates Cricket</a> <img src="{{ URL::asset('frontend/assets/images/twitter.png') }}" alt="">
                             </h6>
+                            <div class="twitter-account-logo">
+                                <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
+                                <h6>
+                                    UAE Cricket Official
+                                    <span>@EmiratesCricket</span>
+                                </h6>
+                            </div>
+                            <div class="twitter-post-content mCustomScrollbar">
+                                @php
+                                    $data = json_decode($posts['twitter']['data']);
+                                @endphp
+                                <p>
+                                    {{!empty($data->text) ? $data->text : ''}}
+                                    <span>
+                                        <a href="{{!empty($data->permalink_url) ? $data->permalink_url : '#'}}">Read More...</a>
+                                    </span>
+                                </p>
+                                <a href="{{!empty($data->permalink_url) ? $data->permalink_url : '#'}}">
+                                    @if(!empty($data->entities->media))
+                                        <img src="{{$data->entities->media[0]->media_url_https}}" class="twitter-image" alt="">
+                                    @endif
+                                </a>
+                            </div>
                         </div>
-                        <div class="twitter-post-content mCustomScrollbar">
-                            <p>We're BACK....BACK <a href="#">#ResponsibleTraining</a> <a href="#">@ICCAcademy</a>.</p>
-                            <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                            <img src="{{ URL::asset('frontend/assets/images/jeffrey.png') }}" class="twitter-image" alt="">
-                            <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                        </div>
-                    </div>
+                    @endif
 
-                    <div class="twitter-cards fb-post">
-                        <h6>
-                            Tweets <span>by</span> <a href="#">@Emirates Cricket</a> <img src="{{ URL::asset('frontend/assets/images/facebook.png') }}" alt="">
-                        </h6>
-                        <div class="twitter-account-logo">
-                            <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
+                    @if(!empty($posts['facebook']))
+                        <div class="twitter-cards fb-post">
                             <h6>
-                                UAE Cricket Official
-                                <span>@EmiratesCricket</span>
+                                Tweets <span>by</span> <a href="#">@Emirates Cricket</a> <img src="{{ URL::asset('frontend/assets/images/facebook.png') }}" alt="">
                             </h6>
+                            <div class="twitter-account-logo">
+                                <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
+                                <h6>
+                                    UAE Cricket Official
+                                    <span>@EmiratesCricket</span>
+                                </h6>
+                            </div>
+                            <div class="twitter-post-content mCustomScrollbar">
+                                @php
+                                    $data = json_decode($posts['facebook']['data']);
+                                @endphp
+                                <p>
+                                    {{!empty($data->message) ? $data->message : ''}}
+                                    <span>
+                                        <a href="{{$data->permalink_url}}">Read More...</a>
+                                    </span>
+                                </p>
+                                <a href="{{$data->permalink_url}}">
+                                    @if(!empty($data->full_picture))
+                                        <img src="{{$data->full_picture}}" class="twitter-image" alt="">
+                                    @endif
+                                </a>
+                            </div>
                         </div>
-                        <div class="twitter-post-content mCustomScrollbar">
-                            <p>We're BACK....BACK <a href="#">#ResponsibleTraining</a> <a href="#">@ICCAcademy</a>.</p>
-                            <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                            <img src="{{ URL::asset('frontend/assets/images/jeffrey.png') }}" class="twitter-image" alt="">
-                            <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                        </div>
-                    </div>
+                    @endif
 
-                    <div class="twitter-cards insta-post">
-                        <h6>
-                            Tweets <span>by</span> <a href="#">@Emirates Cricket</a> <img src="{{ URL::asset('frontend/assets/images/instagram.png') }}" alt="">
-                        </h6>
-                        <div class="twitter-account-logo">
-                            <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
+                    @if(!empty($posts['instagram']))
+                        <div class="twitter-cards insta-post">
                             <h6>
-                                UAE Cricket Official
-                                <span>@EmiratesCricket</span>
+                                Tweets <span>by</span> <a href="#">@Emirates Cricket</a> <img src="{{ URL::asset('frontend/assets/images/instagram.png') }}" alt="">
                             </h6>
+                            <div class="twitter-account-logo">
+                                <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
+                                <h6>
+                                    UAE Cricket Official
+                                    <span>@EmiratesCricket</span>
+                                </h6>
+                            </div>
+                            <div class="twitter-post-content mCustomScrollbar">
+                                @php
+                                    $data = json_decode($posts['instagram']['data']);
+                                @endphp
+                                <p>
+                                    {{!empty($data->caption) ? $data->caption : ''}}
+                                    <span>
+                                        <a href="{{$data->permalink}}">Read More...</a>
+                                    </span>
+                                </p>
+                                <a href="{{$data->permalink}}">
+                                    @if(!empty($data->thumbnail_url))
+                                        @if($data->media_type === "IMAGE")
+                                            <img src="{{$data->thumbnail_url}}" class="twitter-image" alt="">
+                                        @elseif($data->media_type === "VIDEO")
+                                            <video width="208" height="208" controls>
+                                                <source src="{{$data->media_url}}" type="video/mp4">
+                                                <source src="{{$data->media_url}}" type="video/ogg">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        @endif
+                                    @endif
+                                </a>
+                            </div>
                         </div>
-                        <div class="twitter-post-content mCustomScrollbar">
-                            <p>We're BACK....BACK <a href="#">#ResponsibleTraining</a> <a href="#">@ICCAcademy</a>.</p>
-                            <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                            <img src="{{ URL::asset('frontend/assets/images/jeffrey.png') }}" class="twitter-image" alt="">
-                            <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                        </div>
-                    </div>
+                    @endif
                 </div>
 
             </div>

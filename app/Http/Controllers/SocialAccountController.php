@@ -7,6 +7,7 @@ use App\Services\FacebookService;
 use App\Services\InstagramService;
 use App\Services\SocialAccountService;
 use App\Services\SocialPostService;
+use App\Services\TwitterService;
 use App\SocialAccount;
 use Facebook\Facebook;
 use Illuminate\Http\Request;
@@ -17,6 +18,7 @@ class SocialAccountController extends Controller
     public $social_post_service;
     public $facebook_service;
     public $instagram_service;
+    public $twitter_service;
     public $facebook;
 
     public function __construct()
@@ -25,6 +27,7 @@ class SocialAccountController extends Controller
         $this->social_post_service = new SocialPostService();
         $this->facebook_service = new FacebookService();
         $this->instagram_service = new InstagramService();
+        $this->twitter_service = new TwitterService();
         $this->facebook = new Facebook();
     }
 
@@ -80,11 +83,12 @@ class SocialAccountController extends Controller
             $view = 'backend.social-accounts.instagram-show';
 
         } else {
-            $loginUrl = $this->facebook_service->facebookLogin();
-            $fetchPostsRoute = route('instagram.get.posts');
+            $loginUrl = $this->twitter_service->twitterLogin();
+            $fetchPostsRoute = route('twitter.get.posts');
             $view = 'backend.social-accounts.twitter-show';
 
         }
+
         return view($view, compact('socialAccount', 'loginUrl', 'fetchPostsRoute'));
     }
 
@@ -185,5 +189,48 @@ class SocialAccountController extends Controller
         if ($response) {
             return redirect()->route('social-accounts.show', $social_account->id)->with('success', 'Latest Posts have been successfully Fetched!');
         }
+    }
+
+    public function twitterCallback() {
+        $social_account = $this->social_account_service->findByType(SocialAccount::$Twitter);
+        $tokens = $this->twitter_service->twitterCallback($_GET);
+
+        /* Update Tokens */
+        $params = array('user_access_token' => $tokens['user_access_token'], 'page_access_token' => $tokens['page_access_token'] ,'long_lived_access_token' => $tokens['long_lived_access_token'], 'expires_in' => date('Y-m-d H:i:s', time() + $tokens['expires_in'])); /* Equals to 60days in Seconds */
+
+        $status = $this->social_account_service->update($params, $social_account->id);
+
+        if ($status) {
+            $tweets = $this->twitter_service->getUserTweets();
+            $response = $this->social_post_service->storeLattestPosts($tweets, $social_account->id);
+            if ($response) {
+                return redirect()->route('social-accounts.show', $social_account->id)->with('success', 'Latest Posts have been successfully Fetched!');
+            }
+        }
+    }
+
+    public function getLatestTwitterPosts() {
+        $social_account = $this->social_account_service->findByType(SocialAccount::$Twitter);
+        $tweets = $this->twitter_service->getUserTweets();
+        $response = $this->social_post_service->storeLattestPosts($tweets, $social_account->id);
+        if ($response) {
+            return redirect()->route('social-accounts.show', $social_account->id)->with('success', 'Latest Posts have been successfully Fetched!');
+        }
+    }
+
+    public function fanClub() {
+        $posts = array();
+        /* Recent Four Facebook Post */
+        $facebook = $this->social_account_service->findByType(SocialAccount::$Facebook);
+        $posts['facebook'] = $this->social_post_service->getRecent($facebook->id, 4);
+
+        /* Recent Four Instagram Post */
+        $instagram = $this->social_account_service->findByType(SocialAccount::$Instagram);
+        $posts['instagram'] = $this->social_post_service->getRecent($instagram->id, 4);
+
+        /* Recent Four Twitter Post */
+        $twitter = $this->social_account_service->findByType(SocialAccount::$Twitter);
+        $posts['twitter'] = $this->social_post_service->getRecent($twitter->id, 4);
+        return view('frontend.fan-club', compact('posts'));
     }
 }

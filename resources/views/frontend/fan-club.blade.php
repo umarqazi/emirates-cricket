@@ -26,238 +26,134 @@
     <!--   social section     -->
     <div class="social-section">
         <div class="container">
-
+        @if(!empty($posts['twitter']))
             <!--       twitter slider         -->
-            <div class="social-content">
-                <h6>
-                    Tweets <span>by</span> <a href="#">@Emirates Cricket</a> <i class="fa fa-twitter"></i>
-                </h6>
-                <div class="social-slider slider-dots">
-                    <div>
-                        <div class="twitter-cards">
-                            <div class="twitter-account-logo">
-                                <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
-                                <h6>
-                                    UAE Cricket Official
-                                    <span>@EmiratesCricket</span>
-                                </h6>
+                <div class="social-content">
+                    <h6>
+                        Tweets <span>by</span> <a href="#">@Emirates Cricket</a> <i class="fa fa-twitter"></i>
+                    </h6>
+                    <div class="social-slider slider-dots">
+                        @foreach($posts['twitter'] as $twitter)
+                            <div>
+                                <div class="twitter-cards">
+                                    <div class="twitter-account-logo">
+                                        <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
+                                        <h6>
+                                            UAE Cricket Official
+                                            <span>@EmiratesCricket</span>
+                                        </h6>
+                                    </div>
+                                    <div class="twitter-post-content mCustomScrollbar">
+                                        @php
+                                            $data = json_decode($twitter->data);
+                                        @endphp
+                                        <p>
+                                            {{!empty($data->text) ? $data->text : ''}}
+                                            <span>
+                                                <a href="{{!empty($data->permalink_url) ? $data->permalink_url : '#'}}"> Read More...</a>
+                                            </span>
+                                        </p>
+                                        <a href="{{!empty($data->permalink_url) ? $data->permalink_url : '#'}}">
+                                            @if(!empty($data->entities->media))
+                                                <img src="{{$data->entities->media[0]->media_url_https}}" class="twitter-image" alt="">
+                                            @endif
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="twitter-post-content mCustomScrollbar">
-                                <p>We're BACK....BACK <a href="#">#ResponsibleTraining</a> <a href="#">@ICCAcademy</a>.</p>
-                                <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                                <img src="{{ URL::asset('frontend/assets/images/jeffrey.png') }}" class="twitter-image" alt="">
-                                <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="twitter-cards">
-                            <div class="twitter-account-logo">
-                                <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
-                                <h6>
-                                    UAE Cricket Official
-                                    <span>@EmiratesCricket</span>
-                                </h6>
-                            </div>
-                            <div class="twitter-post-content mCustomScrollbar">
-                                <p>We're BACK....BACK <a href="#">#ResponsibleTraining</a> <a href="#">@ICCAcademy</a>.</p>
-                                <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                                <img src="{{ URL::asset('frontend/assets/images/jeffrey.png') }}" class="twitter-image" alt="">
-                                <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="twitter-cards">
-                            <div class="twitter-account-logo">
-                                <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
-                                <h6>
-                                    UAE Cricket Official
-                                    <span>@EmiratesCricket</span>
-                                </h6>
-                            </div>
-                            <div class="twitter-post-content mCustomScrollbar">
-                                <p>We're BACK....BACK <a href="#">#ResponsibleTraining</a> <a href="#">@ICCAcademy</a>.</p>
-                                <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                                <img src="{{ URL::asset('frontend/assets/images/jeffrey.png') }}" class="twitter-image" alt="">
-                                <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="twitter-cards">
-                            <div class="twitter-account-logo">
-                                <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
-                                <h6>
-                                    UAE Cricket Official
-                                    <span>@EmiratesCricket</span>
-                                </h6>
-                            </div>
-                            <div class="twitter-post-content mCustomScrollbar">
-                                <p>We're BACK....BACK <a href="#">#ResponsibleTraining</a> <a href="#">@ICCAcademy</a>.</p>
-                                <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                                <img src="{{ URL::asset('frontend/assets/images/jeffrey.png') }}" class="twitter-image" alt="">
-                                <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
-            </div>
+        @endif
 
+        @if(!empty($posts['facebook']))
             <!--      facebook sldier          -->
-            <div class="social-content facebook-post">
-                <h6>
-                    Tweets <span>by</span> <a href="#">@Emirates Cricket</a> <i class="fa fa-facebook-square"></i>
-                </h6>
-                <div class="social-slider slider-dots">
-                    <div>
-                        <div class="twitter-cards">
-                            <div class="twitter-account-logo">
-                                <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
-                                <h6>
-                                    UAE Cricket Official
-                                    <span>@EmiratesCricket</span>
-                                </h6>
+                <div class="social-content facebook-post">
+                    <h6>
+                        Tweets <span>by</span> <a href="#">@Emirates Cricket</a> <i class="fa fa-facebook-square"></i>
+                    </h6>
+                    <div class="social-slider slider-dots">
+                        @foreach($posts['facebook'] as $facebook)
+                            <div>
+                                <div class="twitter-cards">
+                                    <div class="twitter-account-logo">
+                                        <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
+                                        <h6>
+                                            UAE Cricket Official
+                                            <span>@EmiratesCricket</span>
+                                        </h6>
+                                    </div>
+                                    <div class="twitter-post-content mCustomScrollbar">
+                                        @php
+                                            $data = json_decode($facebook->data);
+                                        @endphp
+                                        <p>
+                                            {{!empty($data->message) ? $data->message : ''}}
+                                            <span>
+                                                <a href="{{$data->permalink_url}}">Read More...</a>
+                                            </span>
+                                        </p>
+                                        <a href="{{$data->permalink_url}}">
+                                            @if(!empty($data->full_picture))
+                                                <img src="{{$data->full_picture}}" class="twitter-image" alt="">
+                                            @endif
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="twitter-post-content mCustomScrollbar">
-                                <p>We're BACK....BACK <a href="#">#ResponsibleTraining</a> <a href="#">@ICCAcademy</a>.</p>
-                                <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                                <img src="{{ URL::asset('frontend/assets/images/jeffrey.png') }}" class="twitter-image" alt="">
-                                <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="twitter-cards">
-                            <div class="twitter-account-logo">
-                                <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
-                                <h6>
-                                    UAE Cricket Official
-                                    <span>@EmiratesCricket</span>
-                                </h6>
-                            </div>
-                            <div class="twitter-post-content mCustomScrollbar">
-                                <p>We're BACK....BACK <a href="#">#ResponsibleTraining</a> <a href="#">@ICCAcademy</a>.</p>
-                                <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                                <img src="{{ URL::asset('frontend/assets/images/jeffrey.png') }}" class="twitter-image" alt="">
-                                <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="twitter-cards">
-                            <div class="twitter-account-logo">
-                                <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
-                                <h6>
-                                    UAE Cricket Official
-                                    <span>@EmiratesCricket</span>
-                                </h6>
-                            </div>
-                            <div class="twitter-post-content mCustomScrollbar">
-                                <p>We're BACK....BACK <a href="#">#ResponsibleTraining</a> <a href="#">@ICCAcademy</a>.</p>
-                                <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                                <img src="{{ URL::asset('frontend/assets/images/jeffrey.png') }}" class="twitter-image" alt="">
-                                <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="twitter-cards">
-                            <div class="twitter-account-logo">
-                                <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
-                                <h6>
-                                    UAE Cricket Official
-                                    <span>@EmiratesCricket</span>
-                                </h6>
-                            </div>
-                            <div class="twitter-post-content mCustomScrollbar">
-                                <p>We're BACK....BACK <a href="#">#ResponsibleTraining</a> <a href="#">@ICCAcademy</a>.</p>
-                                <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                                <img src="{{ URL::asset('frontend/assets/images/jeffrey.png') }}" class="twitter-image" alt="">
-                                <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
-            </div>
+        @endif
 
+        @if(!empty($posts['instagram']))
             <!--      instagram sldier          -->
-            <div class="social-content instagram-post">
-                <h6>
-                    Tweets <span>by</span> <a href="#">@Emirates Cricket</a>
-                    <img src="{{ URL::asset('frontend/assets/images/instagram-slider.png') }}" alt="">
-                </h6>
-                <div class="social-slider slider-dots">
-                    <div>
-                        <div class="twitter-cards">
-                            <div class="twitter-account-logo">
-                                <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
-                                <h6>
-                                    UAE Cricket Official
-                                    <span>@EmiratesCricket</span>
-                                </h6>
+                <div class="social-content instagram-post">
+                    <h6>
+                        Tweets <span>by</span> <a href="#">@Emirates Cricket</a>
+                        <img src="{{ URL::asset('frontend/assets/images/instagram-slider.png') }}" alt="">
+                    </h6>
+                    <div class="social-slider slider-dots">
+                        @foreach($posts['instagram'] as $instagram)
+                            <div>
+                                <div class="twitter-cards">
+                                    <div class="twitter-account-logo">
+                                        <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
+                                        <h6>
+                                            UAE Cricket Official
+                                            <span>@EmiratesCricket</span>
+                                        </h6>
+                                    </div>
+                                    <div class="twitter-post-content mCustomScrollbar">
+                                        @php
+                                            $data = json_decode($instagram->data);
+                                        @endphp
+                                        <p>
+                                            {{!empty($data->caption) ? $data->caption : ''}}
+                                            <span>
+                                            <a href="{{$data->permalink}}">Read More...</a>
+                                        </span>
+                                        </p>
+                                        <a href="{{$data->permalink}}">
+                                            @if(!empty($data->media_url))
+                                                @if($data->media_type === "IMAGE")
+                                                    <img src="{{$data->media_url}}" class="twitter-image" alt="">
+                                                @elseif($data->media_type === "VIDEO")
+                                                    <video width="282" height="282" controls>
+                                                        <source src="{{$data->media_url}}" type="video/mp4">
+                                                        <source src="{{$data->media_url}}" type="video/ogg">
+                                                        Your browser does not support the video tag.
+                                                    </video>
+                                                @endif
+                                            @endif
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="twitter-post-content mCustomScrollbar">
-                                <p>We're BACK....BACK <a href="#">#ResponsibleTraining</a> <a href="#">@ICCAcademy</a>.</p>
-                                <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                                <img src="{{ URL::asset('frontend/assets/images/jeffrey.png') }}" class="twitter-image" alt="">
-                                <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="twitter-cards">
-                            <div class="twitter-account-logo">
-                                <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
-                                <h6>
-                                    UAE Cricket Official
-                                    <span>@EmiratesCricket</span>
-                                </h6>
-                            </div>
-                            <div class="twitter-post-content mCustomScrollbar">
-                                <p>We're BACK....BACK <a href="#">#ResponsibleTraining</a> <a href="#">@ICCAcademy</a>.</p>
-                                <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                                <img src="{{ URL::asset('frontend/assets/images/jeffrey.png') }}" class="twitter-image" alt="">
-                                <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="twitter-cards">
-                            <div class="twitter-account-logo">
-                                <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
-                                <h6>
-                                    UAE Cricket Official
-                                    <span>@EmiratesCricket</span>
-                                </h6>
-                            </div>
-                            <div class="twitter-post-content mCustomScrollbar">
-                                <p>We're BACK....BACK <a href="#">#ResponsibleTraining</a> <a href="#">@ICCAcademy</a>.</p>
-                                <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                                <img src="{{ URL::asset('frontend/assets/images/jeffrey.png') }}" class="twitter-image" alt="">
-                                <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="twitter-cards">
-                            <div class="twitter-account-logo">
-                                <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
-                                <h6>
-                                    UAE Cricket Official
-                                    <span>@EmiratesCricket</span>
-                                </h6>
-                            </div>
-                            <div class="twitter-post-content mCustomScrollbar">
-                                <p>We're BACK....BACK <a href="#">#ResponsibleTraining</a> <a href="#">@ICCAcademy</a>.</p>
-                                <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                                <img src="{{ URL::asset('frontend/assets/images/jeffrey.png') }}" class="twitter-image" alt="">
-                                <p><a href="#">#UAE</a> <a href="#">#Cricket</a> <a href="#">#Men</a> are staggering their sessions, following safety protocols & processes while they stay 'finely-tuned' for the next #GameDay.</p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
-            </div>
+            @endif
         </div>
     </div>
 

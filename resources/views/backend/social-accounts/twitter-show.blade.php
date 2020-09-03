@@ -64,7 +64,7 @@
                                                 <table id="page-length-option" class="display">
                                                     <thead>
                                                     <tr>
-                                                        <th>Post</th>
+                                                        <th>Tweet Caption</th>
                                                         <th>Actions</th>
                                                     </tr>
                                                     </thead>
@@ -75,9 +75,10 @@
                                                                 $data = json_decode($post->data);
                                                             @endphp
                                                             <tr>
-                                                                <td>{{\Illuminate\Support\Str::limit($data->message, 50)}}</td>
+                                                                <td>{{\Illuminate\Support\Str::limit($data->text, 50)}}</td>
                                                                 <td>
-                                                                    <a href="{{$data->permalink_url}}" target="_blank"><i class="material-icons">visibility</i></a>
+{{--                                                                    <a href="{{$data->permalink_url}}" target="_blank"><i class="material-icons">visibility</i></a>--}}
+                                                                    <a href="#" target="_blank"><i class="material-icons">visibility</i></a>
                                                                 </td>
                                                             </tr>
                                                         @endforeach
@@ -89,7 +90,7 @@
                                                     </tbody>
                                                     <tfoot>
                                                     <tr>
-                                                        <th>Post</th>
+                                                        <th>Tweet Caption</th>
                                                         <th>Actions</th>
                                                     </tr>
                                                     </tfoot>

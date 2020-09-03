@@ -35,9 +35,7 @@ Route::get('/download', static function () {
 })->name('download');
 
 
-Route::get('/fan-club', static function () {
-    return view('frontend.fan-club');
-})->name('fan-club');
+Route::get('/fan-club', 'SocialAccountController@fanClub')->name('fan-club');
 
 Route::get('/fixtures', static function () {
     return view('frontend.fixtures');
@@ -126,6 +124,10 @@ Route::group(['prefix' => 'admin'], static function () {
         /* Instagram */
         Route::get('instagram/callback','SocialAccountController@instagramCallback')->name('instagram.callback');
         Route::get('get/instagram/posts','SocialAccountController@getLatestInstagramPosts')->name('instagram.get.posts');
+
+        /* Twitter */
+        Route::get('twitter/callback','SocialAccountController@twitterCallback')->name('twitter.callback');
+        Route::get('get/twitter/posts','SocialAccountController@getLatestTwitterPosts')->name('twitter.get.posts');
 
         /* All Teams Routes in here... */
         Route::resource('/team', 'TeamController');
