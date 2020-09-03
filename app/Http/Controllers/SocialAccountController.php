@@ -217,4 +217,20 @@ class SocialAccountController extends Controller
             return redirect()->route('social-accounts.show', $social_account->id)->with('success', 'Latest Posts have been successfully Fetched!');
         }
     }
+
+    public function fanClub() {
+        $posts = array();
+        /* Recent Four Facebook Post */
+        $facebook = $this->social_account_service->findByType(SocialAccount::$Facebook);
+        $posts['facebook'] = $this->social_post_service->getRecent($facebook->id, 4);
+
+        /* Recent Four Instagram Post */
+        $instagram = $this->social_account_service->findByType(SocialAccount::$Instagram);
+        $posts['instagram'] = $this->social_post_service->getRecent($instagram->id, 4);
+
+        /* Recent Four Twitter Post */
+        $twitter = $this->social_account_service->findByType(SocialAccount::$Twitter);
+        $posts['twitter'] = $this->social_post_service->getRecent($twitter->id, 4);
+        return view('frontend.fan-club', compact('posts'));
+    }
 }

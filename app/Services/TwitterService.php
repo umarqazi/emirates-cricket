@@ -23,7 +23,7 @@ class TwitterService
         $this->accessToken = $this->twitter_tokens->long_lived_access_token;
         $this->oauthToken = $this->twitter_tokens->page_access_token;
         $this->twitter = new TwitterOAuth(env('TWITTER_CONSUMER_KEY'), env('TWITTER_CONSUMER_SECRET'), $this->twitter_tokens->user_access_token, $this->twitter_tokens->page_access_token);
-        $this->twitter->get("account/verify_credentials");
+//        $this->twitter->get("account/verify_credentials");
 //        $this->twitter->setTimeouts(10, 15);
     }
 
@@ -69,7 +69,6 @@ class TwitterService
     }
 
     public function getUserTweets() {
-        $twitter = new TwitterOAuth(env('TWITTER_CONSUMER_KEY'), env('TWITTER_CONSUMER_SECRET'), $this->oauthToken, $this->accessToken);
         $status = $this->twitter->get("account/verify_credentials");
         if (!empty($status)) {
             return $this->twitter->get('statuses/user_timeline', ["count" => 10, "exclude_replies" => true]);

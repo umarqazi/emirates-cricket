@@ -35,9 +35,7 @@ Route::get('/download', static function () {
 })->name('download');
 
 
-Route::get('/fan-club', static function () {
-    return view('frontend.fan-club');
-})->name('fan-club');
+Route::get('/fan-club', 'SocialAccountController@fanClub')->name('fan-club');
 
 Route::get('/fixtures', static function () {
     return view('frontend.fixtures');

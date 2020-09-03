@@ -772,7 +772,7 @@ body.sidebar-collapse .content-section {
 
 /* twitter cards */
 .twitter-cards {
-    padding: 20px 10px;
+    padding: 20px 11px;
     background: #fff;
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 8px;
@@ -826,7 +826,7 @@ body.sidebar-collapse .content-section {
     margin-bottom: 10px;
 }
 .twitter-post-content {
-    height: 330px;
+    height: 350px;
     overflow: hidden;
 }
 .mCSB_scrollTools .mCSB_draggerRail{

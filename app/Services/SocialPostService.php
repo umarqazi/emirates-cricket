@@ -22,6 +22,12 @@ class SocialPostService
         return $this->social_post_repo->getOne(SocialPost::class, $where, 'created_at' , 'asc');
     }
 
+    public function getRecent($id, $count)
+    {
+        $where = array('social_account_id' => $id);
+        return $this->social_post_repo->getRecent(SocialPost::class, $where, $count,'created_at' , 'asc');
+    }
+
     public function storeLattestPosts($data, $id)
     {
         /* First Delete Older Posts from DB */
