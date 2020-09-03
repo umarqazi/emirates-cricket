@@ -27,95 +27,61 @@
     <div class="gallery-fodlers">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-6 col-lg-5">
-                    <div class="images-folder">
-                        <div class="womens-team">
-                            <img src="{{ URL::asset('frontend/assets/images/womens-team.png') }}" alt="">
-                        </div>
-                        <p>UAE Cricket Leagues Women's T20 Final 2018 (images credit: Emirates Cricket)</p>
-                        <div class="more-info">
-                            <a href="#">
-                                <img src="assets/images/gallery.png" class="gallery-icon" alt="">
-                                <img src="{{ URL::asset('frontend/assets/images/gallery.png') }}" class="gallery-icon" alt="">
-                                <span>More</span>
-                            </a>
-                            <a href="#">May 9, 2020</a>
-                        </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="fancy-col-image">
+                        <a href="https://www.scalloncustomhomes.com/wp-content/uploads/2019/03/IMG_8832-370x280.jpg" data-fancybox="images">
+                            <img src="https://www.scalloncustomhomes.com/wp-content/uploads/2019/03/IMG_8832-370x280.jpg" alt="">
+                        </a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-5">
-                    <div class="images-folder">
-                        <div class="womens-team">
-                            <img src="{{ URL::asset('frontend/assets/images/womens-team.png') }}" alt="">
-                        </div>
-                        <p>UAE Cricket Leagues Women's T20 Final 2018 (images credit: Emirates Cricket)</p>
-                        <div class="more-info">
-                            <a href="#">
-                                <img src="{{ URL::asset('frontend/assets/images/gallery.png') }}" class="gallery-icon" alt="">
-                                <span>More</span>
-                            </a>
-                            <a href="#">May 9, 2020</a>
-                        </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="fancy-col-image">
+                        <a href="https://images.unsplash.com/photo-1541336528065-8f1fdc435835?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" data-fancybox="images">
+                            <img src="https://images.unsplash.com/photo-1541336528065-8f1fdc435835?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="">
+                        </a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-5">
-                    <div class="images-folder">
-                        <div class="womens-team">
-                            <img src="{{ URL::asset('frontend/assets/images/womens-team.png') }}" alt="">
-                        </div>
-                        <p>UAE Cricket Leagues Women's T20 Final 2018 (images credit: Emirates Cricket)</p>
-                        <div class="more-info">
-                            <a href="#">
-                                <img src="{{ URL::asset('frontend/assets/images/gallery.png') }}" class="gallery-icon" alt="">
-                                <span>More</span>
-                            </a>
-                            <a href="#">May 9, 2020</a>
-                        </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="fancy-col-image">
+                        <a href="https://images.unsplash.com/photo-1541079033018-63489731598f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" data-fancybox="images">
+                            <img src="https://images.unsplash.com/photo-1541079033018-63489731598f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="">
+                        </a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-5">
-                    <div class="images-folder">
-                        <div class="womens-team">
-                            <img src="{{ URL::asset('frontend/assets/images/womens-team.png') }}" alt="">
-                        </div>
-                        <p>UAE Cricket Leagues Women's T20 Final 2018 (images credit: Emirates Cricket)</p>
-                        <div class="more-info">
-                            <a href="#">
-                                <img src="{{ URL::asset('frontend/assets/images/gallery.png') }}" class="gallery-icon" alt="">
-                                <span>More</span>
-                            </a>
-                            <a href="#">May 9, 2020</a>
-                        </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="fancy-col-image">
+                        <a href="{{ URL::asset('frontend/assets/images/jeffrey.png') }}" data-fancybox="images">
+                            <img src="{{ URL::asset('frontend/assets/images/jeffrey.png') }}" alt="">
+                        </a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-5">
-                    <div class="images-folder">
-                        <div class="womens-team">
-                            <img src="{{ URL::asset('frontend/assets/images/womens-team.png') }}" alt="">
-                        </div>
-                        <p>UAE Cricket Leagues Women's T20 Final 2018 (images credit: Emirates Cricket)</p>
-                        <div class="more-info">
-                            <a href="#">
-                                <img src="{{ URL::asset('frontend/assets/images/gallery.png') }}" class="gallery-icon" alt="">
-                                <span>More</span>
-                            </a>
-                            <a href="#">May 9, 2020</a>
-                        </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="fancy-col-image">
+                        <a href="https://www.scalloncustomhomes.com/wp-content/uploads/2019/03/IMG_8844-370x280.jpg" data-fancybox="images">
+                            <img src="https://www.scalloncustomhomes.com/wp-content/uploads/2019/03/IMG_8844-370x280.jpg" alt="">
+                        </a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-5">
-                    <div class="images-folder">
-                        <div class="womens-team">
-                            <img src="{{ URL::asset('frontend/assets/images/womens-team.png') }}" alt="">
-                        </div>
-                        <p>UAE Cricket Leagues Women's T20 Final 2018 (images credit: Emirates Cricket)</p>
-                        <div class="more-info">
-                            <a href="#">
-                                <img src="{{ URL::asset('frontend/assets/images/gallery.png') }}" class="gallery-icon" alt="">
-                                <span>More</span>
-                            </a>
-                            <a href="#">May 9, 2020</a>
-                        </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="fancy-col-image">
+                        <a href="https://www.scalloncustomhomes.com/wp-content/uploads/2019/03/IMG_8854-370x280.jpg" data-fancybox="images">
+                            <img src="https://www.scalloncustomhomes.com/wp-content/uploads/2019/03/IMG_8854-370x280.jpg" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="fancy-col-image">
+                        <a href="https://www.scalloncustomhomes.com/wp-content/uploads/2019/03/IMG_8832-370x280.jpg" data-fancybox="images">
+                            <img src="https://www.scalloncustomhomes.com/wp-content/uploads/2019/03/IMG_8832-370x280.jpg" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="fancy-col-image">
+                        <a href="https://www.scalloncustomhomes.com/wp-content/uploads/2019/03/IMG_8844-370x280.jpg" data-fancybox="images">
+                            <img src="https://www.scalloncustomhomes.com/wp-content/uploads/2019/03/IMG_8844-370x280.jpg" alt="">
+                        </a>
                     </div>
                 </div>
             </div>

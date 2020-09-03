@@ -1673,6 +1673,14 @@ footer#footer p {
     padding: 30px 0px;
     box-shadow: 0px 3px 10px #00000029;
 }
+.fancy-col-image{
+    margin-bottom: 20px;
+}
+.fancy-col-image img {
+    width: 100%;
+    max-height: 250px;
+    min-height: 220px;
+}
 
 
 /*+++++++  Responsiveness  ++++++++*/
