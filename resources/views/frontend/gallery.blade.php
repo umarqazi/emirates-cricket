@@ -13,7 +13,7 @@
                 <img src="{{ URL::asset('frontend/assets/images/right-arrow.png') }}" alt="">
                 <a href="#" class="first-parent">Social</a>
                 <img src="{{ URL::asset('frontend/assets/images/right-arrow.png') }}" alt="">
-                <a href="{{route('gallery')}}" class="child-page">Gallery</a>
+                <a href="{{route('gallery', $gallery->id)}}" class="child-page">Gallery</a>
             </p>
         </div>
     </div>
@@ -27,97 +27,21 @@
     <div class="gallery-fodlers">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-6 col-lg-5">
-                    <div class="images-folder">
-                        <div class="womens-team">
-                            <img src="{{ URL::asset('frontend/assets/images/womens-team.png') }}" alt="">
+                @if(!$gallery->images->isEmpty())
+                    @foreach($gallery->images as $image)
+                        <div class="col-lg-3 col-md-6">
+                            <div class="fancy-col-image">
+                                <a href="{{ URL::asset('storage/uploads/gallery/'.$gallery->id.'/'.$image->name) }}" data-fancybox="images">
+                                    <img src="{{ URL::asset('storage/uploads/gallery/'.$gallery->id.'/'.$image->name) }}" alt="">
+                                </a>
+                            </div>
                         </div>
-                        <p>UAE Cricket Leagues Women's T20 Final 2018 (images credit: Emirates Cricket)</p>
-                        <div class="more-info">
-                            <a href="#">
-                                <img src="assets/images/gallery.png" class="gallery-icon" alt="">
-                                <img src="{{ URL::asset('frontend/assets/images/gallery.png') }}" class="gallery-icon" alt="">
-                                <span>More</span>
-                            </a>
-                            <a href="#">May 9, 2020</a>
-                        </div>
+                    @endforeach
+                @else
+                    <div>
+                        <p>This Gallery Has No Images.</p>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-5">
-                    <div class="images-folder">
-                        <div class="womens-team">
-                            <img src="{{ URL::asset('frontend/assets/images/womens-team.png') }}" alt="">
-                        </div>
-                        <p>UAE Cricket Leagues Women's T20 Final 2018 (images credit: Emirates Cricket)</p>
-                        <div class="more-info">
-                            <a href="#">
-                                <img src="{{ URL::asset('frontend/assets/images/gallery.png') }}" class="gallery-icon" alt="">
-                                <span>More</span>
-                            </a>
-                            <a href="#">May 9, 2020</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-5">
-                    <div class="images-folder">
-                        <div class="womens-team">
-                            <img src="{{ URL::asset('frontend/assets/images/womens-team.png') }}" alt="">
-                        </div>
-                        <p>UAE Cricket Leagues Women's T20 Final 2018 (images credit: Emirates Cricket)</p>
-                        <div class="more-info">
-                            <a href="#">
-                                <img src="{{ URL::asset('frontend/assets/images/gallery.png') }}" class="gallery-icon" alt="">
-                                <span>More</span>
-                            </a>
-                            <a href="#">May 9, 2020</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-5">
-                    <div class="images-folder">
-                        <div class="womens-team">
-                            <img src="{{ URL::asset('frontend/assets/images/womens-team.png') }}" alt="">
-                        </div>
-                        <p>UAE Cricket Leagues Women's T20 Final 2018 (images credit: Emirates Cricket)</p>
-                        <div class="more-info">
-                            <a href="#">
-                                <img src="{{ URL::asset('frontend/assets/images/gallery.png') }}" class="gallery-icon" alt="">
-                                <span>More</span>
-                            </a>
-                            <a href="#">May 9, 2020</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-5">
-                    <div class="images-folder">
-                        <div class="womens-team">
-                            <img src="{{ URL::asset('frontend/assets/images/womens-team.png') }}" alt="">
-                        </div>
-                        <p>UAE Cricket Leagues Women's T20 Final 2018 (images credit: Emirates Cricket)</p>
-                        <div class="more-info">
-                            <a href="#">
-                                <img src="{{ URL::asset('frontend/assets/images/gallery.png') }}" class="gallery-icon" alt="">
-                                <span>More</span>
-                            </a>
-                            <a href="#">May 9, 2020</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-5">
-                    <div class="images-folder">
-                        <div class="womens-team">
-                            <img src="{{ URL::asset('frontend/assets/images/womens-team.png') }}" alt="">
-                        </div>
-                        <p>UAE Cricket Leagues Women's T20 Final 2018 (images credit: Emirates Cricket)</p>
-                        <div class="more-info">
-                            <a href="#">
-                                <img src="{{ URL::asset('frontend/assets/images/gallery.png') }}" class="gallery-icon" alt="">
-                                <span>More</span>
-                            </a>
-                            <a href="#">May 9, 2020</a>
-                        </div>
-                    </div>
-                </div>
+                @endif
             </div>
         </div>
     </div>

@@ -187,4 +187,9 @@ class GalleryController extends Controller
         $galleries = $this->gallery_service->all();
         return view('frontend.galleries', compact('galleries'));
     }
+
+    public function frontendGallery($id) {
+        $gallery = $this->gallery_service->find($id);
+        return view('frontend.gallery', compact('gallery'));
+    }
 }
