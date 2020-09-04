@@ -13,7 +13,7 @@
                 <img src="{{ URL::asset('frontend/assets/images/right-arrow.png') }}" alt="">
                 <a href="#" class="first-parent">Social</a>
                 <img src="{{ URL::asset('frontend/assets/images/right-arrow.png') }}" alt="">
-                <a href="{{route('gallery')}}" class="child-page">Fan Club</a>
+                <a href="{{route('fan-club')}}" class="child-page">Fan Club</a>
             </p>
         </div>
     </div>
