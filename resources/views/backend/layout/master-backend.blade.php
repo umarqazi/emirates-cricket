@@ -23,7 +23,6 @@
     <!-- END: VENDOR CSS-->
     <!-- BEGIN: Page Level CSS-->
     <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/materialize.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('backend/assets/css/style.css')}}">
     <!-- END: Page Level CSS-->
 
@@ -49,12 +48,10 @@
                     <input class="header-search-input z-depth-2" type="text" name="Search" placeholder="Explore {{env('APP_NAME')}}">
                 </div>
                 <ul class="navbar-list right">
-                    {{--                    <li class="hide-on-med-and-down"><a class="waves-effect waves-block waves-light translation-button" href="javascript:void(0);" data-target="translation-dropdown"><span class="flag-icon flag-icon-gb"></span></a></li>--}}
                     <li class="hide-on-med-and-down"><a class="waves-effect waves-block waves-light toggle-fullscreen" href="javascript:void(0);"><i class="material-icons">settings_overscan</i></a></li>
                     <li class="hide-on-large-only"><a class="waves-effect waves-block waves-light search-button" href="javascript:void(0);"><i class="material-icons">search</i></a></li>
                     <li><a class="waves-effect waves-block waves-light notification-button" href="javascript:void(0);" data-target="notifications-dropdown"><i class="material-icons">notifications_none<small class="notification-badge">5</small></i></a></li>
                     <li><a class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);" data-target="profile-dropdown"><span class="avatar-status avatar-online"><img src="{{URL::asset('backend/assets/images/avatar/avatar-7.png')}} " alt="avatar"><i></i></span></a></li>
-                    <li><a class="waves-effect waves-block waves-light sidenav-trigger" href="#" data-target="slide-out-right"><i class="material-icons">format_indent_increase</i></a></li>
                 </ul>
 
                 <!-- notifications-dropdown-->
@@ -409,7 +406,7 @@
 <!-- BEGIN: Page Main-->
 <div id="main">
 
-    <div class="container">
+    <div class="row">
         {{--LOAD PAGE CONTENT IN HERE--}}
         @yield('content')
         {{--LOAD PAGE CONTENT IN HERE--}}
@@ -439,7 +436,6 @@
 <script src="{{URL::asset('backend/assets/js/plugins.js')}}" type="text/javascript"></script>
 <script src="{{URL::asset('backend/assets/js/ckeditor5-build-classic/ckeditor.js')}}" type="text/javascript"></script>
 <script src="{{URL::asset('backend/assets/js/dropzone.min.js')}}" type="text/javascript"></script>
-<script src="{{URL::asset('backend/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
 
 {{-- Load Section Scripts Start --}}
 

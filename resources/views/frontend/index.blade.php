@@ -158,67 +158,14 @@
                 </div>
 
                 <div class="col-lg-3">
-                    @if(!empty($posts['twitter']))
-                        <div class="twitter-cards">
-                            <h6>
-                                Tweets <span>by</span> <a href="#">@Emirates Cricket</a> <img src="{{ URL::asset('frontend/assets/images/twitter.png') }}" alt="">
-                            </h6>
-                            <div class="twitter-account-logo">
-                                <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
-                                <h6>
-                                    UAE Cricket Official
-                                    <span>@EmiratesCricket</span>
-                                </h6>
-                            </div>
-                            <div class="twitter-post-content mCustomScrollbar">
-                                @php
-                                    $data = json_decode($posts['twitter']['data']);
-                                @endphp
-                                <p>
-                                    {{!empty($data->text) ? $data->text : ''}}
-                                    <span>
-                                        <a href="{{!empty($data->permalink_url) ? $data->permalink_url : '#'}}">Read More...</a>
-                                    </span>
-                                </p>
-                                <a href="{{!empty($data->permalink_url) ? $data->permalink_url : '#'}}">
-                                    @if(!empty($data->entities->media))
-                                        <img src="{{$data->entities->media[0]->media_url_https}}" class="twitter-image" alt="">
-                                    @endif
-                                </a>
-                            </div>
-                        </div>
-                    @endif
+                    <div class="twitter-cards">
+                        <a class="twitter-timeline" data-width="228" data-height="486" data-dnt="true" href="https://twitter.com/EmiratesCricket?ref_src=twsrc%5Etfw">Tweets by EmiratesCricket</a>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
 
-                    @if(!empty($posts['facebook']))
-                        <div class="twitter-cards fb-post">
-                            <h6>
-                                Tweets <span>by</span> <a href="#">@Emirates Cricket</a> <img src="{{ URL::asset('frontend/assets/images/facebook.png') }}" alt="">
-                            </h6>
-                            <div class="twitter-account-logo">
-                                <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
-                                <h6>
-                                    UAE Cricket Official
-                                    <span>@EmiratesCricket</span>
-                                </h6>
-                            </div>
-                            <div class="twitter-post-content mCustomScrollbar">
-                                @php
-                                    $data = json_decode($posts['facebook']['data']);
-                                @endphp
-                                <p>
-                                    {{!empty($data->message) ? $data->message : ''}}
-                                    <span>
-                                        <a href="{{$data->permalink_url}}">Read More...</a>
-                                    </span>
-                                </p>
-                                <a href="{{$data->permalink_url}}">
-                                    @if(!empty($data->full_picture))
-                                        <img src="{{$data->full_picture}}" class="twitter-image" alt="">
-                                    @endif
-                                </a>
-                            </div>
-                        </div>
-                    @endif
+                    <div class="twitter-cards fb-post">
+                        <div class="fb-page" data-href="https://www.facebook.com/wuwumagic/" data-tabs="timeline" data-width="232" data-height="493" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true"><blockquote cite="https://www.facebook.com/wuwumagic/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/wuwumagic/">WuWu</a></blockquote></div>
+                    </div>
 
                     @if(!empty($posts['instagram']))
                         <div class="twitter-cards insta-post">
@@ -258,8 +205,11 @@
                             </div>
                         </div>
                     @endif
-                </div>
 
+                    {{--<div class="twitter-cards insta-post">
+
+                    </div>--}}
+                </div>
             </div>
         </div>
     </div>
