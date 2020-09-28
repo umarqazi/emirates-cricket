@@ -26,134 +26,20 @@
     <!--   social section     -->
     <div class="social-section">
         <div class="container">
-        @if(!empty($posts['twitter']))
-            <!--       twitter slider         -->
-                <div class="social-content">
-                    <h6>
-                        Tweets <span>by</span> <a href="#">@Emirates Cricket</a> <i class="fa fa-twitter"></i>
-                    </h6>
-                    <div class="social-slider slider-dots">
-                        @foreach($posts['twitter'] as $twitter)
-                            <div>
-                                <div class="twitter-cards">
-                                    <div class="twitter-account-logo">
-                                        <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
-                                        <h6>
-                                            UAE Cricket Official
-                                            <span>@EmiratesCricket</span>
-                                        </h6>
-                                    </div>
-                                    <div class="twitter-post-content mCustomScrollbar">
-                                        @php
-                                            $data = json_decode($twitter->data);
-                                        @endphp
-                                        <p>
-                                            {{!empty($data->text) ? $data->text : ''}}
-                                            <span>
-                                                <a href="{{!empty($data->permalink_url) ? $data->permalink_url : '#'}}"> Read More...</a>
-                                            </span>
-                                        </p>
-                                        <a href="{{!empty($data->permalink_url) ? $data->permalink_url : '#'}}">
-                                            @if(!empty($data->entities->media))
-                                                <img src="{{$data->entities->media[0]->media_url_https}}" class="twitter-image" alt="">
-                                            @endif
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
+            <div class="row justify-content-center">
+                <div class="col-lg-4">
+                    <div class="twitter-cards">
+                        <a class="twitter-timeline" data-width="300" data-height="486" data-dnt="true" href="https://twitter.com/EmiratesCricket?ref_src=twsrc%5Etfw">Tweets by EmiratesCricket</a>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     </div>
                 </div>
-        @endif
 
-        @if(!empty($posts['facebook']))
-            <!--      facebook sldier          -->
-                <div class="social-content facebook-post">
-                    <h6>
-                        Tweets <span>by</span> <a href="#">@Emirates Cricket</a> <i class="fa fa-facebook-square"></i>
-                    </h6>
-                    <div class="social-slider slider-dots">
-                        @foreach($posts['facebook'] as $facebook)
-                            <div>
-                                <div class="twitter-cards">
-                                    <div class="twitter-account-logo">
-                                        <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
-                                        <h6>
-                                            UAE Cricket Official
-                                            <span>@EmiratesCricket</span>
-                                        </h6>
-                                    </div>
-                                    <div class="twitter-post-content mCustomScrollbar">
-                                        @php
-                                            $data = json_decode($facebook->data);
-                                        @endphp
-                                        <p>
-                                            {{!empty($data->message) ? $data->message : ''}}
-                                            <span>
-                                                <a href="{{$data->permalink_url}}">Read More...</a>
-                                            </span>
-                                        </p>
-                                        <a href="{{$data->permalink_url}}">
-                                            @if(!empty($data->full_picture))
-                                                <img src="{{$data->full_picture}}" class="twitter-image" alt="">
-                                            @endif
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
+                <div class="col-lg-4">
+                    <div class="twitter-cards fb-post">
+                        <div class="fb-page" data-href="https://www.facebook.com/wuwumagic/" data-tabs="timeline" data-width="310" data-height="493" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/wuwumagic/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/wuwumagic/">WuWu</a></blockquote></div>
                     </div>
                 </div>
-        @endif
-
-        @if(!empty($posts['instagram']))
-            <!--      instagram sldier          -->
-                <div class="social-content instagram-post">
-                    <h6>
-                        Tweets <span>by</span> <a href="#">@Emirates Cricket</a>
-                        <img src="{{ URL::asset('frontend/assets/images/instagram-slider.png') }}" alt="">
-                    </h6>
-                    <div class="social-slider slider-dots">
-                        @foreach($posts['instagram'] as $instagram)
-                            <div>
-                                <div class="twitter-cards">
-                                    <div class="twitter-account-logo">
-                                        <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
-                                        <h6>
-                                            UAE Cricket Official
-                                            <span>@EmiratesCricket</span>
-                                        </h6>
-                                    </div>
-                                    <div class="twitter-post-content mCustomScrollbar">
-                                        @php
-                                            $data = json_decode($instagram->data);
-                                        @endphp
-                                        <p>
-                                            {{!empty($data->caption) ? $data->caption : ''}}
-                                            <span>
-                                            <a href="{{$data->permalink}}">Read More...</a>
-                                        </span>
-                                        </p>
-                                        <a href="{{$data->permalink}}">
-                                            @if(!empty($data->media_url))
-                                                @if($data->media_type === "IMAGE")
-                                                    <img src="{{$data->media_url}}" class="twitter-image" alt="">
-                                                @elseif($data->media_type === "VIDEO")
-                                                    <video width="282" height="282" controls>
-                                                        <source src="{{$data->media_url}}" type="video/mp4">
-                                                        <source src="{{$data->media_url}}" type="video/ogg">
-                                                        Your browser does not support the video tag.
-                                                    </video>
-                                                @endif
-                                            @endif
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            @endif
+            </div>
         </div>
     </div>
 

@@ -164,51 +164,8 @@
                     </div>
 
                     <div class="twitter-cards fb-post">
-                        <div class="fb-page" data-href="https://www.facebook.com/wuwumagic/" data-tabs="timeline" data-width="232" data-height="493" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true"><blockquote cite="https://www.facebook.com/wuwumagic/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/wuwumagic/">WuWu</a></blockquote></div>
+                        <div class="fb-page" data-href="https://www.facebook.com/wuwumagic/" data-tabs="timeline" data-width="232" data-height="493" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/wuwumagic/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/wuwumagic/">WuWu</a></blockquote></div>
                     </div>
-
-                    @if(!empty($posts['instagram']))
-                        <div class="twitter-cards insta-post">
-                            <h6>
-                                Tweets <span>by</span> <a href="#">@Emirates Cricket</a> <img src="{{ URL::asset('frontend/assets/images/instagram.png') }}" alt="">
-                            </h6>
-                            <div class="twitter-account-logo">
-                                <img src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
-                                <h6>
-                                    UAE Cricket Official
-                                    <span>@EmiratesCricket</span>
-                                </h6>
-                            </div>
-                            <div class="twitter-post-content mCustomScrollbar">
-                                @php
-                                    $data = json_decode($posts['instagram']['data']);
-                                @endphp
-                                <p>
-                                    {{!empty($data->caption) ? $data->caption : ''}}
-                                    <span>
-                                        <a href="{{$data->permalink}}">Read More...</a>
-                                    </span>
-                                </p>
-                                <a href="{{$data->permalink}}">
-                                    @if(!empty($data->thumbnail_url))
-                                        @if($data->media_type === "IMAGE")
-                                            <img src="{{$data->thumbnail_url}}" class="twitter-image" alt="">
-                                        @elseif($data->media_type === "VIDEO")
-                                            <video width="208" height="208" controls>
-                                                <source src="{{$data->media_url}}" type="video/mp4">
-                                                <source src="{{$data->media_url}}" type="video/ogg">
-                                                Your browser does not support the video tag.
-                                            </video>
-                                        @endif
-                                    @endif
-                                </a>
-                            </div>
-                        </div>
-                    @endif
-
-                    {{--<div class="twitter-cards insta-post">
-
-                    </div>--}}
                 </div>
             </div>
         </div>
