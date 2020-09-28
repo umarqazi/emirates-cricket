@@ -183,8 +183,10 @@ class SocialAccountController extends Controller
 
     public function getLatestInstagramPosts() {
         $social_account = $this->social_account_service->findByType(SocialAccount::$Instagram);
-//        $profile = $this->instagram_service->getUserProfile();
+        /* GET User Media Posts */
         $media = $this->instagram_service->getUserMedia();
+
+        /* Store latest Instagram Posts in DB */
         $response = $this->social_post_service->storeLattestPosts($media->data, $social_account->id);
         if ($response) {
             return redirect()->route('social-accounts.show', $social_account->id)->with('success', 'Latest Posts have been successfully Fetched!');
