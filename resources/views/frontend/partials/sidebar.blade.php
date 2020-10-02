@@ -25,7 +25,7 @@
             </a>
         </li>
         <li>
-            <a href="{{route('about')}}">
+            <a href="{{route('about-us')}}">
                     <span>
                         <img class="nav-icon" src="{{ URL::asset('frontend/assets/images/newspaper.png') }}" alt="">
                     </span>
@@ -34,13 +34,13 @@
             <i class="fa fa-chevron-down"></i>
             <ul class="sub-menu">
                 <li>
-                    <a href="#">
+                    <a href="{{route('about-us')}}">
                         <i class=" fa-angle-double-right"></i>
                         <span>The board</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{route('mandate')}}">
                         <i class=" fa-angle-double-right"></i>
                         <span>Mandate</span>
                     </a>
@@ -50,19 +50,19 @@
                         <i class=" fa-angle-double-right"></i>
                         <span>Regional Councils</span>
                     </a>
-                    <a class="dubai-states" href="#">
+                    <a class="dubai-states" href="{{route('councils', \App\Repos\ICouncilType::councilAbuDhabi)}}">
                         <i class="fa-angle-right"></i>
                         <span>Abu Dhabi</span>
                     </a>
-                    <a class="dubai-states" href="#">
+                    <a class="dubai-states" href="{{route('councils', \App\Repos\ICouncilType::councilDubai)}}">
                         <i class="fa-angle-right"></i>
                         <span>Dubai</span>
                     </a>
-                    <a class="dubai-states" href="#">
+                    <a class="dubai-states" href="{{route('councils', \App\Repos\ICouncilType::councilSharjah)}}">
                         <i class="fa-angle-right"></i>
                         <span>Sharjah</span>
                     </a>
-                    <a class="dubai-states" href="#">
+                    <a class="dubai-states" href="{{route('councils', \App\Repos\ICouncilType::councilAjman)}}">
                         <i class="fa-angle-right"></i>
                         <span>Ajman</span>
                     </a>
@@ -72,23 +72,23 @@
                         <i class=" fa-angle-double-right"></i>
                         <span>Cricket Governing Bodies</span>
                     </a>
-                    <a class="dubai-states" href="#">
+                    <a class="dubai-states" href="https://www.icc-cricket.com/">
                         <i class="fa-angle-right"></i>
-                        <span>Abu Dhabi</span>
+                        <span>ICC</span>
                     </a>
-                    <a class="dubai-states" href="#">
+                    <a class="dubai-states" href="http://www.asiancricket.org/">
                         <i class="fa-angle-right"></i>
-                        <span>Dubai</span>
+                        <span>ACC</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{route('academies')}}">
                         <i class=" fa-angle-double-right"></i>
                         <span>Academies</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{route('education')}}">
                         <i class=" fa-angle-double-right"></i>
                         <span>Education and Downloads</span>
                     </a>

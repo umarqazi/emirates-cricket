@@ -518,6 +518,10 @@ body.sidebar-collapse .content-section {
     margin: 0px 10px;
 }
 
+.content-page-section{
+    padding: 20px;
+}
+
 /* marquee */
 .marquee {
     overflow: hidden;

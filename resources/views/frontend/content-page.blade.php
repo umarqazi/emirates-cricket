@@ -11,25 +11,18 @@
             <p>
                 <a href="{{route('home')}}" class="paren-page">Main page</a>
                 <img src="{{ URL::asset('frontend/assets/images/right-arrow.png') }}" alt="">
-                <a href="{{route('about-us')}}" class="child-page">About</a>
+                <a href="{{route('contact')}}" class="child-page">Contact</a>
             </p>
         </div>
     </div>
 
     <!--    main heading        -->
     <div class="container">
-        <h1 class="main-heading">About</h1>
+        <h1 class="main-heading">{{ $data->about_type === \App\Repos\IAboutType::aboutRegionalCouncils ? $data->about_type.': '.str_replace('-', ' ', $data->council_type) : strtoupper($data->about_type)}}</h1>
     </div>
 
-    <!--     Team section       -->
-    <div class="team-section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="board-members">
-                    <img src="{{asset('frontend/assets/images/about-us.jpg')}}">
-                </div>
-            </div>
-        </div>
+    <!--   Content Section     -->
+    <div class="content-page-section">
+        <div>{!! $data->content !!}</div>
     </div>
-
 @endsection

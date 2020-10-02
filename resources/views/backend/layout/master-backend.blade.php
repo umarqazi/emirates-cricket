@@ -131,6 +131,8 @@
         </li>
         <li class="bold"><a class="waves-effect waves-cyan " href="{{route('calendar')}}"><i class="material-icons">today</i><span class="menu-title" data-i18n="">Calendar</span></a>
         </li>
+        <li class="bold"><a class="waves-effect waves-cyan " href="{{route('about.index')}}"><i class="material-icons">today</i><span class="menu-title" data-i18n="">About</span></a>
+        </li>
         <li class="navigation-header"><a class="navigation-header-text">Pages </a><i class="navigation-header-icon material-icons">more_horiz</i>
         </li>
 
