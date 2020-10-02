@@ -49,8 +49,10 @@ return [
         'Team',
         'Team Player',
         'Contact Request',
-        'Team Registration',
-        'Player Registration'
+        'Tournament Registration',
+        'Player Registration',
+        'About',
+        'Development',
     ],
 
 ];

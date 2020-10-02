@@ -125,15 +125,7 @@
                 </ul>
             </div>
         </li>
-        <li class="navigation-header"><a class="navigation-header-text">Applications</a><i class="navigation-header-icon material-icons">more_horiz</i>
-        </li>
-        <li class="bold"><a class="waves-effect waves-cyan " href="#"><i class="material-icons">mail_outline</i><span class="menu-title" data-i18n="">Mail</span><span class="badge new badge pill pink accent-2 float-right mr-10">5</span></a>
-        </li>
-        <li class="bold"><a class="waves-effect waves-cyan " href="{{route('calendar')}}"><i class="material-icons">today</i><span class="menu-title" data-i18n="">Calendar</span></a>
-        </li>
-        <li class="bold"><a class="waves-effect waves-cyan " href="{{route('about.index')}}"><i class="material-icons">today</i><span class="menu-title" data-i18n="">About</span></a>
-        </li>
-        <li class="navigation-header"><a class="navigation-header-text">Pages </a><i class="navigation-header-icon material-icons">more_horiz</i>
+        <li class="bold"><a class="waves-effect waves-cyan" href="{{route('about.index')}}"><i class="material-icons">today</i><span class="menu-title" data-i18n="">About</span></a>
         </li>
 
         @if(auth()->user()->can('List User') || auth()->user()->can('Create User'))
@@ -277,19 +269,19 @@
             </li>
         @endif
 
-{{--        @if(auth()->user()->can('List Gallery') || auth()->user()->can('Create Gallery'))--}}
+        @if(auth()->user()->can('List Gallery') || auth()->user()->can('Create Gallery'))
             <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">photo_library</i><span class="menu-title" data-i18n="">Social Accounts</span></a>
                 <div class="collapsible-body">
                     <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-{{--                        @if(auth()->user()->can('List Gallery'))--}}
+                        @if(auth()->user()->can('List Gallery'))
                             <li>
                                 <a class="collapsible-body" href="{{route('social-accounts.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Accounts List</span></a>
                             </li>
-{{--                        @endif--}}
+                        @endif
                     </ul>
                 </div>
             </li>
-{{--        @endif--}}
+        @endif
 
         @if(auth()->user()->can('List Sponsor') || auth()->user()->can('Create Sponsor'))
             <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">thumbs_up_down</i><span class="menu-title" data-i18n="">Sponsor</span></a>
@@ -322,7 +314,7 @@
             </li>
         @endif
 
-{{--        @if(auth()->user()->can('List Contact'))--}}
+        @if(auth()->user()->can('List Contact'))
             <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">contact_phone</i><span class="menu-title" data-i18n="">Development</span></a>
                 <div class="collapsible-body">
                     <ul class="collapsible collapsible-sub" data-collapsible="accordion">
@@ -331,7 +323,7 @@
                     </ul>
                 </div>
             </li>
-{{--        @endif--}}
+        @endif
 
         @if(auth()->user()->can('List Tournament Registration') || auth()->user()->can('Edit Tournament Registration'))
             <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">description</i><span class="menu-title" data-i18n="">Tournament Registration</span></a>
@@ -382,24 +374,20 @@
             </li>
         @endif
 
-{{--        @if(auth()->user()->can('List Player Registration') || auth()->user()->can('Edit Player Registration'))--}}
+        @if(auth()->user()->can('List Player Registration') || auth()->user()->can('Edit Player Registration'))
             <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">settings</i><span class="menu-title" data-i18n="">Settings</span></a>
                 <div class="collapsible-body">
                     <ul class="collapsible collapsible-sub" data-collapsible="accordion">
 
-{{--                        @if(auth()->user()->can('List Player Registration'))--}}
+                        @if(auth()->user()->can('List Player Registration'))
                             <li>
-                                <a class="collapsible-body" href="{{route('setting.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Setting</span></a>
+                                <a class="collapsible-body" href="{{route('setting.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Slider Setting</span></a>
                             </li>
-{{--                        @endif--}}
+                        @endif
                     </ul>
                 </div>
             </li>
-{{--        @endif--}}
-        <li class="navigation-header"><a class="navigation-header-text">Charts &amp; Maps </a><i class="navigation-header-icon material-icons">more_horiz</i>
-        </li>
-        <li class="navigation-header"><a class="navigation-header-text">Misc </a><i class="navigation-header-icon material-icons">more_horiz</i>
-        </li>
+        @endif
     </ul>
     <div class="navigation-background"></div><a class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only" href="#" data-target="slide-out"><i class="material-icons">menu</i></a>
 </aside>

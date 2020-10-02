@@ -75,6 +75,12 @@ class PermissionTableSeeder extends Seeder
             array('name' => 'Show Team Player', 'module' => 'Team Player', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
             array('name' => 'Edit Team Player', 'module' => 'Team Player', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
             array('name' => 'Delete Team Player', 'module' => 'Team Player', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
+            array('name' => 'List About', 'module' => 'About', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
+            array('name' => 'Show About', 'module' => 'About', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
+            array('name' => 'Edit About', 'module' => 'About', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
+            array('name' => 'List Development', 'module' => 'Development', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
+            array('name' => 'Show Development', 'module' => 'Development', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
+            array('name' => 'Edit Development', 'module' => 'Development', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
         );
 
         DB::table('permissions')->insert($permissions);
