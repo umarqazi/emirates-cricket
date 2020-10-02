@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contact;
+use App\ContentPage;
 use App\Http\Requests\UpdateAboutRequest;
 use App\Repos\IAboutType;
 use App\Repos\ICouncilType;
@@ -24,7 +25,7 @@ class AboutUsController extends Controller
     public function __construct()
     {
         /* Check User Permission to Perform Action */
-//        $this->authorizeResource(About::class, 'about');
+//        $this->authorizeResource(ContentPage::class, 'about');
 
         $this->about_service = new AboutService();
     }

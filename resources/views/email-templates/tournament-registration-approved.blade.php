@@ -88,29 +88,9 @@
         <h1>Tournament Registration Request Approval</h1>
         <p>Hi Mr. {{$this->tournament->organizer_name . '!'}}</p>
         <p>Congratulations! We have Approved your Tournament Registration Request at Emirates Cricket Board.</p>
-        <p>Please click the link Below to Proceed to Payment Page.</p>
-        <a href="{{route('payment')}}" class="email-btn">Proceed To Payment</a>
     </div>
     <div class="email-footer">
-        <a href="#" class="email-icon">
-            <img class="email-social-icon" src="{{ URL::asset('frontend/assets/images/email-facebook.png') }}" alt="">
-        </a>
-        <a href="#" class="email-icon">
-            <img class="email-social-icon" src="{{ URL::asset('frontend/assets/images/email-instagram.png') }}" alt="">
-        </a>
-        <a href="#" class="email-icon">
-            <img class="email-social-icon" src="{{ URL::asset('frontend/assets/images/email-twitter.png') }}" alt="">
-        </a>
-        <a href="#" class="email-icon">
-            <img class="email-social-icon" src="{{ URL::asset('frontend/assets/images/email-youtube.png') }}" alt="">
-        </a>
-        <a href="#" class="email-icon">
-            <img class="email-social-icon" src="{{ URL::asset('frontend/assets/images/email-linkedin.png') }}" alt="">
-        </a>
-        <a href="#" class="email-icon">
-            <img class="email-social-icon" src="{{ URL::asset('frontend/assets/images/email-pinterest.png') }}" alt="">
-        </a>
-        <p class="footer-text">{{env('APP_NAME')}}</p>
+        @include('backend.partials.email-footer')
     </div>
 </div>
 </body>
