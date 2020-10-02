@@ -20,7 +20,12 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/about', static function () {
     return view('frontend.about');
-})->name('about');
+})->name('about-us');
+
+Route::get('/mandate', 'AboutUsController@mandate')->name('mandate');
+Route::get('/academies', 'AboutUsController@academies')->name('academies');
+Route::get('/education-and-downloads', 'AboutUsController@education')->name('education');
+Route::get('/councils/{name}', 'AboutUsController@councils')->name('councils');
 
 Route::get('/contact', 'ContactController@createContact')->name('contact');
 Route::post('/contact', 'ContactController@storeContact')->name('submit-contact-form');
@@ -104,6 +109,7 @@ Route::group(['prefix' => 'admin'], static function () {
         Route::resource('/news', 'NewsController');
         Route::resource('/update', 'UpdateController');
         Route::resource('/sponsor', 'SponsorController');
+        Route::resource('/about', 'AboutUsController');
 
         /* Gallery Related Routes in here... */
         Route::resource('/gallery', 'GalleryController');
