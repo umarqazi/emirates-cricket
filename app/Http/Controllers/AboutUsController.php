@@ -10,6 +10,7 @@ use App\Repos\ICouncilType;
 use App\Repos\IPageType;
 use App\Services\AboutService;
 use App\Services\ContactService;
+use App\Services\EmployeeService;
 use Illuminate\Http\Request;
 
 class AboutUsController extends Controller
@@ -20,6 +21,11 @@ class AboutUsController extends Controller
     public $about_service;
 
     /**
+     * @var EmployeeService
+     */
+    private $employee_service;
+
+    /**
      * ContactController constructor.
      */
     public function __construct()
@@ -28,6 +34,7 @@ class AboutUsController extends Controller
 //        $this->authorizeResource(ContentPage::class, 'about');
 
         $this->about_service = new AboutService();
+        $this->employee_service = new EmployeeService();
     }
     /**
      * Display a listing of the resource.
@@ -108,6 +115,11 @@ class AboutUsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function about() {
+        $about = $this->employee_service->all();
+        return view('frontend.about', compact('about'));
     }
 
     public function mandate() {

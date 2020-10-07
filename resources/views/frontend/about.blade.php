@@ -24,11 +24,59 @@
     <!--     Team section       -->
     <div class="team-section">
         <div class="container">
+
+            @foreach($about as $employee)
+
             <div class="row justify-content-center">
-                <div class="board-members">
-                    <img src="{{asset('frontend/assets/images/about-us.jpg')}}">
+                <?php if ($employee['designation'] == "Chairman") {?>
+                <div class="col-md-4">
+                    <div class="member">
+                        <img src="{{ URL::asset('storage/uploads/employees/'.$employee->image) }}" alt="">
+                        <h4>{{$employee->name}}</h4>
+                        <h5>{{$employee->designation}}</h5>
+                    </div>
                 </div>
+                <?php } ?>
             </div>
+            @endforeach
+
+            <div class="row justify-content-center">
+                @foreach($about as $employee)
+                <?php if ($employee['designation'] == "Vice-Chairman") {?>
+                <div class="col-md-4">
+                    <div class="member">
+                        <img src="{{ URL::asset('frontend/assets/images/vice-chairman.png') }}" alt="">
+                        <h4>{{$employee->name}}</h4>
+                        <h5>{{$employee->designation}}</h5>
+                    </div>
+                </div>
+                <?php  } ?>
+
+                <?php if ($employee['designation'] == "General Secretary") {?>
+                <div class="col-md-4">
+                    <div class="member">
+                        <img src="{{ URL::asset('storage/uploads/employees/'.$employee->image) }}" alt="">
+                        <h4>{{$employee->name}}</h4>
+                        <h5>{{$employee->designation}}</h5>
+                    </div>
+                </div>
+                <?php  } ?>
+                @endforeach
+            </div>
+
+            <div class="row justify-content-center">
+                @foreach($about as $employees)
+                    <?php if ($employees['designation'] == "Employee"){ ?>
+                <div class="col-md-4">
+                    <div class="member">
+                        <img src="{{ URL::asset('storage/uploads/employees/'.$employees->image) }}" alt="">
+                        <h4>{{$employees->name}}</h4>
+                    </div>
+                </div>
+                    <?php } ?>
+                @endforeach
+            </div>
+
         </div>
     </div>
 

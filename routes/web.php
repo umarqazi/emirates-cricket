@@ -17,10 +17,12 @@ use Illuminate\Support\Facades\Route;
 /*---------------------------FRONTEND ROUTES------------------------*/
 /*------------------------------------------------------------------*/
 Route::get('/', 'HomeController@index')->name('home');
-
+/*
 Route::get('/about', static function () {
     return view('frontend.about');
-})->name('about-us');
+})->name('about-us');*/
+
+Route::get('/about', 'AboutUsController@about')->name('about-us');
 
 Route::get('/mandate', 'AboutUsController@mandate')->name('mandate');
 Route::get('/academies', 'AboutUsController@academies')->name('academies');
@@ -148,6 +150,9 @@ Route::group(['prefix' => 'admin'], static function () {
         Route::resource('/user', 'UserController');
         Route::resource('/role', 'RoleController');
         Route::resource('/permission', 'PermissionController');
+
+//        employee Controller
+        Route::resource('/employee', 'EmployeeController');
 
         /* Development Routes */
         Route::resource('/development', 'DevelopmentController');

@@ -853,6 +853,7 @@ body.sidebar-collapse .content-section {
 /* team section */
 .member img {
     width: 100%;
+    max-width: 300px;
 }
 .member{
     text-align: center;

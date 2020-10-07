@@ -55,4 +55,11 @@ return [
         'Development',
     ],
 
+    'designations' => [
+        'Chairman',
+        'Vice-Chairman',
+        'General Secretary',
+        'Employee',
+    ],
+
 ];

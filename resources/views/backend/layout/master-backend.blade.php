@@ -169,6 +169,27 @@
             </li>
         @endif
 
+        @if(auth()->user()->can('List Employee') || auth()->user()->can('Create Employee'))
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">content_paste</i><span class="menu-title" data-i18n="">Employees</span></a>
+                <div class="collapsible-body">
+                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+
+                        @if(auth()->user()->can('List Employee'))
+                            <li>
+                                <a class="collapsible-body" href="{{route('employee.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Employee List</span></a>
+                            </li>
+                        @endif
+
+                        @if(auth()->user()->can('Create Employee'))
+                            <li>
+                                <a class="collapsible-body" href="{{route('employee.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
+            </li>
+        @endif
+
         @if(auth()->user()->can('List Permission') || auth()->user()->can('Create Permission'))
             <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">thumb_up</i><span class="menu-title" data-i18n="">Permission</span></a>
                 <div class="collapsible-body">
