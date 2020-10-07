@@ -71,8 +71,7 @@ class CricClubApiService
     public function getMatchScorecard($club_id, $match_id)
     {
         $url = config('cricclubapi.get_match_scorecard');
-        $url = str_replace("{clubId}", $club_id, $url);
-        $url = str_replace("{matchId}", $match_id, $url);
+        $url = str_replace(array("{clubId}", "{matchId}"), array($club_id, $match_id), $url);
 
         return $this->curl_request($url);
     }
@@ -80,11 +79,34 @@ class CricClubApiService
     public function getMatchScoreOverlay($club_id, $match_id, $fixture_id)
     {
         $url = config('cricclubapi.get_match_score_overlay');
-        $url = str_replace("{clubId}", $club_id, $url);
-        $url = str_replace("{matchId}", $match_id, $url);
-        $url = str_replace("{fixtureId}", $match_id, $url);
+        $url = str_replace(array("{clubId}", "{matchId}", "{fixtureId}"), array($club_id, $match_id, $match_id), $url);
 
         return $this->curl_request($url);
+    }
+
+    public function getPointsTable()
+    {
+        $league_points = array();
+
+        /* Get League List */
+        $leagues = $this->getClubIdAndLeagueList();
+        $leagues = $leagues['data'];
+
+        foreach ($leagues as $key=>$league) {
+            $url = config('cricclubapi.get_points_table');
+            $url = str_replace(array("{clubId}", "{leagueId}"), array(env('CRIC_CLUB_ID'), $league['leagueId']), $url);
+            $response = $this->curl_request($url);
+            $league_points[$key] = $response['data'];
+        }
+        dd($league_points);
+
+        $league_points = array_filter($league_points, function ($each) {
+            return array_filter($each['data'], function ($data) {
+                return !empty($data['teams']);
+            }, ARRAY_FILTER_USE_BOTH);
+        }, ARRAY_FILTER_USE_BOTH);
+
+        dd($league_points);
     }
 
     public function curl_request($url) {

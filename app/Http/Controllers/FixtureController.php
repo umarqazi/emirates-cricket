@@ -14,7 +14,10 @@ class FixtureController extends Controller
     }
 
     public function fixtures() {
-        $results = $this->cric_club_service->getLattestMatchResults(15272);
+        $league = $this->cric_club_service->getClubIdAndLeagueList();
+        $results = $this->cric_club_service->getLattestMatchResults(env('CRIC_CLUB_ID'));
+        $points = $this->cric_club_service->getPointsTable();
+        $point = $this->cric_club_service->getPoints(env('CRIC_CLUB_ID'), $league['data'][1]['leagueId']);
         return view('frontend.fixtures', compact('results'));
     }
 }
