@@ -58,29 +58,29 @@
                                                     </thead>
                                                     <tbody>
                                                     @if(!empty($employees))
-                                                    @foreach($employees as $row)
+                                                        @foreach($employees as $row)
 
-                                                        <tr>
-                                                            <td><img src="{{ URL::asset('storage/uploads/employees/'). '/'. $row->image }}"  class="img-thumbnail" width="75" /></td>
-                                                            <td>{{$row->name}}</td>
-                                                            <td>{{$row->designation}}</td>
-                                                            <td>
-                                                                @can('Edit Employee')
-                                                                    <a href="{{route('employee.edit', $row->id)}}"><i class="material-icons">edit</i></a>
-                                                                @endcan
+                                                            <tr>
+                                                                <td><img src="{{ URL::asset('storage/uploads/employees/'). '/'. $row->image }}"  class="img-thumbnail" width="75" /></td>
+                                                                <td>{{$row->name}}</td>
+                                                                <td>{{$row->designation}}</td>
+                                                                <td>
+                                                                    @can('Edit Employee')
+                                                                        <a href="{{route('employee.edit', $row->id)}}"><i class="material-icons">edit</i></a>
+                                                                    @endcan
 
-                                                                @can('Delete Employee')
-                                                                    <form method="post" class="delete-form" action="{{ route('employee.destroy', $row->id) }}">
-                                                                        @csrf
-                                                                        @method('DELETE')
+                                                                    @can('Delete Employee')
+                                                                        <form method="post" class="delete-form" action="{{ route('employee.destroy', $row->id) }}">
+                                                                            @csrf
+                                                                            @method('DELETE')
 
-                                                                        <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
-                                                                    </form>
-                                                                @endcan
-                                                            </td>
-                                                        </tr>
+                                                                            <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
+                                                                        </form>
+                                                                    @endcan
+                                                                </td>
+                                                            </tr>
 
-                                                    @endforeach
+                                                        @endforeach
                                                     @else
                                                         <tr>
                                                             <td colspan="4" class="center">No Employee Available...</td>
