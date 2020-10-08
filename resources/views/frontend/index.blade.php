@@ -121,6 +121,7 @@
                     @endif
 
                 <!--     International news         -->
+                    @if(!empty($internation_news_records))
                     <div class="latest-news international-news">
                         <h2>International News</h2>
                         <div class="row">
@@ -131,8 +132,8 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="international-news-content">
-                                    <h4>Media Accreditation Open For Asia Cup 2018</h4>
-                                    <p>Media Accreditation is now open for the Asia Cup 2018. Accreditation is open for BONAFIDE media ONLY, application DOES NOT automatically give approval. Asia Cup management's decision on approvals and subsequent accreditation to cover the event is FINAL with no correspondence being entered into. The LAST DATE for submission is Wednesday 5th September 2018. Applications submitted after this date will not be entertained.FINAL with no correspondence being entered into. The LAST DATE for submission is Wednesday 5th September 2018. Applications submitted after this date will not be entertained.</p>
+                                    <h4>{{$internation_news_records->title}}</h4>
+                                    <p>{!! $internation_news_records->description !!}</p>
                                     <p class="read-more">
                                         <a href="#" tabindex="0">Read more</a>
                                     </p>
@@ -140,6 +141,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
 
                     <!--  Logo slider     -->
                     @if(!$sponsors->isEmpty())

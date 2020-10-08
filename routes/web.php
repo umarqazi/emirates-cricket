@@ -113,6 +113,9 @@ Route::group(['prefix' => 'admin'], static function () {
         Route::resource('/sponsor', 'SponsorController');
         Route::resource('/about', 'AboutUsController');
 
+//        Internation news
+        Route::resource('/international-news', 'InternationalNewsController');
+
         /* Gallery Related Routes in here... */
         Route::resource('/gallery', 'GalleryController');
         Route::post('/gallery-images', 'GalleryController@uploadGalleryImages')->name('gallery.images');
