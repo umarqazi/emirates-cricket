@@ -20,9 +20,9 @@
                     <ol class="breadcrumbs mb-0">
                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a>
                         </li>
-                        <li class="breadcrumb-item"><a href="{{route('international-news.index')}}">News List</a>
+                        <li class="breadcrumb-item"><a href="{{route('international-news.index')}}">International News List</a>
                         </li>
-                        <li class="breadcrumb-item active">News Detail
+                        <li class="breadcrumb-item active">International News Detail
                         </li>
                     </ol>
                 </div>

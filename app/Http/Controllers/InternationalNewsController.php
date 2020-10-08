@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateInternationalRequest;
 use App\Http\Requests\UpdateNewsRequest;
 use App\InternationalNews;
-use App\Services\InternationalNewsServices;
+use App\Services\InternationalNewsService;
 use Illuminate\Http\Request;
 use App\Http\Requests\InternationalNewsRequest;
 use Illuminate\Support\Facades\File;
@@ -14,16 +15,16 @@ class InternationalNewsController extends Controller
 {
 
     /**
-     * @var InternationalNewsServices
+     * @var InternationalNewsService
      */
-    public $Internation_news_service;
+    public $international_news_service;
 
     /**
      * NewsController constructor.
      */
     public function __construct()
     {
-        $this->Internation_news_service = new InternationalNewsServices();
+        $this->international_news_service = new InternationalNewsService();
     }
 
     /**
@@ -33,7 +34,7 @@ class InternationalNewsController extends Controller
      */
     public function index()
     {
-        $international_news = $this->Internation_news_service->all();
+        $international_news = $this->international_news_service->all();
         return view('backend.international-news.index', compact('international_news'));
     }
 
@@ -56,7 +57,7 @@ class InternationalNewsController extends Controller
     public function store(InternationalNewsRequest $request)
     {
 
-        $this->Internation_news_service->store($request->except(['_token']));
+        $this->international_news_service->store($request->except(['_token']));
         return redirect()->route('international-news.index')->with('success', 'News has been Created Successfully!');
     }
 
@@ -89,37 +90,13 @@ class InternationalNewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateNewsRequest $request, InternationalNews $internationalNews)
+    public function update(UpdateInternationalRequest $request, InternationalNews $internationalNews)
     {
-        $params = $request->except('_token', '_method', 'action');
-        $oldImageName = $this->Internation_news_service->find($internationalNews->id)->image;
-        $file = '';
-        $imageName = '';
 
-        if ($request->hasFile('image')) {
-            $extension = $request->file('image')->getClientOriginalExtension();
-            $imageName = time() . '.' . $extension;
-            $file = $request->file('image');
-            $params['image'] = $imageName;
-        } else{
-            $params['image'] = $oldImageName;
-        }
 
-        $news = $this->Internation_news_service->update($params, $internationalNews->id);
-        if (!empty($news) && $request->hasFile('image')) {
+        $data = $request->except('_token', '_method', 'action');
+        $this->international_news_service->update($data, $internationalNews['id']);
 
-            $path = 'uploads/international-news/'.$internationalNews->id.'/';
-
-            if (!Storage::disk('public')->exists($path)) {
-                Storage::disk('public')->makeDirectory($path);
-            }
-
-            /* Delete Old Image */
-            File::delete(public_path('storage/uploads/international-news/'.$internationalNews->id.'/'.$oldImageName));
-
-            /* Upload New Image */
-            Storage::disk('public')->putFileAs($path, $file, $imageName);
-        }
         return redirect()->route('international-news.index')->with('success', 'News has been Updated Successfully!');
     }
 
@@ -131,7 +108,7 @@ class InternationalNewsController extends Controller
      */
     public function destroy(InternationalNews $internationalNews)
     {
-        $status = $this->Internation_news_service->delete($internationalNews->id);
+        $status = $this->international_news_service->delete($internationalNews->id);
         if (!empty($status)) {
             return redirect()->back()->with('success', 'News has been Deleted Successfully!');
         }

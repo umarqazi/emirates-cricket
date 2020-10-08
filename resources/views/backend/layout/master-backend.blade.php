@@ -262,7 +262,7 @@
 
                         @if(auth()->user()->can('Create International News'))
                             <li>
-                                <a class="collapsible-body" href="{{route('international-news.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New Internation News</span></a>
+                                <a class="collapsible-body" href="{{route('international-news.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add International News</span></a>
                             </li>
                         @endif
                     </ul>

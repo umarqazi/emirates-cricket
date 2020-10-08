@@ -12,7 +12,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
-class InternationalNewsServices
+class InternationalNewsService
 {
     public $international_news_repo;
 
@@ -57,7 +57,36 @@ class InternationalNewsServices
     }
 
     public function update($params, $id){
-        return $this->international_news_repo->update(InternationalNews::class, $params, $id);
+
+
+        $old_record = $this->find($id);
+        $file = '';
+        $imageName = '';
+
+        if (!empty($params['image'])) {
+            $extension = $params['image']->getClientOriginalExtension();
+            $imageName = time() . '.' . $extension;
+            $file = $params['image'];
+            $params['image'] = $imageName;
+
+        }
+
+        $news =  $this->international_news_repo->update(InternationalNews::class, $params, $id);
+
+        if (!empty($news) && !empty($params['image'])) {
+
+            $path = 'uploads/international-news/'.$old_record->id.'/';
+
+            if (!Storage::disk('public')->exists($path)) {
+                Storage::disk('public')->makeDirectory($path);
+            }
+
+            /* Delete Old Image */
+            File::delete(public_path('storage/uploads/international-news/'.$old_record->id.'/'.$old_record['image']));
+
+            /* Upload New Image */
+            Storage::disk('public')->putFileAs($path, $file, $imageName);
+        }
     }
 
     public function delete($id): bool

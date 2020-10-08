@@ -121,19 +121,19 @@
                     @endif
 
                 <!--     International news         -->
-                    @if(!empty($internation_news_records))
+                    @if(!empty($international_news))
                     <div class="latest-news international-news">
                         <h2>International News</h2>
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="international-news-image">
-                                    <img src="{{ URL::asset('frontend/assets/images/inernational_news.png') }}" alt="">
+                                    <img src="{{ URL::asset('storage/uploads/international-news/'.'/'.$international_news->id.'/'.$international_news->image) }}" alt="">
                                 </div>
                             </div>
                             <div class="col-md-8">
                                 <div class="international-news-content">
-                                    <h4>{{$internation_news_records->title}}</h4>
-                                    <p>{!! $internation_news_records->description !!}</p>
+                                    <h4>{{$international_news->title}}</h4>
+                                    <p>{!! $international_news->description !!}</p>
                                     <p class="read-more">
                                         <a href="#" tabindex="0">Read more</a>
                                     </p>
