@@ -60,13 +60,13 @@
                                                             <tr>
                                                                 <td>{{$development->title}}</td>
                                                                 <td>
-{{--                                                                    @can('Show Development')--}}
+                                                                    @can('Show Development')
                                                                         <a href="{{route('development.show', $development->id)}}"><i class="material-icons">visibility</i></a>
-{{--                                                                    @endcan--}}
+                                                                    @endcan
 
-{{--                                                                    @can('Edit Development')--}}
+                                                                    @can('Edit Development')
                                                                         <a href="{{route('development.edit', $development->id)}}"><i class="material-icons">edit</i></a>
-{{--                                                                    @endcan--}}
+                                                                    @endcan
                                                                 </td>
                                                             </tr>
                                                         @endforeach

@@ -2,21 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Crud;
 use App\Http\Requests\EmployeeRequest;
 use App\Services\EmployeeService;
-use App\Services\PermissionService;
 use Illuminate\Http\Request;
 use App\Employee;
 
 class EmployeeController extends Controller
 {
-
     public $employee_service;
-    public $permission_service;
 
     public function __construct()
     {
+        /* Check User Permission to Perform Action */
+        $this->authorizeResource(Employee::class, 'employee');
 
         $this->employee_service = new EmployeeService();
     }
@@ -38,8 +36,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        $permissions = $this->permission_service;
-        return view('backend.employee.create', compact('permissions'));
+        return view('backend.employee.create');
     }
 
     /**
@@ -73,9 +70,7 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-
-        $employeePermissions = $employee->permissions->pluck('id')->toArray();
-        return view('backend.employee.edit', compact('employee','employeePermissions'));
+        return view('backend.employee.edit', compact('employee'));
     }
 
     /**

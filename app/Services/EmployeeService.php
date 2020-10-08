@@ -6,7 +6,6 @@ namespace App\Services;
 
 use App\Employee;
 use App\Repos\EmployeeRepo;
-use Spatie\Permission\Models\Role;
 
 class EmployeeService
 {

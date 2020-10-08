@@ -31,7 +31,7 @@ class AboutUsController extends Controller
     public function __construct()
     {
         /* Check User Permission to Perform Action */
-//        $this->authorizeResource(ContentPage::class, 'about');
+        $this->authorizeResource(ContentPage::class, 'about');
 
         $this->about_service = new AboutService();
         $this->employee_service = new EmployeeService();

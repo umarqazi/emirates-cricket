@@ -53,6 +53,9 @@ return [
         'Player Registration',
         'About',
         'Development',
+        'Employees',
+        'International News',
+        'About Pages',
     ],
 
     'designations' => [

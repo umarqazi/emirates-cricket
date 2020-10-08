@@ -50,9 +50,9 @@
                                                 <table id="page-length-option" class="display">
                                                     <thead>
                                                     <tr>
+                                                        <th>Employee Image</th>
                                                         <th>Employee Name</th>
                                                         <th>Employee Designation</th>
-                                                        <th>Employee Image</th>
                                                         <th>Actions</th>
                                                     </tr>
                                                     </thead>
@@ -61,9 +61,9 @@
                                                     @foreach($employees as $row)
 
                                                         <tr>
+                                                            <td><img src="{{ URL::asset('storage/uploads/employees/'). '/'. $row->image }}"  class="img-thumbnail" width="75" /></td>
                                                             <td>{{$row->name}}</td>
                                                             <td>{{$row->designation}}</td>
-                                                            <td><img src="{{ URL::asset('storage/uploads/employees/'). '/'. $row->image }}"  class="img-thumbnail" width="75" /></td>
                                                             <td>
                                                                 @can('Edit Employee')
                                                                     <a href="{{route('employee.edit', $row->id)}}"><i class="material-icons">edit</i></a>

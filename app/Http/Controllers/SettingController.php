@@ -15,6 +15,9 @@ class SettingController extends Controller
 
     public function __construct()
     {
+        /* Check User Permission to Perform Action */
+        $this->authorizeResource(Setting::class, 'setting');
+
         $this->setting_service = new SettingService();
         $this->image_service = new ImageService();
     }

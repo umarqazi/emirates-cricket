@@ -81,7 +81,25 @@ class PermissionTableSeeder extends Seeder
             array('name' => 'List Development', 'module' => 'Development', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
             array('name' => 'Show Development', 'module' => 'Development', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
             array('name' => 'Edit Development', 'module' => 'Development', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
-        );
+            array('name' => 'List Employee', 'module' => 'Employee', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
+            array('name' => 'Create Employee', 'module' => 'Employee', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
+            array('name' => 'Edit Employee', 'module' => 'Employee', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
+            array('name' => 'Delete Employee', 'module' => 'Employee', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
+            array('name' => 'List International News', 'module' => 'International News', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
+            array('name' => 'Create International News', 'module' => 'International News', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
+            array('name' => 'Show International News', 'module' => 'International News', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
+            array('name' => 'Edit International News', 'module' => 'International News', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
+            array('name' => 'Delete International News', 'module' => 'International News', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
+            array('name' => 'List About Pages', 'module' => 'About Pages', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
+            array('name' => 'Show About Pages', 'module' => 'About Pages', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
+            array('name' => 'Edit About Pages', 'module' => 'About Pages', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
+            array('name' => 'Delete About Pages', 'module' => 'About Pages', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
+            array('name' => 'List Setting', 'module' => 'Setting', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
+            array('name' => 'Create Setting', 'module' => 'Setting', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
+            array('name' => 'Show Setting', 'module' => 'Setting', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
+            array('name' => 'Edit Setting', 'module' => 'Setting', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
+            array('name' => 'Delete Setting', 'module' => 'Setting', 'guard_name' => $guard, 'created_at' => Carbon::now()->format('Y-m-d H:i:s'), 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')),
+            );
 
         DB::table('permissions')->insert($permissions);
     }
