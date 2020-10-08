@@ -253,6 +253,26 @@
             </li>
         @endif
 
+        @if(auth()->user()->can('List International News') || auth()->user()->can('Create International News'))
+            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">assignment</i><span class="menu-title" data-i18n="">International News</span></a>
+                <div class="collapsible-body">
+                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                        @if(auth()->user()->can('List International News'))
+                            <li>
+                                <a class="collapsible-body" href="{{route('international-news.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>International News List</span></a>
+                            </li>
+                        @endif
+
+                        @if(auth()->user()->can('Create International News'))
+                            <li>
+                                <a class="collapsible-body" href="{{route('international-news.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add International News</span></a>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
+            </li>
+        @endif
+
         @if(auth()->user()->can('List Update') || auth()->user()->can('Create Update'))
             <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">update</i><span class="menu-title" data-i18n="">Update</span></a>
                 <div class="collapsible-body">

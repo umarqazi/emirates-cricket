@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\FacebookService;
 use App\Services\InstagramService;
+use App\Services\InternationalNewsService;
 use App\Services\SettingService;
 use App\Services\NewsService;
 use App\Services\SocialAccountService;
@@ -21,6 +22,7 @@ class HomeController extends Controller
     public $instagram_service;
     public $social_account_service;
     public $social_post_service;
+    public $international_service;
 
     /**
      * Create a new controller instance.
@@ -36,6 +38,7 @@ class HomeController extends Controller
         $this->instagram_service = new InstagramService();
         $this->social_account_service = new SocialAccountService();
         $this->social_post_service = new SocialPostService();
+        $this->international_service = new InternationalNewsService();
     }
 
     /**
@@ -49,7 +52,9 @@ class HomeController extends Controller
         $sponsors = $this->sponsor_service->paginatedRecords(7);
         $news = $this->news_service->all();
         $posts = $this->getSocialPosts();
-        return view('frontend.index', compact('sponsors', 'news' , 'setting', 'posts'));
+        $international_news = $this->international_service->getOne();
+
+        return view('frontend.index', compact('sponsors', 'news' , 'setting', 'posts', 'international_news'));
     }
 
     public function getSocialPosts()
