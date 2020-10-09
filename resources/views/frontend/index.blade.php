@@ -135,7 +135,7 @@
                                     <h4>{{$international_news->title}}</h4>
                                     <p>{!! $international_news->description !!}</p>
                                     <p class="read-more">
-                                        <a href="#" tabindex="0">Read more</a>
+                                        <a href="{{route('international-news-detail', $international_news->id)}}" tabindex="0">Read more</a>
                                     </p>
                                 </div>
                             </div>

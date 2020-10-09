@@ -73,4 +73,9 @@ class HomeController extends Controller
         $post['twitter'] = $this->social_post_service->getOne($twitter->id);
         return $post;
     }
+
+    public function international_news_content($id){
+        $international_news = $this->international_service->find($id);
+        return view('frontend.news-detail', compact( 'international_news'));
+    }
 }
