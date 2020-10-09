@@ -43,17 +43,17 @@
                                 <form class="col s12">
                                     @csrf
 
-                                    @if(file_exists(public_path('storage/uploads/international-news/'.$international_news->id.'/'.$international_news->image)))
+                                    @if(file_exists(public_path('storage/uploads/international-news/'.$internationalNews->id.'/'.$internationalNews->image)))
                                         <div class="row">
                                             <div class="col m6 s6 offset-m6 mb-1 right-align">
-                                                <img class="dummy_photo news-featured-image" src="{{asset('storage/uploads/international-news/'.$international_news->id.'/'.$international_news->image)}}">
+                                                <img class="dummy_photo news-featured-image" src="{{asset('storage/uploads/international-news/'.$internationalNews->id.'/'.$internationalNews->image)}}">
                                             </div>
                                         </div>
                                     @endif
 
                                     <div class="row">
                                         <div class="input-field col m12 s12">
-                                            <input id="title" type="text" name="title" class="validate" value="{{$international_news->title}}">
+                                            <input id="title" type="text" name="title" class="validate" value="{{$internationalNews->title}}">
                                             <label for="title">News Title</label>
                                         </div>
                                     </div>
@@ -61,7 +61,7 @@
                                     <div class="row">
                                         <div class="col s12">News Description</div>
                                         <div class="input-field col s12">
-                                            <textarea id="message5" class="ckeditor" name="text" rows="15" placeholder="Type News Description in here...">{!! $international_news->description !!}</textarea>
+                                            <textarea id="message5" class="ckeditor" name="text" rows="15" placeholder="Type News Description in here...">{!! $internationalNews->description !!}</textarea>
                                         </div>
                                     </div>
                                 </form>
