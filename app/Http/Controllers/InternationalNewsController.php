@@ -24,6 +24,8 @@ class InternationalNewsController extends Controller
      */
     public function __construct()
     {
+        /* Check User Permission to Perform Action */
+//        $this->authorizeResource(InternationalNews::class, 'international-news');
         $this->international_news_service = new InternationalNewsService();
     }
 
@@ -56,7 +58,6 @@ class InternationalNewsController extends Controller
      */
     public function store(InternationalNewsRequest $request)
     {
-
         $this->international_news_service->store($request->except(['_token']));
         return redirect()->route('international-news.index')->with('success', 'News has been Created Successfully!');
     }
@@ -67,9 +68,9 @@ class InternationalNewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(InternationalNews $international_news)
+    public function show(InternationalNews $internationalNews)
     {
-        return view('backend.international-news.show', compact('international_news'));
+        return view('backend.international-news.show', compact('internationalNews'));
     }
 
     /**
@@ -92,8 +93,6 @@ class InternationalNewsController extends Controller
      */
     public function update(UpdateInternationalRequest $request, InternationalNews $internationalNews)
     {
-
-
         $data = $request->except('_token', '_method', 'action');
         $this->international_news_service->update($data, $internationalNews['id']);
 
