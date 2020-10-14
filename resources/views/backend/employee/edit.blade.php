@@ -43,28 +43,51 @@
 
                                     <div class="row">
                                         <div class="input-field col m12 s12">
-                                            <input id="title" type="text" name="name" value="{{$employee->name}}">
+                                            <input id="title" type="text" name="name" value="{{$employee->name}}" class="validate @error('name') invalid @enderror">
                                             <label for="title">Enter Employee Name</label>
+
+                                            @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col m12 s12">
-                                            <input id="title" type="text" name="designation" value="{{$employee->designation}}">
-                                            <label for="title">Enter Employee Designation</label>
+                                            <select name="designation" class="@error('designation') invalid @enderror">
+                                                <option value="" disabled selected>Select Designation</option>
+                                                @foreach(config('constants.designations') as $designation)
+                                                    <option value="{{$designation}}" {{$employee->designation == $designation ? 'selected' : ''}}>{{$designation}}</option>
+                                                @endforeach
+                                            </select>
+                                            <label>Select Designation</label>
+
+                                            @error('designation')
+                                            <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col m12 s12">
                                             <input type="file" name="image" />
-                                            <img src="{{ URL::asset('storage/uploads/employees/'). '/'. $employee->image }}" class="img-thumbnail" width="100" />
+                                            <img src="{{ URL::asset('storage/uploads/employees/'). '/'. $employee->image }}" class="img-thumbnail validate @error('image') invalid @enderror" width="100" />
+
+                                            @error('image')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <button class="btn cyan waves-effect waves-light right" type="submit">Update Role
+                                            <button class="btn cyan waves-effect waves-light right" type="submit">Update Employee
                                                 <i class="material-icons right">send</i>
                                             </button>
                                         </div>
