@@ -26,7 +26,7 @@ class UpdateEmployeeRequest extends FormRequest
         return [
             'name'          =>  'required',
             'designation'   =>  'required',
-            'image'         =>  'required|image|max:2048',
+            'image'         =>  'image|max:2048',
         ];
     }
 }
