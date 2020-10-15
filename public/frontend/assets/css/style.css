@@ -341,21 +341,39 @@ body.sidebar-collapse .sidebar {
 }
 
 .nav-button {
-    background-image: url(../images/back.png);
-    background-size: 60%;
-    background-repeat: no-repeat;
-    background-position: center;
-    padding: 24px 23px;
+    /*background-image: url(../images/back.png);*/
+    /*background-size: 60%;*/
+    /*background-repeat: no-repeat;*/
+    /*background-position: center;*/
+    /*padding: 15px 30px;*/
     position: absolute;
     background-color: #8D0303;
     z-index: 22;
-    top: 25%;
-    right: -46px;
+    top: 0;
+    right: -60px;
     cursor: pointer;
+    border: 1px solid #8D0303;
+    height: 53px;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
-.sidebar-collapse .nav-button{
-    background-image: url("../images/forward.png");
+.nav-button span{
+    background: #fff;
+    width: 30px;
+    height: 4px;
+    display: block;
+    margin-bottom: 5px;
+    border-radius: 3px;
 }
+.nav-button span:last-child{
+    margin-bottom: 0;
+}
+/*.sidebar-collapse .nav-button{*/
+/*    background-image: url("../images/forward.png");*/
+/*}*/
 
 ul.sidebar-nav {
     /*height: 100%;*/
@@ -1931,9 +1949,6 @@ footer#footer p {
     }
     .team-matches p img{
         max-width: 40px;
-    }
-    .nav-button{
-        top: 21%;
     }
     .download-file{
         min-height: 240px;
