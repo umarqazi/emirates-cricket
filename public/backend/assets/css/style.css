@@ -8299,6 +8299,7 @@ nav.display-none.search-sm .nav-wrapper form .input-field input.search-box-sm:no
 .sidenav li a
 {
     color: rgba(0, 0, 0, .87);
+    font-size: 13px;
 }
 .sidenav li a i
 {

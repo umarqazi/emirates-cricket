@@ -22,7 +22,9 @@
     </div>
 
     <!--   Content Section     -->
-    <div class="content-page-section">
-        <div>{!! $data->content !!}</div>
+    <div class="container">
+        <div class="content-page-section">
+            <div>{!! $data->content !!}</div>
+        </div>
     </div>
 @endsection

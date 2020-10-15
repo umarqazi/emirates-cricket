@@ -1,7 +1,11 @@
 <div class="sidebar">
 
     <!--   nav button     -->
-    <div class="nav-button"></div>
+    <div class="nav-button">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 
     <div class="logo">
         <img class="uae-flag" src="{{ URL::asset('frontend/assets/images/uae-flag.png') }}" alt="">
