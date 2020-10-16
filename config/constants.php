@@ -65,4 +65,10 @@ return [
         'Employee',
     ],
 
+    'categories' => [
+        'Category Name 1',
+        'Category Name 2',
+        'Category Name 3',
+    ],
+
 ];

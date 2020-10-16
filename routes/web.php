@@ -37,9 +37,7 @@ Route::get('/development', 'DevelopmentController@frontendMainDevelopmentPage')-
 Route::get('/development-pathway', 'DevelopmentController@frontendDevelopmentPathwayPage')->name('development-pathway');
 Route::get('/emirati-development-program', 'DevelopmentController@frontendEmiratiDevelopmentPage')->name('emirati-development-program');
 
-Route::get('/download', static function () {
-    return view('frontend.download');
-})->name('download');
+Route::get('/download', 'DownloadController@frontend_download_files')->name('download');
 
 
 Route::get('/fan-club', 'SocialAccountController@fanClub')->name('fan-club');
@@ -158,6 +156,9 @@ Route::group(['prefix' => 'admin'], static function () {
 
 //        employee Controller
         Route::resource('/employee', 'EmployeeController');
+
+//        download Controller
+        Route::resource('/download', 'DownloadController');
 
         /* Development Routes */
         Route::resource('/development', 'DevelopmentController');
