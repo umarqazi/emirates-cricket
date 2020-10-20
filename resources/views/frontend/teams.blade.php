@@ -26,15 +26,15 @@
         <div class="container">
             <div class="team-content">
                 <h4>The UAE senior Men’s team is the team that represents the United Arab Emirates (UAE) in all official and unofficial cricket matches. UAE Men’s became an affiliate member of the International Cricket Council (ICC) in 1989 and an associate member in 1990. The UAE also gained ODI status, through to 2018.</h4>
-                <a href="uae-mens.html" class="btn">Uae Men's</a>
+                <a href="{{ route('uae-men') }}" class="btn">Uae Men's</a>
             </div>
             <div class="team-content">
                 <h4>The UAE Women’s team is the team that represents the United Arab Emirates (UAE) in international and regional cricket matches. In July 2007, the UAE Women’s team made their international debut in the Asian Cricket Council’s (ACC) Women’s Tournament, which was played in Malaysia.</h4>
-                <a href="uae-womens.html" class="btn">Uae Women's</a>
+                <a href="{{ route('uae-women') }}" class="btn">Uae Women's</a>
             </div>
             <div class="team-content">
                 <h4>The UAE Under 19 (U19’s) team is the team that represents the United Arab Emirates (UAE) in all U19 official and unofficial cricket matches. UAE’s U19’s recently competed in the 2015 ACC Premier Tournament where they finished 4th.</h4>
-                <a href="under-19.html" class="btn">Uae 19 Men's</a>
+                <a href="{{ route('under-19') }}" class="btn">Uae 19 Men's</a>
             </div>
         </div>
     </div>
