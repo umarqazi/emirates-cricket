@@ -45,7 +45,7 @@
                 <?php if ($employee['designation'] == "Vice-Chairman") {?>
                 <div class="col-md-4">
                     <div class="member">
-                        <img src="{{ URL::asset('frontend/assets/images/vice-chairman.png') }}" alt="">
+                        <img src="{{ URL::asset('storage/uploads/employees/'.$employee->image) }}" alt="">
                         <h4>{{$employee->name}}</h4>
                         <h5>{{$employee->designation}}</h5>
                     </div>
