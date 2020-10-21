@@ -128,7 +128,7 @@
                     @if(!empty($international_news))
                     <div class="latest-news international-news">
                         <h2>International News</h2>
-                        <div class="row">
+                        <div class="row no-gutters">
                             <div class="col-md-4">
                                 <div class="international-news-image">
                                     <img src="{{ URL::asset('storage/uploads/international-news/'.'/'.$international_news->id.'/'.$international_news->image) }}" alt="">
@@ -150,6 +150,7 @@
                     <!--  Logo slider     -->
                     @if(!$sponsors->isEmpty())
                         <div class="latest-news">
+                            <h2>Sponsor</h2>
                             <div class="logo-sldier slider-dots">
                                 @foreach($sponsors as $sponsor)
                                     <div>

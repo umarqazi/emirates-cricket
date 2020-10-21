@@ -747,7 +747,9 @@ body.sidebar-collapse .content-section {
 }
 .international-news-content {
     text-align: left;
-    padding-top: 20px;
+    background: #FBFBFB;
+    padding:30px 30px 30px 30px;
+    border-radius: 0 20px 20px 0;
 }
 .international-news-content .read-more{
     margin-top: 20px;

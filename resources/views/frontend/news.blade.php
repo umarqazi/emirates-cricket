@@ -31,7 +31,7 @@
                         @if(!empty($news))
                             @foreach($news as $new)
                                 <div class="news-inner-content">
-                                    <div class="row">
+                                    <div class="row no-gutters">
                                         <div class="col-md-4">
                                             <div class="international-news-image">
                                                 <img src="{{ URL::asset('storage/uploads/news/'.$new->id.'/'.$new->image) }}" alt="">
