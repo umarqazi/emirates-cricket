@@ -125,7 +125,7 @@
                 <li>
                     <a href="{{route('uae-men')}}">
                             <span>
-                                <img class="nav-icon" src="{{ URL::asset('frontend/assets/images/batsman.png') }}" alt="">
+                                <img class="nav-icon" src="{{ URL::asset('frontend/assets/images/under-19.png') }}" alt="">
                             </span>
                         <span>Uae Men's</span>
                     </a>
