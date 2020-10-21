@@ -688,11 +688,19 @@ body.sidebar-collapse .content-section {
     text-align: left;
     margin: 0px 10px;
 }
-.post-inner img {
-    width: 100%;
-    min-width: 200px;
+.post-inner figure{
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
     min-height: 200px;
-    margin-bottom: 10px;
+    margin-bottom: 0;
+}
+.post-inner figure img {
+    width: 100%;
+}
+.post-inner figcaption{
+    background: #FBFBFB;
+    border-radius: 0 0 20px 20px;
+    padding: 15px;
 }
 .news-headinig{
     position: relative;
@@ -888,18 +896,27 @@ body.sidebar-collapse .content-section {
 }
 
 /* team section */
-.member img {
+.member figure {
     width: 100%;
-    max-width: 300px;
+    box-shadow: 0px 3px 10px #00000029;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 350px;
+}
+.member figure img {
+    width: 100%;
+    height: 350px;
 }
 .member{
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 .member h4{
     color: #272727;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
+    margin-bottom: 10px;
 }
 .member h5 {
     text-transform: capitalize;
