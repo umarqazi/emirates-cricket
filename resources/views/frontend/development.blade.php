@@ -26,11 +26,11 @@
     <div class="teams-section">
         <div class="container">
             <div class="team-content">
-                <h4>{!! Str::limit($emiratiheading, $limit = 200, $end = '...') !!}</h4>
+                <h4>{!! Str::limit($emiratiheading, 200) !!}</h4>
                 <a href="{{route('emirati-development-program')}}" class="btn">Emirati Development Programme</a>
             </div>
             <div class="team-content">
-                <h4>{!! Str::limit($pathwayheading, $limit = 200, $end = '...') !!}</h4>
+                <h4>{!! Str::limit($pathwayheading, 200) !!}</h4>
                 <a href="{{route('development-pathway')}}" class="btn">Development Pathway</a>
             </div>
         </div>
