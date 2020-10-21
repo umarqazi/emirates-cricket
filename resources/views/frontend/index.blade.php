@@ -104,15 +104,19 @@
                                 @foreach($news as $eachNews)
                                     <div>
                                         <div class="post-inner">
-                                            <img src="{{ URL::asset('storage/uploads/news/'.$eachNews->id.'/'.$eachNews->image) }}" alt="">
-                                            <p class="date">
-                                                <a href="#">{{date('M d, Y', strtotime($eachNews->created_at))}}</a>
-                                            </p>
-                                            <h5>{{$eachNews->title}}</h5>
-                                            <p>{!! \Illuminate\Support\Str::limit($eachNews->text, 50) !!}</p>
-                                            <p class="read-more">
-                                                <a href="#">Read more</a>
-                                            </p>
+                                            <figure>
+                                                <img src="{{ URL::asset('storage/uploads/news/'.$eachNews->id.'/'.$eachNews->image) }}" alt="">
+                                            </figure>
+                                            <figcaption>
+                                                <p class="date">
+                                                    <a href="#">{{date('M d, Y', strtotime($eachNews->created_at))}}</a>
+                                                </p>
+                                                <h5>{{$eachNews->title}}</h5>
+                                                <p>{!! \Illuminate\Support\Str::limit($eachNews->text, 50) !!}</p>
+                                                <p class="read-more">
+                                                    <a href="#">Read more</a>
+                                                </p>
+                                            </figcaption>
                                         </div>
                                     </div>
                                 @endforeach
@@ -124,7 +128,7 @@
                     @if(!empty($international_news))
                     <div class="latest-news international-news">
                         <h2>International News</h2>
-                        <div class="row">
+                        <div class="row no-gutters">
                             <div class="col-md-4">
                                 <div class="international-news-image">
                                     <img src="{{ URL::asset('storage/uploads/international-news/'.'/'.$international_news->id.'/'.$international_news->image) }}" alt="">
@@ -133,7 +137,7 @@
                             <div class="col-md-8">
                                 <div class="international-news-content">
                                     <h4>{{$international_news->title}}</h4>
-                                    <p>{!! $international_news->description !!}</p>
+                                    <p>{!! \Illuminate\Support\Str::limit($international_news->description, 500) !!}</p>
                                     <p class="read-more">
                                         <a href="{{route('international-news-detail', $international_news->id)}}" tabindex="0">Read more</a>
                                     </p>
@@ -146,6 +150,7 @@
                     <!--  Logo slider     -->
                     @if(!$sponsors->isEmpty())
                         <div class="latest-news">
+                            <h2>Sponsor</h2>
                             <div class="logo-sldier slider-dots">
                                 @foreach($sponsors as $sponsor)
                                     <div>
