@@ -35,10 +35,11 @@ class TournamentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
         $tournaments = $this->tournament_service->all();
-        return view('backend.tournament.index', compact('tournaments'));
+        $tournament = $this->tournament_service->find($id);
+        return view('backend.tournament.index', compact('tournaments', 'tournament'));
     }
 
     /**

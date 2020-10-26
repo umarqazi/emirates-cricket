@@ -25,9 +25,10 @@
     <!--   Teams Section     -->
     <div class="teams-section">
         <div class="container">
-            <div class="team-content developement-child-page">
-                <a href="{{route('emirati-development-program')}}" class="btn">{{$emirati->title}}</a>
-            </div>
+            @if($emirati)
+                <div class="team-content developement-child-page">
+                    <a href="{{route('emirati-development-program')}}" class="btn">{{$emirati->title}}</a>
+                </div>
 
             @if(!empty($emirati->image))
                 <div class="developement-images">
@@ -36,9 +37,10 @@
                     </div>
                 </div>
 
-                <div class="development-content">
-                    {!! $emirati->description !!}
-                </div>
+                    <div class="development-content">
+                        {!! $emirati->description !!}
+                    </div>
+                @endif
             @endif
 
         </div>

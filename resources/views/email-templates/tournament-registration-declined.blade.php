@@ -86,7 +86,7 @@
     <div class="email-content">
         <img class="header-logo" src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
         <h1>Tournament Registration Request Declined</h1>
-        <p>Hi Mr. {{$this->tournament->organizer_name . '!'}}</p>
+        <p>Hi Mr. {{$tournament->organizer_name}}</p>
         <p>Sorry! We can't Approve your Tournament Registration Request at Emirates Cricket Board.</p>
     </div>
     <div class="email-footer">
