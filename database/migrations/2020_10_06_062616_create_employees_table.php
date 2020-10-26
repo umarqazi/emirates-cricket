@@ -18,6 +18,7 @@ class CreateEmployeesTable extends Migration
             $table->string('name');
             $table->string('designation');
             $table->string('image');
+            $table->longText('description');
             $table->timestamps();
         });
     }

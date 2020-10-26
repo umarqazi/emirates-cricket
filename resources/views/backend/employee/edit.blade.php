@@ -73,6 +73,19 @@
                                     </div>
 
                                     <div class="row">
+                                        <div class="col s12">Description</div>
+                                        <div class="input-field col s12">
+                                            <textarea id="message5" class="ckeditor @error('text') invalid @enderror" name="description" rows="15" placeholder="Type Description in here...">{!! $employee->description !!}</textarea>
+
+                                            @error('description')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
                                         <div class="input-field col m12 s12">
                                             <input type="file" name="image" />
                                             <img src="{{ URL::asset('storage/uploads/employees/'). '/'. $employee->image }}" class="img-thumbnail validate @error('image') invalid @enderror" width="100" />

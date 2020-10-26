@@ -23,6 +23,11 @@ class DevelopmentService
 
     public function store($params)
     {
+        $image = $params['image'];
+        $new_name = rand() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('storage/uploads/development/'), $new_name);
+        $params['image'] = $new_name;
+
         return $this->development_repo->store(Development::class, $params);
     }
 
@@ -37,8 +42,14 @@ class DevelopmentService
         return $this->development_repo->getOne(Development::class, $where);
     }
 
-    public function update($id, $params)
+    public function update($params, $id): bool
     {
+        if (array_key_exists('image', $params)){
+            $image = $params['image'];
+            $image_name = rand() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('storage/uploads/development/') , $image_name);
+            $params['image'] = $image_name;
+        }
         return $this->development_repo->update(Development::class, $params, $id);
     }
 

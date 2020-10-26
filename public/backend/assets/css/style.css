@@ -11155,3 +11155,14 @@ tr.group:hover
     top: 40%;
     right: -2px;
 }
+a.download_player_file {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+a.download_player_file i{
+    margin-right: 10px;
+}
+.row.download-files-row{
+    margin-bottom: 20px;
+}

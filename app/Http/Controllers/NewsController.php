@@ -120,9 +120,7 @@ class NewsController extends Controller
             $params['image'] = $oldImageName;
         }
 
-        $news = $this->news_service->update($params, $news->id);
         if (!empty($news) && $request->hasFile('image')) {
-
             $path = 'uploads/news/'.$news->id.'/';
 
             if (!Storage::disk('public')->exists($path)) {
@@ -135,6 +133,7 @@ class NewsController extends Controller
             /* Upload New Image */
             Storage::disk('public')->putFileAs($path, $file, $imageName);
         }
+        $news = $this->news_service->update($params, $news->id);
         return redirect()->route('news.index')->with('success', 'News has been Updated Successfully!');
     }
 

@@ -24,9 +24,11 @@ class DevelopmentRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'heading' => 'required',
+            'title'       => 'required',
+            'heading'     => 'required',
             'description' => 'required',
+            'type'        => 'required',
+            'image'       =>  'required|image|max:2048',
         ];
     }
 }

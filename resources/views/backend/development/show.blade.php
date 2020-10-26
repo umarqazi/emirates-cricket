@@ -46,7 +46,7 @@
                                 <form class="col s12" method="POST">
 
                                     <div class="row">
-                                        <div class="input-field col m6 s12">
+                                        <div class="input-field col s12">
                                             <input id="first_name01" type="text" name="title" class="validate @error('title') invalid @enderror" value="{{$development->title}}">
                                             <label for="first_name01">Title</label>
 
@@ -59,7 +59,8 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <textarea id="message1" name="heading" class="ckeditor1 validate @error('heading') invalid @enderror">{{$development->heading}}</textarea>
+                                            <input id="heading" type="text" name="heading" class="validate @error('title') invalid @enderror" value="{{$development->heading}}">
+                                            <label for="heading">Heading</label>
 
                                             @error('heading')
                                             <span class="invalid-feedback" role="alert">
@@ -82,16 +83,24 @@
                                     </div>
 
                                     <div class="row">
-                                        @if(!$development->images->isEmpty())
-                                            <div class="col-12"><b>Upload {{$development->title}} Gallery Images</b></div>
-                                            <div class="input-field col m12 s12 dropzone" id="image-dropzone">
-
+                                        @if(file_exists(public_path('storage/uploads/development/'.$development->image)))
+                                            <div class="row">
+                                                <div class="col m6 s6 offset-m6 mb-1 right-align">
+                                                    <img class="dummy_photo news-featured-image" src="{{asset('storage/uploads/development/'.$development->image)}}">
+                                                </div>
                                             </div>
-                                        @else
-                                            <div class="col-12"><b>Upload Gallery Images</b></div>
-                                            <div class="center"><b>No Images have been Uploaded Yet.</b></div>
                                         @endif
+{{--                                        @if(!$development->images->isEmpty())--}}
+{{--                                            <div class="col-12"><b>Upload {{$development->title}} Gallery Images</b></div>--}}
+{{--                                            <div class="input-field col m12 s12 dropzone" id="image-dropzone">--}}
+
+{{--                                            </div>--}}
+{{--                                        @else--}}
+{{--                                            <div class="col-12"><b>Upload Gallery Images</b></div>--}}
+{{--                                            <div class="center"><b>No Images have been Uploaded Yet.</b></div>--}}
+{{--                                        @endif--}}
                                     </div>
+
                                 </form>
                             </div>
                         </div>

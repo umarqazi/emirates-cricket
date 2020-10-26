@@ -26,12 +26,12 @@
     <div class="teams-section">
         <div class="container">
             <div class="team-content">
-                {!! $emiratiheading !!}
                 <a href="{{route('emirati-development-program')}}" class="btn">Emirati Development Programme</a>
+                {!! $emiratiheading !!}
             </div>
             <div class="team-content">
-                {!! $pathwayheading !!}
                 <a href="{{route('development-pathway')}}" class="btn">Development Pathway</a>
+                {!! $pathwayheading !!}
             </div>
         </div>
     </div>

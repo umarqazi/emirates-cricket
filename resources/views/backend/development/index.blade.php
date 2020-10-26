@@ -50,7 +50,8 @@
                                                 <table id="page-length-option" class="display">
                                                     <thead>
                                                     <tr>
-                                                        <th>Subject</th>
+                                                        <th>Title</th>
+                                                        <th>Image</th>
                                                         <th>Actions</th>
                                                     </tr>
                                                     </thead>
@@ -59,6 +60,7 @@
                                                         @foreach($developments as $development)
                                                             <tr>
                                                                 <td>{{$development->title}}</td>
+                                                                <td><img src="{{ URL::asset('storage/uploads/development/'). '/'. $development->image }}"  class="img-thumbnail" width="75" /></td>
                                                                 <td>
                                                                     @can('Show Development')
                                                                         <a href="{{route('development.show', $development->id)}}"><i class="material-icons">visibility</i></a>
@@ -76,12 +78,6 @@
                                                         </tr>
                                                     @endif
                                                     </tbody>
-                                                    <tfoot>
-                                                    <tr>
-                                                        <th>Subject</th>
-                                                        <th>Actions</th>
-                                                    </tr>
-                                                    </tfoot>
                                                 </table>
                                             </div>
                                         </div>

@@ -128,6 +128,12 @@ $(document).ready(function () {
         $(this).prev('label').text(file);
     });
 
+    $('#file-upload1').change(function() {
+        var i = $(this).prev('label').clone();
+        var file = $('#file-upload')[0].files[0].name;
+        $(this).prev('label').text(file);
+    });
+
     $(".tournament-registration-accordian").champ({
         plugin_type :  "accordion"
     });

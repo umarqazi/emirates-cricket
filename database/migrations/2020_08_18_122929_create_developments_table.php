@@ -19,6 +19,7 @@ class CreateDevelopmentsTable extends Migration
             $table->text('heading');
             $table->text('description');
             $table->integer('type');
+            $table->string('image');
             $table->timestamps();
         });
     }

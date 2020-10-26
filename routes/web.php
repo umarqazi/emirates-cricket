@@ -68,7 +68,10 @@ Route::get('/team', static function () {
     return view('frontend.teams');
 })->name('team');
 
-Route::get('/international-news-detail/{id}', 'HomeController@international_news_content')->name('international-news-detail');
+Route::get('/news-detail/{latest_news}/{id}', 'HomeController@international_news_content')->name('news-detail');
+
+
+//Route::get('/latest-news-detail/{id}', 'HomeController@latest_news_content')->name('latest-news-detail');
 
 Route::get('/uae-men', 'TeamController@uaeMens')->name('uae-men');
 Route::get('/uae-women', 'TeamController@uaeWomens')->name('uae-women');
