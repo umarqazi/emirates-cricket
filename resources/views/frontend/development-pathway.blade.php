@@ -24,6 +24,7 @@
     <!--   Teams Section     -->
     <div class="teams-section">
         <div class="container">
+            @if(($pathway))
             <div class="team-content developement-child-page">
                 <a href="{{route('development-pathway')}}" class="btn">{{$pathway->title}}</a>
             </div>
@@ -37,6 +38,7 @@
                 <div class="development-content">
                     {!! $pathway->description !!}
                 </div>
+            @endif
             @endif
 
         </div>
