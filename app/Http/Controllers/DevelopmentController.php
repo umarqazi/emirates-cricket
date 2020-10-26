@@ -16,7 +16,7 @@ class DevelopmentController extends Controller
     public function __construct()
     {
         /* Check User Permission to Perform Action */
-        $this->authorizeResource(Development::class, 'development');
+//        $this->authorizeResource(Development::class, 'development');
 
         $this->development_service = new DevelopmentService();
         $this->image_service = new ImageService();
@@ -40,7 +40,7 @@ class DevelopmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.development.create');
     }
 
     /**
@@ -49,9 +49,10 @@ class DevelopmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DevelopmentRequest $request)
     {
-        //
+        $this->development_service->store($request->except(['_token']));
+        return redirect()->route('development.index')->with('success', 'List has been Created Successfully!');
     }
 
     /**
@@ -83,18 +84,24 @@ class DevelopmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(DevelopmentRequest $request, Development $development)
+    public function update(Request $request, Development $development)
     {
-        $developmentObj = $this->development_service->find($development->id);
-        $params = $request->except(['_token', '_method', 'images']);
 
-        $status = $this->development_service->update($development->id, $params);
-        if (!empty($status)) {
+        $data = $request->except('_token', '_method', 'action');
+        $this->development_service->update($data, $development['id']);
 
-            /* For Polymorphic Relation */
-            $this->image_service->update($developmentObj, $request->except(['_token', '_method']));
-            return redirect()->route('development.index')->with('success', $developmentObj->title.' has been Updated!');
-        }
+        return redirect()->route('development.index')->with('success', 'List has been Updated Successfully!');
+
+//        $developmentObj = $this->development_service->find($development->id);
+//        $params = $request->except(['_token', '_method', 'images']);
+//
+//        $status = $this->development_service->update($development->id, $params);
+//        if (!empty($status)) {
+//
+//            /* For Polymorphic Relation */
+//            $this->image_service->update($developmentObj, $request->except(['_token', '_method']));
+//            return redirect()->route('development.index')->with('success', $developmentObj->title.' has been Updated!');
+//        }
     }
 
     /**
@@ -112,11 +119,11 @@ class DevelopmentController extends Controller
     {
         $emiratiheading = $this->development_service->findByType(Development::$EmiratiDevelopment);
         if ($emiratiheading){
-            $emiratiheading = $emiratiheading->description;
+            $emiratiheading = $emiratiheading->heading;
         }
         $pathwayheading = $this->development_service->findByType(Development::$DevelopmentPathway);
         if ($pathwayheading){
-            $pathwayheading = $pathwayheading->description;
+            $pathwayheading = $pathwayheading->heading;
         }
         return view('frontend.development', compact('emiratiheading', 'pathwayheading'));
     }

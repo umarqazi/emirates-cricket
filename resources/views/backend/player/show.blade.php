@@ -40,7 +40,7 @@
                     <div class="col s12 m12 l12">
                         <div id="Form-advance" class="card card card-default scrollspy">
                             <div class="card-content">
-                                <form class="col s12" method="POST" action="{{route('player.update', $player->id)}}">
+                                <form class="col s12" method="POST" action="{{route('player.update', $player->id)}}" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
 
@@ -191,6 +191,47 @@
                                             @enderror
                                         </div>
                                     </div>
+
+                                    @if($player->passport_page)
+                                    <div class="row download-files-row">
+                                        <a class="download_player_file" href="{{asset('storage/uploads/players/'.$player->id.'/'.$player->passport_page)}}" download><i class="material-icons">assignment</i>{{$player->passport_page}}</a>
+
+                                        <div class="input-field col m12 s12">
+                                            <input type="file" name="passport_page" />
+                                            <span>{{$player->passport_page}}</span>
+                                        </div>
+                                    </div>
+                                    @endif
+
+                                    @if($player->emirates_id_front)
+                                    <div class="row download-files-row">
+                                        <a class="download_player_file" href="{{asset('storage/uploads/players/'.$player->id.'/'.$player->emirates_id_front)}}" download><i class="material-icons">assignment</i>{{$player->emirates_id_front}}</a>
+                                        <div class="input-field col m12 s12">
+                                            <input type="file" name="emirates_id_front" />
+                                            <span>{{$player->emirates_id_front}}</span>
+                                        </div>
+                                    </div>
+                                    @endif
+
+                                    @if($player->emirates_id_back)
+                                    <div class="row download-files-row">
+                                        <a class="download_player_file" href="{{asset('storage/uploads/players/'.$player->id.'/'.$player->emirates_id_back)}}" download><i class="material-icons">assignment</i>{{$player->emirates_id_back}}</a>
+                                        <div class="input-field col m12 s12">
+                                            <input type="file" name="emirates_id_back" />
+                                            <span>{{$player->emirates_id_back}}</span>
+                                        </div>
+                                    </div>
+                                    @endif
+
+                                    @if($player->visa_page)
+                                    <div class="row download-files-row">
+                                        <a class="download_player_file" href="{{asset('storage/uploads/players/'.$player->id.'/'.$player->visa_page)}}" download><i class="material-icons">assignment</i>{{$player->visa_page}}</a>
+                                        <div class="input-field col m12 s12">
+                                            <input type="file" name="visa_page" />
+                                            <span>{{$player->visa_page}}</span>
+                                        </div>
+                                    </div>
+                                    @endif
 
                                     @can('Edit Player Registration')
                                         <div class="row">

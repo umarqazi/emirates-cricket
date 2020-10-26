@@ -27,6 +27,12 @@ class CreatePlayersTable extends Migration
             $table->text('message');
             $table->string('photo');
             $table->boolean('status');
+            $table->boolean('id_type');
+            $table->string('passport_page');
+            $table->string('emirates_id_front');
+            $table->string('emirates_id_back');
+            $table->string('visa_page');
+            $table->date('passport_expiry');
             $table->timestamps();
         });
     }

@@ -24,27 +24,16 @@
     <!--   Teams Section     -->
     <div class="teams-section">
         <div class="container">
-            @if($pathway)
-                <div class="team-content">
-                    <h4>{!! $pathway->heading !!}</h4>
-                    {{--<a href="{{route('development-pathway')}}" class="btn">{{$pathway->title}}</a>--}}
-                </div>
+            <div class="team-content developement-child-page">
+                <a href="{{route('development-pathway')}}" class="btn">{{$pathway->title}}</a>
+            </div>
 
-                @if(!$pathway->images->isEmpty())
-                    <div class="developement-images">
-                        <div class="row no-gutters">
-
-                            @foreach($pathway->images as $image)
-                                <div class="col-md-4">
-                                    <div class="cricket-images">
-                                        <img src="{{ asset('storage/uploads/development/'.$pathway->id.'/'.$image->name) }}" alt="">
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
+            @if(!empty($pathway->image))
+                <div class="developement-images">
+                    <div class="row no-gutters">
+                        <img src="{{ asset('storage/uploads/development/'.$pathway->image) }}" class="developement-banner" alt="">
                     </div>
-                @endif
-
+                </div>
                 <div class="development-content">
                     {!! $pathway->description !!}
                 </div>

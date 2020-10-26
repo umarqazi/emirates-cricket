@@ -23,7 +23,7 @@ class Player extends Model
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'dob', 'mobile', 'nationality', 'living_in', 'visa_status', 'playing_with', 'message', 'status', 'photo'
+        'first_name', 'last_name', 'email', 'dob', 'mobile', 'nationality', 'living_in', 'visa_status', 'playing_with', 'message', 'status', 'photo', 'id_type', 'passport_page', 'emirates_id_front', 'emirates_id_back', 'visa_page', 'passport_expiry'
     ];
 
     public function country() {

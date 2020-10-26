@@ -768,6 +768,10 @@ body.sidebar-collapse .content-section {
     text-align: center;
     margin-bottom: 50px;
 }
+.news-post-image .feature-image {
+    width: 100%;
+    max-width: 500px;
+}
 .news-post-image span{
     margin-top: 10px;
     font-weight: bold;
@@ -1028,7 +1032,10 @@ table.table p span {
 
 /* teams section */
 .team-content{
-    margin-bottom: 55px;
+    margin-bottom: 40px;
+}
+.team-content .btn {
+    margin-bottom: 15px;
 }
 .team-content h4 {
     font-size: 20px;
@@ -1072,10 +1079,16 @@ table.table.teams-table{
 }
 .development-content p {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
 }
 .development-content p a{
     color: #8D0303;
+}
+.team-content.developement-child-page {
+    margin-bottom: 20px;
+}
+.developement-banner {
+    width: 100%;
 }
 
 /* gallery section */
@@ -1876,6 +1889,10 @@ footer#footer p {
 }
 .tab_wrapper{
     margin-bottom: 0 !important;
+}
+.news-content{
+    max-height: 220px;
+    overflow: hidden;
 }
 
 /*+++++++  Responsiveness  ++++++++*/

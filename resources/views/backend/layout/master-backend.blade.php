@@ -362,8 +362,8 @@
             <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">contact_phone</i><span class="menu-title" data-i18n="">Development</span></a>
                 <div class="collapsible-body">
                     <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                        <li><a class="collapsible-body" href="{{route('development.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Development List</span></a>
-                        </li>
+                        <li><a class="collapsible-body" href="{{route('development.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Development List</span></a></li>
+                        <li><a class="collapsible-body" href="{{route('development.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a></li>
                     </ul>
                 </div>
             </li>

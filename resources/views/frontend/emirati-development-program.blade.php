@@ -25,26 +25,16 @@
     <!--   Teams Section     -->
     <div class="teams-section">
         <div class="container">
-            @if($emirati)
-                <div class="team-content">
-                    <h4>{!! $emirati->heading !!}</h4>
-                    {{--<a href="{{route('emirati-development-program')}}" class="btn">{{$emirati->title}}</a>--}}
-                </div>
+            <div class="team-content developement-child-page">
+                <a href="{{route('emirati-development-program')}}" class="btn">{{$emirati->title}}</a>
+            </div>
 
-                @if(!$emirati->images->isEmpty())
-                    <div class="developement-images">
-                        <div class="row no-gutters">
-
-                            @foreach($emirati->images as $image)
-                            <div class="col-md-4">
-                                <div class="cricket-images">
-                                    <img src="{{ asset('storage/uploads/development/'.$emirati->id.'/'.$image->name) }}" alt="">
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
+            @if(!empty($emirati->image))
+                <div class="developement-images">
+                    <div class="row no-gutters">
+                        <img src="{{ asset('storage/uploads/development/'.$emirati->image) }}" class="developement-banner" alt="">
                     </div>
-                @endif
+                </div>
 
                 <div class="development-content">
                     {!! $emirati->description !!}

@@ -161,7 +161,7 @@
                         <div class="col-md-6 col-lg-4">
                             <div class="input-row">
                                 <label>Visa Status</label>
-                                <select name="visa_status" class="@error('visa_status') is-invalid @enderror">
+                                <select id="visaStatus" name="visa_status" class="@error('visa_status') is-invalid @enderror">
                                     <option value="">Select Status</option>
                                     <option value="1" {{old('visa_status') === 1 ? 'selected' : ''}}>Residence/Employment</option>
                                     <option value="0" {{old('visa_status') === 0 ? 'selected' : ''}}>Visit Visa</option>
@@ -174,6 +174,7 @@
                                 @enderror
                             </div>
                         </div>
+
                         <div class="col-md-6 col-lg-4">
                             <div class="input-row">
                                 <label>Emirate most likely to be playing with</label>
@@ -193,6 +194,84 @@
                                 </span>
                                 @enderror
                             </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4 hidden-visa-fields" id="selectID" style="display: none;">
+                            <div class="comment-form-author input-row">
+                                <label for="idtype" >Select ID Type</label>
+                                <select id="idtype" name="id_type" value="">
+                                    <option value="" selected="" disabled="">Select ID Type</option>
+                                    <option value="0">Residence Visa</option>
+                                    <option value="1">Emirates ID</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 hidden-visa-fields" id="pp1" style="display: none;">
+                            <div class="comment-form-author clearboth input-row">
+                                <label for="passportp1" class="required">Passport Page<span class="required"> (pdf,jpg,png)</span></label>
+                                <input type="file" name="passport_page" id="passportp1" class="@error('passport_page') is-invalid @enderror">
+
+                                @error('passport_page')
+                                <span class="invalid-feedback login-email-error" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 hidden-visa-fields" id="frontEmiratesPage" style="display: none;">
+                            <div class="input-row comment-form-author clearboth emiratesid">
+                                <label for="emiratesidfront" class="required">Emirates ID (Front)<span class="required"> (pdf,jpg,png)</span></label>
+                                <input type="file" name="emirates_id_front" id="emiratesidfront" aria-required="true" class="@error('emirates_id_front') is-invalid @enderror">
+
+                                @error('emirates_id_front')
+                                <span class="invalid-feedback login-email-error" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 hidden-visa-fields" id="backEmiratesPage" style="display: none;">
+                            <div class="input-row comment-form-author clearboth emiratesid">
+                                <label for="emiratesidback" class="required">Emirates ID (Back)<span class="required"> (pdf,jpg,png)</span></label>
+                                <input type="file" name="emirates_id_back" id="emiratesidback" aria-required="true" class="@error('emirates_id_back') is-invalid @enderror">
+
+                                @error('emirates_id_back')
+                                <span class="invalid-feedback login-email-error" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 hidden-visa-fields" id="uploadVisaPage" style="display: none;">
+                            <div class="input-row comment-form-author clearboth passportid">
+                                <label for="passportp3" class="required">Visa Page<span class="required"> (pdf,jpg,png)</span></label>
+                                <input type="file" name="visa_page" id="passportp3" style="display: inline-block;" class="@error('visa_page') is-invalid @enderror">
+
+                                @error('visa_page')
+                                <span class="invalid-feedback login-email-error" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 hidden-visa-fields" id="ppexpiry" style="display: none;">
+                            <div class="input-row comment-form-author clearboth visaexpiryid">
+                                <label for="passportp4" class="required">Expiry<span class="required"></span></label>
+                                <input type="text" name="passport_expiry" id="passportp4" aria-required="true" class="expiry-passport date-calender @error('passport_expiry') is-invalid @enderror" placeholder="21-06-2025">
+
+                                @error('passport_expiry')
+                                <span class="invalid-feedback login-email-error" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+
+                            </div>
+                        </div>
                         </div>
                     </div>
 
@@ -319,6 +398,111 @@
             maxDate: new Date(),
             autoClose: true,
             dateFormat: 'dd/mm/yyyy',
+        });
+
+        $('.expiry-passport').datepicker({
+            language: 'en',
+            autoClose: true,
+            dateFormat: 'dd/mm/yyyy',
+        });
+    </script>
+    <script>
+        $("#pp1").hide();
+        $("#pp2").hide();
+        $("#selectID").hide();
+        $("#uploadVisaPage").hide();
+        $("#visaStatus").attr('required','required');
+        $('#visaStatus').change(function () {
+
+            console.log("Checking");
+
+            var visaStatus = $(this).val();
+
+            //Visit
+            if (visaStatus == 0)
+            {
+                $("#pp1").show();
+                $("#passportp1").attr('required','required');
+
+                $("#pp2").show();
+
+
+                // $("#idtype").removeAttr('required');
+                $("#selectID").hide();
+
+
+                $("#passportp3").hide();
+                $("#passportp3").removeAttr('required');
+
+
+                $("#uploadVisaPage").hide();
+
+                $("#ppexpiry").show();
+                $("#passportp4").show();
+
+                $("#frontEmiratesPage").hide();
+                $("#emiratesidfront").removeAttr('required');
+
+                $("#backEmiratesPage").hide();
+                $("#emiratesidback").removeAttr('required');
+
+            } //Residence/Employment
+            else if (visaStatus == 1)
+            {
+
+                $("#pp1").show();
+                $("#passportp1").attr('required','required');
+
+                $("#pp2").show();
+                $("#idtype").show();
+                // $("#idtype").attr('required','required');
+                $("#selectID").show();
+
+                $("#passportp3").show();
+                $("#passportp3").attr('required','required');
+                $("#pp3").show();
+
+                $("#uploadVisaPage").show();
+
+                $("#ppexpiry").show();
+                $("#passportp4").attr('required','required');
+
+                $("#frontEmiratesPage").show();
+                $("#emiratesidfront").attr('required','required');
+
+                $("#backEmiratesPage").show();
+                $("#emiratesidback").attr('required','required');
+
+            }
+        });
+
+    //    #idtype
+        $("#idtype").change(function (e) {
+            var idtype = $(this).val();
+
+            //Emirates ID
+            if (idtype == 1) {
+                $(".emiratesid").show();
+                $(".visaexpiryid").show();
+
+                $(".passportid").hide();
+
+                $("#passportp3").removeAttr('required');
+
+                $("#emiratesidfront").attr("required", "required");
+                $("#emiratesidback").attr("required", "required");
+
+            }//Residence ID
+            else if (idtype == 0) {
+                $(".emiratesid").hide();
+                $(".passportid").show();
+                $(".visaexpiryid").show();
+
+                $("#emiratesidfront").removeAttr('required');
+                $("#emiratesidback").removeAttr('required');
+
+                $("#passportp3").attr("required", "required");
+            }
         });
     </script>
 @endsection

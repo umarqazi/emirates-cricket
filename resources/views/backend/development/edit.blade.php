@@ -43,12 +43,20 @@
 
                                 @include('frontend.partials.session-messages')
 
-                                <form class="col s12" method="POST" action="{{route('development.update', $development->id)}}">
+                                <form class="col s12" method="POST" action="{{route('development.update', $development->id)}}" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
 
+                                    @if(file_exists(public_path('storage/uploads/development/'.$development->image)))
+                                        <div class="row">
+                                            <div class="col m6 s6 offset-m6 mb-1 right-align">
+                                                <img class="dummy_photo news-featured-image" src="{{asset('storage/uploads/development/'.$development->image)}}">
+                                            </div>
+                                        </div>
+                                    @endif
+
                                     <div class="row">
-                                        <div class="input-field col m6 s12">
+                                        <div class="input-field col s12">
                                             <input id="first_name01" type="text" name="title" class="validate @error('title') invalid @enderror" value="{{$development->title}}">
                                             <label for="first_name01">Title</label>
 
@@ -84,9 +92,14 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-12"><b>Upload {{$development->title}} Gallery Images</b></div>
-                                        <div class="input-field col m12 s12 dropzone" id="image-dropzone">
+                                        <div class="input-field col m12 s12">
+                                            <input type="file" name="image" />
 
+                                            @error('image')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                     </div>
 
