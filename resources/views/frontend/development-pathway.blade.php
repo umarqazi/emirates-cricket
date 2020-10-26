@@ -34,11 +34,10 @@
                         <img src="{{ asset('storage/uploads/development/'.$pathway->image) }}" class="developement-banner" alt="">
                     </div>
                 </div>
+                <div class="development-content">
+                    {!! $pathway->description !!}
+                </div>
             @endif
-
-            <div class="development-content">
-                {!! $pathway->description !!}
-            </div>
 
         </div>
     </div>

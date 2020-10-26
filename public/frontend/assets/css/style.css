@@ -390,14 +390,14 @@ ul.sidebar-nav li:last-child{
     margin-bottom: 0;
 }
 ul.sidebar-nav li a {
-    font-size: 18px;
+    font-size: 16px;
     color: #fff;
     font-weight: 500;
     text-transform: uppercase;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 25px 20px;
+    padding: 20px;
     border-left: 3px solid #8D0303;
 }
 ul.sidebar-nav li a:hover{
@@ -412,7 +412,7 @@ ul.sidebar-nav li a .nav-icon{
 ul.sub-menu {
     background: #fff;
     position: absolute;
-    padding: 30px 42px;
+    padding: 20px;
     right: -289px;
     top: -44px;
     z-index: 22;
@@ -434,17 +434,23 @@ ul.sub-menu:before{
     display: none;
 }
 ul.sub-menu li{
-    margin-bottom: 20px;
+    margin-bottom: 0;
     max-width: 210px;
 }
 ul.sub-menu li a{
     color: #8D0303;
-    font-size: 22px;
+    font-size: 16px;
     text-transform: capitalize;
     font-weight: 600;
     align-items: center;
-    padding: 0;
+    padding: 10px 20px;
     border: 0;
+    align-items: center;
+    align-content: flex-start;
+
+}
+ul.sub-menu li a i {
+    margin-right: 10px;
 }
 ul.sub-menu li a:hover{
     background: transparent;
@@ -688,11 +694,19 @@ body.sidebar-collapse .content-section {
     text-align: left;
     margin: 0px 10px;
 }
-.post-inner img {
+.post-inner figure{
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
+    height: 200px;
+    margin-bottom: 0;
+}
+.post-inner figure img {
     width: 100%;
-    min-width: 200px;
-    min-height: 200px;
-    margin-bottom: 10px;
+}
+.post-inner figcaption{
+    background: #FBFBFB;
+    border-radius: 0 0 20px 20px;
+    padding: 15px;
 }
 .news-headinig{
     position: relative;
@@ -735,11 +749,13 @@ body.sidebar-collapse .content-section {
 }
 .international-news-image img {
     width: 100%;
-    height: 320px;
+    height: 346px;
 }
 .international-news-content {
     text-align: left;
-    padding-top: 20px;
+    background: #FBFBFB;
+    padding:30px 30px 30px 30px;
+    border-radius: 0 20px 20px 0;
 }
 .international-news-content .read-more{
     margin-top: 20px;
@@ -892,18 +908,27 @@ body.sidebar-collapse .content-section {
 }
 
 /* team section */
-.member img {
+.member figure {
     width: 100%;
-    max-width: 300px;
+    box-shadow: 0px 3px 10px #00000029;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 350px;
+}
+.member figure img {
+    width: 100%;
+    height: 350px;
 }
 .member{
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 .member h4{
     color: #272727;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
+    margin-bottom: 10px;
 }
 .member h5 {
     text-transform: capitalize;
@@ -2016,7 +2041,7 @@ footer#footer p {
         margin-bottom: 0;
     }
     ul.sub-menu li a{
-        align-items: flex-start;
+        align-content: flex-start;
         padding: 10px 20px;
     }
     ul.sub-menu li a i {

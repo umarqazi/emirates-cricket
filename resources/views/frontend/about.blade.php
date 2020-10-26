@@ -31,9 +31,11 @@
                 <?php if ($employee['designation'] == "Chairman") {?>
                 <div class="col-md-4">
                     <div class="member">
-                        <a data-fancybox data-src="#employee_{{$employee->id}}" href="javascript:void(0)" class="about_modal">
-                            <img src="{{ URL::asset('storage/uploads/employees/'.$employee->image) }}" alt="">
-                        </a>
+                        <figure>
+                            <a data-fancybox data-src="#employee_{{$employee->id}}" href="javascript:void(0)" class="about_modal">
+                                <img src="{{ URL::asset('storage/uploads/employees/'.$employee->image) }}" alt="">
+                            </a>
+                        </figure>
                         <h4>{{$employee->name}}</h4>
                         <h5>{{$employee->designation}}</h5>
 
@@ -64,9 +66,11 @@
                 <?php if ($employee['designation'] == "Vice-Chairman") {?>
                 <div class="col-md-4">
                     <div class="member">
-                        <a data-fancybox data-src="#employee_{{$employee->id}}" href="javascript:void(0)" class="about_modal">
-                            <img src="{{ URL::asset('frontend/assets/images/vice-chairman.png') }}" alt="">
-                        </a>
+                        <figure>
+                            <a data-fancybox data-src="#employee_{{$employee->id}}" href="javascript:void(0)" class="about_modal">
+                                <img src="{{ URL::asset('frontend/assets/images/vice-chairman.png') }}" alt="">
+                            </a>
+                        </figure>
                         <h4>{{$employee->name}}</h4>
                         <h5>{{$employee->designation}}</h5>
 
@@ -92,9 +96,11 @@
                 <?php if ($employee['designation'] == "General Secretary") {?>
                 <div class="col-md-4">
                     <div class="member">
-                        <a data-fancybox data-src="#employee_{{$employee->id}}" href="javascript:void(0)" class="about_modal">
-                            <img src="{{ URL::asset('storage/uploads/employees/'.$employee->image) }}" alt="">
-                        </a>
+                        <figure>
+                            <a data-fancybox data-src="#employee_{{$employee->id}}" href="javascript:void(0)" class="about_modal">
+                                <img src="{{ URL::asset('storage/uploads/employees/'.$employee->image) }}" alt="">
+                            </a>
+                        </figure>
                         <h4>{{$employee->name}}</h4>
                         <h5>{{$employee->designation}}</h5>
 
@@ -124,9 +130,11 @@
                     <?php if ($employees['designation'] == "Employee"){ ?>
                 <div class="col-md-4">
                     <div class="member">
-                        <a data-fancybox data-src="#employee_{{$employees->id}}" href="javascript:void(0)" class="about_modal">
-                            <img src="{{ URL::asset('storage/uploads/employees/'.$employees->image) }}" alt="">
-                        </a>
+                        <figure>
+                            <a data-fancybox data-src="#employee_{{$employees->id}}" href="javascript:void(0)" class="about_modal">
+                                <img src="{{ URL::asset('storage/uploads/employees/'.$employees->image) }}" alt="">
+                            </a>
+                        </figure>
                         <h4>{{$employees->name}}</h4>
 
                         <div class="custom-modal" style="display: none;" id="employee_{{$employees->id}}">

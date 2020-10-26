@@ -35,11 +35,11 @@
                         <img src="{{ asset('storage/uploads/development/'.$emirati->image) }}" class="developement-banner" alt="">
                     </div>
                 </div>
-            @endif
 
-            <div class="development-content">
-                {!! $emirati->description !!}
-            </div>
+                <div class="development-content">
+                    {!! $emirati->description !!}
+                </div>
+            @endif
 
         </div>
     </div>
