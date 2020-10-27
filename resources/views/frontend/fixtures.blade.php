@@ -69,7 +69,11 @@
 
             {{--     fixtures content      --}}
             <div class="row">
-                <div class="col-lg-7">fdfd</div>
+                <div class="col-lg-7">
+                    <div class="batting-stats">
+                        <iframe id="stats-iframe" src="https://cricclubs.com/UAE/battingRecords.do?clubId=15272&embedView=true"></iframe>
+                    </div>
+                </div>
                 <div class="col-lg-5">
                     <div class="sidebar-section">
                         <div class="tab_wrapper fixtures">
