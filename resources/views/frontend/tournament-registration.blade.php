@@ -209,7 +209,7 @@
                                 <div class="col-md-6">
                                     <div class="input-row">
                                         <label>Proposed dates of Tournament</label>
-                                        <input type="text" class="datepicker-here date-calender @error('proposed_date') is-invalid @enderror" name="proposed_date" placeholder="01-01-2021" value="{{old('proposed_date')}}">
+                                        <input type="text" class="proposed_date date-calender @error('proposed_date') is-invalid @enderror" name="proposed_date" placeholder="01-01-2021" value="{{old('proposed_date')}}">
 
                                         @error('proposed_date')
                                         <span class="invalid-feedback" role="alert">
@@ -660,6 +660,12 @@
         $('.datepicker-here').datepicker({
             language: 'en',
             maxDate: new Date(),
+            autoClose: true,
+            dateFormat: 'dd/mm/yyyy',
+        });
+
+        $('.proposed_date').datepicker({
+            language: 'en',
             autoClose: true,
             dateFormat: 'dd/mm/yyyy',
         });

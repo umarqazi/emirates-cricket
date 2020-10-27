@@ -68,7 +68,7 @@
                     <div class="member">
                         <figure>
                             <a data-fancybox data-src="#employee_{{$employee->id}}" href="javascript:void(0)" class="about_modal">
-                                <img src="{{ URL::asset('frontend/assets/images/vice-chairman.png') }}" alt="">
+                                <img src="{{ URL::asset('storage/uploads/employees/'.$employee->image) }}" alt="">
                             </a>
                         </figure>
                         <h4>{{$employee->name}}</h4>
