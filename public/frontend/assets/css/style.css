@@ -1894,6 +1894,13 @@ footer#footer p {
     max-height: 220px;
     overflow: hidden;
 }
+.batting-stats iframe {
+    width: 100%;
+    height: 600px;
+}
+.batting-stats iframe header{
+    display: none !important;
+}
 
 /*+++++++  Responsiveness  ++++++++*/
 @media(max-width: 1599px){
