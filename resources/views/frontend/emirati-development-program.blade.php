@@ -29,6 +29,7 @@
                 <div class="team-content developement-child-page">
                     <a href="{{route('emirati-development-program')}}" class="btn">{{$emirati->title}}</a>
                 </div>
+            @endif
 
             @if(!empty($emirati->image))
                 <div class="developement-images">
@@ -36,11 +37,12 @@
                         <img src="{{ asset('storage/uploads/development/'.$emirati->image) }}" class="developement-banner" alt="">
                     </div>
                 </div>
+            @endif
 
-                    <div class="development-content">
-                        {!! $emirati->description !!}
-                    </div>
-                @endif
+            @if(!empty($emirati->description))
+                <div class="development-content">
+                    {!! $emirati->description !!}
+                </div>
             @endif
 
         </div>

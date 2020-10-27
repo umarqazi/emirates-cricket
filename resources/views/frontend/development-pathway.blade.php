@@ -25,9 +25,10 @@
     <div class="teams-section">
         <div class="container">
             @if(($pathway))
-            <div class="team-content developement-child-page">
-                <a href="{{route('development-pathway')}}" class="btn">{{$pathway->title}}</a>
-            </div>
+                <div class="team-content developement-child-page">
+                    <a href="{{route('development-pathway')}}" class="btn">{{$pathway->title}}</a>
+                </div>
+            @endif
 
             @if(!empty($pathway->image))
                 <div class="developement-images">
@@ -35,12 +36,13 @@
                         <img src="{{ asset('storage/uploads/development/'.$pathway->image) }}" class="developement-banner" alt="">
                     </div>
                 </div>
+            @endif
+
+            @if(!empty($pathway->description))
                 <div class="development-content">
                     {!! $pathway->description !!}
                 </div>
             @endif
-            @endif
-
         </div>
     </div>
 
