@@ -587,6 +587,7 @@
                                                     <i class="material-icons right">send</i>
                                                 </button>
 
+                                                @if(is_null($tournament->status))
                                                 <a href="{{route('approve-tournament', $tournament->id)}}" class="btn green waves-effect waves-light right mr-1">Approve
                                                     <i class="material-icons right">check</i>
                                                 </a>
@@ -594,6 +595,15 @@
                                                 <a href="{{route('decline-tournament', $tournament->id)}}" class="btn red waves-effect waves-light right mr-1">Decline
                                                     <i class="material-icons right">close</i>
                                                 </a>
+                                                @elseif(!$tournament->status)
+                                                    <a href="{{route('approve-tournament', $tournament->id)}}" class="btn green waves-effect waves-light right mr-1">Approve
+                                                        <i class="material-icons right">check</i>
+                                                    </a>
+                                                @elseif($tournament->status)
+                                                    <a href="{{route('decline-tournament', $tournament->id)}}" class="btn red waves-effect waves-light right mr-1">Decline
+                                                        <i class="material-icons right">close</i>
+                                                    </a>
+                                                @endif
                                             </div>
                                         </div>
                                     @endcan
