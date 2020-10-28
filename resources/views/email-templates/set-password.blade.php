@@ -89,7 +89,7 @@
         <p>Hi Mr. {{$user->name . '!'}}</p>
         <p>Your Account has been created at Emirates Cricket Board.</p>
         <p>Please click below link, to set your Password.</p>
-        <a href="{{route('setPassword', $this->user->token)}}" class="email-btn">Set Password</a>
+        <a href="{{route('setPassword', $user->token)}}" class="email-btn">Set Password</a>
     </div>
     <div class="email-footer">
         @include('backend.partials.email-footer')
