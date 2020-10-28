@@ -326,12 +326,6 @@
                                     <div class="form-drag-wrapper">
                                         <label>If YES please provide details of the previous approval(s)</label>
                                         <textarea placeholder="Write your message" name="details">{{old('details')}}</textarea>
-
-                                        @error('details')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-5">

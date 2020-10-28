@@ -26,7 +26,7 @@ class PlayerRegistration extends FormRequest
         return [
             'first_name'       => 'required|max:255',
             'last_name'        => 'required|max:255',
-            'email'            => 'required|email|max:255',
+            'email'            => 'required|unique:players|email|max:255',
             'dob'              => 'required|date_format:d/m/Y|before:today',
             'mobile'           => 'required',
             'nationality'      => 'required',

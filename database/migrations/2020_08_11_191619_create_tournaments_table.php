@@ -29,7 +29,7 @@ class CreateTournamentsTable extends Migration
             $table->string('proposed_venue');
             $table->string('final_venue');
             $table->string('surface');
-            $table->text('details');
+            $table->text('details')->nullable();
             $table->string('tournament_file')->nullable();
             $table->string('participating_teams_file')->nullable();
             $table->string('tournament_fees');
