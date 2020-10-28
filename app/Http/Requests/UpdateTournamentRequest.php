@@ -41,7 +41,6 @@ class UpdateTournamentRequest extends FormRequest
             'matches_place_one_emirate' => 'required|max:255',
             'surface'                   => 'required|max:255',
             'has_tournament_run_previously' => 'required',
-            'details'                   => 'required_if:has_tournament_run_previously,1',
             'tournament_file'          => 'nullable',
             'have_any_team_sold_before'          => 'required',
             'have_any_team_banned_before'        => 'required',
