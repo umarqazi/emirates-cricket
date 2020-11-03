@@ -36,36 +36,42 @@ class CricClubApiService
         $response = $this->curl_request($url);
 
         /* Get Data Key out of Response */
-        $data = $response['data'];
+        if (!empty($response['data'])) {
+            $data = $response['data'];
 
-        /* Filter out only Completed Matches */
-        /* And Put the Matches in Reverse Order to Get Lattest at Top */
-        $reverse_data = array_reverse(array_filter($data, function ($each) {
-            return $each['isMatchComplete'] === true;
-        }, ARRAY_FILTER_USE_BOTH));
+            /* Filter out only Completed Matches */
+            /* And Put the Matches in Reverse Order to Get Lattest at Top */
+            $reverse_data = array_reverse(array_filter($data, function ($each) {
+                return $each['isMatchComplete'] === true;
+            }, ARRAY_FILTER_USE_BOTH));
 
-        /* Get only Recent 8 Matches */
-        $recent_data = array_splice($reverse_data, 0, 8);
+            /* Get only Recent 8 Matches */
+            $recent_data = array_splice($reverse_data, 0, 8);
 
-        foreach ($recent_data as $key=>$data) {
+            foreach ($recent_data as $key=>$data) {
 
-            $fixture_filter_results = array_filter($data, function ($k) {
-                return in_array($k, array('fixtureId', 'teamOne', 'teamTwo', 'date', 'time', 'matchType', 'location', 'leagueId', 'leagueName', 'matchID', 't1_logo_file_path', 't2_logo_file_path', 'seriesType'));
-            }, ARRAY_FILTER_USE_KEY);
+                $fixture_filter_results = array_filter($data, function ($k) {
+                    return in_array($k, array('fixtureId', 'teamOne', 'teamTwo', 'date', 'time', 'matchType', 'location', 'leagueId', 'leagueName', 'matchID', 't1_logo_file_path', 't2_logo_file_path', 'seriesType'));
+                }, ARRAY_FILTER_USE_KEY);
 
-            /* Get Score Card for each Match */
-            $score = $this->getMatchScorecard($club_id, $data['matchID']);
+                /* Get Score Card for each Match */
+                $score = $this->getMatchScorecard($club_id, $data['matchID']);
 
-            /* Filter out Keys that are needed */
-            $score_filtered_results = array_filter($score['data']['matchInfo'], function ($k) {
-                return in_array($k, array('teamOneName', 'teamOneCode', 'teamOneCaptain', 'teamTwoName', 'teamTwoCode', 'teamTwoCaptain', 'tossWon', 'battingFirst', 'overs', 'winner', 't1total', 't2total', 't1wickets', 't2wickets', 't1balls', 't2balls', 'manOfTheMatch', 'result', 'seriesName', 'liveURL'));
-            }, ARRAY_FILTER_USE_KEY);
+                /* Filter out Keys that are needed */
+                $score_filtered_results = array_filter($score['data']['matchInfo'], function ($k) {
+                    return in_array($k, array('teamOneName', 'teamOneCode', 'teamOneCaptain', 'teamTwoName', 'teamTwoCode', 'teamTwoCaptain', 'tossWon', 'battingFirst', 'overs', 'winner', 't1total', 't2total', 't1wickets', 't2wickets', 't1balls', 't2balls', 'manOfTheMatch', 'result', 'seriesName', 'liveURL'));
+                }, ARRAY_FILTER_USE_KEY);
 
-            /* Merge all data Together */
-            $match_results[$key] = array_merge($fixture_filter_results, $score_filtered_results);
+                /* Merge all data Together */
+                $match_results[$key] = array_merge($fixture_filter_results, $score_filtered_results);
+            }
+
+            return $match_results;
+        } else {
+            $error_message = $response['errorMessage'];
+            echo "<h2>$error_message</h2>";
+            die();
         }
-
-        return $match_results;
     }
 
     public function getMatchScorecard($club_id, $match_id)
