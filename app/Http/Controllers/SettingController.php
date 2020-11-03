@@ -105,7 +105,7 @@ class SettingController extends Controller
         if (!empty($status)) {
             /* For Polymorphic Relation */
             $this->image_service->updateSliderImage($settingObj, $request->except(['_token', '_method']));
-            return redirect()->route('setting.create')->with('success', 'Setting ha been Updated!');
+            return redirect()->route('setting.create')->with('success', 'Setting has been Updated!');
         }
     }
 
