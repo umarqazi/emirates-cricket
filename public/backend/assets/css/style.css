@@ -11166,3 +11166,7 @@ a.download_player_file i{
 .row.download-files-row{
     margin-bottom: 20px;
 }
+
+.sidenav-dark.sidenav-main .sidenav{
+    padding-bottom: 120px;
+}
