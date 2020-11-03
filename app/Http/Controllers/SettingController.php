@@ -16,7 +16,7 @@ class SettingController extends Controller
     public function __construct()
     {
         /* Check User Permission to Perform Action */
-        $this->authorizeResource(Setting::class, 'setting');
+//        $this->authorizeResource(Setting::class, 'setting');
 
         $this->setting_service = new SettingService();
         $this->image_service = new ImageService();
@@ -105,7 +105,7 @@ class SettingController extends Controller
         if (!empty($status)) {
             /* For Polymorphic Relation */
             $this->image_service->updateSliderImage($settingObj, $request->except(['_token', '_method']));
-            return redirect()->route('setting.create')->with('success', 'Setting ha been Updated!');
+            return redirect()->route('setting.create')->with('success', 'Setting has been Updated!');
         }
     }
 
