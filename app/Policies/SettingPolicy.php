@@ -60,7 +60,7 @@ class SettingPolicy
      */
     public function update(User $user, Setting $setting)
     {
-        return $user->can('Update Setting')
+        return $user->can('Edit Setting')
             ? Response::allow()
             : Response::deny('You aren\'t Authorized to perform this Action.');
     }

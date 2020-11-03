@@ -15,7 +15,7 @@ class EmployeeController extends Controller
     public function __construct()
     {
         /* Check User Permission to Perform Action */
-        //$this->authorizeResource(Employee::class, 'employee');
+        $this->authorizeResource(Employee::class, 'employee');
 
         $this->employee_service = new EmployeeService();
     }
@@ -81,10 +81,10 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateEmployeeRequest $request, $id)
+    public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
         $data = $request->except(['_token','_method']);
-        $this->employee_service->update($data, $id);
+        $this->employee_service->update($data, $employee->id);
 
         return redirect()->route('employee.index')->with('success', 'Data is successfully updated!');
     }
