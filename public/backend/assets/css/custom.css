@@ -1,0 +1,90 @@
+/*================================================================================
+	Item Name: Materialize - Material Design Admin Template
+	Version: 5.0
+	Author: PIXINVENT
+	Author URL: https://themeforest.net/user/pixinvent/portfolio
+================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN CSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+.invalid-feedback{
+    color: #e40000;
+    display: block;
+}
+
+.form-error{
+    color: #e40000;
+}
+
+.login-email-error{
+    padding-left: 45px;
+}
+
+.alert-success{
+    color:#155724;
+}
+
+.delete-form{
+    display: inline-block;
+    margin-left: 5px;
+}
+.news-featured-image {
+    max-width: 300px;
+    max-height: 250px;
+}
+.team-player-section .heading .title p{
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 30px;
+}
+.team-player-section .heading .heading-icon a{
+    background: #00BCD4;
+    float: right;
+    border-radius: 30px;
+    color: #fff;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn.custom-file-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-open .modal.custom-add-modal{
+    background: transparent !important;
+    box-shadow: none !important;
+}
+.modal-open .modal.custom-add-modal .modal-title {
+    margin-top: 0;
+    padding-bottom: 10px;
+}
+.modal-open .modal.custom-add-modal .modal-header {
+    padding: 0;
+    margin-bottom: 15px;
+}
+.modal-open .modal.custom-add-modal .modal-content {
+    padding: 20px 20px;
+}
+.modal-open .modal.custom-add-modal .modal-body{
+    padding: 0;
+}
+.modal-open .modal.custom-add-modal .modal-body .add_player_input {
+    margin-bottom: 10px;
+}
+.modal-open .modal.custom-add-modal .modal-body .create-player {
+    margin-top: 30px;
+}
+.social-heading{
+    margin-bottom: 15px !important;
+}
+.social-title{
+    display: inline-block !important;
+    margin-bottom: 8px !important;
+}

@@ -3,6 +3,8 @@
 /public/storage
 /storage/*.key
 /vendor
+/.idea
+/storage/
 .env
 composer.lock
 .env.backup
