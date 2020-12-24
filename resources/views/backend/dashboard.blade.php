@@ -12,7 +12,7 @@
     <div class="col s12">
         <div class="container">
             <!--card stats start-->
-            <div id="card-stats">
+<!--            <div id="card-stats">
                 <div class="row">
                     <div class="col s12 m6 l6 xl3">
                         <div class="card gradient-45deg-light-blue-cyan gradient-shadow min-height-100 white-text animate fadeLeft">
@@ -75,7 +75,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <!--card stats end-->
 
             <!--end container-->
