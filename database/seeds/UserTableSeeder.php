@@ -19,9 +19,9 @@ class UserTableSeeder extends Seeder
 
         User::create([
             'name' => 'ECB Admin',
-            'email' => 'admin@gmail.com',
+            'email' => 'Info@emiratescricket.com',
             'email_verified_at' => Carbon::now(),
-            'password' => Hash::make('12345678'),
+            'password' => Hash::make('ecbadmin123!@#'),
         ]);
     }
 }
