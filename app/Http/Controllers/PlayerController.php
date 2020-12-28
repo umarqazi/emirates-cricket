@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\PlayerExport;
 use App\Http\Requests\PlayerRegistration;
+use App\Notifications\AdminNotifyPlayerRegistrationNotification;
 use App\Notifications\PlayerRegistrationNotification;
 use App\Notifications\PlayerRequestApprovalNotification;
 use App\Notifications\PlayerRequestDeclinedNotification;
@@ -11,6 +12,7 @@ use App\Player;
 use App\Services\CountryService;
 use App\Services\PlayerService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -68,6 +70,10 @@ class PlayerController extends Controller
         $player = $this->player_service->store($request->except('_token'));
         if ($player) {
             $player->notify(new PlayerRegistrationNotification($player));
+
+            /* Send Email Notification to Admin */
+            Notification::route('mail', env('PLAYER_REGISTRATION_MAIL'))->notify(new AdminNotifyPlayerRegistrationNotification($player));
+
             return redirect()->back()->with('success', 'Your Request for Registration has been submitted Successfully!');
         }
     }
