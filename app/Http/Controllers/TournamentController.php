@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\TournamentExport;
 use App\Http\Requests\TournamentRequest;
 use App\Http\Requests\UpdateTournamentRequest;
+use App\Notifications\AdminNotifyTournamentRegistrationNotification;
 use App\Notifications\PlayerRegistrationNotification;
 use App\Notifications\TournamentRegistrationNotification;
 use App\Notifications\TournamentRequestApprovalNotification;
@@ -13,6 +14,7 @@ use App\Services\SettingService;
 use App\Services\TournamentService;
 use App\Tournament;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -96,6 +98,9 @@ class TournamentController extends Controller
 
             /* After Registration being Submitted, Now Notify the user via Email. */
             $tournament->notify(new TournamentRegistrationNotification($tournament));
+
+            /* Send Email Notification to Admin */
+            Notification::route('mail', env('TOURNAMENT_REGISTRATION_MAIL'))->notify(new AdminNotifyTournamentRegistrationNotification($tournament));
         }
 
         return redirect()->back()->with('success', 'Your Tournament Registration Form has been Submitted Successfully!');
