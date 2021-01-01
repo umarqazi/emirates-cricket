@@ -86,7 +86,7 @@
     <div class="email-content">
         <img class="header-logo" src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt="">
         <h1>New Tournament Registration</h1>
-        <p>Mr. {{$player->organizer_name . '!'}} has Applied for Tournament Registration at Emirates Cricket Board.</p>
+        <p>Mr. {{$tournament->organizer_name . '!'}} has Applied for Tournament Registration at Emirates Cricket Board.</p>
         <p>Please Visit Admin Panel for further Details. Thanks</p>
     </div>
     <div class="email-footer">
