@@ -36,7 +36,7 @@
 
                 <div class="col-lg-4">
                     <div class="twitter-cards fb-post">
-                        <div class="fb-page" data-href="https://www.facebook.com/wuwumagic/" data-tabs="timeline" data-width="310" data-height="493" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/wuwumagic/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/wuwumagic/">WuWu</a></blockquote></div>
+                        <div class="fb-page" data-href="https://www.facebook.com/emiratescricket" data-tabs="timeline" data-width="310" data-height="493" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/emiratescricket"><a href="https://www.facebook.com/emiratescricket">Emirates Cricket</a></blockquote></div></div>
                     </div>
                 </div>
             </div>

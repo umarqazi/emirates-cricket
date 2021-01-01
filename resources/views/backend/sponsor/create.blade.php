@@ -58,8 +58,8 @@
 
                                     <div class="row">
                                         <div class="input-field col m12 s12">
-                                            <input id="title" type="text" name="website" class="validate @error('website') invalid @enderror" value="{{old('website')}}">
-                                            <label for="title">Sponsor Website URL</label>
+                                            <input id="url" type="text" name="website" class="validate @error('website') invalid @enderror" value="{{old('website')}}">
+                                            <label for="url">Sponsor Website URL</label>
 
                                             @error('website')
                                             <span class="invalid-feedback" role="alert">
