@@ -71,7 +71,7 @@ class PlayerService
             'email'  => $params['email'],
             'mobile'  => $params['mobile'],
             'living_in'  => $params['living_in'],
-            'nationality'  => $params['visa_status'],
+            'nationality'  => $params['nationality'],
             'playing_with'  => $params['playing_with'],
             'message'  => $params['message'],
         ];

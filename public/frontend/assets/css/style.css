@@ -573,14 +573,20 @@ body.sidebar-collapse .content-section {
 .marquee-content:hover {
     animation-play-state: paused
 }
+.marquee-content .item-collection:first-child .item{
+    padding-left: 0;
+    border-left: 0;
+}
 .item-collection .item {
     display: inline-block;
     font-size: 16px;
     line-height: 16px;
     vertical-align: top;
-    margin-left: 20px;
+    margin-left: 10px;
     color: #fff;
     text-transform: capitalize;
+    border-left: 1px solid #fff;
+    padding-left: 10px;
 }
 /* Transition */
 
@@ -702,6 +708,7 @@ body.sidebar-collapse .content-section {
 }
 .post-inner figure img {
     width: 100%;
+    height: 100%;
 }
 .post-inner figcaption{
     background: #FBFBFB;
@@ -724,6 +731,7 @@ body.sidebar-collapse .content-section {
 }
 .post-inner p a{
     color:#8D0303;
+    text-transform: capitalize;
 }
 .post-inner .date {
     text-align: right;
@@ -1900,6 +1908,11 @@ footer#footer p {
 }
 .batting-stats iframe header{
     display: none !important;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /*+++++++  Responsiveness  ++++++++*/

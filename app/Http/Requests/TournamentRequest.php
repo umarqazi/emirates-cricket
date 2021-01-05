@@ -28,7 +28,7 @@ class TournamentRequest extends FormRequest
             'organizer_address'       => 'required|max:255',
             'organizer_telephone_no'  => 'required',
             'organizer_mobile_no'     => 'required',
-            'email'                   => 'required|email',
+            'email'                   => 'required|unique:tournaments|email',
             'is_registered_company'   => 'required',
             'company_name'            => 'required|max:255',
             'company_address'         => 'required|max:255',
