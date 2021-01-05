@@ -446,7 +446,7 @@
 
                         @if(auth()->user()->can('Create Setting') || auth()->user()->can('Edit Setting'))
                             <li>
-                                <a class="collapsible-body" href="{{route('setting.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Slider Setting</span></a>
+                                <a class="collapsible-body" href="{{route('setting.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Site Setting</span></a>
                             </li>
                         @endif
                     </ul>
