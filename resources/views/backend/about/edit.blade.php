@@ -47,7 +47,7 @@
 
                                     <div class="row">
                                         <div class="input-field col m12 s12">
-                                            <input id="page_title" type="text" name="page_type" class="@error('page_type') invalid @enderror" value="{{$about->page_type}}" readonly>
+                                            <input id="page_title" type="text" name="page_type" class="@error('page_type') invalid @enderror" value="{{$about->page_type}}">
                                             <label for="page_title">Page Title</label>
 
                                             @error('page_type')
@@ -60,7 +60,7 @@
 
                                     <div class="row">
                                         <div class="input-field col m12 s12">
-                                            <input id="about_title" type="text" name="about_type" class="@error('about_type') invalid @enderror" value="{{$about->about_type}}" readonly>
+                                            <input id="about_title" type="text" name="about_type" class="@error('about_type') invalid @enderror" value="{{$about->about_type}}">
                                             <label for="about_title">About Type</label>
 
                                             @error('about_type')
@@ -73,7 +73,7 @@
 
                                     <div class="row">
                                         <div class="input-field col m12 s12">
-                                            <input id="council_type" type="text" name="council_type" class="@error('council_type') invalid @enderror" value="{{$about->council_type}}" readonly>
+                                            <input id="council_type" type="text" name="council_type" class="@error('council_type') invalid @enderror" value="{{$about->council_type}}">
                                             <label for="council_type">Council Type</label>
 
                                             @error('council_type')

@@ -36,7 +36,7 @@
                     <div class="col s12 m12 l12">
                         <div id="Form-advance" class="card card card-default scrollspy">
                             <div class="card-content">
-                                <div class="card-header">Create New Employee</div>
+                                <div class="card-header">Create New File</div>
                                 <div class="row">
                                     <form method="post" action="{{route('download.store')}}" enctype="multipart/form-data">
 

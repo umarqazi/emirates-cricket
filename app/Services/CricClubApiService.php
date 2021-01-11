@@ -36,8 +36,8 @@ class CricClubApiService
         $response = $this->curl_request($url);
 
         /* Get Data Key out of Response */
-        if (!empty($response['data'])) {
-            $data = $response['data'];
+        if (!empty($response['pastFixtures'])) {
+            $data = $response['pastFixtures'];
 
             /* Filter out only Completed Matches */
             /* And Put the Matches in Reverse Order to Get Lattest at Top */

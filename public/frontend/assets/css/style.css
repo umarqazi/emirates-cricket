@@ -350,11 +350,11 @@ body.sidebar-collapse .sidebar {
     background-color: #8D0303;
     z-index: 22;
     top: 0;
-    right: -60px;
+    right: -40px;
     cursor: pointer;
     border: 1px solid #8D0303;
     height: 53px;
-    width: 60px;
+    /*width: 60px;*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -550,6 +550,7 @@ body.sidebar-collapse .content-section {
 .marquee {
     overflow: hidden;
     white-space: nowrap;
+    margin-left: 50px;
 }
 .marquee-content {
     display: inline-block;
@@ -2163,6 +2164,9 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .fancybox-content{
         max-width: 100% !important;
+    }
+    .marquee{
+        margin-left: 0;
     }
 }
 
