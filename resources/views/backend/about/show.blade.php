@@ -46,53 +46,29 @@
 
                                     <div class="row">
                                         <div class="input-field col m12 s12">
-                                            <input id="title" type="text" name="page_type" class="validate @error('page_type') invalid @enderror" value="{{$about->page_type}}">
+                                            <input id="title" type="text" name="page_type" value="{{$about->page_type}}" readonly>
                                             <label for="title">Page Title</label>
-
-                                            @error('page_type')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col m12 s12">
-                                            <input id="title" type="text" name="about_type" class="validate @error('about_type') invalid @enderror" value="{{$about->about_type}}">
+                                            <input id="title" type="text" name="about_type" value="{{$about->about_type}}" readonly>
                                             <label for="title">About Type</label>
-
-                                            @error('title')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="input-field col m12 s12">
-                                            <input id="title" type="text" name="council_type" class="validate @error('council_type') invalid @enderror" value="{{$about->council_type}}">
+                                            <input id="title" type="text" name="council_type" value="{{$about->council_type}}" readonly>
                                             <label for="title">Council Type</label>
-
-                                            @error('council_type')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col s12">Page Content</div>
                                         <div class="input-field col s12">
-                                            <textarea id="message5" class="ckeditor @error('content') invalid @enderror" name="content" rows="15" placeholder="Type About Content in here...">{!! $about->content !!}</textarea>
-
-                                            @error('content')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
+                                            <textarea id="message5" class="ckeditor" name="content" rows="15" placeholder="Type About Content in here...">{!! $about->content !!}</textarea>
                                         </div>
                                     </div>
                                 </form>

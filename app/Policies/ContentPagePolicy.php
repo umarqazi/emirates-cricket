@@ -58,7 +58,7 @@ class ContentPagePolicy
      */
     public function update(User $user, ContentPage $contentPage)
     {
-        return $user->can('Update About Pages')
+        return $user->can('Edit About Pages')
             ? Response::allow()
             : Response::deny('You aren\'t Authorized to perform this Action.');
     }

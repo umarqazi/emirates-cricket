@@ -62,13 +62,13 @@
                                                                 <td>{{$page->about_type}}</td>
                                                                 <td>{{ucwords(str_replace('-', ' ', $page->council_type))}}</td>
                                                                 <td>
-{{--                                                                    @can('Show News')--}}
+                                                                    @can('Show About Pages')
                                                                         <a href="{{route('about.show', $page->id)}}"><i class="material-icons">visibility</i></a>
-{{--                                                                    @endcan--}}
+                                                                    @endcan
 
-{{--                                                                    @can('Edit News')--}}
+                                                                    @can('Edit About Pages')
                                                                         <a href="{{route('about.edit', $page->id)}}"><i class="material-icons">edit</i></a>
-{{--                                                                    @endcan--}}
+                                                                    @endcan
 
 {{--                                                                    @can('Delete News')--}}
                                                                         {{--<form method="post" class="delete-form" action="{{ route('about.destroy', $page->id) }}">
