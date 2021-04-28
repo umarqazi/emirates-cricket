@@ -67,11 +67,11 @@ class CricClubApiService
             }
 
             return $match_results;
-        } else {
-            $error_message = $response['errorMessage'];
-            echo "<h2>$error_message</h2>";
-            die();
         }
+
+        $error_message = $response['errorMessage'];
+        echo "<h2>$error_message</h2>";
+        die();
     }
 
     public function getMatchScorecard($club_id, $match_id)
