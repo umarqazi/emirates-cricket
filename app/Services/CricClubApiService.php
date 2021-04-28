@@ -27,7 +27,7 @@ class CricClubApiService
     public function getLattestMatchResults($club_id, $league_id = null, $team_id=null)
     {
         $match_results = array();
-        $url = config('cricclubapi.get_all_schedules_or_fixtures');
+        $url = config('cricclubapi.get_all_schedules_or_fixtures_updated');
         $url = str_replace("{clubId}", $club_id, $url);
         $url = !empty($league_id) ? $url.'&leagueId='.$league_id : $url;
         $url = !empty($league_id) ? $url.'&teamId='.$team_id : $url;
