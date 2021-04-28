@@ -2068,6 +2068,14 @@ input[type=number]::-webkit-outer-spin-button {
     ul.sub-menu li a i {
         margin-right: 10px;
     }
+    .slider-image {
+        overflow: hidden;
+        max-height: 500px;
+    }
+    .slider-image img {
+        width: 100%;
+        min-height: 500px;
+    }
 }
 
 @media (max-width: 1365px){

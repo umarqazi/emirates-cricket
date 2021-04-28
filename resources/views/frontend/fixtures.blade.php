@@ -79,18 +79,13 @@
                         <div class="tab_wrapper fixtures">
 
                             <ul class="tab_list">
-                                <li class="active">Live</li>
-                                <li>Results</li>
+                                <li class="active">Results</li>
+                                <li>Live</li>
                                 <li>Schedule</li>
                             </ul>
 
                             <div class="content_wrapper">
                                 <div class="tab_content active">
-                                    <p>There are no Live matches available now</p>
-                                    <a href="#">Complete List</a>
-                                </div>
-
-                                <div class="tab_content">
                                     @foreach($results as $res)
                                         <div class="team-vs-team">
                                             <div class="row no-gutters">
@@ -121,6 +116,11 @@
                                     <p style="text-align: center; margin-bottom: 0; margin-top: 20px">
                                         <a href="{{str_replace(array('{ClubId}'), array(env('CRIC_CLUB_ID')), env('CRIC_CLUB_LIST_MATCHES'))}}">Complete List</a>
                                     </p>
+                                </div>
+
+                                <div class="tab_content">
+                                    <p>There are no Live matches available now</p>
+                                    <a href="#">Complete List</a>
                                 </div>
 
                                 <div class="tab_content">
