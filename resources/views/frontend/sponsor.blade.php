@@ -28,20 +28,42 @@
                 @foreach($sponsors as $sponsor)
                     <div class="sponser-inner">
                         <div class="row justify-content-center">
-                            <div class="col-lg-10">
-                                <div class="row align-items-center">
-                                    <div class="col-md-6">
+                            <div class="col-lg-11">
+                                <div class="row align-items-center mt-3">
+                                    <div class="col-md-4">
                                         <div class="sponcer-company">
                                             <div class="sponcer-logo">
                                                 <img src="{{ URL::asset('storage/uploads/sponsor/'.$sponsor->id.'/'.$sponsor->image) }}" alt="">
                                             </div>
+                                            <div class="company-content">
+                                                <h3>{{$sponsor->name}}</h3>
+                                                <p>{!! $sponsor->text !!}</p>
+                                            </div>  
                                             <a href="{{$sponsor->website}}" class="btn">View Website</a>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="company-content">
-                                            <h3>{{$sponsor->name}}</h3>
-                                            <p>{!! $sponsor->text !!}</p>
+                                    <div class="col-md-4">
+                                        <div class="sponcer-company">
+                                            <div class="sponcer-logo">
+                                                <img src="{{ URL::asset('storage/uploads/sponsor/'.$sponsor->id.'/'.$sponsor->image) }}" alt="">
+                                            </div>
+                                            <div class="company-content">
+                                                <h3>{{$sponsor->name}}</h3>
+                                                <p>{!! $sponsor->text !!}</p>
+                                            </div>  
+                                            <a href="{{$sponsor->website}}" class="btn">View Website</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="sponcer-company">
+                                            <div class="sponcer-logo">
+                                                <img src="{{ URL::asset('storage/uploads/sponsor/'.$sponsor->id.'/'.$sponsor->image) }}" alt="">
+                                            </div>
+                                            <div class="company-content">
+                                                <h3>{{$sponsor->name}}</h3>
+                                                <p>{!! $sponsor->text !!}</p>
+                                            </div>  
+                                            <a href="{{$sponsor->website}}" class="btn">View Website</a>
                                         </div>
                                     </div>
                                 </div>
