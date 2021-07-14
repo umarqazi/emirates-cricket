@@ -25,7 +25,7 @@
     <div class="download-section">
         <div class="container">
 
-            <div class="files-row">
+            <!-- <div class="files-row">
                 @php($catTitle = false)
                 @php($catTitleLabel = '')
                 @foreach($download_files as $file)
@@ -122,8 +122,48 @@
                         @endif
                     @endforeach
                 </div>
+            </div> -->
+
+        <div class="row">
+            <div class="col-md-4 col-lg-4">
+                <div class="download-file">
+                    <img src="{{ URL::asset('frontend/assets/images/pdf.png') }}" alt="">
+                    <div class="download-file-content">
+                    <h3>UAE SENIOR</h3>
+                        <p>Emirates Cricket currently offers the region two development platforms</p>
+                    </div>
+                    <div class="team-player">
+                        <a href="{{ URL::asset('/storage/uploads/downloads/'.$file->file) }}" download>Download</a>
+                    </div>
+                </div>
             </div>
 
+            <div class="col-md-4 col-lg-4">
+                <div class="download-file">
+                    <img src="{{ URL::asset('frontend/assets/images/pdf.png') }}" alt="">
+                    <div class="download-file-content">
+                    <h3>UAE SENIOR</h3>
+                        <p>Emirates Cricket currently offers the region two development platforms  Emirates Cricket currently offers the region two development platforms</p>
+                    </div>
+                    <div class="team-player">
+                        <a href="{{ URL::asset('/storage/uploads/downloads/'.$file->file) }}" download>Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-lg-4">
+                <div class="download-file">
+                    <img src="{{ URL::asset('frontend/assets/images/pdf.png') }}" alt="">
+                    <div class="download-file-content">
+                    <h3>UAE SENIOR</h3>
+                        <p>Emirates Cricket currently offers the region two development platforms Emirates Cricket currently offers the region two development platforms</p>
+                    </div>
+                    <div class="team-player">
+                        <a href="{{ URL::asset('/storage/uploads/downloads/'.$file->file) }}" download>Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         </div>
     </div>
