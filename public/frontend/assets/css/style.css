@@ -622,6 +622,7 @@ body.sidebar-collapse .content-section {
 .slider-image img {
     width: 100%;
     max-height: 500px;
+    object-fit: cover;
 }
 .banner-slider .slick-dots{
     bottom: 100px;
@@ -835,6 +836,7 @@ body.sidebar-collapse .content-section {
     height: 100%;
     z-index: 2;
 }
+
 .international-news-content h4{
     margin: 30px 0px;
 }
@@ -1914,8 +1916,12 @@ footer#footer p {
     background-image: none !important;
     position: absolute;
     font-size: 20px !important;
-    width: unset !important;
-    height: unset !important;
+    background: rgba(141, 3, 3, 0.75);
+    border-radius: 50%;
+    line-height: 22px;
+    height: 20px;
+    width: 20px;
+    z-index: -1;
     opacity: .75 !important;
     left: 0 !important;
 }
@@ -2470,4 +2476,7 @@ ul.sidebar-nav li .sub-menu::after {
     left: -25px;
     top: 45px;
     clip-path: polygon(100% 0, 0 50%, 100% 100%);
+}
+.twitter-cards iframe.twitter-timeline{
+    width: 100% !important;
 }
