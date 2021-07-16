@@ -40,7 +40,7 @@
                     <div class="col s12 m12 l12">
                         <div id="Form-advance" class="card card card-default scrollspy">
                             <div class="card-content">
-                                <form class="col s12" method="POST" action="{{route('team-player.store')}}">
+                                <form class="col s12" method="POST" enctype="multipart/form-data"  action="{{route('team-player.store')}}">
                                     @csrf
 
                                     <div class="row">
@@ -49,6 +49,18 @@
                                             <label for="title">Player Name</label>
 
                                             @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col m12 s12">
+                                            <input id="link" type="text" name="link" class="validate @error('link') invalid @enderror" value="{{old('link')}}">
+                                            <label for="link">Cricinfo Profile URL</label>
+
+                                            @error('link')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -73,7 +85,20 @@
                                             @enderror
                                         </div>
                                     </div>
-
+                                    <div class="file-field input-field">
+                                        <div class="btn custom-file-button">
+                                            <span>File</span>
+                                            <input type="file" name="image" class="validate">
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text">
+                                        </div>
+                                        @error('image')
+                                        <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <button class="btn cyan waves-effect waves-light right" type="submit">Create Player

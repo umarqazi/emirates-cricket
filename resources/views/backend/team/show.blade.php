@@ -104,6 +104,8 @@
                                                             <tr>
                                                                 <th>#</th>
                                                                 <th>Name</th>
+                                                                <th>CricInfo Profile URL</th>
+                                                                <th>Image</th>
                                                                 <th>Actions</th>
                                                             </tr>
                                                             </thead>
@@ -112,7 +114,9 @@
                                                                 @foreach($team->players as $key=> $player)
                                                                     <tr class="team-player">
                                                                         <td>{{$key + 1}}</td>
+                                                                        <td>{{$player->link}}</td>
                                                                         <td>{{$player->name}}</td>
+                                                                        <td><img src="{{public_path('storage/uploads/team-players/'.$player->image)}}" /></td>
                                                                         <td>
                                                                             @can('Edit Team Player')
                                                                                 <a href="{{route('team-player.edit', $player->id)}}" ><i class="material-icons">edit</i></a>
@@ -123,7 +127,7 @@
                                                                                     @csrf
                                                                                     @method('DELETE')
 
-                                                                                    <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
+                                                                                    <a type="button" class="delete-submit-btn" onclick="this.closest('form').submit()"><i class="material-icons">delete</i></a>
                                                                                 </form>
                                                                             @endcan
                                                                         </td>

@@ -61,6 +61,22 @@
 
                                         <div class="row">
                                             <div class="input-field col m12 s12">
+                                                <div class="col-12">Description</div>
+                                                <div class="input-field col-12">
+                                                    <label for="description"></label>
+                                                    <textarea id="description" class="ckeditor @error('description') invalid @enderror" name="description" rows="15" placeholder="Type Download Description in here..."></textarea>
+
+                                                    @error('description')
+                                                    <div class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="input-field col m12 s12">
                                                 <input id="title" type="file" name="file" class="validate @error('file') invalid @enderror" value="">
 
                                                 @error('file')

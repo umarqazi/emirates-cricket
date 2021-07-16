@@ -117,7 +117,7 @@
                                                 </figcaption>
                                                 </a>
                                             </figure>
-                                            
+
                                         </div>
                                     </div>
                                 @endforeach
@@ -130,28 +130,14 @@
                     <div class="latest-news international-news">
                         <h2>International News</h2>
                         <div class="row">
-                            <!-- <div class="col-md-6">
-                                <div class="international-news-image">
-                                    <img src="{{ URL::asset('storage/uploads/international-news/'.'/'.$international_news->id.'/'.$international_news->image) }}" alt="">
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="international-news-content">
-                                    <h4>{{$international_news->title}}</h4>
-                                    <p>{!! \Illuminate\Support\Str::limit($international_news->description, 500) !!}</p>
-                                    <p class="read-more">
-                                        <a href="{{route('news-detail',['international_news', $international_news->id])}}"
-                                           tabindex="0">Read more</a>
-                                    </p>
-                                </div>
-                            </div> -->
+                            @foreach($international_news as $int_news)
                             <div class="col-md-6">
                             <div class="card international-news-image" >
                                 <a href="#">
-                            <img src="{{ URL::asset('storage/uploads/international-news/'.'/'.$international_news->id.'/'.$international_news->image) }}" alt="">
+                            <img src="{{ URL::asset('storage/uploads/international-news/'.'/'.$int_news->id.'/'.$int_news->image) }}" alt="">
                                 <div class="card-body international-news-content">
-                                <h4>{{$international_news->title}}</h4>
-                                    <p>{!! \Illuminate\Support\Str::limit($international_news->description, 500) !!}</p>
+                                <h4>{{$int_news->title}}</h4>
+                                    <p>{!! \Illuminate\Support\Str::limit($int_news->description, 500) !!}</p>
                                     <p class="date">
                                         <a href="#">{{date('M d, Y', strtotime($eachNews->created_at))}}</a>
                                     </p>
@@ -163,6 +149,7 @@
                            </a>
                                 </div>
                             </div>
+                            @endforeach
                         </div>
                     </div>
                     @endif

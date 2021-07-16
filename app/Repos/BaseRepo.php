@@ -22,6 +22,10 @@ class BaseRepo implements IRepo
         return $model::orderBy($column, $order)->paginate($records);
     }
 
+    public function getLatestRecords($model, $limit, $where = array() , $column = 'created_at' ,$order = 'desc') {
+        return $model::where($where)->orderBy($column, $order)->limit($limit)->get();
+    }
+
     public function groupedBy($model, $groupBy, $column = 'created_at', $order = 'desc') {
         return $model::groupBy($groupBy)->orderBy($column, $order)->get();
     }
