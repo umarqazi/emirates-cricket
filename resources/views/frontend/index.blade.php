@@ -67,7 +67,7 @@
                                     <img src="{{ URL::asset('frontend/assets/images/cricket.png') }}" alt="">
                                     <span>Development</span>
                                 </h3>
-                                <p>Emirates Cricket currently offers the region two development platforms...</p>
+                                <p>Emirates Cricket currently offers the region two development platforms</p>
                                 <a href="{{route('development')}}" class="btn">Read More</a>
                             </div>
                         </div>
@@ -106,18 +106,18 @@
                                         <div class="post-inner">
                                             <figure>
                                                 <img src="{{ URL::asset('storage/uploads/news/'.$eachNews->id.'/'.$eachNews->image) }}" alt="">
-                                            </figure>
-                                            <figcaption>
+                                                <a href="{{route('news-detail',['latest_news', $eachNews->id])}}"
+                                                       tabindex="0">
+                                                <figcaption>
+                                                <h5>{{$eachNews->title}}</h5>
+                                                <p>{!! \Illuminate\Support\Str::limit($eachNews->text, 50) !!}</p>
                                                 <p class="date">
                                                     <a href="#">{{date('M d, Y', strtotime($eachNews->created_at))}}</a>
                                                 </p>
-                                                <h5>{{$eachNews->title}}</h5>
-                                                <p>{!! \Illuminate\Support\Str::limit($eachNews->text, 50) !!}</p>
-                                                <p class="read-more">
-                                                    <a href="{{route('news-detail',['latest_news', $eachNews->id])}}"
-                                                       tabindex="0">Read more</a>
-                                                </p>
-                                            </figcaption>
+                                                </figcaption>
+                                                </a>
+                                            </figure>
+
                                         </div>
                                     </div>
                                 @endforeach
@@ -129,22 +129,27 @@
                     @if(!empty($international_news))
                     <div class="latest-news international-news">
                         <h2>International News</h2>
-                        <div class="row no-gutters">
-                            <div class="col-md-4">
-                                <div class="international-news-image">
-                                    <img src="{{ URL::asset('storage/uploads/international-news/'.'/'.$international_news->id.'/'.$international_news->image) }}" alt="">
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="international-news-content">
-                                    <h4>{{$international_news->title}}</h4>
-                                    <p>{!! \Illuminate\Support\Str::limit($international_news->description, 500) !!}</p>
-                                    <p class="read-more">
-                                        <a href="{{route('news-detail',['international_news', $international_news->id])}}"
-                                           tabindex="0">Read more</a>
+                        <div class="row">
+                            @foreach($international_news as $int_news)
+                            <div class="col-md-6">
+                            <div class="card international-news-image" >
+                                <a href="#">
+                            <img src="{{ URL::asset('storage/uploads/international-news/'.'/'.$int_news->id.'/'.$int_news->image) }}" alt="">
+                                <div class="card-body international-news-content">
+                                <h4>{{$int_news->title}}</h4>
+                                    <p>{!! \Illuminate\Support\Str::limit($int_news->description, 500) !!}</p>
+                                    <p class="date">
+                                        <a href="#">{{date('M d, Y', strtotime($eachNews->created_at))}}</a>
                                     </p>
+                                    <div class="play-video-button">
+                                        <span><i class="fas fa-play"></i></span>
+                                        <span> 2:08</span>
+                                    </div>
+                                </div>
+                           </a>
                                 </div>
                             </div>
+                            @endforeach
                         </div>
                     </div>
                     @endif
