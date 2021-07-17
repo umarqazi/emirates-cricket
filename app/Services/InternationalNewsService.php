@@ -33,6 +33,10 @@ class InternationalNewsService
         return $this->international_news_repo->paginatedRecords(InternationalNews::class, $records);
     }
 
+    public function getLatestRecords($limit) {
+        return $this->international_news_repo->getLatestRecords(InternationalNews::class, $limit);
+    }
+
     public function find($id) {
         return $this->international_news_repo->find(InternationalNews::class, $id);
     }

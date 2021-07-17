@@ -54,6 +54,12 @@ class TeamPlayerController extends Controller
         $params = $request->except(['_token', 'team']);
         $team_id =  $request->team;
         $params['team_id'] = $team_id;
+        if($request->image == null){
+            $params['image'] = null;
+        }else{
+            $params['image'] = $request->image->getClientOriginalName();
+        }
+        $this->team_player_service->storeToGallery($request);
         $this->team_player_service->store($params);
         return redirect()->route('team.show', $team_id)->with('success', 'Player Has been Added Successfully!');
     }
@@ -91,9 +97,18 @@ class TeamPlayerController extends Controller
      */
     public function update(PlayerRequest $request, TeamPlayer $teamPlayer)
     {
+        if (!is_null($request->image)){
+            $this->team_player_service->removeFileFromDirectory($teamPlayer['image']);
+        }
         $params = $request->except(['_token', '_method' , 'team']);
         $team_id = $request->team;
         $params['team_id'] = $team_id;
+        if($request->image == null){
+            $params['image'] = $teamPlayer['image'];
+        }else{
+            $params['image'] = $request->image->getClientOriginalName();
+        }
+        $this->team_player_service->storeToGallery($request);
         $this->team_player_service->update($params, $teamPlayer->id);
         return redirect()->route('team.show', $team_id)->with('success', 'Player Has been Updated Successfully!');
     }
@@ -107,6 +122,7 @@ class TeamPlayerController extends Controller
     public function destroy(TeamPlayer $teamPlayer)
     {
         $this->team_player_service->delete($teamPlayer->id);
+        $this->team_player_service->removeFileFromDirectory($teamPlayer['image']);
         return redirect()->back()->with('success', 'Player Has been Deleted Successfully!');
     }
 }

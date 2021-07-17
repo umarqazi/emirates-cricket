@@ -25,7 +25,9 @@ class PlayerRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'team' => 'required'
+            'team' => 'required',
+            'link' => ['required','regex:/https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,}/'],
+            'image' => 'nullable|image|mimes:jpeg,png,jpg',
         ];
     }
 }

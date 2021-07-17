@@ -7,6 +7,7 @@ namespace App\Services;
 use App\Repos\TeamPlayerRepo;
 use App\TeamPlayer;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class TeamPlayerService
 {
@@ -37,6 +38,22 @@ class TeamPlayerService
     public function store($params)
     {
         return $this->team_player_repo->store(TeamPlayer::class, $params);
+    }
+
+    public function storeToGallery($request){
+
+        if($request->image == null){
+            return 0;
+        }
+
+        $imageName = $request->image->getClientOriginalName();
+        return $request->image->move(public_path('storage/uploads/team-players'), $imageName);
+    }
+
+    public function removeFileFromDirectory($name){
+        if(File::exists(public_path('storage/uploads/team-players/'.$name))){
+            File::delete(public_path('storage/uploads/team-players/'.$name));
+        }
     }
 
     public function update($params, $id): bool

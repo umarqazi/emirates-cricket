@@ -23,6 +23,10 @@ class NewsService
         return $this->news_repo->all(News::class);
     }
 
+    public function getLatestRecords($limit) {
+        return $this->news_repo->getLatestRecords(News::class, $limit);
+    }
+
     public function paginatedRecords($records = 4) {
         return $this->news_repo->paginatedRecords(News::class, $records);
     }

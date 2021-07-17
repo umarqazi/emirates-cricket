@@ -26,6 +26,7 @@ class DownloadRequest extends FormRequest
         return [
             'category'   =>  'required',
             'file'         =>  'required|max:7168',
+            'description' => 'required',
         ];
     }
 }
