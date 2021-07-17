@@ -107,14 +107,14 @@
                                             <figure>
                                                 <img src="{{ URL::asset('storage/uploads/news/'.$eachNews->id.'/'.$eachNews->image) }}" alt="">
                                                 <a href="{{route('news-detail',['latest_news', $eachNews->id])}}"
-                                                       tabindex="0">
-                                                <figcaption>
-                                                <h5>{{$eachNews->title}}</h5>
-                                                <p>{!! \Illuminate\Support\Str::limit($eachNews->text, 50) !!}</p>
-                                                <p class="date">
-                                                    <a href="#">{{date('M d, Y', strtotime($eachNews->created_at))}}</a>
-                                                </p>
-                                                </figcaption>
+                                                   tabindex="0">
+                                                    <figcaption>
+                                                        <h5>{{$eachNews->title}}</h5>
+                                                        <p>{!! \Illuminate\Support\Str::limit($eachNews->text, 50) !!}</p>
+                                                        <p class="date">
+                                                            <a href="#">{{date('M d, Y', strtotime($eachNews->created_at))}}</a>
+                                                        </p>
+                                                    </figcaption>
                                                 </a>
                                             </figure>
 
@@ -127,34 +127,36 @@
 
                 <!--     International news         -->
                     @if(!empty($international_news))
-                    <div class="latest-news international-news">
-                        <h2>International News</h2>
-                        <div class="row">
-                            @foreach($international_news as $int_news)
-                            <div class="col-md-6">
-                            <div class="card international-news-image" >
-                                <a href="#">
-                            <img src="{{ URL::asset('storage/uploads/international-news/'.'/'.$int_news->id.'/'.$int_news->image) }}" alt="">
-                                <div class="card-body international-news-content">
-                                <h4>{{$int_news->title}}</h4>
-                                    <p>{!! \Illuminate\Support\Str::limit($int_news->description, 500) !!}</p>
-                                    <p class="date">
-                                        <a href="#">{{date('M d, Y', strtotime($eachNews->created_at))}}</a>
-                                    </p>
-                                    <div class="play-video-button">
-                                        <span><i class="fas fa-play"></i></span>
-                                        <span> 2:08</span>
+                        <div class="latest-news international-news">
+                            <h2>International News</h2>
+                            <div class="row">
+                                @foreach($international_news as $int_news)
+                                    <div class="col-md-6">
+                                        <div class="card international-news-image" >
+                                            <a href="#">
+                                                <img src="{{ URL::asset('storage/uploads/international-news/'.'/'.$int_news->id.'/'.$int_news->image) }}" alt="">
+                                                <div class="card-body international-news-content">
+                                                    <h4>{{$int_news->title}}</h4>
+                                                    <p>{!! \Illuminate\Support\Str::limit($int_news->description, 150) !!}</p>
+                                                    <p class="date">
+                                                        <a href="#">{{date('M d, Y', strtotime($eachNews->created_at))}}</a>
+                                                    </p>
+                                                    @if(false)
+                                                        <div class="play-video-button">
+                                                            <span><i class="fas fa-play"></i></span>
+                                                            <span> 2:08</span>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                           </a>
-                                </div>
+                                @endforeach
                             </div>
-                            @endforeach
                         </div>
-                    </div>
                     @endif
 
-                    <!--  Logo slider     -->
+                <!--  Logo slider     -->
                     @if(!$sponsors->isEmpty())
                         <div class="latest-news">
                             <h2>Sponsor</h2>
