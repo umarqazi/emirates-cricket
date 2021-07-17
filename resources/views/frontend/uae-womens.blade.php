@@ -29,38 +29,6 @@
                 <a href="javascript:void(0)" class="btn">Uae Women's</a>
             </div>
 
-            <!-- <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="teams-table-content">
-                        <div class="table-responsive">
-                            <table class="table teams-table">
-                                <thead>
-                                <tr>
-                                    <th width="50%" scope="col">No</th>
-                                    <th width="50%" scope="col">Player</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @if(!$team->players->isEmpty())
-                                    @foreach($team->players as $key=>$player)
-                                        <tr>
-                                            <th scope="row">{{$key + 1}}</th>
-                                            <td>{{$player->name}}</td>
-                                        </tr>
-                                    @endforeach
-                                @else
-                                    <tr>
-                                        <th colspan="2" class="text-center">No Player Selected Yet.</th>
-                                    </tr>
-                                @endif
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
-
             <div class="row justify-content-center">
                 <div class="col-md-10">
                     <div class="teams-table-content">
@@ -75,41 +43,28 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <!-- @if(!$team->players->isEmpty())
+                                @if(!$team->players->isEmpty())
                                     @foreach($team->players as $key=>$player)
                                         <tr>
                                             <th scope="row">{{$key + 1}}</th>
                                             <td>{{$player->name}}</td>
+                                            <td>{{$player->description}}</td>
+                                            <td>
+                                                <a href="{{$player->link}}">CricInfo Profile</a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 @else
                                     <tr>
-                                        <th colspan="2" class="text-center">No Player Selected Yet.</th>
+                                        <th colspan="4" class="text-center">No Player Selected Yet.</th>
                                     </tr>
-                                @endif -->
-                                <tr>
-                                    <td width="25%"><img src="https://sportslibro.com/wp-content/uploads/2019/08/fsdgsdg1-1-1024x724.jpg"/></td>
-                                    <td width="25%"> Shahid Afridi</td>
-                                    <td width="25%" class="player-description-white-space">Right handed batsman</td>
-                                    <td width="25%"><a href="#">Cricinfo Profile</a></td>
-                                </tr>
-                                <tr>
-                                    <td width="25%"><img src="https://sportslibro.com/wp-content/uploads/2019/08/fsdgsdg1-1-1024x724.jpg"/></td>
-                                    <td width="25%"> Shahid Afridi</td>
-                                    <td width="25%" class="player-description-white-space">Right handed batsman</td>
-                                    <td width="25%"><a href="#">Cricinfo Profile</a></td>
-                                </tr>
-                                
+                                @endif
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
-
         </div>
     </div>
 
