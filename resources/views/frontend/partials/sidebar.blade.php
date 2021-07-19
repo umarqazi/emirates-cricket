@@ -18,9 +18,6 @@
         <span></span>
         <span></span>
     </div>
-    <div class="custom-sidebar-button">
-    <a href="#">Log in</a>
-    </div>
     <ul class="sidebar-nav">
         <li>
             <a href="{{route('news')}}">
