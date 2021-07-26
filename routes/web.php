@@ -25,7 +25,7 @@ Route::get('/about', static function () {
 Route::get('/about', 'AboutUsController@about')->name('about-us');
 
 Route::get('/mandate', 'AboutUsController@mandate')->name('mandate');
-Route::get('/academies', 'AboutUsController@academies')->name('academies');
+//Route::get('/academies', 'AboutUsController@academies')->name('academies');
 Route::get('/education-and-downloads', 'AboutUsController@education')->name('education');
 Route::get('/councils/{name}', 'AboutUsController@councils')->name('councils');
 
@@ -40,12 +40,12 @@ Route::get('/emirati-development-program', 'DevelopmentController@frontendEmirat
 Route::get('/download', 'DownloadController@frontend_download_files')->name('download');
 
 
-Route::get('/fan-club', 'SocialAccountController@fanClub')->name('fan-club');
+//Route::get('/fan-club', 'SocialAccountController@fanClub')->name('fan-club');
 
 Route::get('/fixtures', 'FixtureController@fixtures')->name('fixtures');
 
-Route::get('/galleries', 'GalleryController@frontendGalleries')->name('galleries');
-Route::get('/gallery/{id}', 'GalleryController@frontendGallery')->name('gallery');
+//Route::get('/galleries', 'GalleryController@frontendGalleries')->name('galleries');
+//Route::get('/gallery/{id}', 'GalleryController@frontendGallery')->name('gallery');
 
 Route::get('/news', 'NewsController@frontendNews')->name('news');
 
