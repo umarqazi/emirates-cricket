@@ -19,6 +19,9 @@
         <span></span>
     </div>
     <ul class="sidebar-nav">
+    <div class="custom-sidebar-button">
+        <a href="{{route('player-registration')}}">Player Registration</a>
+    </div>
         <li>
             <a href="{{route('news')}}">
                     <span>
@@ -84,12 +87,12 @@
                         <span>ACC</span>
                     </a>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="{{route('academies')}}">
                         <i class=" fa-angle-double-right"></i>
                         <span>Academies</span>
                     </a>
-                </li>
+                </li> -->
                 <li>
                     <a href="{{route('education')}}">
                         <i class=" fa-angle-double-right"></i>
@@ -155,7 +158,7 @@
                 <span>Development</span>
             </a>
         </li>
-        <li>
+        <!-- <li>
             <a href="#">
                     <span>
                         <img class="nav-icon" src="{{ URL::asset('frontend/assets/images/social.png') }}" alt="">
@@ -181,7 +184,7 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </li> -->
         <li>
             <a href="{{route('sponsor')}}">
                     <span>
@@ -198,14 +201,14 @@
                 <span>Player Registration</span>
             </a>
         </li>
-        <li>
+        <!-- <li>
             <a href="{{route('tournament-registration')}}">
                     <span>
                         <img class="nav-icon" src="{{ URL::asset('frontend/assets/images/tournament_registration.png') }}" alt="">
                     </span>
                 <span>Tournament Registration</span>
             </a>
-        </li>
+        </li> -->
         <li>
             <a href="{{route('contact')}}">
                     <span>
