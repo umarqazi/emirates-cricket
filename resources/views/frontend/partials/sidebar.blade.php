@@ -160,14 +160,14 @@
                 <span>Sponsors</span>
             </a>
         </li>
-        <li>
-            <a href="{{route('player-registration')}}">
-                    <span>
-                        <img class="nav-icon" src="{{ URL::asset('frontend/assets/images/player_registration.png') }}" alt="">
-                    </span>
-                <span>Player Registration</span>
-            </a>
-        </li>
+{{--        <li>--}}
+{{--            <a href="{{route('player-registration')}}">--}}
+{{--                    <span>--}}
+{{--                        <img class="nav-icon" src="{{ URL::asset('frontend/assets/images/player_registration.png') }}" alt="">--}}
+{{--                    </span>--}}
+{{--                <span>Player Registration</span>--}}
+{{--            </a>--}}
+{{--        </li>--}}
         <li>
             <a href="{{route('contact')}}">
                     <span>
