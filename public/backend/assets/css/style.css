@@ -11170,3 +11170,12 @@ a.download_player_file i{
 .sidenav-dark.sidenav-main .sidenav{
     padding-bottom: 120px;
 }
+tr.team-player td img {
+    max-width: 70px;
+}
+th.team-player-head {
+    width: 20% !important;
+}
+#page-length-option{
+    width: 100% !important;
+}

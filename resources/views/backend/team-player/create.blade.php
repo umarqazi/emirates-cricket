@@ -69,6 +69,19 @@
                                     </div>
 
                                     <div class="row">
+                                        <div class="input-field col m12 col-12">
+                                            <div class="col-12" style="margin-bottom: 10px">Player Description</div>
+                                            <textarea id="message5" class="ckeditor @error('description') invalid @enderror" name="description" rows="15" placeholder="Type Description in here...">{{old('text')}}</textarea>
+
+                                            @error('description')
+                                            <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
                                         <div class="input-field col m12 s12">
                                             <select name="team" class="@error('team') invalid @enderror">
                                                 <option value="" disabled selected>Select Team</option>

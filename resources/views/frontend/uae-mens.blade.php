@@ -36,10 +36,11 @@
                             <table class="table teams-table">
                                 <thead>
                                 <tr>
-                                    <th width="25%" scope="col">No#</th>
-                                    <th width="25%" scope="col">Player</th>
-                                    <th width="25%" scope="col">Description</th>
-                                    <th width="25%" scope="col">CricInfo</th>
+                                    <th width="20%" scope="col">No#</th>
+                                    <th width="20%" scope="col">Image</th>
+                                    <th width="20%" scope="col">Player</th>
+                                    <th width="20%" scope="col">Description</th>
+                                    <th width="20%" scope="col">Cricinfo</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -47,8 +48,11 @@
                                     @foreach($team->players as $key=>$player)
                                         <tr>
                                             <th scope="row">{{$key + 1}}</th>
+                                            <td>
+                                                <img src="{{asset('storage/uploads/team-players/'.$player->image)}}" />
+                                            </td>
                                             <td>{{$player->name}}</td>
-                                            <td>{{$player->description}}</td>
+                                            <td>{{\Illuminate\Support\Str::limit(str_replace("&nbsp;", '',strip_tags($player->description)),40)}}</td>
                                             <td>
                                                 <a href="{{$player->link}}">CricInfo Profile</a>
                                             </td>
