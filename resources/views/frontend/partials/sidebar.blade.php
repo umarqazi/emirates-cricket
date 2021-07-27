@@ -87,12 +87,6 @@
                         <span>ACC</span>
                     </a>
                 </li>
-            <!--                <li>
-                    <a href="{{route('academies')}}">
-                        <i class=" fa-angle-double-right"></i>
-                        <span>Academies</span>
-                    </a>
-                </li>-->
                 <li>
                     <a href="{{route('education')}}">
                         <i class=" fa-angle-double-right"></i>
@@ -158,33 +152,6 @@
                 <span>Development</span>
             </a>
         </li>
-    <!-- <li>
-            <a href="#">
-                    <span>
-                        <img class="nav-icon" src="{{ URL::asset('frontend/assets/images/social.png') }}" alt="">
-                    </span>
-                <span>Socials</span>
-            </a>
-            <i class="fa fa-chevron-down"></i>
-            <ul class="sub-menu">
-                <li>
-                    <a href="{{route('galleries')}}">
-                            <span>
-                                <img class="nav-icon" src="{{ URL::asset('frontend/assets/images/fan.png') }}" alt="">
-                            </span>
-                        <span>Gallery</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('fan-club')}}">
-                            <span>
-                                <img class="nav-icon" src="{{ URL::asset('frontend/assets/images/fan.png') }}" alt="">
-                            </span>
-                        <span>Fan Club</span>
-                    </a>
-                </li>
-            </ul>
-        </li> -->
         <li>
             <a href="{{route('sponsor')}}">
                     <span>
@@ -201,14 +168,6 @@
                 <span>Player Registration</span>
             </a>
         </li>
-    <!-- <li>
-            <a href="{{route('tournament-registration')}}">
-                    <span>
-                        <img class="nav-icon" src="{{ URL::asset('frontend/assets/images/tournament_registration.png') }}" alt="">
-                    </span>
-                <span>Tournament Registration</span>
-            </a>
-        </li> -->
         <li>
             <a href="{{route('contact')}}">
                     <span>
