@@ -38,7 +38,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-8">
-                                            <div class="international-news-content">
+                                            <div class="international-news-content international-content-news">
                                                 <h4>{{$new->title}}</h4>
                                                 <p> {!! \Illuminate\Support\Str::limit($new->text, 500) !!} </p>
                                                 <p class="read-more">
