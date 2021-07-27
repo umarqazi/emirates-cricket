@@ -102,11 +102,11 @@
                                                         <table id="page-length-option" class="display team-player-table">
                                                             <thead>
                                                             <tr>
-                                                                <th>#</th>
-                                                                <th>Name</th>
-                                                                <th>CricInfo Profile URL</th>
-                                                                <th>Image</th>
-                                                                <th>Actions</th>
+                                                                <th class="team-player-head">#</th>
+                                                                <th class="team-player-head">Name</th>
+                                                                <th class="team-player-head">CricInfo Profile URL</th>
+                                                                <th class="team-player-head">Image</th>
+                                                                <th class="team-player-head">Actions</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
@@ -114,9 +114,9 @@
                                                                 @foreach($team->players as $key=> $player)
                                                                     <tr class="team-player">
                                                                         <td>{{$key + 1}}</td>
-                                                                        <td>{{$player->link}}</td>
                                                                         <td>{{$player->name}}</td>
-                                                                        <td><img src="{{public_path('storage/uploads/team-players/'.$player->image)}}" /></td>
+                                                                        <td>{{$player->link}}</td>
+                                                                        <td><img src="{{asset('storage/uploads/team-players/'.$player->image)}}" /></td>
                                                                         <td>
                                                                             @can('Edit Team Player')
                                                                                 <a href="{{route('team-player.edit', $player->id)}}" ><i class="material-icons">edit</i></a>
@@ -143,6 +143,8 @@
                                                             <tr>
                                                                 <th>#</th>
                                                                 <th>Name</th>
+                                                                <th>CricInfo Profile URL</th>
+                                                                <th>Image</th>
                                                                 <th>Actions</th>
                                                             </tr>
                                                             </tfoot>

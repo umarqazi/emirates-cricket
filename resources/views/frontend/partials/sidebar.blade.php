@@ -19,9 +19,9 @@
         <span></span>
     </div>
     <ul class="sidebar-nav">
-    <div class="custom-sidebar-button">
-        <a href="{{route('player-registration')}}">Player Registration</a>
-    </div>
+        <div class="custom-sidebar-button">
+            <a href="{{route('player-registration')}}">Player Registration</a>
+        </div>
         <li>
             <a href="{{route('news')}}">
                     <span>
@@ -54,7 +54,7 @@
                 <li>
                     <a href="#">
                         <i class=" fa-angle-double-right"></i>
-                        <span>Regional Councils</span>
+                        <span>Councils</span>
                     </a>
                     <a class="dubai-states" href="{{route('councils', \App\Repos\ICouncilType::councilAbuDhabi)}}">
                         <i class="fa-angle-right"></i>
@@ -87,16 +87,16 @@
                         <span>ACC</span>
                     </a>
                 </li>
-                <!-- <li>
+            <!--                <li>
                     <a href="{{route('academies')}}">
                         <i class=" fa-angle-double-right"></i>
                         <span>Academies</span>
                     </a>
-                </li> -->
+                </li>-->
                 <li>
                     <a href="{{route('education')}}">
                         <i class=" fa-angle-double-right"></i>
-                        <span>Education and Downloads</span>
+                        <span>Downloads</span>
                     </a>
                 </li>
                 <li>
@@ -158,7 +158,7 @@
                 <span>Development</span>
             </a>
         </li>
-        <!-- <li>
+    <!-- <li>
             <a href="#">
                     <span>
                         <img class="nav-icon" src="{{ URL::asset('frontend/assets/images/social.png') }}" alt="">
@@ -201,7 +201,7 @@
                 <span>Player Registration</span>
             </a>
         </li>
-        <!-- <li>
+    <!-- <li>
             <a href="{{route('tournament-registration')}}">
                     <span>
                         <img class="nav-icon" src="{{ URL::asset('frontend/assets/images/tournament_registration.png') }}" alt="">
