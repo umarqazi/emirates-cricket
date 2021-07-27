@@ -48,9 +48,13 @@
                                     @foreach($team->players as $key=>$player)
                                         <tr>
                                             <th scope="row">{{$key + 1}}</th>
-                                            <td>
-                                                <img src="{{asset('storage/uploads/team-players/'.$player->image)}}" />
-                                            </td>
+                                            @if(is_file(public_path('storage/uploads/team-players/'.$player->image)))
+                                                <td>
+                                                    <img src="{{asset('storage/uploads/team-players/'.$player->image)}}" />
+                                                </td>
+                                            @else
+                                                <td></td>
+                                            @endif
                                             <td>{{$player->name}}</td>
                                             <td>{{\Illuminate\Support\Str::limit(str_replace("&nbsp;", '',strip_tags($player->description)),40)}}</td>
                                             <td>
