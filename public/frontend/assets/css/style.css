@@ -1827,8 +1827,13 @@ label.terms-label span {
     right: 0;
     opacity: 0.5;
 }
+.contact-section {
+    position: relative;
+}
 .contact-form {
-    margin-top: -160px;
+    position: absolute;
+    top: 50px;
+    width: 100%;
 }
 .contact-form-inner {
     border-radius: 12px;
@@ -1988,6 +1993,7 @@ footer#footer p {
 }
 .fixtures-result-slider {
     margin-bottom: 40px;
+    
 }
 .fixture_item p {
     font-size: 12px;
@@ -2258,6 +2264,9 @@ input[type=number]::-webkit-outer-spin-button {
         width: 100%;
         min-height: 500px;
     }
+    .fixtures-result-slider{
+        padding: 0 20px;
+    }
 }
 
 @media (max-width: 1365px){
@@ -2273,6 +2282,7 @@ input[type=number]::-webkit-outer-spin-button {
     .sponcer-company .company-content p{
         font-size: 14px;
     }
+    
 }
 
 @media(max-width: 1279px){
@@ -2367,6 +2377,7 @@ input[type=number]::-webkit-outer-spin-button {
     .marquee{
         margin-left: 0;
     }
+    
 }
 
 
