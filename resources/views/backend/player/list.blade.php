@@ -46,10 +46,29 @@
                                         @include('frontend.partials.session-messages')
 
                                         <div class="row">
+                                            <div class="col s3">
+                                                <select id="selectType">
+                                                    <option>Please Select</option>
+                                                    <option id="approved" value="1">Approve</option>
+                                                    <option id="decline" value="0">Decline</option>
+                                                    <option id="delete_all" value="delete_all">Delete All</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
                                             <div class="col s12">
                                                 <table id="page-length-option" class="display">
                                                     <thead>
                                                     <tr>
+                                                        <th>
+                                                            <div class="select-all-users">
+                                                                <label>
+                                                                    <input type="checkbox" id="check_all" name="select_row" class="filled-in select_row" />
+                                                                    <span></span>
+                                                                </label>
+                                                                <p class="mr-1">Select all</p>
+                                                            </div>
+                                                        </th>
                                                         <th>Name</th>
                                                         <th>Nationality</th>
                                                         <th>Visa Status</th>
@@ -62,6 +81,12 @@
                                                     @if(!empty($players))
                                                         @foreach($players as $player)
                                                             <tr>
+                                                                <td>
+                                                                    <label>
+                                                                        <input type="checkbox" id="{{'check_'.$player->id}}" value="{{$player->id}}" name="select_row" class="filled-in select_row check-box-checked" />
+                                                                        <span></span>
+                                                                    </label>
+                                                                </td>
                                                                 <td>{{$player->first_name.' '.$player->last_name}}</td>
                                                                 <td>{{$player->country->name}}</td>
                                                                 @if($player->visa_status == 0)
@@ -103,6 +128,7 @@
                                                     </tbody>
                                                     <tfoot>
                                                     <tr>
+                                                        <th></th>
                                                         <th>Name</th>
                                                         <th>Nationality</th>
                                                         <th>Visa Status</th>
@@ -133,5 +159,6 @@
                 <script src="{{URL::asset('backend/assets/js/dataTables.responsive.min.js')}}"></script>
                 <script src="{{URL::asset('backend/assets/js/dataTables.select.min.js')}}"></script>
                 <script src="{{URL::asset('backend/assets/js/data-tables.js')}}"></script>
+                <script src="{{URL::asset('backend/assets/js/custom-script.js')}}"></script>
                 <!-- END PAGE VENDOR JS-->
 @endsection

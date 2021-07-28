@@ -113,10 +113,16 @@ class PlayerService
         return true;
     }
 
-    public function fileUpload($file, $path){
+    public function fileUpload($file, $path)
+    {
         $extension = $file->getClientOriginalExtension();
         $imageName = time(). uniqid(rand()).'.'.$extension;
         Storage::disk('public')->putFileAs($path, $file, $imageName);
         return $imageName;
+    }
+
+    public function bulkUpdate($request)
+    {
+        return $this->player_repo->bulkUpdate($request);
     }
 }

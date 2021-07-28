@@ -11179,3 +11179,7 @@ th.team-player-head {
 #page-length-option{
     width: 100% !important;
 }
+
+.select-all-users{
+    display: flex !important;
+}
