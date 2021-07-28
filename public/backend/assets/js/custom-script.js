@@ -109,4 +109,54 @@ $(document).ready(function () {
             }
         });
     })
+
+    let selected = [];
+
+    $("#check_all").click(function(){
+        $('input:checkbox').not(this).attr('checked', this.checked);
+        $('.check-box-checked').each(function(){
+            if($('.select_row').is(':checked')) {
+                selected.push($(this).val())
+            }else{
+                selected = [];
+            }
+        });
+    });
+
+    $(":checkbox").click(function(){
+        let id = $(this).attr('id')
+        if($('#'+id).is(':checked')){
+            $('#'+id).attr('checked', true);
+            value = $(this).val();
+            selected.push(value)
+        }
+        else{
+            $('#'+id).attr('checked', false);
+            value = $(this).val();
+            const index = selected.indexOf(value);
+            if (index > -1) {
+                selected.splice(index, 1);
+            }
+        }
+    })
+
+    $("#selectType").change(function(e) {
+        let type = $(this).val();
+        e.preventDefault();
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: "POST",
+            url:"/admin/approve-selected",
+            data : {
+                selected : selected,
+                type : type
+            },
+            success:function(){
+                location.reload();
+            }
+        });
+    });
+
 });
