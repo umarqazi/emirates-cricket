@@ -175,4 +175,12 @@ class PlayerController extends Controller
     {
         return Excel::download(new PlayerExport(), 'player-registrations.xlsx');
     }
+
+    /**
+     * @param Request $request
+     */
+    public function approveSelectedUsers(Request $request)
+    {
+        return $this->player_service->bulkUpdate($request);
+    }
 }
