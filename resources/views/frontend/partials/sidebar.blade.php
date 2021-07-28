@@ -184,5 +184,15 @@
                 <span>Downloads</span>
             </a>
         </li>
+        <li>
+           
+                    <ul class="nav-list-social-icon">
+                        <li><a href="javacript:void(0)"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="javacript:void(0)"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        <li> <a href="javacript:void(0)"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    </ul>
+               
+            
+        </li>
     </ul>
 </div>
