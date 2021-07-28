@@ -702,7 +702,26 @@ body.sidebar-collapse .content-section {
     margin: 0 auto;
     bottom: -20px;
 }
-
+.show {
+    max-height: 400px;
+    overflow-y: auto;
+}
+.show::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+.show::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+.show::-webkit-scrollbar-thumb {
+    background: #8D0303; 
+  }
+.teams-section .team-content p {
+    color: #272727 !important;
+}
 /* post section */
 .latest-news {
     text-align: center;
@@ -1171,6 +1190,8 @@ table.table p span {
 }
 .table.teams-table td img{
     max-width: 70px;
+    max-height: 50px;
+    min-width: 70px;
 }
 .table.teams-table td {
     vertical-align: inherit;
