@@ -179,8 +179,8 @@ class PlayerController extends Controller
     /**
      * @param Request $request
      */
-    public function approveSelectedUsers(Request $request)
+    public function bulkAction(Request $request)
     {
-        return $this->player_service->bulkUpdate($request);
+        return $this->player_service->bulkAction($request->all());
     }
 }
