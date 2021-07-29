@@ -125,7 +125,7 @@ $(document).ready(function () {
         }
     });
 
-    $(":checkbox").click(function () {
+    $(document).on('click', ".check-box-checked", function () {
         let id = $(this).attr("id");
         if ($("#" + id).is(":checked")) {
             $("#" + id).attr("checked", true);

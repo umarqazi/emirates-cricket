@@ -11182,4 +11182,7 @@ th.team-player-head {
 
 .select-all-users{
     display: flex !important;
+  justify-content: center;
+    padding-top: 20px;
+    max-width: 50%;
 }
