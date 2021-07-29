@@ -25,7 +25,7 @@
     <div class="teams-section">
         <div class="container">
             <div class="team-content">
-                <h4>{!! $team->description !!}</h4>
+                <p>{!! $team->description !!}</p>
                 <a href="javascript:void(0)" class="btn">Uae Men's</a>
             </div>
 
