@@ -45,14 +45,21 @@
 
                                         @include('frontend.partials.session-messages')
 
-                                        <div class="row">
+                                        <div class="row mb-3">
                                             <div class="col s3">
                                                 <select id="selectType">
                                                     <option>Please Select</option>
                                                     <option id="approved" value="approve">Approve</option>
                                                     <option id="decline" value="decline">Decline</option>
-                                                    <option id="delete_all" value="delete">Delete All</option>
+                                                    <option id="delete_all" value="delete">Delete</option>
                                                 </select>
+                                            </div>
+                                            <div class="select-all-users" id="stop-sorting">
+                                                <label>
+                                                    <input type="checkbox" id="check_all" name="select_row" class="filled-in select_row" />
+                                                    <span></span>
+                                                </label>
+                                                <p class="mr-2">Select all</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -60,15 +67,7 @@
                                                 <table id="page-length-option" class="display">
                                                     <thead>
                                                     <tr>
-                                                        <th id="stop-sorting">
-                                                            <div class="select-all-users">
-                                                                <label>
-                                                                    <input type="checkbox" id="check_all" name="select_row" class="filled-in select_row" />
-                                                                    <span></span>
-                                                                </label>
-                                                                <p class="mr-1">Select all</p>
-                                                            </div>
-                                                        </th>
+                                                        <th></th>
                                                         <th>Name</th>
                                                         <th>Nationality</th>
                                                         <th>Visa Status</th>
