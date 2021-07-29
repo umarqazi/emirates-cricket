@@ -104,7 +104,7 @@ Route::group(['prefix' => 'admin'], static function () {
         Route::resource('/player', 'PlayerController');
         Route::get('/player/approve-request/{id}', 'PlayerController@approveRequest')->name('approve-player');
         Route::get('/player/decline-request/{id}', 'PlayerController@declineRequest')->name('decline-player');
-        Route::post('/approve-selected','PlayerController@approveSelectedUsers');
+        Route::post('/players-bulk-action','PlayerController@bulkAction');
 
         /* Tournament Registration Request */
         Route::get('/tournament/export', 'TournamentController@export')->name('tournament.export');

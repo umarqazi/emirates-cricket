@@ -121,8 +121,8 @@ class PlayerService
         return $imageName;
     }
 
-    public function bulkUpdate($request)
+    public function bulkAction($request)
     {
-        return $this->player_repo->bulkUpdate($request);
+        return $this->player_repo->bulkAction($request);
     }
 }

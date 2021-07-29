@@ -49,9 +49,9 @@
                                             <div class="col s3">
                                                 <select id="selectType">
                                                     <option>Please Select</option>
-                                                    <option id="approved" value="1">Approve</option>
-                                                    <option id="decline" value="0">Decline</option>
-                                                    <option id="delete_all" value="delete_all">Delete All</option>
+                                                    <option id="approved" value="approve">Approve</option>
+                                                    <option id="decline" value="decline">Decline</option>
+                                                    <option id="delete_all" value="delete">Delete All</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -60,7 +60,7 @@
                                                 <table id="page-length-option" class="display">
                                                     <thead>
                                                     <tr>
-                                                        <th>
+                                                        <th id="stop-sorting">
                                                             <div class="select-all-users">
                                                                 <label>
                                                                     <input type="checkbox" id="check_all" name="select_row" class="filled-in select_row" />
