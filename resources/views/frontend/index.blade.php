@@ -109,8 +109,8 @@
                                                 <a href="{{route('news-detail',['latest_news', $eachNews->id])}}"
                                                    tabindex="0">
                                                     <figcaption>
-                                                        <h5>{{$eachNews->title}}</h5>
-                                                        <p>{!! \Illuminate\Support\Str::limit($eachNews->text, 50) !!}</p>
+                                                        <h5>{{ \Illuminate\Support\Str::limit($eachNews->title,35) }}</h5>
+                                                        <p>{!! \Illuminate\Support\Str::limit($eachNews->text, 70) !!}</p>
                                                         <p class="date">
                                                             <a href="#">{{date('M d, Y', strtotime($eachNews->created_at))}}</a>
                                                         </p>
@@ -136,8 +136,8 @@
                                             <a href="#">
                                                 <img src="{{ URL::asset('storage/uploads/international-news/'.'/'.$int_news->id.'/'.$int_news->image) }}" alt="">
                                                 <div class="card-body international-news-content">
-                                                    <h4>{{$int_news->title}}</h4>
-                                                    <p>{!! \Illuminate\Support\Str::limit($int_news->description, 150) !!}</p>
+                                                    <h4>{{\Illuminate\Support\Str::limit($int_news->title,60)}}</h4>
+                                                    <p>{!! \Illuminate\Support\Str::limit($int_news->description, 200) !!}</p>
                                                     <p class="date">
                                                         <a href="#">{{date('M d, Y', strtotime($eachNews->created_at))}}</a>
                                                     </p>
