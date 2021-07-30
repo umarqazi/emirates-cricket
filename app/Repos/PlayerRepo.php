@@ -10,9 +10,13 @@ class PlayerRepo extends BaseRepo
 {
     public function bulkAction($request)
     {
-        if($request['type'] == 2){
-            return Player::whereIn('id' , $request['selected'])->delete();
+        $selected_array =  isset($request['selected'])?$request['selected']:array();
+        if(empty($selected_array)){
+            return 0;
         }
-        return Player::whereIn('id' , $request['selected'])->update(['status' => $request['type']]);
+        if($request['type'] == 2){
+            return Player::whereIn('id' , $selected_array)->delete();
+        }
+        return Player::whereIn('id' , $selected_array)->update(['status' => $request['type']]);
     }
 }
