@@ -121,6 +121,7 @@ $(document).ready(function () {
         } else {
             $(checkboxItem).each(function () {
                 this.checked = false;
+                selected = [];
             });
         }
     });
@@ -164,9 +165,15 @@ $(document).ready(function () {
                 selected: selected,
                 type: type,
             },
-            success: function () {
-                location.reload();
-            },
+            success: function (response) {
+             $('#selectType option').prop('selected', function() {
+                  return this.defaultSelected;
+             });
+              if(response > 0){
+                    location.reload();
+              }
+            }
         });
+
     });
 });
