@@ -30,6 +30,14 @@ class PlayerExport implements FromCollection, WithHeadings, ShouldAutoSize, With
      */
     public function map($player): array
     {
+        if($player->status === 1){
+            $player->status = 'Approved';
+        }elseif($player->status === 0){
+            $player->status = 'Declined';
+        }else{
+            $player->status = 'Pending';
+        }
+
         return [
             $player->first_name,
             $player->last_name,
@@ -41,7 +49,7 @@ class PlayerExport implements FromCollection, WithHeadings, ShouldAutoSize, With
             $player->visa_status ? 'Residence/Employment' : 'Visit Visa',
             $player->playing_with,
             $player->message,
-            $player->status === 1 ? 'Approved' : $player->status === 0 ? 'Declined' : 'Pending',
+            $player->status,
             Date::dateTimeToExcel($player->created_at),
         ];
     }
