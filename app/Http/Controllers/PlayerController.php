@@ -111,7 +111,7 @@ class PlayerController extends Controller
      */
     public function update(Request $request, Player $player)
     {
-        $player = $this->player_service->update($request->except(['_token', '_method']), $player->id);
+        $player = $this->player_service->update($request->except(['_token', '_method']), decodeData($player->id));
         if ($player) {
             return redirect()->route('player.index')->with('success', 'Player Request has been Updated Successfully!');
         }

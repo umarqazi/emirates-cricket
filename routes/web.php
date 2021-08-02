@@ -101,10 +101,14 @@ Route::group(['prefix' => 'admin'], static function () {
 
         /* Player Registration Request */
         Route::get('/player/export', 'PlayerController@export')->name('player.export');
-        Route::resource('/player', 'PlayerController');
+//        Route::resource('/player', 'PlayerController');
+        Route::resource('/player', 'PlayerController', [
+            'except' => [ 'show' ]
+        ]);
+        Route::get('/player/{id}','PlayerController@show')->name('player.show');
         Route::get('/player/approve-request/{id}', 'PlayerController@approveRequest')->name('approve-player');
         Route::get('/player/decline-request/{id}', 'PlayerController@declineRequest')->name('decline-player');
-        Route::post('/players-bulk-action','PlayerController@bulkAction');
+        Route::post('/players-bulk-action','PlayerController@bulkAction')->can('');
 
         /* Tournament Registration Request */
         Route::get('/tournament/export', 'TournamentController@export')->name('tournament.export');
