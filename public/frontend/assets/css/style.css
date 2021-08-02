@@ -703,13 +703,16 @@ body.sidebar-collapse .content-section {
     padding: 20px 20px;
     text-align: center;
     position: relative;
-    min-height: 180px;
+    height: 190px;
 }
 .red-box h3 {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 75px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-clamp: 1;
 }
 .red-box h3 img{
     margin-right: 15px;
@@ -719,6 +722,11 @@ body.sidebar-collapse .content-section {
     color: #fff;
     text-align: center;
     margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 .red-box .btn {
     position: absolute;
