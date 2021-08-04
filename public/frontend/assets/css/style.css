@@ -105,9 +105,8 @@ a:hover, a:focus, a:active {
     outline: none !important;
 }
 
-a, img, button, i{
+/* a, img, button, i{
     /*     transition: all 0.3s ease 0s; */
-}
 
 i, em {
     font-style: italic;
@@ -287,6 +286,7 @@ select option{
     position: absolute;
     left: 0;
     z-index: 22;
+    min-height: 100% !important;
     /*height: 100vh;*/
 }
 body.sidebar-collapse .sidebar {
@@ -297,19 +297,19 @@ body.sidebar-collapse .sidebar {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 0px;
+    padding: 10px 0px;
     background: #fff;
 }
 .logo .header-logo {
-    max-width: 184px;
+    max-width: 75px;
     max-height: 210px;
 }
 .logo .uae-flag {
     position: absolute;
     top: 0;
     left: 0;
-    height: 40px;
-    width: 50px;
+    height: 30px;
+    width: 40px;
 }
 .custom-sidebar-button{
     margin: 20px 0px;
@@ -317,18 +317,19 @@ body.sidebar-collapse .sidebar {
 }
 .custom-sidebar-button a{
     background-color: #fff;
-    padding: 10px 20px;
+    padding: 8px 8px;
     border-radius: 7px;
     color: #8D0303 !important;
-    font-weight: 900;
+    font-weight: 600;
+    font-size: 12px;
 }
 .custom-sidebar-button a:hover{
     background: #ab4344;
     color: #fff !important;
 }
-.top-bar .pacific-logo {
+/* .top-bar .pacific-logo {
     padding: 2px 2px 2px 10px;
-}
+} */
 /* mobile button */
 .mobile-btn {
     display: none;
@@ -405,14 +406,14 @@ ul.sidebar-nav li:last-child{
     margin-bottom: 0;
 }
 ul.sidebar-nav li a {
-    font-size: 16px;
+    font-size: 14px;
     color: #fff;
     font-weight: 500;
     text-transform: uppercase;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 20px;
+    padding: 10px;
     border-left: 3px solid #8D0303;
 }
 ul.sidebar-nav li a:hover{
@@ -430,11 +431,11 @@ ul.sidebar-nav .nav-list-social-icon{
     flex-wrap: wrap;
 }
 ul.sidebar-nav .nav-list-social-icon li{
-    margin-right: 16px;
+    margin-right: 8px;
 }
 ul.sidebar-nav .nav-list-social-icon a{
-    min-width: 30px;
-    font-size: 20px;
+    max-width: 24px;
+    font-size: 13px;
     text-align: center;
     line-height: 30px;
     padding: 6px;
@@ -525,7 +526,7 @@ a.dubai-states {
 /* right section */
 .content-section {
     width: 100%;
-    max-width: calc(100% - 289px);
+    max-width: calc(100% - 170px);
     position: relative;
     transition: all .3s ease;
     margin-left: auto;
@@ -540,16 +541,21 @@ body.sidebar-collapse .content-section {
 }
 
 .top-bar {
+    position: fixed!important;
+    z-index: 11;
+    width: calc(100% - 170px);
     background: #8D0303;
     padding: 25px 10px;
     overflow: hidden;
     position: relative;
 }
 .top-bar .pacific-logo {
+    max-height: 56px;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 7px;
+    right: 15px;
     z-index: 1;
+    border-radius: 5px;
 }
 
 /* breadcrumb */
@@ -703,13 +709,16 @@ body.sidebar-collapse .content-section {
     padding: 20px 20px;
     text-align: center;
     position: relative;
-    min-height: 180px;
+    height: 190px;
 }
 .red-box h3 {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 75px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-clamp: 1;
 }
 .red-box h3 img{
     margin-right: 15px;
@@ -719,6 +728,11 @@ body.sidebar-collapse .content-section {
     color: #fff;
     text-align: center;
     margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 .red-box .btn {
     position: absolute;
@@ -735,15 +749,15 @@ body.sidebar-collapse .content-section {
 .show::-webkit-scrollbar {
     width: 5px;
   }
-  
+
   /* Track */
 .show::-webkit-scrollbar-track {
-    background: #f1f1f1; 
+    background: #f1f1f1;
   }
-   
+
   /* Handle */
 .show::-webkit-scrollbar-thumb {
-    background: #8D0303; 
+    background: #8D0303;
   }
 /* post section */
 .latest-news {
@@ -1974,6 +1988,9 @@ label.terms-label span {
 /* footer */
 footer#footer {
     background: #272727;
+    position: absolute;
+    width:100%;
+    z-index: 100;
 }
 footer#footer p {
     margin-bottom: 0;
@@ -2021,7 +2038,7 @@ footer#footer p {
 }
 .fixtures-result-slider {
     margin-bottom: 40px;
-    
+
 }
 .fixture_item p {
     font-size: 12px;
@@ -2176,12 +2193,12 @@ input[type=number]::-webkit-outer-spin-button {
         margin-bottom: 20px;
     }
     .logo .header-logo {
-        max-width: 80px;
+        max-width: 60px;
         max-height: 110px;
     }
     ul.sidebar-nav li a{
-        font-size: 13px;
-        padding: 9px 20px;
+        font-size: 11px;
+        padding: 9px 8px;
     }
     ul.sidebar-nav li a .nav-icon{
         max-width: 18px;
@@ -2195,10 +2212,10 @@ input[type=number]::-webkit-outer-spin-button {
         max-width: 30px;
     }
     .sidebar{
-        max-width: 250px;
+        max-width: 170px;
     }
     .content-section{
-        max-width: calc(100% - 250px);
+        max-width: calc(100% - 170px);
     }
     body.sidebar-collapse .sidebar{
         left: -250px;
@@ -2209,10 +2226,10 @@ input[type=number]::-webkit-outer-spin-button {
         max-width: 150px;
     }
     .top-bar{
-        padding: 15px 10px;
+        padding: 13px 10px;
     }
     .top-bar .pacific-logo{
-        max-height: 58px;
+        max-height: 37px;
     }
     .banner-content {
         margin-top: -80px;
@@ -2295,6 +2312,7 @@ input[type=number]::-webkit-outer-spin-button {
     .fixtures-result-slider{
         padding: 0 20px;
     }
+    
 }
 
 @media (max-width: 1365px){
@@ -2310,7 +2328,7 @@ input[type=number]::-webkit-outer-spin-button {
     .sponcer-company .company-content p{
         font-size: 14px;
     }
-    
+
 }
 
 @media(max-width: 1279px){
@@ -2326,13 +2344,15 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .sidebar {
         position: static;
-        max-width: 100%;
+        /* max-width: 100%; */
         left: 0;
         background: transparent;
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 10px 30px;
+        max-width: 170px;
+        min-height: 100% !important;
     }
     .nav-button{
         display: none;
@@ -2405,13 +2425,13 @@ input[type=number]::-webkit-outer-spin-button {
     .marquee{
         margin-left: 0;
     }
-    
+
 }
 
 
 @media(max-width: 1023px){
     .logo .header-logo {
-        max-width: 110px;
+        max-width: 70px;
         max-height: 110px;
     }
     ul.sidebar-nav{
@@ -2588,5 +2608,10 @@ ul.sidebar-nav li .sub-menu::after {
     }
     .sidebar{
         position: fixed;
+        max-width: 170px;
+    }
+    .fixed-position {
+        position: fixed;
+        width: 100vw;
     }
 }

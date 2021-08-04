@@ -159,7 +159,7 @@
                 <!--  Logo slider     -->
                     @if(!$sponsors->isEmpty())
                         <div class="latest-news">
-                            <h2>Sponsor</h2>
+                            <h2>Sponsors</h2>
                             <div class="logo-sldier slider-dots">
                                 @foreach($sponsors as $sponsor)
                                     <div>
