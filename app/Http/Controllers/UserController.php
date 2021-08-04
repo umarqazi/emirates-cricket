@@ -19,7 +19,6 @@ class UserController extends Controller
     public function __construct()
     {
         /* Check User Permission to Perform Action */
-        $this->authorizeResource(User::class, 'user');
 
         $this->user_service = new UserService();
         $this->role_service = new RoleService();

@@ -25,7 +25,6 @@ class InternationalNewsController extends Controller
     public function __construct()
     {
         /* Check User Permission to Perform Action */
-        $this->authorizeResource(InternationalNews::class);
         $this->international_news_service = new InternationalNewsService();
     }
 

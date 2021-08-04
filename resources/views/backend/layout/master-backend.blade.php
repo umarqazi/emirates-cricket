@@ -313,20 +313,6 @@
             </li>
         @endif
 
-        @if(auth()->user()->can('List Gallery') || auth()->user()->can('Create Gallery'))
-            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">photo_library</i><span class="menu-title" data-i18n="">Social Accounts</span></a>
-                <div class="collapsible-body">
-                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                        @if(auth()->user()->can('List Gallery'))
-                            <li>
-                                <a class="collapsible-body" href="{{route('social-accounts.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Accounts List</span></a>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
-            </li>
-        @endif
-
         @if(auth()->user()->can('List Sponsor') || auth()->user()->can('Create Sponsor'))
             <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">thumbs_up_down</i><span class="menu-title" data-i18n="">Sponsor</span></a>
                 <div class="collapsible-body">
@@ -363,7 +349,6 @@
                 <div class="collapsible-body">
                     <ul class="collapsible collapsible-sub" data-collapsible="accordion">
                         <li><a class="collapsible-body" href="{{route('development.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Development List</span></a></li>
-                        <li><a class="collapsible-body" href="{{route('development.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a></li>
                     </ul>
                 </div>
             </li>
@@ -390,30 +375,6 @@
             </li>
         @endif
 
-        @if(auth()->user()->can('List Tournament Registration') || auth()->user()->can('Edit Tournament Registration'))
-            <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">description</i><span class="menu-title" data-i18n="">Tournament Registration</span></a>
-                <div class="collapsible-body">
-                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                        @if(auth()->user()->can('List Tournament Registration'))
-                            <li>
-                                <a class="collapsible-body" href="{{route('tournament.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Tournament List</span></a>
-                            </li>
-                        @endif
-
-                        @if(auth()->user()->can('Edit Tournament Registration'))
-                            <li>
-                                <a class="collapsible-body" href="#" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
-                            </li>
-                        @endif
-
-                        <li>
-                            <a class="collapsible-body" href="{{route('tournament.export')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Export Tournaments</span></a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-        @endif
-
         @if(auth()->user()->can('List Player Registration') || auth()->user()->can('Edit Player Registration'))
             <li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><i class="material-icons">assignment_ind</i><span class="menu-title" data-i18n="">Player Registration</span></a>
                 <div class="collapsible-body">
@@ -424,13 +385,6 @@
                                 <a class="collapsible-body" href="{{route('player.index')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span></span>Player List</a>
                             </li>
                         @endif
-
-                        @if(auth()->user()->can('Edit Player Registration'))
-                            <li>
-                                <a class="collapsible-body" href="{{route('player.create')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Add New</span></a>
-                            </li>
-                        @endif
-
                         <li>
                             <a class="collapsible-body" href="{{route('player.export')}}" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Export Players</span></a>
                         </li>

@@ -14,7 +14,6 @@ class PermissionController extends Controller
     public function __construct()
     {
         /* Check User Permission to Perform Action */
-        $this->authorizeResource(Permission::class, 'permission');
 
         $this->permission_service = new PermissionService();
     }
