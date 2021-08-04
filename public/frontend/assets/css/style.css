@@ -394,7 +394,9 @@ body.sidebar-collapse .sidebar {
 /*.sidebar-collapse .nav-button{*/
 /*    background-image: url("../images/forward.png");*/
 /*}*/
-
+ul.sidebar-nav{
+    top: 188px;
+}
 ul.sidebar-nav li{
     position: relative;
 }
@@ -534,6 +536,7 @@ a.dubai-states {
     height: 100%;
     min-height: 100vh;
     padding-bottom: 50px;
+    padding-top: 49px;
 }
 body.sidebar-collapse .content-section {
     max-width: 100%;
@@ -541,13 +544,15 @@ body.sidebar-collapse .content-section {
 }
 
 .top-bar {
-    position: fixed!important;
+    position: fixed !important;
+    top: 0;
     z-index: 11;
     width: calc(100% - 170px);
     background: #8D0303;
     padding: 25px 10px;
     overflow: hidden;
     position: relative;
+
 }
 .top-bar .pacific-logo {
     max-height: 56px;
@@ -600,7 +605,7 @@ body.sidebar-collapse .content-section {
 .marquee {
     overflow: hidden;
     white-space: nowrap;
-    margin-left: 50px;
+    margin: 0 50px;
 }
 .marquee-content {
     display: inline-block;
@@ -2216,6 +2221,7 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .content-section{
         max-width: calc(100% - 170px);
+      
     }
     body.sidebar-collapse .sidebar{
         left: -250px;
@@ -2328,10 +2334,15 @@ input[type=number]::-webkit-outer-spin-button {
     .sponcer-company .company-content p{
         font-size: 14px;
     }
+    
+    .top-bar{
+        position: static!important;
+    };
 
 }
 
 @media(max-width: 1279px){
+    
     .sub-menu{
         display:none;
     }
@@ -2368,7 +2379,7 @@ input[type=number]::-webkit-outer-spin-button {
         background: #8D0303;
         left: 0;
         right: 0;
-        top: 188px;
+        top: 154px!important;
         z-index: 22;
     }
     ul.sidebar-nav li{
@@ -2418,6 +2429,7 @@ input[type=number]::-webkit-outer-spin-button {
         max-width: 100%;
         min-height: auto;
         padding-bottom: 50px;
+        padding-top: 0;
     }
     .fancybox-content{
         max-width: 100% !important;
@@ -2547,6 +2559,9 @@ input[type=number]::-webkit-outer-spin-button {
     .contact-form-fields{
         padding: 15px;
     }
+    .top-bar{
+        width: 100%;
+    }
 }
 
 @media (max-width: 479px) {
@@ -2614,4 +2629,5 @@ ul.sidebar-nav li .sub-menu::after {
         position: fixed;
         width: 100vw;
     }
+    
 }
