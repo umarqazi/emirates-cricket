@@ -56,19 +56,19 @@
                         <i class=" fa-angle-double-right"></i>
                         <span>Councils</span>
                     </a>
-                    <a class="dubai-states" href="{{route('councils', \App\Repos\ICouncilType::councilAbuDhabi)}}">
+                    <a class="dubai-states" href="https://www.facebook.com/AbuDhabiCricket">
                         <i class="fa-angle-right"></i>
                         <span>Abu Dhabi</span>
                     </a>
-                    <a class="dubai-states" href="{{route('councils', \App\Repos\ICouncilType::councilDubai)}}">
+                    <a class="dubai-states" href="https://www.facebook.com/dubaicricketcouncil">
                         <i class="fa-angle-right"></i>
                         <span>Dubai</span>
                     </a>
-                    <a class="dubai-states" href="{{route('councils', \App\Repos\ICouncilType::councilSharjah)}}">
+                    <a class="dubai-states" href="https://www.facebook.com/sharjahcricketstadiumofficial/">
                         <i class="fa-angle-right"></i>
                         <span>Sharjah</span>
                     </a>
-                    <a class="dubai-states" href="{{route('councils', \App\Repos\ICouncilType::councilAjman)}}">
+                    <a class="dubai-states" href="https://www.facebook.com/ajccofficialpage/">
                         <i class="fa-angle-right"></i>
                         <span>Ajman</span>
                     </a>
@@ -185,14 +185,14 @@
             </a>
         </li>
         <li>
-           
+
                     <ul class="nav-list-social-icon">
                         <li><a href="javacript:void(0)"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                         <li><a href="javacript:void(0)"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                         <li> <a href="javacript:void(0)"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                     </ul>
-               
-            
+
+
         </li>
     </ul>
 </div>
