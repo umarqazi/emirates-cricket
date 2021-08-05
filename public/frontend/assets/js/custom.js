@@ -182,9 +182,9 @@ $(document).ready(function () {
             // instead of a settings object
         ]
     });
-    // if ($('.sub-menu').height() >= 400) {
-    //     $('.sub-menu').addClass("show");
-    //   } 
+    if ($('.sub-menu').height() >= 400) {
+        $('.sub-menu').addClass("show");
+      } 
     $('.sidebar').on('mouseover',function(){
         $('body').addClass("fixed-position");
     });
