@@ -11186,3 +11186,61 @@ th.team-player-head {
     padding-top: 20px;
     max-width: 50%;
 }
+.exception-conatiner{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.exception-conatiner img{
+    max-width: 300px;
+    animation: error 2s;
+    animation-iteration-count: infinite;
+}
+@keyframes  error {
+    0%   {transform: rotate(-5deg) translateY(-10px);}
+    
+    50% {transform: rotate(5deg) translateY(0px);}
+   
+    100% {transform: rotate(-5deg) translateY(-10px);}
+  }
+.exception-conatiner h1{
+    color: #e51c23;
+    font-size: 70px;
+    margin-bottom: 0;
+    font-weight: 1000;
+}
+.exception-conatiner h2{
+    color: #e51c23;
+    font-size: 24px;
+    margin-bottom: 60px;
+}
+.exception-conatiner .btn-home{
+border: solid 2px #e51c23;
+background-color: #e51c23;
+color: white;
+font-size: 20px;
+padding: 11px 50px;
+border-radius: 25px;
+transition: all 0.5s;
+}
+.exception-conatiner .btn-home:hover{
+    background-color: #fff;
+    color: #e51c23;
+    
+}
+.exception-conatiner .btn-contact{
+    border: solid 2px #e51c23;
+    background-color: #fff;
+    color: #e51c23;
+    font-size: 20px;
+    padding: 11px 21px;
+    border-radius: 25px;
+    transition: all 0.5s;
+}
+.exception-conatiner .btn-contact:hover{
+    background-color: #e51c23;
+    color: white;
+}
