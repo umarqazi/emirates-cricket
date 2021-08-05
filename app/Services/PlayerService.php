@@ -26,6 +26,10 @@ class PlayerService
         return $this->player_repo->find(Player::class, $id);
     }
 
+    public function findOne($id) {
+        return $this->player_repo->findOne(Player::class, $id);
+    }
+
     public function store($params)
     {
         $params['dob'] = Carbon::parse(Carbon::createFromFormat('d/m/Y', $params['dob']))->format('Y-m-d');

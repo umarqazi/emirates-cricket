@@ -26,6 +26,10 @@ class SettingService
         return $this->setting_repo->store(Setting::class, $params);
     }
 
+    public function findOne($id) {
+        return $this->setting_repo->findOne(Setting::class, $id);
+    }
+
     public function update($id, $params)
     {
         return $this->setting_repo->update(Setting::class, $params, $id);

@@ -60,8 +60,9 @@ class DevelopmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Development $development)
+    public function show($development)
     {
+        $development = $this->development_service->findOne(decodeData($development));
         return view('backend.development.show', compact('development'));
     }
 
@@ -71,8 +72,9 @@ class DevelopmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Development $development)
+    public function edit($development)
     {
+        $development = $this->development_service->findOne(decodeData($development));
         return view('backend.development.edit', compact('development'));
     }
 
@@ -91,16 +93,6 @@ class DevelopmentController extends Controller
 
         return redirect()->route('development.index')->with('success', 'List has been Updated Successfully!');
 
-//        $developmentObj = $this->development_service->find($development->id);
-//        $params = $request->except(['_token', '_method', 'images']);
-//
-//        $status = $this->development_service->update($development->id, $params);
-//        if (!empty($status)) {
-//
-//            /* For Polymorphic Relation */
-//            $this->image_service->update($developmentObj, $request->except(['_token', '_method']));
-//            return redirect()->route('development.index')->with('success', $developmentObj->title.' has been Updated!');
-//        }
     }
 
     /**

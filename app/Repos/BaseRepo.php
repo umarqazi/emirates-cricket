@@ -34,6 +34,10 @@ class BaseRepo implements IRepo
         return $model::find($id);
     }
 
+    public function findOne($model , $id) {
+        return $model::where('id',$id)->first();
+    }
+
     public function count($model)
     {
         return $model::count();

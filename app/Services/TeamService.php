@@ -24,6 +24,10 @@ class TeamService
         return $this->team_repo->all(Team::class);
     }
 
+    public function findOne($id) {
+        return $this->team_repo->findOne(Team::class, $id);
+    }
+
     public function update($params, $id) {
         return $this->team_repo->update(Team::class, $params, $id);
     }

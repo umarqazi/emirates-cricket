@@ -59,8 +59,9 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Team $team)
-    {
+    public function show($team)
+    {;
+        $team = $this->team_service->findOne(decodeData($team));
         return view('backend.team.show', compact('team'));
     }
 
@@ -94,9 +95,9 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Team $team)
+    public function destroy($team)
     {
-        $this->team_service->delete($team->id);
+        $this->team_service->delete(decodeData($team));
         return redirect()->route('team.index')->with('success', 'Team has been Deleted!');
     }
 

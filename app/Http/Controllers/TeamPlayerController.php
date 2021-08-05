@@ -60,7 +60,7 @@ class TeamPlayerController extends Controller
         }
         $this->team_player_service->storeToGallery($request);
         $this->team_player_service->store($params);
-        return redirect()->route('team.show', $team_id)->with('success', 'Player Has been Added Successfully!');
+        return redirect()->route('team.show', encodeData($team_id))->with('success', 'Player Has been Added Successfully!');
     }
 
     /**
@@ -80,9 +80,9 @@ class TeamPlayerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(TeamPlayer $teamPlayer)
+    public function edit($teamPlayer)
     {
-        $player = $teamPlayer;
+        $player = $this->team_player_service->findOne(decodeData($teamPlayer));
         $teams = $this->team_service->all();
         return view('backend.team-player.edit', compact('player', 'teams'));
     }
@@ -94,8 +94,9 @@ class TeamPlayerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PlayerRequest $request, TeamPlayer $teamPlayer)
+    public function update(PlayerRequest $request, $teamPlayer)
     {
+        $teamPlayer = $this->team_player_service->findOne(decodeData($teamPlayer));
         if (!is_null($request->image)){
             $this->team_player_service->removeFileFromDirectory($teamPlayer['image']);
         }
@@ -109,7 +110,7 @@ class TeamPlayerController extends Controller
         }
         $this->team_player_service->storeToGallery($request);
         $this->team_player_service->update($params, $teamPlayer->id);
-        return redirect()->route('team.show', $team_id)->with('success', 'Player Has been Updated Successfully!');
+        return redirect()->route('team.show', encodeData($team_id))->with('success', 'Player Has been Updated Successfully!');
     }
 
     /**
@@ -118,10 +119,11 @@ class TeamPlayerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TeamPlayer $teamPlayer)
+    public function destroy($teamPlayer)
     {
-        $this->team_player_service->delete($teamPlayer->id);
-        $this->team_player_service->removeFileFromDirectory($teamPlayer['image']);
+        $player = $this->team_player_service->findOne(decodeData($teamPlayer));
+        $this->team_player_service->removeFileFromDirectory($player['image']);
+        $this->team_player_service->delete(decodeData($teamPlayer));
         return redirect()->back()->with('success', 'Player Has been Deleted Successfully!');
     }
 }

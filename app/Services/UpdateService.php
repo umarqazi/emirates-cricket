@@ -29,6 +29,10 @@ class UpdateService
         return $this->update_repo->find(Update::class, $id);
     }
 
+    public function findOne($id) {
+        return $this->update_repo->findOne(Update::class, $id);
+    }
+
     public function store($params)
     {
         return $this->update_repo->store(Update::class, $params);

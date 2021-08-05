@@ -68,8 +68,9 @@ class DownloadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Download $download)
+    public function edit($download)
     {
+        $download = $this->download_service->findOne(decodeData($download));
         return view('backend.downloads.edit', compact('download'));
     }
 
@@ -94,9 +95,9 @@ class DownloadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Download $download)
+    public function destroy($download)
     {
-        $this->download_service->delete($download->id);
+        $this->download_service->delete(decodeData($download));
         return redirect()->route('download.index')->with('success', 'File has been Deleted Successfully!');
     }
 

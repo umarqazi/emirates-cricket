@@ -63,15 +63,15 @@
                                                                 <td>{{date('d/m/Y', strtotime($update->created_at))}}</td>
                                                                 <td>
                                                                     @can('Show Update')
-                                                                        <a href="{{route('update.show', $update->id)}}"><i class="material-icons">visibility</i></a>
+                                                                        <a href="{{route('update.show', encodeData($update->id))}}"><i class="material-icons">visibility</i></a>
                                                                     @endcan
 
                                                                     @can('Edit Update')
-                                                                        <a href="{{route('update.edit', $update->id)}}"><i class="material-icons">edit</i></a>
+                                                                        <a href="{{route('update.edit',encodeData($update->id))}}"><i class="material-icons">edit</i></a>
                                                                     @endcan
 
                                                                     @can('Delete Update')
-                                                                        <form method="post" class="delete-form" action="{{ route('update.destroy', $update->id) }}">
+                                                                        <form method="post" class="delete-form" action="{{ route('update.destroy', encodeData($update->id)) }}">
                                                                             @csrf
                                                                             @method('DELETE')
 

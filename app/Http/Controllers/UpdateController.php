@@ -59,8 +59,9 @@ class UpdateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Update $update)
+    public function show($update)
     {
+        $update = $this->update_service->findOne(decodeData($update));
         return view('backend.update.show', compact('update'));
     }
 
@@ -70,8 +71,9 @@ class UpdateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Update $update)
+    public function edit($update)
     {
+        $update = $this->update_service->findOne(decodeData($update));
         return view('backend.update.edit', compact('update'));
     }
 
@@ -97,9 +99,9 @@ class UpdateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Update $update)
+    public function destroy($update)
     {
-        $status = $this->update_service->delete($update->id);
+        $status = $this->update_service->delete(decodeData($update));
         if (!empty($status)) {
             return redirect()->back()->with('success', 'An Update has been Deleted Successfully!');
         }

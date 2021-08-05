@@ -40,6 +40,11 @@ class TeamPlayerService
         return $this->team_player_repo->store(TeamPlayer::class, $params);
     }
 
+    public function findOne($id) {
+        return $this->team_player_repo->findOne(TeamPlayer::class, $id);
+    }
+
+
     public function storeToGallery($request){
 
         if($request->image == null){

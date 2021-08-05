@@ -65,11 +65,11 @@
                                                                 <td>{{!$user->roles->isEmpty() ? $user->roles->pluck('name')[0] : ''}}</td>
                                                                 <td>
                                                                     @can('Edit User')
-                                                                        <a href="{{route('user.edit', $user->id)}}"><i class="material-icons">edit</i></a>
+                                                                        <a href="{{route('user.edit', encodeData($user->id))}}"><i class="material-icons">edit</i></a>
                                                                     @endcan
 
                                                                     @can('Delete User')
-                                                                        <form method="post" class="delete-form" action="{{ route('user.destroy', $user->id) }}">
+                                                                        <form method="post" class="delete-form" action="{{ route('user.destroy', encodeData($user->id)) }}">
                                                                             @csrf
                                                                             @method('DELETE')
 

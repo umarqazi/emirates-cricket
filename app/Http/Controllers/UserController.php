@@ -86,8 +86,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($user)
     {
+        $user = $this->user_service->findOne(decodeData($user));
         $roles = $this->role_service->all();
         return view('backend.user.edit', compact('roles', 'user'));
     }
@@ -116,9 +117,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($user)
     {
-        $status = $this->user_service->delete($user->id);
+        $status = $this->user_service->delete(decodeData($user));
         if (!empty($status)) {
             return redirect()->route('user.index')->with('success', 'User has been Deleted Successfully!');
         }

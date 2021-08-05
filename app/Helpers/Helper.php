@@ -18,11 +18,12 @@ if (!function_exists('encodeData')) {
 if (!function_exists('decodeData')) {
     /**
      * @param $data
-     * @return array
+     * @return string
      */
-    function decodeData($data): array
+    function decodeData($data): string
     {
-        return (new Hashids())->decode($data);
+        $decode_data = (new Hashids('', LENGTH))->decode($data);
+        return $decode_data[0];
     }
 }
 
