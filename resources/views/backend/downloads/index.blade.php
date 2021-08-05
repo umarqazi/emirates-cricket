@@ -63,11 +63,11 @@
                                                                 <td>{{strstr($file->file, '.', true)}}</td>
                                                                 <td>
                                                                     @can('Edit Employee')
-                                                                        <a href="{{route('download.edit', $file->id)}}"><i class="material-icons">edit</i></a>
+                                                                        <a href="{{route('download.edit', encodeData($file->id))}}"><i class="material-icons">edit</i></a>
                                                                     @endcan
 
                                                                     @can('Delete Employee')
-                                                                        <form method="post" class="delete-form" action="{{ route('download.destroy', $file->id) }}">
+                                                                        <form method="post" class="delete-form" action="{{ route('download.destroy', encodeData($file->id)) }}">
                                                                             @csrf
                                                                             @method('DELETE')
 

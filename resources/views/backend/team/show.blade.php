@@ -119,11 +119,11 @@
                                                                         <td><img src="{{asset('storage/uploads/team-players/'.$player->image)}}" /></td>
                                                                         <td>
                                                                             @can('Edit Team Player')
-                                                                                <a href="{{route('team-player.edit', $player->id)}}" ><i class="material-icons">edit</i></a>
+                                                                                <a href="{{route('team-player.edit', encodeData($player->id))}}" ><i class="material-icons">edit</i></a>
                                                                             @endcan
 
                                                                             @can('Delete Team Player')
-                                                                                <form method="post" class="delete-form" action="{{ route('team-player.destroy', $player->id) }}">
+                                                                                <form method="post" class="delete-form" action="{{ route('team-player.destroy', encodeData($player->id)) }}">
                                                                                     @csrf
                                                                                     @method('DELETE')
 

@@ -27,6 +27,9 @@ class EmployeeService
     public function find($id) {
         return $this->employee_repo->find(Employee::class, $id);
     }
+    public function findOne($id) {
+        return $this->employee_repo->findOne(Employee::class, $id);
+    }
 
     public function store($params)
     {

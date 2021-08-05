@@ -67,8 +67,9 @@ class InternationalNewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(InternationalNews $internationalNews)
+    public function show($internationalNews)
     {
+        $internationalNews = $this->international_news_service->findOne(decodeData($internationalNews));
         return view('backend.international-news.show', compact('internationalNews'));
     }
 
@@ -78,8 +79,9 @@ class InternationalNewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(InternationalNews $internationalNews)
+    public function edit($internationalNews)
     {
+        $internationalNews = $this->international_news_service->findOne(decodeData($internationalNews));
         return view('backend.international-news.edit', compact('internationalNews'));
     }
 
@@ -104,9 +106,9 @@ class InternationalNewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(InternationalNews $internationalNews)
+    public function destroy($internationalNews)
     {
-        $status = $this->international_news_service->delete($internationalNews->id);
+        $status = $this->international_news_service->delete(decodeData($internationalNews));
         if (!empty($status)) {
             return redirect()->back()->with('success', 'News has been Deleted Successfully!');
         }

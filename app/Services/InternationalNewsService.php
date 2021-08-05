@@ -41,6 +41,10 @@ class InternationalNewsService
         return $this->international_news_repo->find(InternationalNews::class, $id);
     }
 
+    public function findOne($id) {
+        return $this->international_news_repo->findOne(InternationalNews::class, $id);
+    }
+
     public function store($params){
         $extension = $params['image']->getClientOriginalExtension();
         $imageName = time().'.'.$extension;

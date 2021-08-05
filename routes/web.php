@@ -157,16 +157,6 @@ Route::group(['prefix' => 'admin'], static function () {
         Route::put('/international-news/{internationalNews}', [InternationalNewsController::class, 'update'])->name('international-news.update')->middleware('can:Edit International News');
         Route::delete('/international-news/{internationalNews}', [InternationalNewsController::class, 'destroy'])->name('international-news.destroy')->middleware('can:Delete International News');
 
-        /* Gallery Related Routes in here... */
-        Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index')->middleware('can:List Gallery');
-        Route::get('/gallery/create', [GalleryController::class, 'create'])->name('gallery.create')->middleware('can:Create Gallery');
-        Route::post('/gallery/store', [GalleryController::class, 'store'])->name('gallery.store')->middleware('can:Create Gallery');
-        Route::get('/gallery/{gallery}', [GalleryController::class, 'show'])->name('gallery.show')->middleware('can:Show Gallery');
-        Route::get('/gallery/{gallery}/edit', [GalleryController::class, 'edit'])->name('gallery.edit')->middleware('can:Edit Gallery');
-        Route::put('/gallery/{gallery}', [GalleryController::class, 'update'])->name('gallery.update')->middleware('can:Edit Gallery');
-        Route::delete('/gallery/{gallery}', [GalleryController::class, 'destroy'])->name('gallery.destroy')->middleware('can:Delete Gallery');
-        Route::post('/gallery-images', 'GalleryController@uploadGalleryImages')->name('gallery.images');
-
         /* All Teams Routes in here... */
         Route::get('/team', [TeamController::class, 'index'])->name('team.index')->middleware('can:List Team');
         Route::get('/team/{team}', [TeamController::class, 'show'])->name('team.show')->middleware('can:Show Team');
@@ -184,13 +174,10 @@ Route::group(['prefix' => 'admin'], static function () {
         Route::delete('/team-player/{teamPlayer}', [TeamPlayerController::class, 'destroy'])->name('team-player.destroy')->middleware('can:Delete Team Player');
 
         /* App Setting Routes */
-        Route::get('/setting', [SettingController::class, 'index'])->name('setting.index')->middleware('can:List Setting');
         Route::get('/setting/create', [SettingController::class, 'create'])->name('setting.create')->middleware('can:Create Setting');
         Route::post('/setting/store', [SettingController::class, 'store'])->name('setting.store')->middleware('can:Create Setting');
-        Route::get('/setting/{setting}', [SettingController::class, 'show'])->name('setting.show')->middleware('can:Show Setting');
         Route::get('/setting/{setting}/edit', [SettingController::class, 'edit'])->name('setting.edit')->middleware('can:Edit Setting');
         Route::put('/setting/{setting}', [SettingController::class, 'update'])->name('setting.update')->middleware('can:Edit Setting');
-        Route::delete('/setting/{setting}', [SettingController::class, 'destroy'])->name('setting.destroy')->middleware('can:Delete Setting');
 
         Route::post('/homepage-slider', 'SettingController@uploadSliderImages')->name('slider.images');
 
@@ -202,7 +189,6 @@ Route::group(['prefix' => 'admin'], static function () {
         Route::get('/user', [UserController::class, 'index'])->name('user.index')->middleware('can:List User');
         Route::get('/user/create', [UserController::class, 'create'])->name('user.create')->middleware('can:Create User');
         Route::post('/user/store', [UserController::class, 'store'])->name('user.store')->middleware('can:Create User');
-        Route::get('/user/{user}', [UserController::class, 'show'])->name('user.show')->middleware('can:Show User');
         Route::get('/user/{user}/edit', [UserController::class, 'edit'])->name('user.edit')->middleware('can:Edit User');
         Route::put('/user/{user}', [UserController::class, 'update'])->name('user.update')->middleware('can:Edit User');
         Route::delete('/user/{user}', [UserController::class, 'destroy'])->name('user.destroy')->middleware('can:Delete User');
@@ -218,7 +204,6 @@ Route::group(['prefix' => 'admin'], static function () {
         Route::get('/permission', [PermissionController::class, 'index'])->name('permission.index')->middleware('can:List Permission');
         Route::get('/permission/create', [PermissionController::class, 'create'])->name('permission.create')->middleware('can:Create Permission');
         Route::post('/permission/store', [PermissionController::class, 'store'])->name('permission.store')->middleware('can:Create Permission');
-        Route::get('/permission/{permission}', [PermissionController::class, 'show'])->name('permission.show')->middleware('can:Show Permission');
         Route::get('/permission/{permission}/edit', [PermissionController::class, 'edit'])->name('permission.edit')->middleware('can:Edit Permission');
         Route::put('/permission/{permission}', [PermissionController::class, 'update'])->name('permission.update')->middleware('can:Edit Permission');
         Route::delete('/permission/{permission}', [PermissionController::class, 'destroy'])->name('permission.destroy')->middleware('can:Delete Permission');
@@ -227,7 +212,6 @@ Route::group(['prefix' => 'admin'], static function () {
         Route::get('/employee', [EmployeeController::class, 'index'])->name('employee.index')->middleware('can:List Employee');
         Route::get('/employee/create', [EmployeeController::class, 'create'])->name('employee.create')->middleware('can:Create Employee');
         Route::post('/employee/store', [EmployeeController::class, 'store'])->name('employee.store')->middleware('can:Create Employee');
-        Route::get('/employee/{employee}', [EmployeeController::class, 'show'])->name('employee.show')->middleware('can:Show Employee');
         Route::get('/employee/{employee}/edit', [EmployeeController::class, 'edit'])->name('employee.edit')->middleware('can:Edit Employee');
         Route::put('/employee/{employee}', [EmployeeController::class, 'update'])->name('employee.update')->middleware('can:Edit Employee');
         Route::delete('/employee/{employee}', [EmployeeController::class, 'destroy'])->name('employee.destroy')->middleware('can:Delete Employee');
@@ -236,7 +220,6 @@ Route::group(['prefix' => 'admin'], static function () {
         Route::get('/download', [DownloadController::class, 'index'])->name('download.index');
         Route::get('/download/create', [DownloadController::class, 'create'])->name('download.create');
         Route::post('/download/store', [DownloadController::class, 'store'])->name('download.store');
-        Route::get('/download/{download}', [DownloadController::class, 'show'])->name('download.show');
         Route::get('/download/{download}/edit', [DownloadController::class, 'edit'])->name('download.edit');
         Route::put('/download/{download}', [DownloadController::class, 'update'])->name('download.update');
         Route::delete('/download/{download}', [DownloadController::class, 'destroy'])->name('download.destroy');
@@ -248,7 +231,6 @@ Route::group(['prefix' => 'admin'], static function () {
         Route::get('/development/{development}', [DevelopmentController::class, 'show'])->name('development.show')->middleware('can:Show Development');
         Route::get('/development/{development}/edit', [DevelopmentController::class, 'edit'])->name('development.edit')->middleware('can:Edit Development');
         Route::put('/development/{development}', [DevelopmentController::class, 'update'])->name('development.update')->middleware('can:Edit Development');
-        Route::delete('/development/{development}', [DevelopmentController::class, 'destroy'])->name('development.destroy')->middleware('can:Delete Development');
     });
 });
 

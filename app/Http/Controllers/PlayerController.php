@@ -83,8 +83,9 @@ class PlayerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Player $player)
+    public function show($player)
     {
+        $player = $this->player_service->findOne(decodeData($player));
         $countries = $this->country_service->all();
 
         return view('backend.player.show', compact('player', 'countries'));
@@ -108,9 +109,9 @@ class PlayerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Player $player)
+    public function update(Request $request, $player)
     {
-        $player = $this->player_service->update($request->except(['_token', '_method']), $player->id);
+        $player = $this->player_service->update($request->except(['_token', '_method']), decodeData($player));
         if ($player) {
             return redirect()->route('player.index')->with('success', 'Player Request has been Updated Successfully!');
         }
@@ -122,9 +123,9 @@ class PlayerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Player $player)
+    public function destroy($player)
     {
-        $response = $this->player_service->delete($player->id);
+        $response = $this->player_service->delete(decodeData($player));
         if ($response) {
             return redirect()->back()->with('success', 'Player Record has been Deleted!');
         }

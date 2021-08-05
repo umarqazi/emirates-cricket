@@ -42,6 +42,10 @@ class DevelopmentService
         return $this->development_repo->getOne(Development::class, $where);
     }
 
+    public function findOne($id) {
+        return $this->development_repo->findOne(Development::class, $id);
+    }
+
     public function update($params, $id): bool
     {
         if (array_key_exists('image', $params)){

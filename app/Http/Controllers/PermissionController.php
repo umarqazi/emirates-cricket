@@ -68,8 +68,9 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Permission $permission)
+    public function edit($permission)
     {
+        $permission = $this->permission_service->findOne(decodeData($permission));
         return view('backend.permission.edit', compact('permission'));
     }
 
@@ -92,9 +93,9 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Permission $permission)
+    public function destroy($permission)
     {
-        $this->permission_service->delete($permission->id);
+        $this->permission_service->delete(decodeData($permission));
         return redirect()->route('permission.index')->with('success', 'Permission has been Deleted Successfully!');
     }
 }

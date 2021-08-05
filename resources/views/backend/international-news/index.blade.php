@@ -69,15 +69,15 @@
                                                                 <td>{{date('d/m/Y', strtotime($new->created_at))}}</td>
                                                                 <td>
                                                                     @can('Show News')
-                                                                        <a href="{{route('international-news.show', $new->id)}}"><i class="material-icons">visibility</i></a>
+                                                                        <a href="{{route('international-news.show', encodeData($new->id))}}"><i class="material-icons">visibility</i></a>
                                                                     @endcan
 
                                                                     @can('Edit News')
-                                                                        <a href="{{route('international-news.edit', $new->id)}}"><i class="material-icons">edit</i></a>
+                                                                        <a href="{{route('international-news.edit', encodeData($new->id))}}"><i class="material-icons">edit</i></a>
                                                                     @endcan
 
                                                                     @can('Delete News')
-                                                                        <form method="post" class="delete-form" action="{{ route('international-news.destroy', $new->id) }}">
+                                                                        <form method="post" class="delete-form" action="{{ route('international-news.destroy', encodeData($new->id)) }}">
                                                                             @csrf
                                                                             @method('DELETE')
 

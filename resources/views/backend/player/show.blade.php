@@ -40,11 +40,11 @@
                     <div class="col s12 m12 l12">
                         <div id="Form-advance" class="card card card-default scrollspy">
                             <div class="card-content">
-                                <form class="col s12" method="POST" action="{{route('player.update', $player->id)}}" enctype="multipart/form-data">
+                                <form class="col s12" method="POST" action="{{route('player.update',encodeData($player->id))}}" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
 
-                                    @if(file_exists(public_path('storage/uploads/players/'.$player->id.'/'.$player->photo)))
+                                    @if(file_exists(public_path('storage/uploads/players/'.encodeData($player->id).'/'.$player->photo)))
                                         <div class="row">
                                             <div class="col m4 s4 offset-m8 mb-1 right-align">
                                                 <img class="dummy_photo" src="{{asset('storage/uploads/players/'.$player->id.'/'.$player->photo)}}">

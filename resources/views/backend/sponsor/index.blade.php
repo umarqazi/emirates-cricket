@@ -71,15 +71,15 @@
                                                                 <td>{{date('d/m/Y', strtotime($sponsor->created_at))}}</td>
                                                                 <td>
                                                                     @can('Show Sponsor')
-                                                                        <a href="{{route('sponsor.show', $sponsor->id)}}"><i class="material-icons">visibility</i></a>
+                                                                        <a href="{{route('sponsor.show', encodeData($sponsor->id))}}"><i class="material-icons">visibility</i></a>
                                                                     @endcan
 
                                                                     @can('Edit Sponsor')
-                                                                        <a href="{{route('sponsor.edit', $sponsor->id)}}"><i class="material-icons">edit</i></a>
+                                                                        <a href="{{route('sponsor.edit', encodeData($sponsor->id))}}"><i class="material-icons">edit</i></a>
                                                                     @endcan
 
                                                                     @can('Delete Sponsor')
-                                                                        <form method="post" class="delete-form" action="{{ route('sponsor.destroy', $sponsor->id) }}">
+                                                                        <form method="post" class="delete-form" action="{{ route('sponsor.destroy', encodeData($sponsor->id)) }}">
                                                                             @csrf
                                                                             @method('DELETE')
 

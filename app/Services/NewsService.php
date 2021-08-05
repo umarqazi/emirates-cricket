@@ -45,6 +45,10 @@ class NewsService
         return $this->news_repo->update(News::class, $params, $id);
     }
 
+    public function findOne($id) {
+        return $this->news_repo->findOne(News::class, $id);
+    }
+
     public function delete($id): bool
     {
         $name = $this->news_repo->find(News::class, $id)->image;

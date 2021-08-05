@@ -75,7 +75,7 @@ class AboutUsController extends Controller
      */
     public function show($id)
     {
-        $about = $this->about_service->find($id);
+        $about = $this->about_service->findOne(decodeData($id));
         return view('backend.about.show', compact('about'));
     }
 
@@ -87,7 +87,7 @@ class AboutUsController extends Controller
      */
     public function edit($id)
     {
-        $about = $this->about_service->find($id);
+        $about = $this->about_service->findOne(decodeData($id));
         return view('backend.about.edit', compact('about'));
     }
 

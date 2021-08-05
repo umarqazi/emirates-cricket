@@ -80,8 +80,9 @@ class SponsorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Sponsor $sponsor)
+    public function show($sponsor)
     {
+        $sponsor = $this->sponsor_service->findOne(decodeData($sponsor));
         return view('backend.sponsor.show', compact('sponsor'));
     }
 
@@ -91,8 +92,9 @@ class SponsorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sponsor $sponsor)
+    public function edit($sponsor)
     {
+        $sponsor = $this->sponsor_service->findOne(decodeData($sponsor));
         return view('backend.sponsor.edit', compact('sponsor'));
     }
 
@@ -143,9 +145,9 @@ class SponsorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sponsor $sponsor): \Illuminate\Http\RedirectResponse
+    public function destroy($sponsor): \Illuminate\Http\RedirectResponse
     {
-        $this->sponsor_service->delete($sponsor->id);
+        $this->sponsor_service->delete(decodeData($sponsor));
         return redirect()->back()->with('success', 'Sponsor has been Deleted Successfully!');
     }
 

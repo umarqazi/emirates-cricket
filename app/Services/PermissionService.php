@@ -33,6 +33,10 @@ class PermissionService
         return $this->permission_repo->find(Permission::class, $id);
     }
 
+    public function findOne($id) {
+        return $this->permission_repo->findOne(Permission::class, $id);
+    }
+
     public function store($params)
     {
         return $this->permission_repo->store(Permission::class, $params);

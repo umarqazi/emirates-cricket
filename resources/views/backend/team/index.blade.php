@@ -63,11 +63,11 @@
                                                                 <td>{{$team->name}}</td>
                                                                 <td>
                                                                     @can('Edit Team')
-                                                                        <a href="{{route('team.show', $team->id)}}"><i class="material-icons">visibility</i></a>
+                                                                        <a href="{{route('team.show', encodeData($team->id))}}"><i class="material-icons">visibility</i></a>
                                                                     @endcan
 
                                                                     @can('Delete Team')
-                                                                        <form method="post" class="delete-form" action="{{ route('team.destroy', $team->id) }}">
+                                                                        <form method="post" class="delete-form" action="{{ route('team.destroy', encodeData($team->id)) }}">
                                                                             @csrf
                                                                             @method('DELETE')
 

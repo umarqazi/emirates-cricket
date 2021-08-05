@@ -30,6 +30,10 @@ class UserService
         return $this->user_repo->find(User::class, $id);
     }
 
+    public function findOne($id) {
+        return $this->user_repo->findOne(User::class, $id);
+    }
+
     public function findByToken($token) {
         return $this->user_repo->findByToken(User::class, $token);
     }

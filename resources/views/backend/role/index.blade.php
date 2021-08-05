@@ -61,11 +61,11 @@
                                                                 <td>{{$role->name}}</td>
                                                                 <td>
                                                                     @can('Show Role')
-                                                                        <a href="{{route('role.show', $role->id)}}"><i class="material-icons">visibility</i></a>
+                                                                        <a href="{{route('role.show', encodeData($role->id))}}"><i class="material-icons">visibility</i></a>
                                                                     @endcan
 
                                                                     @can('Edit Role')
-                                                                        <a href="{{route('role.edit', $role->id)}}"><i class="material-icons">edit</i></a>
+                                                                        <a href="{{route('role.edit', encodeData($role->id))}}"><i class="material-icons">edit</i></a>
                                                                     @endcan
 
                                                                     @can('Delete Role')
