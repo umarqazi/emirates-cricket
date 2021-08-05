@@ -255,3 +255,6 @@ Route::group(['prefix' => 'admin'], static function () {
 /* Set User Password Routes */
 Route::get('/user/set/password/{token}', 'UserController@setPassword')->name('setPassword');
 Route::post('/store/password', 'UserController@storePassword')->name('storePassword');
+
+
+Route::view('/expcetions','backend.exceptions.exception');
