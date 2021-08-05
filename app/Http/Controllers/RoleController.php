@@ -61,8 +61,9 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Role $role)
+    public function show($role)
     {
+        $role = $this->role_service->findOne(decodeData($role));
         $rolePermissions = $role->permissions->pluck('id')->toArray();
         $permissions = $this->permission_service->groupedBy();
         return view('backend.role.show', compact('role','rolePermissions', 'permissions'));
@@ -74,8 +75,9 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Role $role)
+    public function edit($role)
     {
+        $role = $this->role_service->findOne(decodeData($role));
         $rolePermissions = $role->permissions->pluck('id')->toArray();
         $permissions = $this->permission_service->groupedBy();
         return view('backend.role.edit', compact('role','rolePermissions', 'permissions'));
@@ -100,9 +102,9 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function destroy($role)
     {
-        $this->role_service->delete($role->id);
+        $this->role_service->delete(decodeData($role));
         return redirect()->route('role.index')->with('success', 'Role has been Deleted Successfully!');
     }
 }

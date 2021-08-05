@@ -29,6 +29,10 @@ class SponsorService
         return $this->sponsor_repo->find(Sponsor::class, $id);
     }
 
+    public function findOne($id) {
+        return $this->sponsor_repo->findOne(Sponsor::class, $id);
+    }
+
     public function store($params)
     {
         return $this->sponsor_repo->store(Sponsor::class, $params);

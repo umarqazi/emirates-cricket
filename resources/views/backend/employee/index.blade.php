@@ -66,11 +66,11 @@
                                                                 <td>{{$row->designation}}</td>
                                                                 <td>
                                                                     @can('Edit Employee')
-                                                                        <a href="{{route('employee.edit', $row->id)}}"><i class="material-icons">edit</i></a>
+                                                                        <a href="{{route('employee.edit', encodeData($row->id))}}"><i class="material-icons">edit</i></a>
                                                                     @endcan
 
                                                                     @can('Delete Employee')
-                                                                        <form method="post" class="delete-form" action="{{ route('employee.destroy', $row->id) }}">
+                                                                        <form method="post" class="delete-form" action="{{ route('employee.destroy', encodeData($row->id)) }}">
                                                                             @csrf
                                                                             @method('DELETE')
 

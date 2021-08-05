@@ -63,21 +63,12 @@
                                                                 <td>{{ucwords(str_replace('-', ' ', $page->council_type))}}</td>
                                                                 <td>
                                                                     @can('Show About Pages')
-                                                                        <a href="{{route('about.show', $page->id)}}"><i class="material-icons">visibility</i></a>
+                                                                        <a href="{{route('about.show', encodeData($page->id))}}"><i class="material-icons">visibility</i></a>
                                                                     @endcan
 
                                                                     @can('Edit About Pages')
-                                                                        <a href="{{route('about.edit', $page->id)}}"><i class="material-icons">edit</i></a>
+                                                                        <a href="{{route('about.edit', encodeData($page->id))}}"><i class="material-icons">edit</i></a>
                                                                     @endcan
-
-{{--                                                                    @can('Delete News')--}}
-                                                                        {{--<form method="post" class="delete-form" action="{{ route('about.destroy', $page->id) }}">
-                                                                            @csrf
-                                                                            @method('DELETE')
-
-                                                                            <a type="button" class="delete-submit-btn"><i class="material-icons">delete</i></a>
-                                                                        </form>--}}
-{{--                                                                    @endcan--}}
                                                                 </td>
                                                             </tr>
                                                         @endforeach

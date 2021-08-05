@@ -63,11 +63,11 @@
                                                                 <td>{{$permission->module}}</td>
                                                                 <td>
                                                                     @can('Edit Permission')
-                                                                        <a href="{{route('permission.edit', $permission->id)}}"><i class="material-icons">edit</i></a>
+                                                                        <a href="{{route('permission.edit', encodeData($permission->id))}}"><i class="material-icons">edit</i></a>
                                                                     @endcan
 
                                                                     @can('Delete Permission')
-                                                                        <form method="post" class="delete-form" action="{{ route('permission.destroy', $permission->id) }}">
+                                                                        <form method="post" class="delete-form" action="{{ route('permission.destroy', encodeData($permission->id)) }}">
                                                                             @csrf
                                                                             @method('DELETE')
 

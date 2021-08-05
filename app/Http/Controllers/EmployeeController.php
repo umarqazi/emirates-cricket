@@ -68,8 +68,9 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Employee $employee)
+    public function edit($employee)
     {
+        $employee = $this->employee_service->findOne(decodeData($employee));
         return view('backend.employee.edit', compact('employee'));
     }
 
@@ -94,9 +95,9 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employee $employee)
+    public function destroy($employee)
     {
-        $this->employee_service->delete($employee->id);
+        $this->employee_service->delete(decodeData($employee));
         return redirect()->route('employee.index')->with('success', 'Employee has been Deleted Successfully!');
     }
 }

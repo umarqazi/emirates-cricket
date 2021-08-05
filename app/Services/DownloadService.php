@@ -30,6 +30,10 @@ class DownloadService
         return $this->download_repo->find(Download::class, $id);
     }
 
+    public function findOne($id) {
+        return $this->download_repo->findOne(Download::class, $id);
+    }
+
     public function store($params)
     {
         $image = $params['file'];

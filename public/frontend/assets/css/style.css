@@ -2337,7 +2337,10 @@ input[type=number]::-webkit-outer-spin-button {
     
     .top-bar{
         position: static!important;
-    };
+    }
+    .content-section{
+      padding-top: 0!important;
+    }
 
 }
 

@@ -29,6 +29,10 @@ class AboutService
         return $this->about_repo->find(ContentPage::class, $id);
     }
 
+    public function findOne($id) {
+        return $this->about_repo->findOne(ContentPage::class, $id);
+    }
+
     public function store($params)
     {
         return $this->about_repo->store(ContentPage::class, $params);

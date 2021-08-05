@@ -46,19 +46,6 @@
                                     @method('PUT')
 
                                     <div class="row">
-                                        <div class="input-field col m12 s12">
-                                            <input id="title" type="text" name="tournament_fees" class="validate @error('tournament_fees') invalid @enderror" value="{{$setting->tournament_fees}}">
-                                            <label for="title">Tournament Fee</label>
-
-                                            @error('tournament_fees')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
                                         <div class="col-12"><b>Upload Homepage Slider Images <small>(Images must be of 1920 * 1000 Resolution)</small></b></div>
                                         <div class="input-field col m12 s12 dropzone" id="image-dropzone">
 

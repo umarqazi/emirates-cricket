@@ -80,8 +80,9 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(News $news)
+    public function show($news)
     {
+        $news = $this->news_service->findOne(decodeData($news));
         return view('backend.news.show', compact('news'));
     }
 
@@ -91,8 +92,9 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(News $news)
+    public function edit($news)
     {
+        $news = $this->news_service->findOne(decodeData($news));
         return view('backend.news.edit', compact('news'));
     }
 
@@ -142,9 +144,9 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(News $news): \Illuminate\Http\RedirectResponse
+    public function destroy($news): \Illuminate\Http\RedirectResponse
     {
-        $status = $this->news_service->delete($news->id);
+        $status = $this->news_service->delete(decodeData($news));
         if (!empty($status)) {
             return redirect()->back()->with('success', 'News has been Deleted Successfully!');
         }

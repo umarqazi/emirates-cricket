@@ -28,6 +28,10 @@ class RoleService
         return $this->role_repo->find(Role::class, $id);
     }
 
+    public function findOne($id) {
+        return $this->role_repo->findOne(Role::class, $id);
+    }
+
     public function store($params)
     {
         $roleName = array('name' => $params['name']);

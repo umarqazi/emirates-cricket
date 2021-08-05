@@ -63,11 +63,11 @@
                                                                 <td><img src="{{ URL::asset('storage/uploads/development/'). '/'. $development->image }}"  class="img-thumbnail" width="75" /></td>
                                                                 <td>
                                                                     @can('Show Development')
-                                                                        <a href="{{route('development.show', $development->id)}}"><i class="material-icons">visibility</i></a>
+                                                                        <a href="{{route('development.show', encodeData($development->id))}}"><i class="material-icons">visibility</i></a>
                                                                     @endcan
 
                                                                     @can('Edit Development')
-                                                                        <a href="{{route('development.edit', $development->id)}}"><i class="material-icons">edit</i></a>
+                                                                        <a href="{{route('development.edit', encodeData($development->id))}}"><i class="material-icons">edit</i></a>
                                                                     @endcan
                                                                 </td>
                                                             </tr>
