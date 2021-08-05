@@ -11,14 +11,14 @@
             <p>
                 <a href="{{route('home')}}" class="paren-page">Main page</a>
                 <img src="{{ URL::asset('frontend/assets/images/right-arrow.png') }}" alt="">
-                <a href="{{route('sponsor')}}" class="child-page">Sponsor</a>
+                <a href="{{route('sponsor')}}" class="child-page">Sponsors</a>
             </p>
         </div>
     </div>
 
     <!--    main heading        -->
     <div class="container">
-        <h1 class="main-heading">Sponsor</h1>
+        <h1 class="main-heading">Sponsors</h1>
     </div>
 
     <!--   Sponsor Section     -->

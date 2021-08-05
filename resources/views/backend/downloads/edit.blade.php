@@ -39,7 +39,7 @@
                                 <form method="post" action="{{ route('download.update' , $download->id) }}" enctype="multipart/form-data">
 
                                     @csrf
-                                    @method('PATCH')
+                                    @method('PUT')
 
                                     <div class="row">
                                         <div class="input-field col m12 s12">

@@ -16,7 +16,6 @@ class DevelopmentController extends Controller
     public function __construct()
     {
         /* Check User Permission to Perform Action */
-//        $this->authorizeResource(Development::class, 'development');
 
         $this->development_service = new DevelopmentService();
         $this->image_service = new ImageService();

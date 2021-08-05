@@ -1,5 +1,7 @@
 <div class="top-bar">
-    <img class="pacific-logo" src="{{ URL::asset('frontend/assets/images/pacificLogo.png') }} " alt="">
+    <a href="https://pacificventures.co/About-Pacific-Ventures.aspx">
+        <img class="pacific-logo" src="{{ URL::asset('frontend/assets/images/pacificLogo.png') }} " alt="">
+    </a>
     <div class="marquee">
         <div class="marquee-content">
             @foreach($marqueeUpdates as $key=>$update)

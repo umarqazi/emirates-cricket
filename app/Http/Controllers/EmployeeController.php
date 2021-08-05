@@ -15,7 +15,6 @@ class EmployeeController extends Controller
     public function __construct()
     {
         /* Check User Permission to Perform Action */
-        $this->authorizeResource(Employee::class, 'employee');
 
         $this->employee_service = new EmployeeService();
     }
