@@ -2,7 +2,16 @@
 
 namespace App\Exceptions;
 
+use Exception;
+use Facade\Ignition\SolutionProviders\RouteNotDefinedSolutionProvider;
+use GuzzleHttp\Exception\ServerException;
+use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Spatie\Permission\Exceptions\UnauthorizedException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -50,12 +59,27 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        if ($this->isHttpException($exception)) {
-            if ($exception->getStatusCode() == 404) {
-                return response()->view('frontend.404');
-            }
+        if ($exception instanceof NotFoundHttpException) {
+            return response()->view('exceptions.404');
         }
-
+        elseif ($exception instanceof MethodNotAllowedHttpException){
+            return response()->view('exceptions.404');
+        }
+        elseif ($exception instanceof ModelNotFoundException){
+            return response()->view('exceptions.404');
+        }
+        elseif ($exception instanceof RouteNotFoundException){
+            return response()->view('exceptions.404');
+        }
+        elseif ($exception instanceof \ErrorException){
+            return response()->view('exceptions.500');
+        }
+        elseif ($exception instanceof AuthenticationException){
+            return response()->view('exceptions.401');
+        }
+        elseif ($exception instanceof UnauthorizedException){
+            return response()->view('exceptions.403');
+        }
         return parent::render($request, $exception);
     }
 }
