@@ -106,13 +106,13 @@
                                         <div class="post-inner">
                                             <figure>
                                                 <img src="{{ URL::asset('storage/uploads/news/'.$eachNews->id.'/'.$eachNews->image) }}" alt="">
-                                                <a href="{{route('news-detail',['latest_news', $eachNews->id])}}"
+                                                <a href="{{route('news-detail',[encodeData($eachNews->id)])}}"
                                                    tabindex="0">
                                                     <figcaption>
                                                         <h5>{{ \Illuminate\Support\Str::limit($eachNews->title,35) }}</h5>
                                                         <p>{!! \Illuminate\Support\Str::limit($eachNews->text, 70) !!}</p>
                                                         <p class="date">
-                                                            <a href="#">{{date('M d, Y', strtotime($eachNews->created_at))}}</a>
+                                                            <a href="{{route('news-detail',[encodeData($eachNews->id)])}}">{{date('M d, Y', strtotime($eachNews->created_at))}}</a>
                                                         </p>
                                                     </figcaption>
                                                 </a>
@@ -133,13 +133,13 @@
                                 @foreach($international_news as $int_news)
                                     <div class="col-md-6">
                                         <div class="card international-news-image" >
-                                            <a href="#">
+                                            <a href="{{route('international-news-detail',[encodeData($int_news->id)])}}">
                                                 <img src="{{ URL::asset('storage/uploads/international-news/'.'/'.$int_news->id.'/'.$int_news->image) }}" alt="">
                                                 <div class="card-body international-news-content">
                                                     <h4>{{\Illuminate\Support\Str::limit($int_news->title,60)}}</h4>
                                                     <p>{!! \Illuminate\Support\Str::limit($int_news->description, 200) !!}</p>
                                                     <p class="date">
-                                                        <a href="#">{{date('M d, Y', strtotime($eachNews->created_at))}}</a>
+                                                        <a href="{{route('international-news-detail',[encodeData($int_news->id)])}}">{{date('M d, Y', strtotime($eachNews->created_at))}}</a>
                                                     </p>
                                                     @if(false)
                                                         <div class="play-video-button">
