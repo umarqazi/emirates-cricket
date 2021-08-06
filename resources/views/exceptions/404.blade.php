@@ -9,7 +9,7 @@
 </head>
 <body style="padding:0; margin:0;">
     <div class="exception-conatiner">
-        <img src="{{URL::asset('backend/assets/images/error404.png')}}" alt="">
+        <img src="{{URL::asset('backend/assets/images/404.png')}}" alt="">
         <h1>404</h1>
         <h2>Page Not found</h2>
         <h4>We are sorry, but the page you request was not found.</h4>
