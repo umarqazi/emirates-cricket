@@ -17,17 +17,19 @@ class SocialAccountService
         $this->social_account_repo = new SocialAccountRepo();
     }
 
-    public function findByType($type) {
+    public function findByType($type)
+    {
         $where = array('type' => $type);
-        return $this->social_account_repo->getOne(SocialAccount::class, $where);
+        return $this->social_account_repo->getOne($where);
     }
 
-    public function all() {
-        return $this->social_account_repo->all(SocialAccount::class);
+    public function all()
+    {
+        return $this->social_account_repo->all();
     }
 
-    public function update($params, $id) {
-        return $this->social_account_repo->update(SocialAccount::class, $params, $id);
+    public function update($params, $id)
+    {
+        return $this->social_account_repo->update($params, $id);
     }
-
 }

@@ -16,26 +16,30 @@ class RoleService
         $this->role_repo = new RoleRepo();
     }
 
-    public function all() {
-        return $this->role_repo->all(Role::class);
+    public function all()
+    {
+        return $this->role_repo->all();
     }
 
-    public function paginatedRecords() {
-        return $this->role_repo->paginatedRecords(Role::class, 2);
+    public function paginatedRecords()
+    {
+        return $this->role_repo->paginatedRecords(2);
     }
 
-    public function find($id) {
-        return $this->role_repo->find(Role::class, $id);
+    public function find($id)
+    {
+        return $this->role_repo->find($id);
     }
 
-    public function findOne($id) {
-        return $this->role_repo->findOne(Role::class, $id);
+    public function findOne($id)
+    {
+        return $this->role_repo->findOne($id);
     }
 
     public function store($params)
     {
         $roleName = array('name' => $params['name']);
-        $role = $this->role_repo->store(Role::class, $roleName);
+        $role = $this->role_repo->store($roleName);
         $role->syncPermissions($params['permission']);
         return $role;
     }
@@ -43,14 +47,14 @@ class RoleService
     public function update($params, $id): bool
     {
         $roleName = array('name' => $params['name']);
-        $this->role_repo->update(Role::class, $roleName, $id);
-        $role = $this->role_repo->find(Role::class, $id);
+        $this->role_repo->update($roleName, $id);
+        $role = $this->role_repo->find($id);
         $role->syncPermissions($params['permission']);
         return true;
     }
 
     public function delete($id): bool
     {
-        return $this->role_repo->destroy(Role::class, $id);
+        return $this->role_repo->destroy($id);
     }
 }

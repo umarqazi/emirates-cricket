@@ -9,7 +9,6 @@ use App\SocialAccount;
 
 class TwitterService
 {
-
     public $twitter;
     public $twitter_tokens;
     public $accessToken;
@@ -27,11 +26,13 @@ class TwitterService
 //        $this->twitter->setTimeouts(10, 15);
     }
 
-    public function getDBTokens() {
+    public function getDBTokens()
+    {
         return $this->social_account_service->findByType(SocialAccount::$Twitter);
     }
 
-    public function twitterLogin() {
+    public function twitterLogin()
+    {
         $request_token = $this->twitter->oauth('oauth/request_token', array('oauth_callback' => env('TWITTER_OAUTH_CALLBACK')));
 
         $_SESSION['oauth_token'] = $request_token['oauth_token'];
@@ -42,7 +43,8 @@ class TwitterService
         return $url;
     }
 
-    public function twitterCallback($params) {
+    public function twitterCallback($params)
+    {
 
         $twitter = new TwitterOAuth(env('TWITTER_CONSUMER_KEY'), env('TWITTER_CONSUMER_SECRET'), '', $this->accessToken);
         $status = $twitter->get("account/verify_credentials");
@@ -50,7 +52,7 @@ class TwitterService
         $tokens = array();
 
         /* Get Twitter Access Token */
-        $access_token = $twitter->oauth("oauth/access_token", ["oauth_token" => $params['oauth_token'] , "oauth_verifier" => $params['oauth_verifier']]);
+        $access_token = $twitter->oauth("oauth/access_token", ["oauth_token" => $params['oauth_token'], "oauth_verifier" => $params['oauth_verifier']]);
 
         $tokens['user_access_token'] = $access_token['oauth_token'];
         $tokens['page_access_token'] = $access_token['oauth_token_secret'];
@@ -68,7 +70,8 @@ class TwitterService
         return $tokens;
     }
 
-    public function getUserTweets() {
+    public function getUserTweets()
+    {
         $status = $this->twitter->get("account/verify_credentials");
         if (!empty($status)) {
             return $this->twitter->get('statuses/user_timeline', ["count" => 10, "exclude_replies" => true]);

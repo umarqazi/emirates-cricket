@@ -4,10 +4,19 @@
 namespace App\Repos;
 
 
+use App\SocialPost;
+
 class SocialPostRepo extends BaseRepo
 {
-    public function getRecent($model, $where, $count ,$column, $order)
+    private $Model = SocialPost::class;
+
+    public function __construct()
     {
-        return $model::where($where)->orderBy($column, $order)->take($count)->get();
+        parent::__construct($this->Model);
+    }
+
+    public function getRecent($where, $count, $column, $order)
+    {
+        return $this->_model::where($where)->orderBy($column, $order)->take($count)->get();
     }
 }

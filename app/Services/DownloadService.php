@@ -18,20 +18,24 @@ class DownloadService
         $this->download_repo = new DownloadRepo();
     }
 
-    public function all() {
-        return $this->download_repo->all(Download::class);
+    public function all()
+    {
+        return $this->download_repo->all();
     }
 
-    public function paginatedRecords() {
-        return $this->download_repo->paginatedRecords(Download::class, 2);
+    public function paginatedRecords()
+    {
+        return $this->download_repo->paginatedRecords(2);
     }
 
-    public function find($id) {
-        return $this->download_repo->find(Download::class, $id);
+    public function find($id)
+    {
+        return $this->download_repo->find($id);
     }
 
-    public function findOne($id) {
-        return $this->download_repo->findOne(Download::class, $id);
+    public function findOne($id)
+    {
+        return $this->download_repo->findOne($id);
     }
 
     public function store($params)
@@ -43,11 +47,12 @@ class DownloadService
         $image->move(public_path('storage/uploads/downloads/'), $new_name);
         $params['file'] = $new_name;
 
-        return  $this->download_repo->store(Download::class, $params);
+        return $this->download_repo->store($params);
     }
 
-    public function update($params, $id){
-        if (isset($params['file'])){
+    public function update($params, $id)
+    {
+        if (isset($params['file'])) {
             $image = $params['file'];
             $name = pathinfo($_FILES['file']['name'], PATHINFO_FILENAME);;
             $extension = $image->getClientOriginalExtension();
@@ -55,12 +60,11 @@ class DownloadService
             $image->move(public_path('storage/uploads/downloads/'), $new_name);
             $params['file'] = $new_name;
         }
-        return $this->download_repo->update(Download::class, $params, $id);
+        return $this->download_repo->update($params, $id);
     }
 
     public function delete($id): bool
     {
-        return $this->download_repo->destroy(Download::class, $id);
+        return $this->download_repo->destroy($id);
     }
-
 }

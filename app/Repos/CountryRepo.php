@@ -6,11 +6,17 @@ namespace App\Repos;
 
 use App\Country;
 
-class CountryRepo
+class CountryRepo extends BaseRepo
 {
-    public function all()
+    private $Model = Country::class;
+
+    public function __construct()
     {
-        return Country::all();
+        parent::__construct($this->Model);
     }
 
+    public function allCountries()
+    {
+        return $this->_model::all();
+    }
 }

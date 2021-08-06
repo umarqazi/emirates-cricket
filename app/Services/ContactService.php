@@ -18,26 +18,26 @@ class ContactService
 
     public function all()
     {
-        return $this->contact_repo->all(Contact::class);
+        return $this->contact_repo->all();
     }
 
     public function store($params)
     {
-        return $this->contact_repo->store(Contact::class, $params);
+        return $this->contact_repo->store($params);
     }
 
     public function find(int $id)
     {
-        return $this->contact_repo->find(Contact::class, $id);
+        return $this->contact_repo->find($id);
     }
 
     public function update($id, $params)
     {
-        return $this->contact_repo->update(Contact::class, $params, $id);
+        return $this->contact_repo->update($params, $id);
     }
 
     public function delete(int $id)
     {
-        return $this->contact_repo->destroy(Contact::class, $id);
+        return $this->contact_repo->destroy($id);
     }
 }
