@@ -5,22 +5,18 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DevelopmentController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\EmployeeController;
-use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\InternationalNewsController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingController;
-use App\Http\Controllers\SocialAccountController;
 use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TeamPlayerController;
-use App\Http\Controllers\TournamentController;
 use App\Http\Controllers\UpdateController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use Symfony\Component\HttpFoundation\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -239,7 +235,7 @@ Route::get('/user/set/password/{token}', 'UserController@setPassword')->name('se
 Route::post('/store/password', 'UserController@storePassword')->name('storePassword');
 
 
-Route::view('/404','backend.exceptions.404');
-Route::view('/403','backend.exceptions.403');
-Route::view('/500','backend.exceptions.500');
-Route::view('/401','backend.exceptions.401');
+Route::view('/404','exceptions.404');
+Route::view('/403','exceptions.403');
+Route::view('/500','exceptions.500');
+Route::view('/401','exceptions.401');
