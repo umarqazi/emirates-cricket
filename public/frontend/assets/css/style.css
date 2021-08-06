@@ -549,13 +549,13 @@ body.sidebar-collapse .content-section {
     z-index: 11;
     width: calc(100% - 170px);
     background: #8D0303;
-    padding: 25px 10px;
+    padding: 13px 10px;
     overflow: hidden;
     position: relative;
 
 }
 .top-bar .pacific-logo {
-    max-height: 56px;
+    max-height: 40px;
     position: absolute;
     top: 7px;
     right: 15px;
