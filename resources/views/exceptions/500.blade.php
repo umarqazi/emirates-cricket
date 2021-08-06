@@ -13,12 +13,12 @@
         <h1> 500</h1>
         <h2>Server Error</h2>
         <h4>Ooopsss.. Something went wrong.</h4>
-        
+
         <div>
-            <a href="" class="btn-home">Home</a>
-            <a href="" class="btn-contact">Contact Us</a>
+            <a href="{{route('home')}}" class="btn-home">Home</a>
+            <a href="{{route('contact')}}" class="btn-contact">Contact Us</a>
     </div>
     </div>
-   
+
 </body>
 </html>

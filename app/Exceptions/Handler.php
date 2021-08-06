@@ -2,7 +2,14 @@
 
 namespace App\Exceptions;
 
+use Exception;
+use Facade\Ignition\SolutionProviders\RouteNotDefinedSolutionProvider;
+use GuzzleHttp\Exception\ServerException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -50,12 +57,36 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        if ($this->isHttpException($exception)) {
-            if ($exception->getStatusCode() == 404) {
-                return response()->view('frontend.404');
+        if ($exception instanceof NotFoundHttpException) {
+            if ($request->expectsJson()) {
+                return response()->json(['error' => 'Not Found'], 404);
             }
+            return response()->view('exceptions.404', ['NotFound' => true], 404);
         }
-
+        elseif ($exception instanceof  MethodNotAllowedHttpException){
+            if ($request->expectsJson()) {
+                return response()->json(['error' => 'Not Found'], 404);
+            }
+            return response()->view('exceptions.404', ['MethodNotAllowed' => true], 404);
+        }
+        elseif ($exception instanceof  ModelNotFoundException){
+            if ($request->expectsJson()) {
+                return response()->json(['error' => 'Not Found'], 404);
+            }
+            return response()->view('exceptions.404', ['ModelNotFound' => true], 404);
+        }
+        elseif ($exception instanceof  RouteNotFoundException){
+            if ($request->expectsJson()) {
+                return response()->json(['error' => 'Not Found'], 404);
+            }
+            return response()->view('exceptions.404', ['RouteNotFound' => true], 404);
+        }
+        elseif ($exception instanceof  ServerException){
+            if ($request->expectsJson()) {
+                return response()->json(['error' => 'Not Found'], 500);
+            }
+            return response()->view('exceptions.500', ['RouteNotFound' => true], 500);
+        }
         return parent::render($request, $exception);
     }
 }
