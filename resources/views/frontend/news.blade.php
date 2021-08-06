@@ -42,7 +42,7 @@
                                                 <h4>{{$new->title}}</h4>
                                                 <p> {!! \Illuminate\Support\Str::limit($new->text, 500) !!} </p>
                                                 <p class="read-more">
-                                                    <a href="{{route('news-detail',['latest_news', $new->id])}}"
+                                                    <a href="{{route('news-detail',[encodeData($new->id)])}}"
                                                        tabindex="0">Read more</a>
                                                 </p>
                                             </div>

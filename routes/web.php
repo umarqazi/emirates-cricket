@@ -73,7 +73,8 @@ Route::get('/team', static function () {
     return view('frontend.teams');
 })->name('team');
 
-Route::get('/news-detail/{latest_news}/{id}', 'HomeController@international_news_content')->name('news-detail');
+Route::get('/international-news-detail/{id}', 'HomeController@international_news_content')->name('international-news-detail');
+Route::get('/news-detail/{id}', 'HomeController@news_content')->name('news-detail');
 
 Route::get('/uae-men', 'TeamController@uaeMens')->name('uae-men');
 Route::get('/uae-women', 'TeamController@uaeWomens')->name('uae-women');
