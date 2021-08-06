@@ -23,15 +23,15 @@ class ImageService
         $this->image_repo = new ImageRepo();
     }
 
-    public function find($name) {
+    public function find($name)
+    {
         return Image::where('name', $name)->get();
     }
 
     public function store($relation_model, $data): bool
     {
         $response = false;
-        foreach ($data['images'] as $imageName)
-        {
+        foreach ($data['images'] as $imageName) {
             $image = new Image();
             $image->name = $imageName;
             $status = $relation_model->images()->save($image);
@@ -39,8 +39,8 @@ class ImageService
             if ($status) {
 
                 /* Move file to storage path */
-                $old_path = 'uploads/temp/gallery-images/'.$imageName;
-                $new_path = 'uploads/gallery/'.$relation_model->id.'/';
+                $old_path = 'uploads/temp/gallery-images/' . $imageName;
+                $new_path = 'uploads/gallery/' . $relation_model->id . '/';
 
                 if (Storage::disk('public')->exists($old_path)) {
 
@@ -59,8 +59,7 @@ class ImageService
     public function storeSliderImage($relation_model, $data): bool
     {
         $response = false;
-        foreach ($data['images'] as $imageName)
-        {
+        foreach ($data['images'] as $imageName) {
             $image = new Image();
             $image->name = $imageName;
             $status = $relation_model->images()->save($image);
@@ -68,8 +67,8 @@ class ImageService
             if ($status) {
 
                 /* Move file to storage path */
-                $old_path = 'uploads/temp/homepage-slider-images/'.$imageName;
-                $new_path = 'uploads/homepage-slider/'.$relation_model->id.'/';
+                $old_path = 'uploads/temp/homepage-slider-images/' . $imageName;
+                $new_path = 'uploads/homepage-slider/' . $relation_model->id . '/';
 
                 if (Storage::disk('public')->exists($old_path)) {
 
@@ -87,8 +86,7 @@ class ImageService
 
     public function update($relation_model, $data)
     {
-        foreach ($data['images'] as $imageName)
-        {
+        foreach ($data['images'] as $imageName) {
             $found = $this->find($imageName);
 
             if ($found->isEmpty()) {
@@ -102,8 +100,7 @@ class ImageService
 
     public function updateSliderImage($relation_model, $data)
     {
-        foreach ($data['images'] as $imageName)
-        {
+        foreach ($data['images'] as $imageName) {
             $found = $this->find($imageName);
 
             if ($found->isEmpty()) {

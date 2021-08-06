@@ -16,19 +16,24 @@ class EmployeeService
         $this->employee_repo = new EmployeeRepo();
     }
 
-    public function all() {
-        return $this->employee_repo->all(Employee::class);
+    public function all()
+    {
+        return $this->employee_repo->all();
     }
 
-    public function paginatedRecords() {
-        return $this->employee_repo->paginatedRecords(Employee::class, 2);
+    public function paginatedRecords()
+    {
+        return $this->employee_repo->paginatedRecords(2);
     }
 
-    public function find($id) {
-        return $this->employee_repo->find(Employee::class, $id);
+    public function find($id)
+    {
+        return $this->employee_repo->find($id);
     }
-    public function findOne($id) {
-        return $this->employee_repo->findOne(Employee::class, $id);
+
+    public function findOne($id)
+    {
+        return $this->employee_repo->findOne($id);
     }
 
     public function store($params)
@@ -37,22 +42,22 @@ class EmployeeService
         $new_name = rand() . '.' . $image->getClientOriginalExtension();
         $image->move(public_path('storage/uploads/employees/'), $new_name);
         $params['image'] = $new_name;
-        return $this->employee_repo->store(Employee::class, $params);
+        return $this->employee_repo->store($params);
     }
 
     public function update($params, $id): bool
     {
-        if (isset($params['image'])){
+        if (isset($params['image'])) {
             $image = $params['image'];
             $image_name = rand() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('storage/uploads/employees/') , $image_name);
+            $image->move(public_path('storage/uploads/employees/'), $image_name);
             $params['image'] = $image_name;
         }
-        return $this->employee_repo->update(Employee::class, $params, $id);
+        return $this->employee_repo->update($params, $id);
     }
 
     public function delete($id): bool
     {
-        return $this->employee_repo->destroy(Employee::class, $id);
+        return $this->employee_repo->destroy($id);
     }
 }

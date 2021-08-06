@@ -30,21 +30,24 @@ class InstagramService
         ]);
     }
 
-    public function getDBTokens() {
+    public function getDBTokens()
+    {
         return $this->social_account_service->findByType(SocialAccount::$Instagram);
     }
 
-    public function instagramLogin() {
+    public function instagramLogin()
+    {
         return $this->instagram->getLoginUrl();
     }
 
-    public function instagramCallback($params) {
+    public function instagramCallback($params)
+    {
 
         $tokens = array();
 
         // Get the OAuth callback code
         $code = $params['code'];
-        Log::alert('Code:: '. $code);
+        Log::alert('Code:: ' . $code);
 
         // Get the short lived access token (valid for 1 hour)
         $short_access_token = $this->instagram->getOAuthToken($code);
@@ -66,12 +69,14 @@ class InstagramService
         return $tokens;
     }
 
-    public function getUserProfile() {
+    public function getUserProfile()
+    {
         $this->instagram->setAccessToken($this->accessToken);
         return $this->instagram->getUserProfile();
     }
 
-    public function getUserMedia() {
+    public function getUserMedia()
+    {
         $this->instagram->setAccessToken($this->accessToken);
         return $this->instagram->getUserMedia('me', 10);
     }
