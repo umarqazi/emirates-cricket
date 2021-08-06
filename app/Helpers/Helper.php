@@ -2,7 +2,7 @@
 
 use Hashids\Hashids;
 
-const LENGTH = 10;
+const LENGTH = 20;
 
 if (!function_exists('encodeData')) {
     /**

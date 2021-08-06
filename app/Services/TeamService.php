@@ -16,23 +16,28 @@ class TeamService
         $this->team_repo = new TeamRepo();
     }
 
-    public function getOne($where) {
-        return $this->team_repo->getOne(Team::class, $where);
+    public function getOne($where)
+    {
+        return $this->team_repo->getOne($where);
     }
 
-    public function all() {
-        return $this->team_repo->all(Team::class);
+    public function all()
+    {
+        return $this->team_repo->all();
     }
 
-    public function findOne($id) {
-        return $this->team_repo->findOne(Team::class, $id);
+    public function findOne($id)
+    {
+        return $this->team_repo->findOne($id);
     }
 
-    public function update($params, $id) {
-        return $this->team_repo->update(Team::class, $params, $id);
+    public function update($params, $id)
+    {
+        return $this->team_repo->update($params, $id);
     }
 
-    public function delete($id) {
-        return $this->team_repo->destroy(Team::class, $id);
+    public function delete($id)
+    {
+        return $this->team_repo->destroy($id);
     }
 }

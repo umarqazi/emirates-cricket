@@ -16,39 +16,44 @@ class PermissionService
         $this->permission_repo = new PermissionRepo();
     }
 
-    public function all() {
-        return $this->permission_repo->all(Permission::class, 'module', 'asc');
+    public function all()
+    {
+        return $this->permission_repo->all('module', 'asc');
     }
 
-    public function groupedBy() {
-        $all = $this->permission_repo->all(Permission::class,'created_at', 'asc');
+    public function groupedBy()
+    {
+        $all = $this->permission_repo->all('created_at', 'asc');
         return $all->groupBy('module')->toArray();
     }
 
-    public function paginatedRecords() {
-        return $this->permission_repo->paginatedRecords(Permission::class, 2);
+    public function paginatedRecords()
+    {
+        return $this->permission_repo->paginatedRecords(2);
     }
 
-    public function find($id) {
-        return $this->permission_repo->find(Permission::class, $id);
+    public function find($id)
+    {
+        return $this->permission_repo->find($id);
     }
 
-    public function findOne($id) {
-        return $this->permission_repo->findOne(Permission::class, $id);
+    public function findOne($id)
+    {
+        return $this->permission_repo->findOne($id);
     }
 
     public function store($params)
     {
-        return $this->permission_repo->store(Permission::class, $params);
+        return $this->permission_repo->store($params);
     }
 
     public function update($params, $id): bool
     {
-        return $this->permission_repo->update(Permission::class, $params, $id);
+        return $this->permission_repo->update($params, $id);
     }
 
     public function delete($id): bool
     {
-        return $this->permission_repo->destroy(Permission::class, $id);
+        return $this->permission_repo->destroy($id);
     }
 }

@@ -16,6 +16,6 @@ class CountryService
     }
 
     public function all() {
-        return $this->country_repo->all();
+        return $this->country_repo->allCountries();
     }
 }

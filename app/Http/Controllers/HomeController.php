@@ -53,7 +53,6 @@ class HomeController extends Controller
         $news = $this->news_service->getLatestRecords(5);
         $posts = $this->getSocialPosts();
         $international_news = $this->international_service->getLatestRecords(2);
-//        dd($international_news);
         return view('frontend.index', compact('sponsors', 'news', 'setting', 'posts', 'international_news'));
     }
 
@@ -74,18 +73,17 @@ class HomeController extends Controller
         return $post;
     }
 
-    public function international_news_content($latest_news, $id)
+    public function international_news_content($id)
     {
+        $news = $this->international_service->find(decodeData($id));
+        $name = 'international_service';
+        return view('frontend.news-detail', compact('news', 'name'));
+    }
 
-        $news = null;
-        $name = null;
-        if ($latest_news == 'latest_news') {
-            $news = $this->news_service->find($id);
-            $name = 'news_service';
-        } else {
-            $news = $this->international_service->find($id);
-            $name = 'international_service';
-        }
+    public function news_content($id)
+    {
+        $news = $this->news_service->find(decodeData($id));
+        $name = 'news_service';
         return view('frontend.news-detail', compact('news', 'name'));
     }
 }

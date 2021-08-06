@@ -11207,19 +11207,25 @@ th.team-player-head {
     100% {transform: rotate(-5deg) translateY(-10px);}
   }
 .exception-conatiner h1{
-    color: #e51c23;
+    color: #8D0303;
     font-size: 70px;
     margin-bottom: 0;
     font-weight: 1000;
 }
 .exception-conatiner h2{
-    color: #e51c23;
+    color: #8D0303;
     font-size: 24px;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+.exception-conatiner h4{
+    color: #8D0303;
+    font-size: 18px;
     margin-bottom: 60px;
 }
 .exception-conatiner .btn-home{
-border: solid 2px #e51c23;
-background-color: #e51c23;
+border: solid 2px #8D0303;
+background-color: #8D0303;
 color: white;
 font-size: 20px;
 padding: 11px 50px;
@@ -11228,19 +11234,19 @@ transition: all 0.5s;
 }
 .exception-conatiner .btn-home:hover{
     background-color: #fff;
-    color: #e51c23;
+    color: #8D0303;
     
 }
 .exception-conatiner .btn-contact{
-    border: solid 2px #e51c23;
+    border: solid 2px #8D0303;
     background-color: #fff;
-    color: #e51c23;
+    color: #8D0303;
     font-size: 20px;
     padding: 11px 21px;
     border-radius: 25px;
     transition: all 0.5s;
 }
 .exception-conatiner .btn-contact:hover{
-    background-color: #e51c23;
+    background-color: #8D0303;
     color: white;
 }

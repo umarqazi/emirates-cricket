@@ -6,8 +6,8 @@ namespace App\Repos;
 
 interface IRepo
 {
-    public function store($model, $data);
-    public function update($model, $data, $id);
-    public function destroy($model, $id);
+    public function store($data);
+    public function update($data, $id);
+    public function destroy($id);
 
 }

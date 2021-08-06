@@ -5,22 +5,18 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DevelopmentController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\EmployeeController;
-use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\InternationalNewsController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingController;
-use App\Http\Controllers\SocialAccountController;
 use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TeamPlayerController;
-use App\Http\Controllers\TournamentController;
 use App\Http\Controllers\UpdateController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use Symfony\Component\HttpFoundation\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,7 +73,8 @@ Route::get('/team', static function () {
     return view('frontend.teams');
 })->name('team');
 
-Route::get('/news-detail/{latest_news}/{id}', 'HomeController@international_news_content')->name('news-detail');
+Route::get('/international-news-detail/{id}', 'HomeController@international_news_content')->name('international-news-detail');
+Route::get('/news-detail/{id}', 'HomeController@news_content')->name('news-detail');
 
 Route::get('/uae-men', 'TeamController@uaeMens')->name('uae-men');
 Route::get('/uae-women', 'TeamController@uaeWomens')->name('uae-women');
@@ -239,4 +236,7 @@ Route::get('/user/set/password/{token}', 'UserController@setPassword')->name('se
 Route::post('/store/password', 'UserController@storePassword')->name('storePassword');
 
 
-Route::view('/expcetions','backend.exceptions.exception');
+Route::view('/404','exceptions.404');
+Route::view('/403','exceptions.403');
+Route::view('/500','exceptions.500');
+Route::view('/401','exceptions.401');

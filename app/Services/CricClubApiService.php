@@ -6,11 +6,6 @@ namespace App\Services;
 
 class CricClubApiService
 {
-    public function __construct()
-    {
-
-    }
-
     public function getClubIdAndLeagueList()
     {
         $url = config('cricclubapi.get_clubId_and_league_list_url');
@@ -24,13 +19,13 @@ class CricClubApiService
         return $this->curl_request($url);
     }
 
-    public function getLattestMatchResults($club_id, $league_id = null, $team_id=null)
+    public function getLattestMatchResults($club_id, $league_id = null, $team_id = null)
     {
         $match_results = array();
         $url = config('cricclubapi.get_all_schedules_or_fixtures_updated');
         $url = str_replace("{clubId}", $club_id, $url);
-        $url = !empty($league_id) ? $url.'&leagueId='.$league_id : $url;
-        $url = !empty($league_id) ? $url.'&teamId='.$team_id : $url;
+        $url = !empty($league_id) ? $url . '&leagueId=' . $league_id : $url;
+        $url = !empty($league_id) ? $url . '&teamId=' . $team_id : $url;
 
         /* Send out CURL Request to Cric-Club */
         $response = $this->curl_request($url);
@@ -48,7 +43,7 @@ class CricClubApiService
             /* Get only Recent 8 Matches */
             $recent_data = array_splice($reverse_data, 0, 8);
 
-            foreach ($recent_data as $key=>$data) {
+            foreach ($recent_data as $key => $data) {
 
                 $fixture_filter_results = array_filter($data, function ($k) {
                     return in_array($k, array('fixtureId', 'teamOne', 'teamTwo', 'date', 'time', 'matchType', 'location', 'leagueId', 'leagueName', 'matchID', 't1_logo_file_path', 't2_logo_file_path', 'seriesType'));
@@ -93,7 +88,8 @@ class CricClubApiService
         return $this->curl_request($url);
     }
 
-    public function curl_request($url) {
+    public function curl_request($url)
+    {
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -102,8 +98,8 @@ class CricClubApiService
 
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             "Content-Type: application/json",
-            "consumerKey:".env('PROD_CRIC_CLUB_CONSUMER_KEY'),
-            "apiKey:".env('PROD_CRIC_CLUB_API_KEY')
+            "consumerKey:" . env('PROD_CRIC_CLUB_CONSUMER_KEY'),
+            "apiKey:" . env('PROD_CRIC_CLUB_API_KEY')
         ));
 
         $response = curl_exec($ch);
