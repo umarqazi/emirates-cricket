@@ -257,4 +257,7 @@ Route::get('/user/set/password/{token}', 'UserController@setPassword')->name('se
 Route::post('/store/password', 'UserController@storePassword')->name('storePassword');
 
 
-Route::view('/expcetions','backend.exceptions.exception');
+Route::view('/404','backend.exceptions.404');
+Route::view('/403','backend.exceptions.403');
+Route::view('/500','backend.exceptions.500');
+Route::view('/401','backend.exceptions.401');
