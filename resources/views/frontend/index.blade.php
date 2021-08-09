@@ -105,7 +105,7 @@
                                     <div>
                                         <div class="post-inner">
                                             <figure>
-                                                <img src="{{ URL::asset('storage/uploads/news/'.$eachNews->id.'/'.$eachNews->image) }}" alt="">
+                                                <img src="{{ URL::asset('storage/uploads/news/'.$eachNews->image) }}" alt="">
                                                 <a href="{{route('news-detail',[encodeData($eachNews->id)])}}"
                                                    tabindex="0">
                                                     <figcaption>
