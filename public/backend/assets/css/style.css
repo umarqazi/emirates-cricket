@@ -11195,7 +11195,7 @@ th.team-player-head {
     justify-content: center;
 }
 .exception-conatiner img{
-    max-width: 300px;
+    max-width: 200px;
     animation: error 2s;
     animation-iteration-count: infinite;
 }
