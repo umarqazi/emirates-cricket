@@ -6,9 +6,11 @@ use App\Http\Requests\NewsRequest;
 use App\Http\Requests\UpdateNewsRequest;
 use App\News;
 use App\Services\NewsService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class NewsController extends Controller
 {
@@ -61,10 +63,13 @@ class NewsController extends Controller
         $params = $request->except('_token');
         $file = $request->file('image');
         $params['image'] = $imageName;
+        $params['date'] = Carbon::now();
+        $params['image_alt'] = $params['headline'];
+        $params['slug'] = Str::slug($params['headline']);
 
         $news = $this->news_service->store($params);
         if (!empty($news)) {
-            $path = 'uploads/news/'.$news->id.'/';
+            $path = 'uploads/news/';
             if (!Storage::disk('public')->exists($path)) {
                 Storage::disk('public')->makeDirectory($path);
             }
@@ -122,7 +127,7 @@ class NewsController extends Controller
         }
 
         if (!empty($news) && $request->hasFile('image')) {
-            $path = 'uploads/news/'.$news->id.'/';
+            $path = 'uploads/news/';
 
             if (!Storage::disk('public')->exists($path)) {
                 Storage::disk('public')->makeDirectory($path);
@@ -134,6 +139,11 @@ class NewsController extends Controller
             /* Upload New Image */
             Storage::disk('public')->putFileAs($path, $file, $imageName);
         }
+
+        $params['date'] = Carbon::now();
+        $params['image_alt'] = $params['headline'];
+        $params['slug'] = Str::slug($params['headline']);
+
         $news = $this->news_service->update($params, $news->id);
         return redirect()->route('news.index')->with('success', 'News has been Updated Successfully!');
     }

@@ -34,13 +34,17 @@
                                     <div class="row no-gutters">
                                         <div class="col-md-4">
                                             <div class="international-news-image">
-                                                <img src="{{ URL::asset('storage/uploads/news/'.$new->id.'/'.$new->image) }}" alt="">
+                                                @if(file_exists(public_path('storage/uploads/news/'.$new->image)))
+                                                    <img src="{{ URL::asset('storage/uploads/news/'.$new->image) }}" alt="">
+                                                @else
+                                                    <img src="{{URL::asset('frontend/assets/images/default-news-image.jpg')}}">
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="col-md-8">
                                             <div class="international-news-content international-content-news">
-                                                <h4>{{$new->title}}</h4>
-                                                <p> {!! \Illuminate\Support\Str::limit($new->text, 500) !!} </p>
+                                                <h4>{{$new->headline}}</h4>
+                                                <p> {!! $new->summary !!} </p>
                                                 <p class="read-more">
                                                     <a href="{{route('news-detail',[encodeData($new->id)])}}"
                                                        tabindex="0">Read more</a>

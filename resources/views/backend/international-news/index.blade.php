@@ -65,7 +65,7 @@
                                                                         <img src="{{asset('storage/uploads/international-news/'.$new->id.'/'.$new->image)}}" width="40px" height="40px">
                                                                     @endif
                                                                 </td>
-                                                                <td>{{$new->title}}</td>
+                                                                <td>{{\Illuminate\Support\Str::limit($new->title,30)}}</td>
                                                                 <td>{{date('d/m/Y', strtotime($new->created_at))}}</td>
                                                                 <td>
                                                                     @can('Show News')

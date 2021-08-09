@@ -114,8 +114,8 @@
                                                                 @foreach($team->players as $key=> $player)
                                                                     <tr class="team-player">
                                                                         <td>{{$key + 1}}</td>
-                                                                        <td>{{$player->name}}</td>
-                                                                        <td>{{$player->link}}</td>
+                                                                        <td>{{\Illuminate\Support\Str::limit($player->name,20)}}</td>
+                                                                        <td>{{\Illuminate\Support\Str::limit($player->link,20)}}</td>
                                                                         <td><img src="{{asset('storage/uploads/team-players/'.$player->image)}}" /></td>
                                                                         <td>
                                                                             @can('Edit Team Player')

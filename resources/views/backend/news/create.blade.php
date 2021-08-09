@@ -45,10 +45,10 @@
 
                                     <div class="row">
                                         <div class="input-field col m12 s12">
-                                            <input id="title" type="text" name="title" class="validate @error('title') invalid @enderror" value="{{old('title')}}">
-                                            <label for="title">News Title</label>
+                                            <input id="headline" type="text" name="headline" class="validate @error('headline') invalid @enderror" value="{{old('headline')}}">
+                                            <label for="headline">Headline</label>
 
-                                            @error('title')
+                                            @error('headline')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -56,12 +56,40 @@
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-12">News Description</div>
-                                        <div class="input-field col-12">
-                                            <textarea id="message5" class="ckeditor @error('text') invalid @enderror" name="text" rows="15" placeholder="Type News Description in here...">{{old('text')}}</textarea>
 
-                                            @error('text')
+                                    <div class="row">
+                                        <div class="input-field col m12 s12">
+                                            <input id="source" type="text" name="source" class="validate @error('source') invalid @enderror" value="{{old('source')}}">
+                                            <label for="source">Source</label>
+
+                                            @error('source')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-2">
+                                        <div class="col-12">Summary</div>
+                                        <div class="input-field col-12">
+                                            <textarea id="summary" class="ckeditor @error('summary') invalid @enderror" name="summary" rows="15" placeholder="Type News Summary in here...">{{old('summary')}}</textarea>
+
+                                            @error('summary')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-12">Description</div>
+                                        <div class="input-field col-12">
+                                            <textarea id="message5" class="ckeditor1 @error('description') invalid @enderror" name="description" rows="15" placeholder="Type News Description in here...">{{old('description')}}</textarea>
+
+                                            @error('description')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -72,13 +100,12 @@
                                     <div class="row">
                                         <div class="file-field input-field">
                                             <div class="btn custom-file-button">
-                                                <span>File</span>
+                                                <span>Image</span>
                                                 <input type="file" name="image" class="validate @error('image') invalid @enderror">
                                             </div>
                                             <div class="file-path-wrapper">
                                                 <input class="file-path validate" type="text">
                                             </div>
-
                                             @error('image')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

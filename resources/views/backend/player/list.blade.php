@@ -86,7 +86,7 @@
                                                                         <span></span>
                                                                     </label>
                                                                 </td>
-                                                                <td>{{$player->first_name.' '.$player->last_name}}</td>
+                                                                <td>{{\Illuminate\Support\Str::limit($player->first_name.' '.$player->last_name,20)}}</td>
                                                                 <td>{{$player->country->name}}</td>
                                                                 @if($player->visa_status == 0)
                                                                     <td>Visit</td>
