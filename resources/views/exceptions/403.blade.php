@@ -9,7 +9,7 @@
 </head>
 <body style="padding:0; margin:0;">
     <div class="exception-conatiner">
-        <img src="{{URL::asset('backend/assets/images/error404.png')}}" alt="">
+        <img src="{{URL::asset('backend/assets/images/403.jpg')}}" alt="">
         <h1>403</h1>
         <h2>Forbidden</h2>
         <h4>Access to this server is denied.</h4>

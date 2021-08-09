@@ -15,34 +15,25 @@
             </p>
         </div>
     </div>
-
     <!--    main heading        -->
 
     @if(!empty($news))
         <div class="container">
-            <h1 class="main-heading">{{$news->title}}</h1>
+            <h1 class="main-heading">{{$news->headline}}</h1>
         </div>
 
         <!--   Content Section     -->
         <div class="content-page-section">
             <div class="container">
                 <div class="news-post-image">
-                    @if($name == 'international_service')
-                        <img src="{{ URL::asset('storage/uploads/international-news/'.'/'.$news->id.'/'.$news->image) }}"
-                            class="feature-image" alt="">
-                    @else
-                        <img src="{{ URL::asset('storage/uploads/news/'.'/'.$news->id.'/'.$news->image) }}"
-                             class="feature-image" alt="">
-                    @endif
-                    <span><img src="{{ URL::asset('frontend/assets/images/calender.png') }}"
-                               alt=""> Publish at: <strong>{{$news->created_at->format('m-d-Y')}}</strong></span>
+                    <img src="{{ URL::asset('storage/uploads/news/'.'/'.$news->image) }}"
+                         class="feature-image" alt="">
+                    <span class="p-4"><img src="{{ URL::asset('frontend/assets/images/calender.png') }}" alt="">
+                        Publish at: <strong class="mx-2">{{\Carbon\Carbon::parse($news->date)->format('d/m/Y')}}</strong></span>
                 </div>
+
                 <div class="news-description">
-                    @if(isset($news->description))
-                        <p>{!! $news->description !!}</p>
-                    @else
-                        <p>{!! $news->text !!}</p>
-                    @endif
+                    <p>{!! $news->description !!}</p>
                 </div>
             </div>
         </div>
