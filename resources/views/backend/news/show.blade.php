@@ -43,25 +43,32 @@
                                 <form class="col s12">
                                     @csrf
 
-                                    @if(file_exists(public_path('storage/uploads/news/'.$news->id.'/'.$news->image)))
+                                    @if(file_exists(public_path('storage/uploads/news/'.$news->image)))
                                         <div class="row">
                                             <div class="col m6 s6 offset-m6 mb-1 right-align">
-                                                <img class="dummy_photo news-featured-image" src="{{asset('storage/uploads/news/'.$news->id.'/'.$news->image)}}">
+                                                <img class="dummy_photo news-featured-image" src="{{asset('storage/uploads/news/'.$news->image)}}">
                                             </div>
                                         </div>
                                     @endif
 
                                     <div class="row">
                                         <div class="input-field col m12 s12">
-                                            <input id="title" type="text" name="title" class="validate" value="{{$news->title}}">
-                                            <label for="title">News Title</label>
+                                            <input id="title" type="text" name="title" class="validate" value="{{$news->headline}}">
+                                            <label for="title">Headline</label>
                                         </div>
                                     </div>
 
                                     <div class="row">
-                                        <div class="col s12">News Description</div>
+                                        <div class="col s12">Summary</div>
                                         <div class="input-field col s12">
-                                            <textarea id="message5" class="ckeditor" name="text" rows="15" placeholder="Type News Description in here...">{!! $news->text !!}</textarea>
+                                            <textarea id="message5" class="ckeditor1" name="text" rows="15" placeholder="Type News Description in here...">{!! $news->summary !!}</textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col s12">Description</div>
+                                        <div class="input-field col s12">
+                                            <textarea id="message5" class="ckeditor" name="text" rows="15" placeholder="Type News Description in here...">{!! $news->description !!}</textarea>
                                         </div>
                                     </div>
                                 </form>

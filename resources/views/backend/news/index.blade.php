@@ -61,12 +61,14 @@
                                                         @foreach($news as $new)
                                                             <tr>
                                                                 <td>
-                                                                    @if(file_exists(public_path('storage/uploads/news/'.$new->id.'/'.$new->image)))
-                                                                        <img src="{{asset('storage/uploads/news/'.$new->id.'/'.$new->image)}}" width="40px" height="40px">
+                                                                    @if(file_exists(public_path('storage/uploads/news/'.$new->image)))
+                                                                        <img src="{{asset('storage/uploads/news/'.$new->image)}}" width="40px" height="40px">
+                                                                    @else
+                                                                        <img src="{{URL::asset('frontend/assets/images/default-news-image.jpg')}}">
                                                                     @endif
                                                                 </td>
-                                                                <td>{{$new->title}}</td>
-                                                                <td>{{date('d/m/Y', strtotime($new->created_at))}}</td>
+                                                                <td>{{\Illuminate\Support\Str::limit($new->headline,30)}}</td>
+                                                                <td>{{date('d/m/Y', strtotime($new->date))}}</td>
                                                                 <td>
                                                                     @can('Show News')
                                                                         <a href="{{route('news.show', encodeData($new->id))}}"><i class="material-icons">visibility</i></a>

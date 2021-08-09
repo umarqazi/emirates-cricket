@@ -44,20 +44,26 @@
                                     @csrf
                                     @method('PUT')
 
-                                    @if(file_exists(public_path('storage/uploads/news/'.$news->id.'/'.$news->image)))
+                                    @if(file_exists(public_path('storage/uploads/news/'.$news->image)))
                                         <div class="row">
                                             <div class="col m6 s6 offset-m6 mb-1 right-align">
-                                                <img class="dummy_photo news-featured-image" src="{{asset('storage/uploads/news/'.$news->id.'/'.$news->image)}}">
+                                                <img class="dummy_photo news-featured-image" src="{{asset('storage/uploads/news/'.$news->image)}}">
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="row">
+                                            <div class="col m6 s6 offset-m6 mb-1 right-align">
+                                                <img class="dummy_photo news-featured-image" src="{{URL::asset('frontend/assets/images/default-news-image.jpg')}}">
                                             </div>
                                         </div>
                                     @endif
 
                                     <div class="row">
                                         <div class="input-field col m12 s12">
-                                            <input id="title" type="text" name="title" class="validate @error('title') invalid @enderror" value="{{$news->title}}">
-                                            <label for="title">News Title</label>
+                                            <input id="headline" type="text" name="headline" class="validate @error('headline') invalid @enderror" value="{{$news->headline}}">
+                                            <label for="headline">Headline</label>
 
-                                            @error('title')
+                                            @error('headline')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -66,11 +72,50 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col s12">News Description</div>
-                                        <div class="input-field col s12">
-                                            <textarea id="message5" class="ckeditor @error('text') invalid @enderror" name="text" rows="15" placeholder="Type News Description in here...">{!! $news->text !!}</textarea>
+                                        <div class="input-field col m12 s12">
+                                            <input id="summary" type="text" name="summary" class="validate @error('summary') invalid @enderror" value="{{$news->summary}}">
+                                            <label for="summary">Summary</label>
 
-                                            @error('text')
+                                            @error('summary')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="input-field col m12 s12">
+                                            <input id="source" type="text" name="source" class="validate @error('source') invalid @enderror" value="{{ $news->source }}">
+                                            <label for="source">Source</label>
+
+                                            @error('source')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-2">
+                                        <div class="col-12">Summary</div>
+                                        <div class="input-field col-12">
+                                            <textarea id="summary" class="ckeditor @error('summary') invalid @enderror" name="summary" rows="15" placeholder="Type News Summary in here...">{!! $news->description !!}</textarea>
+
+                                            @error('summary')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-12">Description</div>
+                                        <div class="input-field col-12">
+                                            <textarea id="message5" class="ckeditor1 @error('description') invalid @enderror" name="description" rows="15" placeholder="Type News Description in here...">{!! $news->description !!}</textarea>
+
+                                            @error('description')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -80,14 +125,13 @@
 
                                     <div class="row">
                                         <div class="file-field input-field">
-                                            <div class="btn">
-                                                <span>File</span>
+                                            <div class="btn custom-file-button">
+                                                <span>Image</span>
                                                 <input type="file" name="image" class="validate @error('image') invalid @enderror">
                                             </div>
                                             <div class="file-path-wrapper">
                                                 <input class="file-path validate" type="text">
                                             </div>
-
                                             @error('image')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

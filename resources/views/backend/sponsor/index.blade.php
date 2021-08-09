@@ -66,8 +66,8 @@
                                                                         <img src="{{asset('storage/uploads/sponsor/'.$sponsor->id.'/'.$sponsor->image)}}" width="40px" height="40px">
                                                                     @endif
                                                                 </td>
-                                                                <td>{{$sponsor->name}}</td>
-                                                                <td>{{$sponsor->website}}</td>
+                                                                <td>{{\Illuminate\Support\Str::limit($sponsor->name,20)}}</td>
+                                                                <td>{{\Illuminate\Support\Str::limit($sponsor->website,20)}}</td>
                                                                 <td>{{date('d/m/Y', strtotime($sponsor->created_at))}}</td>
                                                                 <td>
                                                                     @can('Show Sponsor')

@@ -59,7 +59,7 @@
                                                     @if(!empty($developments))
                                                         @foreach($developments as $development)
                                                             <tr>
-                                                                <td>{{$development->title}}</td>
+                                                                <td>{{\Illuminate\Support\Str::limit($development->title,30)}}</td>
                                                                 <td><img src="{{ URL::asset('storage/uploads/development/'). '/'. $development->image }}"  class="img-thumbnail" width="75" /></td>
                                                                 <td>
                                                                     @can('Show Development')

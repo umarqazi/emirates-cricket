@@ -62,8 +62,8 @@
 
                                                             <tr>
                                                                 <td><img src="{{ URL::asset('storage/uploads/employees/'). '/'. $row->image }}"  class="img-thumbnail" width="75" /></td>
-                                                                <td>{{$row->name}}</td>
-                                                                <td>{{$row->designation}}</td>
+                                                                <td>{{\Illuminate\Support\Str::limit($row->name,20)}}</td>
+                                                                <td>{{\Illuminate\Support\Str::limit($row->designation,25)}}</td>
                                                                 <td>
                                                                     @can('Edit Employee')
                                                                         <a href="{{route('employee.edit', encodeData($row->id))}}"><i class="material-icons">edit</i></a>
