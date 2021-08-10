@@ -184,15 +184,29 @@ $(document).ready(function () {
     });
     if ($('.sub-menu').height() >= 400) {
         $('.sub-menu').addClass("show");
-      } 
+      }
     $('.sidebar').on('mouseover',function(){
         $('body').addClass("fixed-position");
     });
     $('.sidebar').on('mouseleave',function(){
         $('body').removeClass("fixed-position");
     });
- 
+
+    $('#search').on('change',function(){
+        var year = $("#search").val();
+         $.ajax({
+            headers: {
+               "X-CSRF-TOKEN" : $('meta[name="csrf-token"]').attr("content"),
+            },
+            type: "GET",
+            url: "/news",
+            data : { year : year },
+            success : function(data) {
+                $('.news-render').html(data);
+            }
+         });
+    });
+
 });
 
 
-  

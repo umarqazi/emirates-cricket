@@ -2221,7 +2221,7 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .content-section{
         max-width: calc(100% - 170px);
-      
+
     }
     body.sidebar-collapse .sidebar{
         left: -250px;
@@ -2318,7 +2318,7 @@ input[type=number]::-webkit-outer-spin-button {
     .fixtures-result-slider{
         padding: 0 20px;
     }
-    
+
 }
 
 @media (max-width: 1365px){
@@ -2334,7 +2334,7 @@ input[type=number]::-webkit-outer-spin-button {
     .sponcer-company .company-content p{
         font-size: 14px;
     }
-    
+
     .top-bar{
         position: static!important;
     }
@@ -2345,7 +2345,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 @media(max-width: 1279px){
-    
+
     .sub-menu{
         display:none;
     }
@@ -2632,5 +2632,14 @@ ul.sidebar-nav li .sub-menu::after {
         position: fixed;
         width: 100vw;
     }
-    
+
+    select#search {
+        width: 100px;
+        padding: 10px 20px;
+        max-height: 43px;
+        box-shadow: 2px 2px 6px #0000008c;
+        border: none;
+        color: #8D0303;
+    }
+
 }

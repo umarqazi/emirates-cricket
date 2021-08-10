@@ -17,8 +17,13 @@
     </div>
 
     <!--    main heading        -->
-    <div class="container">
+    <div class="container d-flex justify-content-between">
         <h1 class="main-heading">News</h1>
+        <select name="search" id="search">
+            @foreach($years as $year)
+                <option value="{{ $year['year'] }}" {{ request()->get('year')==$year['year'] ? 'selected' : '' }}> {{ $year['year'] }} </option>
+            @endforeach
+        </select>
     </div>
 
     <!--  Post Section     -->
@@ -26,7 +31,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
-                    <div class="latest-news international-news">
+                    <div class="latest-news international-news news-render">
 
                         @if(!empty($news))
                             @foreach($news as $new)
@@ -49,6 +54,11 @@
                                                     <a href="{{route('news-detail',[encodeData($new->id)])}}"
                                                        tabindex="0">Read more</a>
                                                 </p>
+                                                <div>
+                                                    <p>
+                                                        {{\Carbon\Carbon::parse($new->date)->format('F d Y')}}
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -57,7 +67,12 @@
                         @endif
 
                         <div class="paginated_results">
-                            {{ $news->links() }}
+                            @if(request()->get('year'))
+                                {{ $news->appends(array('year' => request()->get('year')))->links() }}
+                            @else
+                                {{ $news->links() }}
+                            @endif
+
                         </div>
                     </div>
                 </div>
