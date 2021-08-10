@@ -2157,6 +2157,19 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0;
 }
 
+.latest-news.international-news .pagination{
+justify-content: center;
+}
+.latest-news.international-news .pagination .page-item.active .page-link{
+background-color: #8D0303;
+color: #f1f1f1;
+border-color: #8D0303;
+}
+.latest-news.international-news .pagination .page-item .page-link{
+    
+    color: #8D0303;
+    border-color: #8D0303;
+    }
 /*+++++++  Responsiveness  ++++++++*/
 @media(max-width: 1599px){
     h1{
