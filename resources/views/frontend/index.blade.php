@@ -58,7 +58,7 @@
                                     <span>Teams</span>
                                 </h3>
                                 <p>The UAE senior Men's team is the team that represents the United Arab Emirates...</p>
-                                <!-- <a href="{{route('team')}}" class="btn">Read More</a> -->
+                            <!-- <a href="{{route('team')}}" class="btn">Read More</a> -->
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -68,7 +68,7 @@
                                     <span>Development</span>
                                 </h3>
                                 <p>Emirates Cricket currently offers the region two development platforms</p>
-                                <!-- <a href="{{route('development')}}" class="btn">Read More</a> -->
+                            <!-- <a href="{{route('development')}}" class="btn">Read More</a> -->
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -78,7 +78,7 @@
                                     <span>Fixtures</span>
                                 </h3>
                                 <p>Emirates Cricket's National Teams fixtures will be updated throughout...</p>
-                                <!-- <a href="{{route('fixtures')}}" class="btn">Read More</a> -->
+                            <!-- <a href="{{route('fixtures')}}" class="btn">Read More</a> -->
                             </div>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
                                                         <h5>{{ \Illuminate\Support\Str::limit($eachNews->title,35) }}</h5>
                                                         <p>{!! \Illuminate\Support\Str::limit($eachNews->text, 70) !!}</p>
                                                         <p class="date">
-                                                            <a href="{{route('news-detail',[encodeData($eachNews->id)])}}">{{date('M d, Y', strtotime($eachNews->created_at))}}</a>
+                                                            <a href="{{route('news-detail',[encodeData($eachNews->id)])}}">{{date('F d, Y', strtotime($eachNews->date))}}</a>
                                                         </p>
                                                     </figcaption>
                                                 </a>
@@ -139,7 +139,7 @@
                                                     <h4>{{\Illuminate\Support\Str::limit($int_news->title,60)}}</h4>
                                                     <p>{!! \Illuminate\Support\Str::limit($int_news->description, 200) !!}</p>
                                                     <p class="date">
-                                                        <a href="{{route('international-news-detail',[encodeData($int_news->id)])}}">{{date('M d, Y', strtotime($eachNews->created_at))}}</a>
+                                                        <a href="{{route('international-news-detail',[encodeData($int_news->id)])}}">{{date('F d, Y', strtotime($eachNews->date))}}</a>
                                                     </p>
                                                     @if(false)
                                                         <div class="play-video-button">
