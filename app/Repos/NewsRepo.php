@@ -14,4 +14,15 @@ class NewsRepo extends BaseRepo
     {
         parent::__construct($this->Model);
     }
+
+    public function newsYear()
+    {
+        $news = News::selectRaw('YEAR(date) as year')->groupBy('year')->get();
+        return $news;
+    }
+
+    public function yearlyNews($year,$records = 4)
+    {
+        return News::whereYear('date',$year)->orderBy('date', 'desc')->paginate($records);
+    }
 }

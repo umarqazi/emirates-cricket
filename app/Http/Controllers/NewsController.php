@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
 
 class NewsController extends Controller
@@ -162,8 +163,21 @@ class NewsController extends Controller
         }
     }
 
-    public function frontendNews() {
-        $news = $this->news_service->paginatedRecords();
-        return view('frontend.news', compact('news'));
+    public function frontendNews(Request $request)
+    {
+        if($request->ajax()) {
+            $year = $request->year ? $request->year : '';
+            $yearly_news = $this->news_service->yearlyNews($request->all());
+            return View::make("frontend.yearly-news", compact('yearly_news','year'))
+                ->render();
+        } else {
+            $years = $this->news_service->getNewsYear();
+            if ($request->year) {
+                $news = $this->news_service->yearlyNews($request->all());
+            } else {
+                $news = $this->news_service->paginatedRecords();
+            }
+            return view('frontend.news', compact('news','years'));
+        }
     }
 }
