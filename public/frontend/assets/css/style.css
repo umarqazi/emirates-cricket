@@ -555,7 +555,7 @@ body.sidebar-collapse .content-section {
 
 }
 .top-bar .pacific-logo {
-    max-height: 40px;
+    max-height: 35px;
     position: absolute;
     top: 7px;
     right: 15px;
@@ -2256,7 +2256,7 @@ border-color: #8D0303;
         padding: 13px 10px;
     }
     .top-bar .pacific-logo{
-        max-height: 37px;
+        max-height: 35px;
     }
     .banner-content {
         margin-top: -80px;
@@ -2358,6 +2358,7 @@ border-color: #8D0303;
 
     .top-bar{
         position: static!important;
+        width: 100%;
     }
     .content-section{
       padding-top: 0!important;
