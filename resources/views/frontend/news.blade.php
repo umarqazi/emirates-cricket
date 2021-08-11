@@ -20,6 +20,7 @@
     <div class="container d-flex justify-content-between">
         <h1 class="main-heading">News</h1>
         <select name="search" id="search">
+            <option value="" selected disabled hidden>Select Year</option>
             @foreach($years as $year)
                 <option value="{{ $year['year'] }}" {{ request()->get('year')==$year['year'] ? 'selected' : '' }}> {{ $year['year'] }} </option>
             @endforeach
