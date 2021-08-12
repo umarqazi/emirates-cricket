@@ -171,7 +171,8 @@ class NewsController extends Controller
             return View::make("frontend.yearly-news", compact('yearly_news','year'))
                 ->render();
         } else {
-            $years = $this->news_service->getNewsYear();
+            $news_years = $this->news_service->getNewsYear();
+            $years = $news_years->sortDesc();
             $current_year = count($years) - 1;
             if ($request->year) {
                 $news = $this->news_service->yearlyNews($request->all());
