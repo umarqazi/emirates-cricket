@@ -2721,6 +2721,7 @@ ul.sidebar-nav li .sub-menu::after {
         position: fixed;
         max-width: 170px;
     }
+
     .fixed-position {
         overflow: hidden;
     }
