@@ -2491,7 +2491,7 @@ border-color: #8D0303;
     }
 
     .logo .header-logo {
-        max-width: 70px;
+        max-width: 60px;
         max-height: 110px;
     }
     ul.sidebar-nav{
@@ -2721,9 +2721,8 @@ ul.sidebar-nav li .sub-menu::after {
         position: fixed;
         max-width: 170px;
     }
-    .fixed-position {
-        position: fixed;
-        width: 100vw;
+    .fixed-position::-webkit-scrollbar {
+        display: none;
     }
 
     select#search {
