@@ -29,7 +29,7 @@
                     <img src="{{ URL::asset('storage/uploads/news/'.'/'.$news->image) }}"
                          class="feature-image" alt="">
                     <span class="p-4"><img src="{{ URL::asset('frontend/assets/images/calender.png') }}" alt="">
-                        Publish at: <strong class="mx-2">{{\Carbon\Carbon::parse($news->date)->format('d/m/Y')}}</strong></span>
+                        Publish at: <strong class="mx-2">{{\Carbon\Carbon::parse($news->date)->format('F d Y')}}</strong></span>
                 </div>
 
                 <div class="news-description">

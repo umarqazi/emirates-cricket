@@ -172,10 +172,11 @@ class NewsController extends Controller
                 ->render();
         } else {
             $years = $this->news_service->getNewsYear();
+            $current_year = count($years) - 1;
             if ($request->year) {
                 $news = $this->news_service->yearlyNews($request->all());
             } else {
-                $news = $this->news_service->paginatedRecords();
+                $news = $this->news_service->yearlyNews($years[$current_year]->year);
             }
             return view('frontend.news', compact('news','years'));
         }
