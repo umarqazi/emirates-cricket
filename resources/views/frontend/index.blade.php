@@ -104,7 +104,7 @@
                                 @foreach($news as $eachNews)
                                     <div>
                                         <div class="post-inner">
-                                            <figure>
+                                            <figure class="default-img uploaded-img">
                                                 <img src="{{ URL::asset('storage/uploads/news/'.$eachNews->image) }}" alt="">
                                                 <a href="{{route('news-detail',[encodeData($eachNews->id)])}}"
                                                    tabindex="0">
@@ -132,7 +132,7 @@
                             <div class="row">
                                 @foreach($international_news as $int_news)
                                     <div class="col-md-6">
-                                        <div class="card international-news-image" >
+                                        <div class="card international-news-image international-default-img international-uploaded-img" >
                                             <a href="{{route('international-news-detail',[encodeData($int_news->id)])}}">
                                                 <img src="{{ URL::asset('storage/uploads/international-news/'.'/'.$int_news->id.'/'.$int_news->image) }}" alt="">
                                                 <div class="card-body international-news-content">
