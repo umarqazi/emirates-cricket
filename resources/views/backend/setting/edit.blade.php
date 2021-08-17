@@ -87,6 +87,7 @@
             params: {'path':path},
             maxFilesize: 5, // MB
             addRemoveLinks: true,
+            timeout: 180000,
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },

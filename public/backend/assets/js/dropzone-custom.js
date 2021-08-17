@@ -11,6 +11,7 @@ let files = @if(isset($gallery) && $gallery->images) {!! json_encode($gallery->i
         params: {'path': storage_path},
         maxFilesize: 5, // MB
         addRemoveLinks: addRemoveLinks,
+        timeout: 180000,
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },

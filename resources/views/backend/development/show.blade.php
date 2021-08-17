@@ -129,6 +129,7 @@
             maxFilesize: 5, // MB
             acceptedFiles:  ".png,.jpg,.jpeg",
             addRemoveLinks: true,
+            timeout: 180000,
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
