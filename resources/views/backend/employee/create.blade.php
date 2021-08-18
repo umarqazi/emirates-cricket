@@ -38,73 +38,73 @@
                             <div class="card-content">
                                 <div class="card-header">Create New Employee</div>
                                 <div class="row">
-                                        <form method="post" action="{{route('employee.store')}}" enctype="multipart/form-data">
+                                    <form method="post" action="{{route('employee.store')}}" enctype="multipart/form-data">
 
-                                            @csrf
+                                        @csrf
 
-                                            <div class="row">
-                                                <div class="input-field col m12 s12">
-                                                    <input id="title" type="text" name="name" class="validate @error('name') invalid @enderror" value="">
-                                                    <label for="title">Enter Employee Name</label>
+                                        <div class="row">
+                                            <div class="input-field col m12 s12">
+                                                <input id="title" type="text" name="name" class="validate @error('name') invalid @enderror" value="{{ old('name') }}">
+                                                <label for="title">Enter Employee Name</label>
 
-                                                    @error('name')
-                                                    <span class="invalid-feedback" role="alert">
+                                                @error('name')
+                                                <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
-                                                    @enderror
-                                                </div>
+                                                @enderror
                                             </div>
+                                        </div>
 
-                                            <div class="row">
-                                                <div class="input-field col m12 s12">
-                                                    <select name="designation" class="@error('designation') invalid @enderror">
-                                                        <option value="" disabled selected>Select Designation</option>
-                                                        @foreach(config('constants.designations') as $designation)
-                                                            <option value="{{$designation}}" {{old('designation') === $designation ? 'selected' : ''}}>{{$designation}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    <label>Select Designation</label>
+                                        <div class="row">
+                                            <div class="input-field col m12 s12">
+                                                <select name="designation" class="@error('designation') invalid @enderror">
+                                                    <option value="" disabled selected>Select Designation</option>
+                                                    @foreach(config('constants.designations') as $designation)
+                                                        <option value="{{$designation}}" {{old('designation') === $designation ? 'selected' : ''}}>{{$designation}}</option>
+                                                    @endforeach
+                                                </select>
+                                                <label>Select Designation</label>
 
-                                                    @error('designation')
-                                                    <span class="invalid-feedback" role="alert">
+                                                @error('designation')
+                                                <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
-                                                    @enderror
-                                                </div>
+                                                @enderror
                                             </div>
+                                        </div>
 
-                                            <div class="row">
-                                                <div class="input-field col m12 col-12">
-                                                    <div class="col-12" style="margin-bottom: 10px">Employee Description</div>
-                                                    <textarea id="message5" class="ckeditor @error('description') invalid @enderror" name="description" rows="15" placeholder="Type Description in here...">{{old('text')}}</textarea>
+                                        <div class="row">
+                                            <div class="input-field col m12 col-12">
+                                                <div class="col-12" style="margin-bottom: 10px">Employee Description</div>
+                                                <textarea id="message5" class="ckeditor @error('description') invalid @enderror" name="description" rows="15" placeholder="Type Description in here...">{{old('description')}}</textarea>
 
-                                                    @error('description')
-                                                    <span class="invalid-feedback" role="alert">
+                                                @error('description')
+                                                <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
-                                                    @enderror
-                                                </div>
+                                                @enderror
                                             </div>
+                                        </div>
 
-                                            <div class="row">
-                                                <div class="input-field col m12 s12">
-                                                    <input id="title" type="file" name="image" class="validate @error('image') invalid @enderror" value="">
+                                        <div class="row">
+                                            <div class="input-field col m12 s12">
+                                                <input id="title" type="file" name="image" class="validate @error('image') invalid @enderror" value="">
 
-                                                    @error('image')
-                                                    <span class="invalid-feedback" role="alert">
+                                                @error('image')
+                                                <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
-                                                    @enderror
-                                                </div>
+                                                @enderror
                                             </div>
+                                        </div>
 
-                                            <div class="input-field col s12">
-                                                <button class="btn cyan waves-effect waves-light right" type="submit">Create Employee
-                                                    <i class="material-icons right">send</i>
-                                                </button>
-                                            </div>
+                                        <div class="input-field col s12">
+                                            <button class="btn cyan waves-effect waves-light right" type="submit">Create Employee
+                                                <i class="material-icons right">send</i>
+                                            </button>
+                                        </div>
 
-                                        </form>
+                                    </form>
                                 </div>
                             </div>
                         </div>
