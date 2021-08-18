@@ -18,7 +18,6 @@ class DatabaseSeeder extends Seeder
          $this->call(AdminUserRoleSeeder::class);
          $this->call(DevelopmentTableSeeder::class);
          $this->call(SettingTableSeeder::class);
-         $this->call(SocialAccountSeeder::class);
          $this->call(ContentPageSeeder::class);
     }
 }
