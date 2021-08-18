@@ -15,8 +15,6 @@ class RoleController extends Controller
 
     public function __construct()
     {
-        /* Check User Permission to Perform Action */
-
         $this->role_service = new RoleService();
         $this->permission_service = new PermissionService();
     }

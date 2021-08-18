@@ -22,8 +22,6 @@ class SponsorController extends Controller
      */
     public function __construct()
     {
-        /* Check User Permission to Perform Action */
-
         $this->sponsor_service = new SponsorService();
     }
 

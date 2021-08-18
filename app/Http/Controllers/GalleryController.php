@@ -26,8 +26,6 @@ class GalleryController extends Controller
      */
     public function __construct()
     {
-        /* Check User Permission to Perform Action */
-
         $this->gallery_service = new GalleryService();
         $this->image_service = new ImageService();
     }

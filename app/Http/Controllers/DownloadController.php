@@ -14,8 +14,6 @@ class DownloadController extends Controller
 
     public function __construct()
     {
-        /* Check User Permission to Perform Action */
-
         $this->download_service = new DownloadService();
     }
     /**

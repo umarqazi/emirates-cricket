@@ -15,8 +15,6 @@ class TeamController extends Controller
 
     public function __construct()
     {
-        /* Check User Permission to Perform Action */
-
         $this->team_service = new TeamService();
         $this->team_player_service = new TeamPlayerService();
     }

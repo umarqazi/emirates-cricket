@@ -30,8 +30,6 @@ class AboutUsController extends Controller
      */
     public function __construct()
     {
-        /* Check User Permission to Perform Action */
-
         $this->about_service = new AboutService();
         $this->employee_service = new EmployeeService();
     }
