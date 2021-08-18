@@ -13,8 +13,6 @@ class UpdateController extends Controller
 
     public function __construct()
     {
-        /* Check User Permission to Perform Action */
-
         $this->update_service = new UpdateService();
     }
 

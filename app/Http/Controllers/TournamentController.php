@@ -25,9 +25,6 @@ class TournamentController extends Controller
 
     public function __construct()
     {
-        /* Check User Permission to Perform Action */
-        $this->authorizeResource(Tournament::class, 'tournament');
-
         $this->tournament_service = new TournamentService();
         $this->setting_service = new SettingService();
     }

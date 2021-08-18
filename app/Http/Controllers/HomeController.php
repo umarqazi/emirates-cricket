@@ -11,7 +11,6 @@ use App\Services\SocialAccountService;
 use App\Services\SocialPostService;
 use App\Services\SponsorService;
 use App\SocialAccount;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {

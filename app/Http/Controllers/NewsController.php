@@ -25,8 +25,6 @@ class NewsController extends Controller
      */
     public function __construct()
     {
-        /* Check User Permission to Perform Action */
-
         $this->news_service = new NewsService();
     }
 

@@ -16,7 +16,7 @@ class ContentPageSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('developments')->delete();
+        DB::table('content_pages')->delete();
 
         $contentPages = array(
             array('page_type' => IPageType::aboutPage, 'about_type' => IAboutType::aboutMandate, 'council_type' => '', 'content' => '<p>Emirates Cricket is the governing body for the sport of cricket in the United Arab Emirates. The Emirates Cricket Board is responsible for overseeing all aspects of play within the four councils, as well as in all other Emirates.&nbsp;<br><br>Emirates Cricket’s Councils include Abu Dhabi, Ajman, Dubai and Sharjah. The remaining Emirates under the Board are Fujairah, and Ras Al Khaimah.&nbsp;<br><br>Emirates Cricket is an Associate Member of the International Cricket Council (ICC).</p>'),

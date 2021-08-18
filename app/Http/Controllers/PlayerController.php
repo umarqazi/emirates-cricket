@@ -30,8 +30,6 @@ class PlayerController extends Controller
      */
     public function __construct()
     {
-        /* Check User Permission to Perform Action */
-
         $this->player_service = new PlayerService;
         $this->country_service = new CountryService();
     }

@@ -23,6 +23,6 @@ class DevelopmentTableSeeder extends Seeder
                 <p>We believe the development pathway provides a unique opportunity to progress from grass roots cricket to potentially becoming a UAE National player and provides a player with some clarity on where they fit in.</p><p>The development pathway is about letting everyone know where their opportunities lie in cricket and how we, Emirates Cricket, can help progress their involvement in the game.</p><p>The pathway has a strong focus on talent identification and includes the important new initiatives of the National Inter Council U16, U19 and Open tournaments. These tournaments allow the best players from the region to represent their emirate for possible national team selection.</p><p>In addition to this, plans are underway in creating a national academy to support the talent identification aspect of the programme. For more information about the Development Pathway contact Emirates Cricket’s National Development Manager, Andrew Russell via email: <a href="mailto:andrew.russell@emiratescricket.com">andrew.russell@emiratescricket.com</a></p>', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()),
             );
 
-        Development::insert($records);
+        DB::table('developments')->insert($records);
     }
 }
