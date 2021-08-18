@@ -30,7 +30,7 @@
                     <?php if ($employee['designation'] == "Chairman") {?>
                     <div class="col-md-4">
                         <div class="member">
-                            <figure>
+                            <figure class="member-default-img member-uploaded-img">
                                 <a data-src="#employee_{{$employee->id}}" href="javascript:void(0)" class="about_modal">
                                     <img src="{{ URL::asset('storage/uploads/employees/'.$employee->image) }}" alt="">
                                 </a>
