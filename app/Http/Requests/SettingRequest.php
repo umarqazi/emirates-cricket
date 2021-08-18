@@ -23,8 +23,6 @@ class SettingRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'tournament_fees' => 'required'
-        ];
+        return [];
     }
 }
