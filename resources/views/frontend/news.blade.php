@@ -39,13 +39,15 @@
                                 <div class="news-inner-content">
                                     <div class="row no-gutters">
                                         <div class="col-md-4">
-                                            <div class="international-news-image">
-                                                @if(file_exists(public_path('storage/uploads/news/'.$new->image)))
+                                            @if(file_exists(public_path('storage/uploads/news/'.$new->image)))
+                                                <div class="international-news-image uploaded-img">
                                                     <img src="{{ URL::asset('storage/uploads/news/'.$new->image) }}" alt="">
-                                                @else
+                                                </div>
+                                            @else
+                                                <div class="international-news-image default-img">
                                                     <img src="{{URL::asset('frontend/assets/images/default-news-image.jpg')}}">
-                                                @endif
-                                            </div>
+                                                </div>
+                                            @endif
                                         </div>
                                         <div class="col-md-8">
                                             <div class="international-news-content international-content-news">

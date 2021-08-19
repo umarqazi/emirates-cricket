@@ -26,8 +26,8 @@
         <div class="container">
 
             <div class="row justify-content-center">
-            @foreach($about as $employee)
-                    <?php if ($employee['designation'] == "Chairman") {?>
+                @foreach($about as $employee)
+                    <?php if ($employee['designation'] === "Chairman") {?>
                     <div class="col-md-4">
                         <div class="member">
                             <figure class="member-default-img member-uploaded-img">
@@ -40,12 +40,12 @@
                         </div>
                     </div>
                     <?php } ?>
-            @endforeach
+                @endforeach
             </div>
 
             <div class="row justify-content-center">
                 @foreach($about as $employee)
-                    <?php if ($employee['designation'] == "Vice-Chairman") {?>
+                    <?php if ($employee['designation'] === "Vice-Chairman") {?>
                     <div class="col-md-4">
                         <div class="member">
                             <figure>
@@ -91,8 +91,6 @@
                     <?php } ?>
                 @endforeach
             </div>
-
         </div>
     </div>
-
 @endsection

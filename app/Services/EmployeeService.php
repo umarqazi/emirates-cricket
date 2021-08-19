@@ -18,7 +18,7 @@ class EmployeeService
 
     public function all()
     {
-        return $this->employee_repo->all();
+        return $this->employee_repo->all('id', 'asc');
     }
 
     public function paginatedRecords()
