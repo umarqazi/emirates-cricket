@@ -104,8 +104,17 @@
                                 @foreach($news as $eachNews)
                                     <div>
                                         <div class="post-inner">
-                                            <figure class="default-img uploaded-img">
-                                                <img src="{{ URL::asset('storage/uploads/news/'.$eachNews->image) }}" alt="">
+                                            <figure>
+                                                @if(file_exists(public_path('storage/uploads/news/'.$eachNews->image)))
+                                                    <div class="international-news-image uploaded-img">
+                                                        <img src="{{ URL::asset('storage/uploads/news/'.$eachNews->image) }}" alt="">
+                                                    </div>
+                                                @else
+                                                    <div class="international-news-image default-img">
+                                                        <img src="{{URL::asset('frontend/assets/images/default-news-image.jpg')}}">
+                                                    </div>
+                                                @endif
+
                                                 <a href="{{route('news-detail',[encodeData($eachNews->id)])}}"
                                                    tabindex="0">
                                                     <figcaption>
@@ -117,7 +126,6 @@
                                                     </figcaption>
                                                 </a>
                                             </figure>
-
                                         </div>
                                     </div>
                                 @endforeach
