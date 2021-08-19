@@ -106,7 +106,7 @@
                                         <div class="post-inner">
                                             <figure>
                                                 @if(file_exists(public_path('storage/uploads/news/'.$eachNews->image)))
-                                                    <div class="international-news-image uploaded-img">
+                                                    <div class="international-news-image uploaded-img default-img">
                                                         <img src="{{ URL::asset('storage/uploads/news/'.$eachNews->image) }}" alt="">
                                                     </div>
                                                 @else
