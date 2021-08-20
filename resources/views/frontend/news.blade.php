@@ -22,7 +22,8 @@
         <select name="search" id="search">
             <option value="" selected disabled hidden>Select Year</option>
             @foreach($years as $year)
-                <option value="{{ $year['year'] }}" {{ request()->get('year')==$year['year'] ? 'selected' : '' }}> {{ $year['year'] }} </option>
+                <option
+                    value="{{ $year['year'] }}" {{ request()->get('year')==$year['year'] ? 'selected' : '' }}> {{ $year['year'] }} </option>
             @endforeach
         </select>
     </div>
@@ -35,79 +36,41 @@
                     <div class="latest-news international-news news-render">
 
                         @if(!empty($news))
-                           
-                                <div class="news-inner-content">
-                                    <div class="row no-gutters">
-                                    @foreach($news as $new)
-                                        <div class="col-md-4 p-2">
-                                        <a href="{{route('news-detail',[encodeData($new->id)])}}"
-                                                       tabindex="0">
-                                            <div class="inner-news-img-container">
-                                            @if(file_exists(public_path('storage/uploads/news/'.$new->image)))
-                                                <div class="inner-news-uploaded-img">
-                                                    <img src="{{ URL::asset('storage/uploads/news/'.$new->image) }}" alt="">
-                                                </div>
-                                            @else
-                                                <div class="inner-news-default-img">
-                                                    <img src="{{URL::asset('frontend/assets/images/default-news-image.jpg')}}">
-                                                </div>
-                                                
-                                            @endif
-                                            <div class="inner-news-content">
-                                                <h4>{{$new->headline}}</h4>
-                                                <!-- <p> {!! $new->summary !!} </p> -->
-                                                <!-- <p class="read-more">
-                                                    <a href="{{route('news-detail',[encodeData($new->id)])}}"
-                                                       tabindex="0">Read more</a>
-                                                </p> -->
-                                                <div>
-                                                    <p>
-                                                        {{\Carbon\Carbon::parse($new->date)->format('F d Y')}}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            </div>
-                                            </a>
-                                        </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                           
-                        @endif
-
-                        {{--@if(!empty($news))
                             <div class="news-inner-content">
                                 <div class="row no-gutters">
                                     @foreach($news as $new)
-                                        <div class="col-md-4">
-                                            @if(file_exists(public_path('storage/uploads/news/'.$new->image)))
-                                                <div class="international-news-image international-uploaded-img">
-                                                    <img src="{{ URL::asset('storage/uploads/news/'.$new->image) }}" alt="">
-                                                </div>
-                                            @else
-                                                <div class="international-news-image international-default-img">
-                                                    <img src="{{URL::asset('frontend/assets/images/default-news-image.jpg')}}">
-                                                </div>
-                                            @endif
+                                        <div class="col-md-4 p-2">
+                                            <a href="{{route('news-detail',[encodeData($new->id)])}}"
+                                               tabindex="0">
+                                                <div class="inner-news-img-container">
+                                                    @if(file_exists(public_path('storage/uploads/news/'.$new->image)))
+                                                        <div class="inner-news-uploaded-img">
+                                                            <img
+                                                                src="{{ URL::asset('storage/uploads/news/'.$new->image) }}"
+                                                                alt="">
+                                                        </div>
+                                                    @else
+                                                        <div class="inner-news-default-img">
+                                                            <img
+                                                                src="{{URL::asset('frontend/assets/images/default-news-image.jpg')}}">
+                                                        </div>
 
-                                            <div class="international-news-content international-content-news">
-                                                <h4>{{$new->headline}}</h4>
-                                                <p> {!! $new->summary !!} </p>
-                                                <p class="read-more">
-                                                    <a href="{{route('news-detail',[encodeData($new->id)])}}"
-                                                       tabindex="0">Read more</a>
-                                                </p>
-                                                <div>
-                                                    <p>
-                                                        {{\Carbon\Carbon::parse($new->date)->format('F d Y')}}
-                                                    </p>
+                                                    @endif
+                                                    <div class="inner-news-content">
+                                                        <h4>{{ \Illuminate\Support\Str::limit($new->headline, 50)}}</h4>
+                                                        <div>
+                                                            <p>
+                                                                {{\Carbon\Carbon::parse($new->date)->format('F d Y')}}
+                                                            </p>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
                                     @endforeach
                                 </div>
                             </div>
-                        @endif--}}
+                        @endif
 
                         <div class="paginated_results">
                             @if(request()->get('year'))

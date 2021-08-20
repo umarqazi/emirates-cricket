@@ -52,13 +52,13 @@ class NewsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(NewsRequest $request): \Illuminate\Http\RedirectResponse
     {
         $extension = $request->file('image')->getClientOriginalExtension();
-        $imageName = time().'.'.$extension;
+        $imageName = time() . '.' . $extension;
         $params = $request->except('_token');
         $file = $request->file('image');
         $params['image'] = $imageName;
@@ -81,7 +81,7 @@ class NewsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($news)
@@ -93,7 +93,7 @@ class NewsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($news)
@@ -105,8 +105,8 @@ class NewsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateNewsRequest $request, News $news): \Illuminate\Http\RedirectResponse
@@ -121,7 +121,7 @@ class NewsController extends Controller
             $imageName = time() . '.' . $extension;
             $file = $request->file('image');
             $params['image'] = $imageName;
-        } else{
+        } else {
             $params['image'] = $oldImageName;
         }
 
@@ -133,7 +133,7 @@ class NewsController extends Controller
             }
 
             /* Delete Old Image */
-            File::delete(public_path('storage/uploads/news/'.$news->id.'/'.$oldImageName));
+            File::delete(public_path('storage/uploads/news/' . $news->id . '/' . $oldImageName));
 
             /* Upload New Image */
             Storage::disk('public')->putFileAs($path, $file, $imageName);
@@ -150,7 +150,7 @@ class NewsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($news): \Illuminate\Http\RedirectResponse
@@ -163,10 +163,10 @@ class NewsController extends Controller
 
     public function frontendNews(Request $request)
     {
-        if($request->ajax()) {
+        if ($request->ajax()) {
             $year = $request->year ? $request->year : '';
             $yearly_news = $this->news_service->yearlyNews($request->all());
-            return View::make("frontend.yearly-news", compact('yearly_news','year'))
+            return View::make("frontend.yearly-news", compact('yearly_news', 'year'))
                 ->render();
         } else {
             $news_years = $this->news_service->getNewsYear();
@@ -177,7 +177,7 @@ class NewsController extends Controller
             } else {
                 $news = $this->news_service->yearlyNews($years[$current_year]->year);
             }
-            return view('frontend.news', compact('news','years'));
+            return view('frontend.news', compact('news', 'years'));
         }
     }
 }
