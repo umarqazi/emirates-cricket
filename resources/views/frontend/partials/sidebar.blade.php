@@ -88,12 +88,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('education')}}">
-                        <i class=" fa-angle-double-right"></i>
-                        <span>Downloads</span>
-                    </a>
-                </li>
-                <li>
                     <a href="{{route('contact')}}">
                         <i class=" fa-angle-double-right"></i>
                         <span>Contact us</span>

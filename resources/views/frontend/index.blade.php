@@ -58,7 +58,7 @@
                                     <span>Teams</span>
                                 </h3>
                                 <p>The UAE senior Men's team is the team that represents the United Arab Emirates...</p>
-                            <!-- <a href="{{route('team')}}" class="btn">Read More</a> -->
+                             <a href="{{route('team')}}" class="btn">Read More</a>
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -68,7 +68,7 @@
                                     <span>Development</span>
                                 </h3>
                                 <p>Emirates Cricket currently offers the region two development platforms</p>
-                            <!-- <a href="{{route('development')}}" class="btn">Read More</a> -->
+                             <a href="{{route('development')}}" class="btn">Read More</a>
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -78,7 +78,7 @@
                                     <span>Fixtures</span>
                                 </h3>
                                 <p>Emirates Cricket's National Teams fixtures will be updated throughout...</p>
-                            <!-- <a href="{{route('fixtures')}}" class="btn">Read More</a> -->
+                             <a href="{{route('fixtures')}}" class="btn">Read More</a>
                             </div>
                         </div>
                     </div>
