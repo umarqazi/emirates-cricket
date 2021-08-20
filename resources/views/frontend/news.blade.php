@@ -31,42 +31,48 @@
     <div class="post-section">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-10">
+                <div class="col-lg-12">
                     <div class="latest-news international-news news-render">
 
                         @if(!empty($news))
-                            @foreach($news as $new)
+                           
                                 <div class="news-inner-content">
                                     <div class="row no-gutters">
-                                        <div class="col-md-4">
+                                    @foreach($news as $new)
+                                        <div class="col-md-4 p-2">
+                                        <a href="{{route('news-detail',[encodeData($new->id)])}}"
+                                                       tabindex="0">
+                                            <div class="inner-news-img-container">
                                             @if(file_exists(public_path('storage/uploads/news/'.$new->image)))
-                                                <div class="international-news-image international-uploaded-img">
+                                                <div class="inner-news-uploaded-img">
                                                     <img src="{{ URL::asset('storage/uploads/news/'.$new->image) }}" alt="">
                                                 </div>
                                             @else
-                                                <div class="international-news-image international-default-img">
+                                                <div class="inner-news-default-img">
                                                     <img src="{{URL::asset('frontend/assets/images/default-news-image.jpg')}}">
                                                 </div>
+                                                
                                             @endif
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="international-news-content international-content-news">
+                                            <div class="inner-news-content">
                                                 <h4>{{$new->headline}}</h4>
-                                                <p> {!! $new->summary !!} </p>
-                                                <p class="read-more">
+                                                <!-- <p> {!! $new->summary !!} </p> -->
+                                                <!-- <p class="read-more">
                                                     <a href="{{route('news-detail',[encodeData($new->id)])}}"
                                                        tabindex="0">Read more</a>
-                                                </p>
+                                                </p> -->
                                                 <div>
                                                     <p>
                                                         {{\Carbon\Carbon::parse($new->date)->format('F d Y')}}
                                                     </p>
                                                 </div>
                                             </div>
+                                            </div>
+                                            </a>
                                         </div>
+                                        @endforeach
                                     </div>
                                 </div>
-                            @endforeach
+                           
                         @endif
 
                         {{--@if(!empty($news))
