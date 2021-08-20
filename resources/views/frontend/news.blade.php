@@ -22,7 +22,8 @@
         <select name="search" id="search">
             <option value="" selected disabled hidden>Select Year</option>
             @foreach($years as $year)
-                <option value="{{ $year['year'] }}" {{ request()->get('year')==$year['year'] ? 'selected' : '' }}> {{ $year['year'] }} </option>
+                <option
+                    value="{{ $year['year'] }}" {{ request()->get('year')==$year['year'] ? 'selected' : '' }}> {{ $year['year'] }} </option>
             @endforeach
         </select>
     </div>
@@ -31,42 +32,44 @@
     <div class="post-section">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-10">
+                <div class="col-lg-12">
                     <div class="latest-news international-news news-render">
 
                         @if(!empty($news))
-                            @foreach($news as $new)
-                                <div class="news-inner-content">
-                                    <div class="row no-gutters">
-                                        <div class="col-md-4">
-                                            @if(file_exists(public_path('storage/uploads/news/'.$new->image)))
-                                                <div class="international-news-image international-uploaded-img">
-                                                    <img src="{{ URL::asset('storage/uploads/news/'.$new->image) }}" alt="">
+                            <div class="news-inner-content">
+                                <div class="row no-gutters">
+                                    @foreach($news as $new)
+                                        <div class="col-md-4 p-2">
+                                            <a href="{{route('news-detail',[encodeData($new->id)])}}"
+                                               tabindex="0">
+                                                <div class="inner-news-img-container">
+                                                    @if(file_exists(public_path('storage/uploads/news/'.$new->image)))
+                                                        <div class="inner-news-uploaded-img">
+                                                            <img
+                                                                src="{{ URL::asset('storage/uploads/news/'.$new->image) }}"
+                                                                alt="">
+                                                        </div>
+                                                    @else
+                                                        <div class="inner-news-default-img">
+                                                            <img
+                                                                src="{{URL::asset('frontend/assets/images/default-news-image.jpg')}}">
+                                                        </div>
+
+                                                    @endif
+                                                    <div class="inner-news-content">
+                                                        <h4>{{ \Illuminate\Support\Str::limit($new->headline, 50)}}</h4>
+                                                        <div>
+                                                            <p>
+                                                                {{\Carbon\Carbon::parse($new->date)->format('F d Y')}}
+                                                            </p>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            @else
-                                                <div class="international-news-image international-default-img">
-                                                    <img src="{{URL::asset('frontend/assets/images/default-news-image.jpg')}}">
-                                                </div>
-                                            @endif
+                                            </a>
                                         </div>
-                                        <div class="col-md-8">
-                                            <div class="international-news-content international-content-news">
-                                                <h4>{{$new->headline}}</h4>
-                                                <p> {!! $new->summary !!} </p>
-                                                <p class="read-more">
-                                                    <a href="{{route('news-detail',[encodeData($new->id)])}}"
-                                                       tabindex="0">Read more</a>
-                                                </p>
-                                                <div>
-                                                    <p>
-                                                        {{\Carbon\Carbon::parse($new->date)->format('F d Y')}}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
-                            @endforeach
+                            </div>
                         @endif
 
                         <div class="paginated_results">
