@@ -1,5 +1,5 @@
 <div class="top-bar">
-    <a href="https://pacificventures.co/About-Pacific-Ventures.aspx">
+    <a href="https://pacificventures.co/About-Pacific-Ventures.aspx" target="_blank">
         <img class="pacific-logo" src="{{ URL::asset('frontend/assets/images/pacificLogo.png') }} " alt="">
     </a>
     <div class="marquee">

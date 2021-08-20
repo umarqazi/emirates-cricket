@@ -41,7 +41,7 @@
                                                 <h3>{{$sponsor->name}}</h3>
                                                 <p>{!! $sponsor->text !!}</p>
                                             </div>
-                                            <a href="{{$sponsor->website}}" class="btn">View Website</a>
+                                            <a href="{{$sponsor->website}}" target="_blank" class="btn">View Website</a>
                                         </div>
                                     </div>
                                 @endforeach
