@@ -48,7 +48,7 @@
                     <?php if ($employee['designation'] === "Vice-Chairman") {?>
                     <div class="col-md-4">
                         <div class="member">
-                            <figure>
+                            <figure class="member-default-img member-uploaded-img">
                                 <a data-src="#employee_{{$employee->id}}" href="javascript:void(0)" class="about_modal">
                                     <img src="{{ URL::asset('storage/uploads/employees/'.$employee->image) }}" alt="">
                                 </a>
@@ -62,7 +62,7 @@
                     <?php if ($employee['designation'] == "General Secretary") {?>
                     <div class="col-md-4">
                         <div class="member">
-                            <figure>
+                            <figure class="member-default-img member-uploaded-img">
                                 <a data-src="#employee_{{$employee->id}}" href="javascript:void(0)" class="about_modal">
                                     <img src="{{ URL::asset('storage/uploads/employees/'.$employee->image) }}" alt="">
                                 </a>
@@ -80,7 +80,7 @@
                     <?php if ($employees['designation'] == "Employee"){ ?>
                     <div class="col-md-4">
                         <div class="member">
-                            <figure>
+                            <figure class="member-default-img member-uploaded-img">
                                 <a data-src="#employee_{{$employees->id}}" href="javascript:void(0)" class="about_modal">
                                     <img src="{{ URL::asset('storage/uploads/employees/'.$employees->image) }}" alt="">
                                 </a>

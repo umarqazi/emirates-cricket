@@ -40,11 +40,11 @@
                                     <div class="row no-gutters">
                                         <div class="col-md-4">
                                             @if(file_exists(public_path('storage/uploads/news/'.$new->image)))
-                                                <div class="international-news-image uploaded-img">
+                                                <div class="international-news-image international-uploaded-img">
                                                     <img src="{{ URL::asset('storage/uploads/news/'.$new->image) }}" alt="">
                                                 </div>
                                             @else
-                                                <div class="international-news-image default-img">
+                                                <div class="international-news-image international-default-img">
                                                     <img src="{{URL::asset('frontend/assets/images/default-news-image.jpg')}}">
                                                 </div>
                                             @endif

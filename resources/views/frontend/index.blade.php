@@ -106,11 +106,11 @@
                                         <div class="post-inner">
                                             <figure>
                                                 @if(file_exists(public_path('storage/uploads/news/'.$eachNews->image)))
-                                                    <div class="international-news-image uploaded-img default-img">
+                                                    <div class="international-news-image latest-uploaded-img ">
                                                         <img src="{{ URL::asset('storage/uploads/news/'.$eachNews->image) }}" alt="">
                                                     </div>
                                                 @else
-                                                    <div class="international-news-image default-img">
+                                                    <div class="international-news-image latest-default-img">
                                                         <img src="{{URL::asset('frontend/assets/images/default-news-image.jpg')}}">
                                                     </div>
                                                 @endif
@@ -140,7 +140,7 @@
                             <div class="row">
                                 @foreach($international_news as $int_news)
                                     <div class="col-md-6">
-                                        <div class="card international-news-image international-default-img international-uploaded-img" >
+                                        <div class="card international-news-image international-uploaded-img" >
                                             <a href="{{route('international-news-detail',[encodeData($int_news->id)])}}">
                                                 <img src="{{ URL::asset('storage/uploads/international-news/'.'/'.$int_news->id.'/'.$int_news->image) }}" alt="">
                                                 <div class="card-body international-news-content">
