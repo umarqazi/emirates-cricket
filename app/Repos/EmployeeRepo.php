@@ -14,4 +14,24 @@ class EmployeeRepo extends BaseRepo
     {
         parent::__construct($this->Model);
     }
+
+    public function findChairman()
+    {
+        return $this->_model::where('designation', 'Chairman')->first();
+    }
+
+    public function findViceChairman()
+    {
+        return $this->_model::where('designation', 'Vice-Chairman')->first();
+    }
+
+    public function findSecretary()
+    {
+        return $this->_model::where('designation', 'General Secretary')->first();
+    }
+
+    public function findEmployees()
+    {
+        return $this->_model::where('designation', 'Employee')->get();
+    }
 }

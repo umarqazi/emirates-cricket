@@ -33,6 +33,7 @@ class AboutUsController extends Controller
         $this->about_service = new AboutService();
         $this->employee_service = new EmployeeService();
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -57,7 +58,7 @@ class AboutUsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -68,7 +69,7 @@ class AboutUsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -80,7 +81,7 @@ class AboutUsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -92,8 +93,8 @@ class AboutUsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateAboutRequest $request, $id)
@@ -106,7 +107,7 @@ class AboutUsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -114,31 +115,39 @@ class AboutUsController extends Controller
         //
     }
 
-    public function about() {
-        $about = $this->employee_service->all();
-        return view('frontend.about', compact('about'));
+    public function about()
+    {
+        $chairman = $this->employee_service->findChairman();
+        $viceChairman = $this->employee_service->findViceChairman();
+        $secretary = $this->employee_service->findSecretary();
+        $employees = $this->employee_service->findEmployees();
+        return view('frontend.about', compact('chairman', 'viceChairman', 'secretary', 'employees'));
     }
 
-    public function mandate() {
+    public function mandate()
+    {
         $where = array('page_type' => IPageType::aboutPage, 'about_type' => IAboutType::aboutMandate);
         $data = $this->about_service->findByType($where);
         return view('frontend.content-page', compact('data'));
     }
 
-    public function academies() {
+    public function academies()
+    {
         $where = array('page_type' => IPageType::aboutPage, 'about_type' => IAboutType::aboutAcademics);
         $data = $this->about_service->findByType($where);
         return view('frontend.content-page', compact('data'));
     }
 
-    public function education() {
+    public function education()
+    {
         $where = array('page_type' => IPageType::aboutPage, 'about_type' => IAboutType::aboutEducation);
         $data = $this->about_service->findByType($where);
         return view('frontend.content-page', compact('data'));
     }
 
-    public function councils($name) {
-        $where = array('page_type' => IPageType::aboutPage, 'about_type' => IAboutType::aboutRegionalCouncils, 'council_type' => $name, );
+    public function councils($name)
+    {
+        $where = array('page_type' => IPageType::aboutPage, 'about_type' => IAboutType::aboutRegionalCouncils, 'council_type' => $name,);
         $data = $this->about_service->findByType($where);
         if ($data) {
             return view('frontend.content-page', compact('data'));
