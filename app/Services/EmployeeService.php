@@ -31,6 +31,26 @@ class EmployeeService
         return $this->employee_repo->find($id);
     }
 
+    public function findChairman()
+    {
+        return $this->employee_repo->findChairman();
+    }
+
+    public function findViceChairman()
+    {
+        return $this->employee_repo->findViceChairman();
+    }
+
+    public function findSecretary()
+    {
+        return $this->employee_repo->findSecretary();
+    }
+
+    public function findEmployees()
+    {
+        return $this->employee_repo->findEmployees();
+    }
+
     public function findOne($id)
     {
         return $this->employee_repo->findOne($id);

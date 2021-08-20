@@ -25,71 +25,69 @@
     <div class="team-section">
         <div class="container">
 
+            <?php if (!empty($chairman)) {?>
             <div class="row justify-content-center">
-                @foreach($about as $employee)
-                    <?php if ($employee['designation'] === "Chairman") {?>
-                    <div class="col-md-4">
-                        <div class="member">
-                            <figure class="member-default-img member-uploaded-img">
-                                <a data-src="#employee_{{$employee->id}}" href="javascript:void(0)" class="about_modal">
-                                    <img src="{{ URL::asset('storage/uploads/employees/'.$employee->image) }}" alt="">
-                                </a>
-                            </figure>
-                            <h4>{{$employee->name}}</h4>
-                            <h5>{{$employee->designation}}</h5>
-                        </div>
+                <div class="col-md-4">
+                    <div class="member">
+                        <figure class="member-default-img member-uploaded-img">
+                            <a data-src="#employee_{{$chairman->id}}" href="javascript:void(0)" class="about_modal">
+                                <img src="{{ URL::asset('storage/uploads/employees/'.$chairman->image) }}" alt="">
+                            </a>
+                        </figure>
+                        <h4>{{$chairman->name}}</h4>
+                        <h5>{{$chairman->designation}}</h5>
                     </div>
-                    <?php } ?>
-                @endforeach
+                </div>
+            </div>
+            <?php } ?>
+
+            <div class="row justify-content-center">
+                <?php if (!empty($viceChairman)) {?>
+                <div class="col-md-4">
+                    <div class="member">
+                        <figure>
+                            <a data-src="#employee_{{$viceChairman->id}}" href="javascript:void(0)" class="about_modal">
+                                <img src="{{ URL::asset('storage/uploads/employees/'.$viceChairman->image) }}" alt="">
+                            </a>
+                        </figure>
+                        <h4>{{$viceChairman->name}}</h4>
+                        <h5>{{$viceChairman->designation}}</h5>
+                    </div>
+                </div>
+                <?php  } ?>
+
+                <?php if (!empty($secretary)) {?>
+                <div class="col-md-4">
+                    <div class="member">
+                        <figure>
+                            <a data-src="#employee_{{$secretary->id}}" href="javascript:void(0)" class="about_modal">
+                                <img src="{{ URL::asset('storage/uploads/employees/'.$secretary->image) }}" alt="">
+                            </a>
+                        </figure>
+                        <h4>{{$secretary->name}}</h4>
+                        <h5>{{$secretary->designation}}</h5>
+                    </div>
+                </div>
+                <?php  } ?>
             </div>
 
             <div class="row justify-content-center">
-                @foreach($about as $employee)
-                    <?php if ($employee['designation'] === "Vice-Chairman") {?>
-                    <div class="col-md-4">
-                        <div class="member">
-                            <figure class="member-default-img member-uploaded-img">
-                                <a data-src="#employee_{{$employee->id}}" href="javascript:void(0)" class="about_modal">
-                                    <img src="{{ URL::asset('storage/uploads/employees/'.$employee->image) }}" alt="">
-                                </a>
-                            </figure>
-                            <h4>{{$employee->name}}</h4>
-                            <h5>{{$employee->designation}}</h5>
+                @if(!$employees->isEmpty())
+                    @foreach($employees as $employee)
+                        <div class="col-md-4">
+                            <div class="member">
+                                <figure>
+                                    <a data-src="#employee_{{$employee->id}}" href="javascript:void(0)"
+                                       class="about_modal">
+                                        <img src="{{ URL::asset('storage/uploads/employees/'.$employee->image) }}"
+                                             alt="">
+                                    </a>
+                                </figure>
+                                <h4>{{$employee->name}}</h4>
+                            </div>
                         </div>
-                    </div>
-                    <?php  } ?>
-
-                    <?php if ($employee['designation'] == "General Secretary") {?>
-                    <div class="col-md-4">
-                        <div class="member">
-                            <figure class="member-default-img member-uploaded-img">
-                                <a data-src="#employee_{{$employee->id}}" href="javascript:void(0)" class="about_modal">
-                                    <img src="{{ URL::asset('storage/uploads/employees/'.$employee->image) }}" alt="">
-                                </a>
-                            </figure>
-                            <h4>{{$employee->name}}</h4>
-                            <h5>{{$employee->designation}}</h5>
-                        </div>
-                    </div>
-                    <?php  } ?>
-                @endforeach
-            </div>
-
-            <div class="row justify-content-center">
-                @foreach($about as $employees)
-                    <?php if ($employees['designation'] == "Employee"){ ?>
-                    <div class="col-md-4">
-                        <div class="member">
-                            <figure class="member-default-img member-uploaded-img">
-                                <a data-src="#employee_{{$employees->id}}" href="javascript:void(0)" class="about_modal">
-                                    <img src="{{ URL::asset('storage/uploads/employees/'.$employees->image) }}" alt="">
-                                </a>
-                            </figure>
-                            <h4>{{$employees->name}}</h4>
-                        </div>
-                    </div>
-                    <?php } ?>
-                @endforeach
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>
