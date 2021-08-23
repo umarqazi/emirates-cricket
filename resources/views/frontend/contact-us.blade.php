@@ -24,7 +24,9 @@
     <!--   contact Section     -->
     <div class="contact-section">
         <div class="contact-map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d435521.4148945854!2d74.05351341665515!3d31.48263373327119!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39190483e58107d9%3A0xc23abe6ccc7e2462!2sLahore%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1593777792722!5m2!1sen!2s" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11433.97948007691!2d55.20984397947493!3d25.043926300177926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6dda73765d53%3A0x97a75a7af7de0788!2sDubai%20International%20Cricket%20Stadium!5e0!3m2!1sen!2s!4v1629725422198!5m2!1sen!2s"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             <div class="map-overlay"></div>
         </div>
         <div class="contact-form">
@@ -40,12 +42,13 @@
                                         <div class="contact-info">
                                             <i class="fa fa-map-marker"></i>
                                             <h6>Our Location</h6>
-                                            <p>Towering high at 302 meters across 63 levels</p>
+                                            <p>EMIRATES CRICKET BOARD PO Box: 111890, Dubai, United Arab Emirates</p>
                                         </div>
                                         <div class="contact-info">
                                             <i class="fa fa-envelope"></i>
                                             <h6>Contact Details</h6>
-                                            <p><a href="mailto:info@emiratescricket.com">info@emiratescricket.com</a></p>
+                                            <p><a href="mailto:info@emiratescricket.com">info@emiratescricket.com</a>
+                                            </p>
                                         </div>
                                         <div class="contact-info">
                                             <i class="fa fa-phone"></i>
@@ -66,7 +69,8 @@
 
                                         <div class="input-row">
                                             <label>Name</label>
-                                            <input type="text" class="@error('name') is-invalid @enderror" name="name" placeholder="Enter Name" value="{{old('name')}}" required>
+                                            <input type="text" class="@error('name') is-invalid @enderror" name="name"
+                                                   placeholder="Enter Name" value="{{old('name')}}" required>
 
                                             @error('name')
                                             <span class="invalid-feedback" role="alert">
@@ -76,7 +80,8 @@
                                         </div>
                                         <div class="input-row">
                                             <label>Email</label>
-                                            <input type="text" class="@error('email') is-invalid @enderror" name="email" placeholder="Enter Email" value="{{old('email')}}" required>
+                                            <input type="text" class="@error('email') is-invalid @enderror" name="email"
+                                                   placeholder="Enter Email" value="{{old('email')}}" required>
 
                                             @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -86,7 +91,9 @@
                                         </div>
                                         <div class="input-row">
                                             <label>Subject</label>
-                                            <input type="text" class="@error('subject') is-invalid @enderror" name="subject" placeholder="Enter Subject" value="{{old('subject')}}" required>
+                                            <input type="text" class="@error('subject') is-invalid @enderror"
+                                                   name="subject" placeholder="Enter Subject" value="{{old('subject')}}"
+                                                   required>
 
                                             @error('subject')
                                             <span class="invalid-feedback login-email-error" role="alert">
@@ -96,7 +103,9 @@
                                         </div>
                                         <div class="input-row">
                                             <label>Your Message</label>
-                                            <textarea class="@error('message') is-invalid @enderror" name="message" placeholder="Write your message" required>{{old('message')}}</textarea>
+                                            <textarea class="@error('message') is-invalid @enderror" name="message"
+                                                      placeholder="Write your message"
+                                                      required>{{old('message')}}</textarea>
 
                                             @error('message')
                                             <span class="invalid-feedback login-email-error" role="alert">
