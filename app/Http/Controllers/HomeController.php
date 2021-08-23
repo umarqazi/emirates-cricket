@@ -43,8 +43,8 @@ class HomeController extends Controller
 
     public function international_news_content($id)
     {
-        $news = $this->international_service->find(decodeData($id));
-        return view('frontend.news-detail', compact('news'));
+        $international_news = $this->international_service->find(decodeData($id));
+        return view('frontend.news-detail', compact('international_news'));
     }
 
     public function news_content($id)
