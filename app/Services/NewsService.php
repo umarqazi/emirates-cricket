@@ -69,7 +69,7 @@ class NewsService
         return $this->news_repo->newsYear();
     }
 
-    public function yearlyNews ($year)
+    public function yearlyNews($year)
     {
         return $this->news_repo->yearlyNews($year);
     }
