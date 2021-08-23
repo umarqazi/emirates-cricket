@@ -26,7 +26,7 @@ class UpdateAboutRequest extends FormRequest
         return [
             'page_type' => 'required',
             'about_type' => 'required',
-            'council_type' => 'required',
+            'council_type' => 'nullable',
             'content' => 'required',
         ];
     }
