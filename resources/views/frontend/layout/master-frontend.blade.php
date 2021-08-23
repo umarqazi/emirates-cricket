@@ -13,6 +13,7 @@
 
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('frontend/assets/css/font-awesome.min.css') }}">
+    <link rel="icon" href="{{ URL::asset('frontend/assets/images/favicon-img.jpg') }}" type="image/gif" sizes="16x16">
 
     {{-- Load Section Styles Start --}}
     @yield('styles')
