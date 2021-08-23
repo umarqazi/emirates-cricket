@@ -176,7 +176,7 @@
                             <h2>Sponsors</h2>
                             <div class="logo-sldier slider-dots">
                                 @foreach($sponsors as $sponsor)
-                                    <div>
+                                    <div class="home-sponsers">
                                         <a href="{{$sponsor->website}}" target="_blank" class="btn">
                                             <div class="logo-image">
                                                 <img
