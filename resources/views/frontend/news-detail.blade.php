@@ -26,10 +26,16 @@
         <div class="content-page-section">
             <div class="container">
                 <div class="news-post-image">
-                    <img src="{{ URL::asset('storage/uploads/news/'.'/'.$news->image) }}"
-                         class="feature-image" alt="">
-                    <span class="p-4"><img src="{{ URL::asset('frontend/assets/images/calender.png') }}" alt="">
-                        Publish at: <strong class="mx-2">{{\Carbon\Carbon::parse($news->date)->format('F d Y')}}</strong></span>
+                @if(file_exists(public_path('storage/uploads/news/'.$news->image)))
+                    <img src="{{ URL::asset('storage/uploads/news/'.$news->image) }}" class="feature-image" alt="">
+                @else
+                    <img src="{{URL::asset('frontend/assets/images/default-news-image.jpg')}}"  class="feature-image">
+                @endif
+                    <span class="p-4">
+                        <img src="{{ URL::asset('frontend/assets/images/calender.png') }}" alt="">
+                        Publish at: <strong
+                            class="mx-2">{{\Carbon\Carbon::parse($news->date)->format('F d Y')}}</strong>
+                    </span>
                 </div>
 
                 <div class="news-description">

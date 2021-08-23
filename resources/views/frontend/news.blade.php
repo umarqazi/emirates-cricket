@@ -39,7 +39,7 @@
                             <div class="news-inner-content">
                                 <div class="row no-gutters">
                                     @foreach($news as $new)
-                                        <div class="col-md-4 p-2">
+                                        <div class="col-lg-4 col-md-6 p-2">
                                             <a href="{{route('news-detail',[encodeData($new->id)])}}"
                                                tabindex="0">
                                                 <div class="inner-news-img-container">
@@ -57,7 +57,7 @@
 
                                                     @endif
                                                     <div class="inner-news-content">
-                                                        <h4>{{ \Illuminate\Support\Str::limit($new->headline, 50)}}</h4>
+                                                        <h4>{{ \Illuminate\Support\Str::limit($new->headline, 40)}}</h4>
                                                         <div>
                                                             <p>
                                                                 {{\Carbon\Carbon::parse($new->date)->format('F d Y')}}
