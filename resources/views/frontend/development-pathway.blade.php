@@ -12,6 +12,8 @@
                 <a href="{{route('home')}}" class="paren-page">Main page</a>
                 <img src="{{ URL::asset('frontend/assets/images/right-arrow.png') }}" alt="">
                 <a href="{{route('development')}}" class="child-page">Development</a>
+                <img src="{{ URL::asset('frontend/assets/images/right-arrow.png') }}" alt="">
+                <a href="{{route('development-pathway')}}" class="child-page">Development Pathway</a>
             </p>
         </div>
     </div>
@@ -25,9 +27,9 @@
     <div class="teams-section">
         <div class="container">
             @if(($pathway))
-                <div class="team-content developement-child-page">
+                <!-- <div class="team-content developement-child-page">
                     <a href="{{route('development-pathway')}}" class="btn">{{$pathway->title}}</a>
-                </div>
+                </div> -->
             @endif
 
             @if(!empty($pathway->image))

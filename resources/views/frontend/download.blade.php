@@ -31,7 +31,7 @@
                             <img src="{{ URL::asset('frontend/assets/images/pdf.png') }}" alt="">
                             <div class="download-file-content">
                                 <h3>{{$file['category']}}</h3>
-                                <p>{{$file['description']}}</p>
+                                <p>{!! $file['description'] !!}</p>
                             </div>
                             <div class="team-player">
                                 <a href="{{ URL::asset('/storage/uploads/downloads/'.$file->file) }}" download>Download</a>
