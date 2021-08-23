@@ -15,7 +15,8 @@
             @foreach($setting->images as $image)
                 <div>
                     <div class="slider-image">
-                        <img src="{{ URL::asset('storage/uploads/homepage-slider/'.$setting->id.'/'.$image->name) }}" alt="">
+                        <img src="{{ URL::asset('storage/uploads/homepage-slider/'.$setting->id.'/'.$image->name) }}"
+                             alt="">
                     </div>
                 </div>
             @endforeach
@@ -107,11 +108,14 @@
                                             <figure>
                                                 @if(file_exists(public_path('storage/uploads/news/'.$eachNews->image)))
                                                     <div class="international-news-image latest-uploaded-img ">
-                                                        <img src="{{ URL::asset('storage/uploads/news/'.$eachNews->image) }}" alt="">
+                                                        <img
+                                                            src="{{ URL::asset('storage/uploads/news/'.$eachNews->image) }}"
+                                                            alt="">
                                                     </div>
                                                 @else
                                                     <div class="international-news-image latest-default-img">
-                                                        <img src="{{URL::asset('frontend/assets/images/default-news-image.jpg')}}">
+                                                        <img
+                                                            src="{{URL::asset('frontend/assets/images/default-news-image.jpg')}}">
                                                     </div>
                                                 @endif
 
@@ -140,9 +144,11 @@
                             <div class="row">
                                 @foreach($international_news as $int_news)
                                     <div class="col-md-6">
-                                        <div class="card international-news-image international-uploaded-img" >
+                                        <div class="card international-news-image international-uploaded-img">
                                             <a href="{{route('international-news-detail',[encodeData($int_news->id)])}}">
-                                                <img src="{{ URL::asset('storage/uploads/international-news/'.'/'.$int_news->id.'/'.$int_news->image) }}" alt="">
+                                                <img
+                                                    src="{{ URL::asset('storage/uploads/international-news/'.'/'.$int_news->id.'/'.$int_news->image) }}"
+                                                    alt="">
                                                 <div class="card-body international-news-content">
                                                     <h4>{{\Illuminate\Support\Str::limit($int_news->title,60)}}</h4>
                                                     <p>{!! \Illuminate\Support\Str::limit($int_news->description, 200) !!}</p>
@@ -173,7 +179,9 @@
                                     <div>
                                         <a href="{{$sponsor->website}}" target="_blank" class="btn">
                                             <div class="logo-image">
-                                                <img src="{{ URL::asset('storage/uploads/sponsor/'.$sponsor->id.'/'.$sponsor->image) }}" alt="">
+                                                <img
+                                                    src="{{ URL::asset('storage/uploads/sponsor/'.$sponsor->id.'/'.$sponsor->image) }}"
+                                                    alt="">
                                             </div>
                                         </a>
                                     </div>
@@ -185,12 +193,22 @@
 
                 <div class="col-lg-3">
                     <div class="twitter-cards">
-                        <a class="twitter-timeline" data-width="228" data-height="486" data-dnt="true" href="https://twitter.com/EmiratesCricket?ref_src=twsrc%5Etfw">Tweets by EmiratesCricket</a>
+                        <a class="twitter-timeline" data-width="228" data-height="486" data-dnt="true"
+                           href="https://twitter.com/EmiratesCricket?ref_src=twsrc%5Etfw">Tweets by EmiratesCricket</a>
                         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     </div>
 
                     <div class="twitter-cards fb-post">
-                        <div class="fb-page" data-href="https://www.facebook.com/emiratescricket" data-tabs="timeline" data-width="232" data-height="493" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/emiratescricket"><a href="https://www.facebook.com/emiratescricket">Emirates Cricket</a></blockquote></div></div>
+                        <div class="fb-page" data-href="https://www.facebook.com/emiratescricket" data-tabs="timeline"
+                             data-width="232" data-height="493" data-small-header="true"
+                             data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"
+                             data-show-posts="true">
+                            <div class="fb-xfbml-parse-ignore">
+                                <blockquote cite="https://www.facebook.com/emiratescricket"><a
+                                        href="https://www.facebook.com/emiratescricket">Emirates Cricket</a>
+                                </blockquote>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

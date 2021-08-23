@@ -43,7 +43,7 @@ class TeamController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -54,11 +54,11 @@ class TeamController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($team)
-    {;
+    {
         $team = $this->team_service->findOne(decodeData($team));
         return view('backend.team.show', compact('team'));
     }
@@ -66,7 +66,7 @@ class TeamController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(Team $team)
@@ -77,20 +77,21 @@ class TeamController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TeamRequest $request, Team $team)
+    public function update(TeamRequest $request, $team)
     {
+        $team = $this->team_service->findOne(decodeData($team));
         $this->team_service->update($request->except(['_token', '_method']), $team->id);
-        return redirect()->route('team.show', $team->id)->with('success', 'Team Description has been Updated!');
+        return redirect()->route('team.show', encodeData($team->id))->with('success', 'Team Description has been Updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($team)
@@ -99,17 +100,20 @@ class TeamController extends Controller
         return redirect()->route('team.index')->with('success', 'Team has been Deleted!');
     }
 
-    public function uaeMens() {
+    public function uaeMens()
+    {
         $team = $this->team_service->getOne(array('type' => Team::$Mens));
         return view('frontend.uae-mens', compact('team'));
     }
 
-    public function uaeWomens() {
+    public function uaeWomens()
+    {
         $team = $this->team_service->getOne(array('type' => Team::$Womens));
         return view('frontend.uae-womens', compact('team'));
     }
 
-    public function under19() {
+    public function under19()
+    {
         $team = $this->team_service->getOne(array('type' => Team::$U19));
         return view('frontend.under-19', compact('team'));
     }
