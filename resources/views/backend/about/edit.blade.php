@@ -22,7 +22,7 @@
                         </li>
                         <li class="breadcrumb-item"><a href="{{route('about.index')}}"> About Page List</a>
                         </li>
-                        <li class="breadcrumb-item active">Edit  About Page
+                        <li class="breadcrumb-item active">Edit About Page
                         </li>
                     </ol>
                 </div>
@@ -47,7 +47,9 @@
 
                                     <div class="row">
                                         <div class="input-field col m12 s12">
-                                            <input id="page_title" type="text" name="page_type" class="@error('page_type') invalid @enderror" value="{{$about->page_type}}">
+                                            <input id="page_title" type="text" name="page_type"
+                                                   class="@error('page_type') invalid @enderror"
+                                                   value="{{$about->page_type}}">
                                             <label for="page_title">Page Title</label>
 
                                             @error('page_type')
@@ -60,7 +62,9 @@
 
                                     <div class="row">
                                         <div class="input-field col m12 s12">
-                                            <input id="about_title" type="text" name="about_type" class="@error('about_type') invalid @enderror" value="{{$about->about_type}}">
+                                            <input id="about_title" type="text" name="about_type"
+                                                   class="@error('about_type') invalid @enderror"
+                                                   value="{{$about->about_type}}">
                                             <label for="about_title">About Type</label>
 
                                             @error('about_type')
@@ -73,7 +77,10 @@
 
                                     <div class="row">
                                         <div class="input-field col m12 s12">
-                                            <input id="council_type" type="text" name="council_type" class="@error('council_type') invalid @enderror" value="{{$about->council_type}}">
+                                            <input id="council_type" type="text" name="council_type"
+                                                   class="@error('council_type') invalid @enderror"
+                                                   value="{{$about->council_type}}" {{ $about->council_type ? '' : 'disabled'}}
+                                            >
                                             <label for="council_type">Council Type</label>
 
                                             @error('council_type')
@@ -87,7 +94,9 @@
                                     <div class="row">
                                         <div class="col s12">Page Content</div>
                                         <div class="input-field col s12">
-                                            <textarea id="message5" class="ckeditor @error('content') invalid @enderror" name="content" rows="15" placeholder="Type About Content in here...">{!! $about->content !!}</textarea>
+                                            <textarea id="message5" class="ckeditor @error('content') invalid @enderror"
+                                                      name="content" rows="15"
+                                                      placeholder="Type About Content in here...">{!! $about->content !!}</textarea>
 
                                             @error('content')
                                             <span class="invalid-feedback" role="alert">
@@ -99,7 +108,8 @@
 
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <button class="btn cyan waves-effect waves-light right" type="submit">Update About Page
+                                            <button class="btn cyan waves-effect waves-light right" type="submit">Update
+                                                About Page
                                                 <i class="material-icons right">send</i>
                                             </button>
                                         </div>
