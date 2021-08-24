@@ -2,7 +2,7 @@
     <div class="news-inner-content">
         <div class="row no-gutters">
             @foreach($yearly_news as $news)
-                <div class="col-md-4 p-2">
+                <div class="col-lg-3 col-md-6 p-2">
                     <a href="{{route('news-detail',[encodeData($news->id)])}}"
                        tabindex="0">
                         <div class="inner-news-img-container">
@@ -20,7 +20,7 @@
 
                             @endif
                             <div class="inner-news-content">
-                                <h4>{{ \Illuminate\Support\Str::limit($news->headline, 50)}}</h4>
+                                <h4>{{ \Illuminate\Support\Str::limit($news->headline, 40)}}</h4>
                                 <div>
                                     <p>
                                         {{\Carbon\Carbon::parse($news->date)->format('F d Y')}}
@@ -34,6 +34,12 @@
         </div>
     </div>
 @endif
+
 <div class="paginated_results">
-    {{ $yearly_news->appends(array('year' => $year))->links() }}
+    @if(request()->get('year'))
+        {{ $yearly_news->appends(array('year' => request()->get('year')))->links() }}
+    @else
+        {{ $yearly_news->links() }}
+    @endif
+
 </div>

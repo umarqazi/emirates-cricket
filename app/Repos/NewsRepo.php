@@ -21,7 +21,7 @@ class NewsRepo extends BaseRepo
         return $news;
     }
 
-    public function yearlyNews($year, $records = 6)
+    public function yearlyNews($year, $records = 8)
     {
         return News::whereYear('date', $year)->orderBy('date', 'desc')->paginate($records);
     }
