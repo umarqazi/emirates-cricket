@@ -57,7 +57,7 @@
 
                                                     @endif
                                                     <div class="inner-news-content">
-                                                        <h4>{{ \Illuminate\Support\Str::limit($new->headline, 40)}}</h4>
+                                                        <h4>{{ \Illuminate\Support\Str::limit($new->headline, 50)}}</h4>
                                                         <div>
                                                             <p>
                                                                 {{\Carbon\Carbon::parse($new->date)->format('F d Y')}}
