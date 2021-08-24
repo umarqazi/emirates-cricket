@@ -64,7 +64,7 @@
                                                                     @if(file_exists(public_path('storage/uploads/news/'.$new->image)))
                                                                         <img src="{{asset('storage/uploads/news/'.$new->image)}}" width="40px" height="40px">
                                                                     @else
-                                                                        <img src="{{URL::asset('frontend/assets/images/default-news-image.jpg')}}">
+                                                                        <img src="{{URL::asset('frontend/assets/images/default-news-image.jpg')}}"  width="40px" height="40px">
                                                                     @endif
                                                                 </td>
                                                                 <td>{{\Illuminate\Support\Str::limit($new->headline,30)}}</td>

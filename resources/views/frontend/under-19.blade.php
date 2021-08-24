@@ -27,7 +27,7 @@
         <div class="container">
             <div class="team-content">
                 <p>{!! $team->description !!}</p>
-                <a href="javascript:void(0)" class="btn">Uae 19 Men's</a>
+                <a href="javascript:void(0)" class="btn">UAE 19 Men's</a>
             </div>
 
             <div class="row justify-content-center">

@@ -1,7 +1,7 @@
 @extends('backend.layout.master-backend')
 
 @section('title')
-    <title>Uae Men Team| Admin Panel</title>
+    <title>UAE Men Team| Admin Panel</title>
 @endsection
 
 @section('styles')

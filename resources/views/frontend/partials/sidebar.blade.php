@@ -117,7 +117,7 @@
                             <span>
                                 <img class="nav-icon" src="{{ URL::asset('frontend/assets/images/under-19.png') }}" alt="">
                             </span>
-                        <span>Uae Men's</span>
+                        <span>UAE Men's</span>
                     </a>
                 </li>
                 <li>
@@ -125,7 +125,7 @@
                             <span>
                                 <img class="nav-icon" src="{{ URL::asset('frontend/assets/images/women.png') }}" alt="">
                             </span>
-                        <span>Uae Women's</span>
+                        <span>UAE Women's</span>
                     </a>
                 </li>
                 <li>
@@ -133,7 +133,7 @@
                             <span>
                                 <img class="nav-icon" src="{{ URL::asset('frontend/assets/images/under-19.png') }}" alt="">
                             </span>
-                        <span>Uae 19 Men's</span>
+                        <span>UAE 19 Men's</span>
                     </a>
                 </li>
             </ul>
