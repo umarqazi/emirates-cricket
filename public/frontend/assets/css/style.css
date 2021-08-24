@@ -960,7 +960,6 @@ body.sidebar-collapse .content-section {
     position: relative;
     width: 100%;
     max-height: 400px;
-    
 }
 .inner-news-uploaded-img{
     border-radius: 10px;
@@ -1027,12 +1026,11 @@ body.sidebar-collapse .content-section {
     text-align: left;
     padding: 20px 10px 10px 10px
 }
-
-
 .inner-news-content a{
     color:#8D0303;
 }
 .inner-news-content h4{
+    font-size: 16px;
     line-height: 20px;
     height: 70px;
     color:#8D0303;
