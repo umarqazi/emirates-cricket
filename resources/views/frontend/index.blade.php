@@ -192,21 +192,39 @@
                 </div>
 
                 <div class="col-lg-3">
-                    <div class="twitter-cards">
-                        <a class="twitter-timeline" data-width="228" data-height="486" data-dnt="true"
-                           href="https://twitter.com/EmiratesCricket?ref_src=twsrc%5Etfw">Tweets by EmiratesCricket</a>
-                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="twitter-cards">
+                                <a class="twitter-timeline" data-width="228" data-height="486" data-dnt="true"
+                                   href="https://twitter.com/EmiratesCricket?ref_src=twsrc%5Etfw">Tweets by
+                                    EmiratesCricket</a>
+                                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                            </div>
+                        </div>
 
-                    <div class="twitter-cards fb-post">
-                        <div class="fb-page" data-href="https://www.facebook.com/emiratescricket" data-tabs="timeline"
-                             data-width="232" data-height="493" data-small-header="true"
-                             data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"
-                             data-show-posts="true">
-                            <div class="fb-xfbml-parse-ignore">
-                                <blockquote cite="https://www.facebook.com/emiratescricket"><a
-                                        href="https://www.facebook.com/emiratescricket">Emirates Cricket</a>
-                                </blockquote>
+                        <div class="col-lg-12">
+                            <div class="twitter-cards fb-post">
+                                <!--                        <div class="fb-page" data-href="https://www.facebook.com/emiratescricket" data-tabs="timeline"
+                                                             data-width="232" data-height="493" data-small-header="true"
+                                                             data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"
+                                                             data-show-posts="true">
+                                                            <div class="fb-xfbml-parse-ignore">
+                                                                <blockquote cite="https://www.facebook.com/emiratescricket"><a
+                                                                        href="https://www.facebook.com/emiratescricket">Emirates Cricket</a>
+                                                                </blockquote>
+                                                            </div>
+                                                        </div>-->
+
+                                <div class="fb-page" data-href="https://www.facebook.com/emiratescricket/"
+                                     data-tabs="timeline"
+                                     data-width="232" data-height="493" data-small-header="true"
+                                     data-adapt-container-width="true" data-hide-cover="false"
+                                     data-show-facepile="true">
+                                    <blockquote cite="https://www.facebook.com/emiratescricket/"
+                                                class="fb-xfbml-parse-ignore">
+                                        <a href="https://www.facebook.com/emiratescricket/">Emirates Cricket</a>
+                                    </blockquote>
+                                </div>
                             </div>
                         </div>
                     </div>

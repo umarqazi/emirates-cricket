@@ -64,6 +64,10 @@ class CricClubApiService
             return $match_results;
         }
 
+        if (empty($response['pastFixtures'])) {
+            return array();
+        }
+
         $error_message = $response['errorMessage'];
         echo "<h2>$error_message</h2>";
         die();
