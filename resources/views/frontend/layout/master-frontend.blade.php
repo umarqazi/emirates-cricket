@@ -33,8 +33,7 @@
 <body>
 {{-- Facebook Link --}}
 <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0&appId=2150204038582907&autoLogAppEvents=1" nonce="dM6FEPnI"></script>
-
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v11.0&appId=2150204038582907&autoLogAppEvents=1" nonce="dM6FEPnI"></script>
 <div class="main-container home">
 
     <!--sidebar-->

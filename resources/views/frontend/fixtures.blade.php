@@ -31,7 +31,8 @@
                         @if(!empty($results))
                             <div class="fixture_slide">
                                 @foreach($results as $result)
-                                    <a href="{{str_replace(array('{ClubId}', '{MatchId}'), array(env('CRIC_CLUB_ID'), $result['matchID']), env('CRIC_CLUB_VIEW_SCORECARD'))}}" class="fixture_item">
+                                    <a href="{{str_replace(array('{ClubId}', '{MatchId}'), array(env('CRIC_CLUB_ID'), $result['matchID']), env('CRIC_CLUB_VIEW_SCORECARD'))}}"
+                                       class="fixture_item">
                                         <div class="row no-gutters">
                                             <div class="icon col-4">
                                                 <i class="fa fa-calendar"></i>
@@ -40,7 +41,9 @@
                                             <div class="col-8">
                                                 <div class="result">
                                                     <div class="t1">
-                                                        <img src="{{env('CRIC_CLUB_SITE_URL').$result['t1_logo_file_path']}}" alt="">
+                                                        <img
+                                                            src="{{env('CRIC_CLUB_SITE_URL').$result['t1_logo_file_path']}}"
+                                                            alt="">
                                                         <p>{{strtoupper($result['teamOneCode'])}}</p>
                                                         @php
                                                             $t1overs = floor($result['t1balls'] / 6) .'.'. $result['t1balls'] % 6;
@@ -48,7 +51,9 @@
                                                         <p>{{$result['t1total'].'/'.$result['t1wickets']. '('.$t1overs.')'}}</p>
                                                     </div>
                                                     <div class="t2">
-                                                        <img src="{{env('CRIC_CLUB_SITE_URL').$result['t2_logo_file_path']}}" alt="">
+                                                        <img
+                                                            src="{{env('CRIC_CLUB_SITE_URL').$result['t2_logo_file_path']}}"
+                                                            alt="">
                                                         <p>{{strtoupper($result['teamTwoCode'])}}</p>
                                                         @php
                                                             $t2overs = floor($result['t2balls'] / 6) .'.'. $result['t2balls'] % 6;
@@ -71,7 +76,8 @@
             <div class="row">
                 <div class="col-lg-7">
                     <div class="batting-stats">
-                        <iframe id="stats-iframe" src="https://cricclubs.com/UAE/battingRecords.do?clubId=15272&embedView=true"></iframe>
+                        <iframe id="stats-iframe"
+                                src="https://cricclubs.com/UAE/battingRecords.do?clubId=15272&embedView=true"></iframe>
                     </div>
                 </div>
                 <div class="col-lg-5">
@@ -86,36 +92,47 @@
 
                             <div class="content_wrapper">
                                 <div class="tab_content active">
-                                    @foreach($results as $res)
-                                        <div class="team-vs-team">
-                                            <div class="row no-gutters">
-                                                <div class="col-4">
-                                                    <div class="teams-logo">
-                                                        <img src="{{env('CRIC_CLUB_SITE_URL').$res['t1_logo_file_path']}}" alt="">
-                                                        <img src="{{env('CRIC_CLUB_SITE_URL').$res['t2_logo_file_path']}}" alt="">
+                                    @if(!empty($results))
+                                        @foreach($results as $res)
+                                            <div class="team-vs-team">
+                                                <div class="row no-gutters">
+                                                    <div class="col-4">
+                                                        <div class="teams-logo">
+                                                            <img
+                                                                src="{{env('CRIC_CLUB_SITE_URL').$res['t1_logo_file_path']}}"
+                                                                alt="">
+                                                            <img
+                                                                src="{{env('CRIC_CLUB_SITE_URL').$res['t2_logo_file_path']}}"
+                                                                alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-8">
+                                                        <p><span>{{$res['teamOneName']}}</span> <b>VS</b>
+                                                            <span>{{$res['teamTwoName']}}</span></p>
+                                                        @php
+                                                            $t1overs = floor($res['t1balls'] / 6) .'.'. $res['t1balls'] % 6;
+                                                            $t2overs = floor($res['t2balls'] / 6) .'.'. $res['t2balls'] % 6;
+                                                        @endphp
+                                                        <p>
+                                                            <span>{{$res['t1total'].'/'.$res['t1wickets']. '('.$t1overs.')'}}</span>
+                                                            <span>{{$res['t2total'].'/'.$res['t2wickets']. '('.$t2overs.')'}}</span>
+                                                        </p>
+                                                        <a href="#">{{$res['result']}}</a>
                                                     </div>
                                                 </div>
-                                                <div class="col-8">
-                                                    <p><span>{{$res['teamOneName']}}</span> <b>VS</b> <span>{{$res['teamTwoName']}}</span></p>
-                                                    @php
-                                                        $t1overs = floor($res['t1balls'] / 6) .'.'. $res['t1balls'] % 6;
-                                                        $t2overs = floor($res['t2balls'] / 6) .'.'. $res['t2balls'] % 6;
-                                                    @endphp
-                                                    <p>
-                                                        <span>{{$res['t1total'].'/'.$res['t1wickets']. '('.$t1overs.')'}}</span>
-                                                        <span>{{$res['t2total'].'/'.$res['t2wickets']. '('.$t2overs.')'}}</span>
-                                                    </p>
-                                                    <a href="#">{{$res['result']}}</a>
-                                                </div>
+                                                <a href="{{str_replace(array('{ClubId}', '{MatchId}'), array(env('CRIC_CLUB_ID'), $result['matchID']), env('CRIC_CLUB_VIEW_SCORECARD'))}}"
+                                                   class="result-link">
+                                                    <img src="{{asset('frontend/assets/images/list-dot.png')}}" alt="">
+                                                </a>
                                             </div>
-                                            <a href="{{str_replace(array('{ClubId}', '{MatchId}'), array(env('CRIC_CLUB_ID'), $result['matchID']), env('CRIC_CLUB_VIEW_SCORECARD'))}}" class="result-link">
-                                                <img src="{{asset('frontend/assets/images/list-dot.png')}}" alt ="">
-                                            </a>
-                                        </div>
-                                    @endforeach
-                                    <p style="text-align: center; margin-bottom: 0; margin-top: 20px">
-                                        <a href="{{str_replace(array('{ClubId}'), array(env('CRIC_CLUB_ID')), env('CRIC_CLUB_LIST_MATCHES'))}}">Complete List</a>
-                                    </p>
+                                        @endforeach
+                                        <p style="text-align: center; margin-bottom: 0; margin-top: 20px">
+                                            <a href="{{str_replace(array('{ClubId}'), array(env('CRIC_CLUB_ID')), env('CRIC_CLUB_LIST_MATCHES'))}}">Complete
+                                                List</a>
+                                        </p>
+                                    @else
+                                        <p class="">No Match Results.</p>
+                                    @endif
                                 </div>
 
                                 <div class="tab_content">

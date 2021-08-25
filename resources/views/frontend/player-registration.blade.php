@@ -115,7 +115,7 @@
                         <div class="col-md-6 col-lg-4">
                             <div class="input-row">
                                 <label>Mobile no.</label>
-                                <input type="number" class="@error('mobile') is-invalid @enderror" name="mobile" placeholder="Enter Mobile No" value="{{old('mobile')}}">
+                                <input type="text" class="mobile-no @error('mobile') is-invalid @enderror" name="mobile" placeholder="Enter Mobile No" value="{{old('mobile')}}">
 
                                 @error('mobile')
                                 <span class="invalid-feedback login-email-error" role="alert">
