@@ -1233,7 +1233,7 @@ padding: 10px;
 .member-default-img img {
     width: 100%;
     height: 350px;
-    object-fit: contain;
+    object-fit: cover;
     object-position: top;
 }
 .member{
@@ -1556,11 +1556,14 @@ img.gallery-icon {
     justify-content: center;
     align-items: center;
     padding: 0px 20px 10px;
+    height: 100px;
 
 }
 .sponcer-logo img{
     max-width: 170px;
     width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 .sponcer-company .company-content{
     text-align: center;
