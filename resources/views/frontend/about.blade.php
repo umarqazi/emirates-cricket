@@ -45,7 +45,7 @@
                 <?php if (!empty($viceChairman)) {?>
                 <div class="col-md-4">
                     <div class="member">
-                        <figure>
+                        <figure  class="member-default-img member-uploaded-img">
                             <a data-src="#employee_{{$viceChairman->id}}" href="javascript:void(0)" class="about_modal">
                                 <img src="{{ URL::asset('storage/uploads/employees/'.$viceChairman->image) }}" alt="">
                             </a>
@@ -59,7 +59,7 @@
                 <?php if (!empty($secretary)) {?>
                 <div class="col-md-4">
                     <div class="member">
-                        <figure>
+                        <figure  class="member-default-img member-uploaded-img">
                             <a data-src="#employee_{{$secretary->id}}" href="javascript:void(0)" class="about_modal">
                                 <img src="{{ URL::asset('storage/uploads/employees/'.$secretary->image) }}" alt="">
                             </a>
@@ -76,7 +76,7 @@
                     @foreach($employees as $employee)
                         <div class="col-md-4">
                             <div class="member">
-                                <figure>
+                                <figure  class="member-default-img member-uploaded-img">
                                     <a data-src="#employee_{{$employee->id}}" href="javascript:void(0)"
                                        class="about_modal">
                                         <img src="{{ URL::asset('storage/uploads/employees/'.$employee->image) }}"
