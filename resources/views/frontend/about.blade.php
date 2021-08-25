@@ -27,7 +27,7 @@
 
             <?php if (!empty($chairman)) {?>
             <div class="row justify-content-center">
-                <div class="col-md-4">
+                <div class="col-lg-4 col-md-6">
                     <div class="member">
                         <figure class="member-default-img member-uploaded-img">
                             <a data-src="#employee_{{$chairman->id}}" href="javascript:void(0)" class="about_modal">
@@ -43,7 +43,7 @@
 
             <div class="row justify-content-center">
                 <?php if (!empty($viceChairman)) {?>
-                <div class="col-md-4">
+                <div class="col-lg-4 col-md-6">
                     <div class="member">
                         <figure  class="member-default-img member-uploaded-img">
                             <a data-src="#employee_{{$viceChairman->id}}" href="javascript:void(0)" class="about_modal">
@@ -57,7 +57,7 @@
                 <?php  } ?>
 
                 <?php if (!empty($secretary)) {?>
-                <div class="col-md-4">
+                <div class="col-lg-4 col-md-6">
                     <div class="member">
                         <figure  class="member-default-img member-uploaded-img">
                             <a data-src="#employee_{{$secretary->id}}" href="javascript:void(0)" class="about_modal">
@@ -74,7 +74,7 @@
             <div class="row justify-content-center">
                 @if(!$employees->isEmpty())
                     @foreach($employees as $employee)
-                        <div class="col-md-4">
+                        <div class="col-lg-4 col-md-6">
                             <div class="member">
                                 <figure  class="member-default-img member-uploaded-img">
                                     <a data-src="#employee_{{$employee->id}}" href="javascript:void(0)"
