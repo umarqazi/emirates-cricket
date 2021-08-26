@@ -265,7 +265,25 @@ select option{
     outline: 0 !important;
     box-shadow: none !important;
 }
-
+.upload-btn{
+    font-size: 10px;
+    background: #8D0303;
+    color: #ffff;
+    border: 0;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    border-radius: 8px;
+    padding: 8px 16px;
+    outline: 0;
+    box-shadow: 0px 3px 6px #00000029;
+    cursor: pointer;
+}
+.upload-btn:focus{
+    outline: 0 !important;
+    box-shadow: none !important;
+}
 
 /*main container*/
 .container{
@@ -749,23 +767,21 @@ body.sidebar-collapse .content-section {
     margin: 0 auto;
     bottom: -20px;
 }
-.show {
+
+/* .show {
     max-height: 400px;
     overflow-y: auto;
 }
 .show::-webkit-scrollbar {
     width: 5px;
   }
-
-  /* Track */
 .show::-webkit-scrollbar-track {
     background: #f1f1f1;
   }
-
-  /* Handle */
 .show::-webkit-scrollbar-thumb {
     background: #8D0303;
-  }
+  } */
+
 /* post section */
 .latest-news {
     text-align: center;
