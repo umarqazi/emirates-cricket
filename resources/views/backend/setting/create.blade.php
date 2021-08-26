@@ -45,7 +45,7 @@
                                     @csrf
 
                                     <div class="row">
-                                        <div class="col-12"><b>Upload Homepage Slider Images <small>(Images must be of 1920 * 1000 Resolution)</small></b></div>
+                                        <div class="col-12"><b>Upload Homepage Slider Images <small>(Images must be of 1920 * 850 Resolution)</small></b></div>
                                         <div class="input-field col m12 s12 dropzone" id="image-dropzone">
 
                                         </div>
