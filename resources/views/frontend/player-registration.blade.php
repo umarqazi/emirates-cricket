@@ -358,20 +358,20 @@
                                         <div id="select_image" style="width:350px"></div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row align-items-center">
                                     <div class="col-lg-12">
                                         <label for="pwd">Please Select An Image</label>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-6">
                                         <input type="file" id="upload">
                                     </div>
-                                    <div class="col-lg-12">
-                                        <button class="btn btn-success upload_result">Upload Image</button>
+                                    <div class="col-lg-6">
+                                        <button class="upload-btn upload_result">Upload Image</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="upload-btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                         </div>
                         {{-- Modal Ends --}}
