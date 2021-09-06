@@ -36,11 +36,23 @@
                     <div class="col s12 m12 l12">
                         <div id="Form-advance" class="card card card-default scrollspy">
                             <div class="card-content">
-                                <div class="card-header">Create New File</div>
                                 <div class="row">
-                                    <form method="post" action="{{route('download.store')}}" enctype="multipart/form-data">
+                                    <form class="col s12" method="post" action="{{route('download.store')}}" enctype="multipart/form-data">
 
                                         @csrf
+
+                                        <div class="row">
+                                            <div class="input-field col m12 s12">
+                                                <input id="name" type="text" name="name" class="validate @error('name') invalid @enderror" value="{{old('name')}}">
+                                                <label for="name">Dowload File Name</label>
+
+                                                @error('name')
+                                                <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
 
                                         <div class="row">
                                             <div class="input-field col m12 s12">

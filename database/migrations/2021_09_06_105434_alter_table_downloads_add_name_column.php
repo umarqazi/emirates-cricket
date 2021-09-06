@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterTableEmployeesUpdateDescriptionColumn extends Migration
+class AlterTableDownloadsAddNameColumn extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AlterTableEmployeesUpdateDescriptionColumn extends Migration
      */
     public function up()
     {
-        Schema::table('employees', function (Blueprint $table) {
-            $table->string('description')->change()->nullable();
+        Schema::table('downloads', function (Blueprint $table) {
+            $table->string('name')->after('id')->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ class AlterTableEmployeesUpdateDescriptionColumn extends Migration
      */
     public function down()
     {
-        Schema::table('employees', function (Blueprint $table) {
-            $table->string('description')->change()->nullable(false);
+        Schema::table('downloads', function (Blueprint $table) {
+            $table->dropColumn('name');
         });
     }
 }
