@@ -40,7 +40,7 @@
                     <div class="col s12 m12 l12">
                         <div id="Form-advance" class="card card card-default scrollspy">
                             <div class="card-content">
-                                <form class="col s12" method="POST" action="{{route('role.update', $role->id)}}">
+                                <form class="col s12" method="POST" action="{{route('role.update', encodeData($role->id))}}">
                                     @csrf
                                     @method('PUT')
 
