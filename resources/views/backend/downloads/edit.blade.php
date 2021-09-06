@@ -36,10 +36,22 @@
                     <div class="col s12 m12 l12">
                         <div id="Form-advance" class="card card card-default scrollspy">
                             <div class="card-content">
-                                <form method="post" action="{{ route('download.update' , $download->id) }}" enctype="multipart/form-data">
+                                <form class="col s12" method="post" action="{{ route('download.update' , $download->id) }}" enctype="multipart/form-data">
 
                                     @csrf
                                     @method('PUT')
+
+                                    <div class="row">
+                                        <div class="input-field col m12 s12">
+                                            <input id="name" type="text" name="name" class="validate @error('name') invalid @enderror" value="{{ $download->name }}">
+
+                                            @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                            @enderror
+                                        </div>
+                                    </div>
 
                                     <div class="row">
                                         <div class="input-field col m12 s12">
