@@ -19,13 +19,65 @@ class CricClubApiService
         return $this->curl_request($url);
     }
 
-    public function getLattestMatchResults($club_id, $league_id = null, $team_id = null)
+    public function getAllPastFixtures($club_id, $league_id = null, $team_id = null)
     {
+        $data = array();
         $match_results = array();
-        $url = config('cricclubapi.get_all_schedules_or_fixtures_updated');
+        $url = config('cricclubapi.get_all_past_fixtures');
         $url = str_replace("{clubId}", $club_id, $url);
         $url = !empty($league_id) ? $url . '&leagueId=' . $league_id : $url;
-        $url = !empty($league_id) ? $url . '&teamId=' . $team_id : $url;
+        $url = !empty($team_id) ? $url . '&teamId=' . $team_id : $url;
+
+        /* Send out CURL Request to Cric-Club */
+        $response = $this->curl_request($url);
+
+        /* Get Data Key out of Response */
+        if (!empty($response)) {
+            /* Filter out only Completed Matches */
+            $data = array_filter($response, function ($each) {
+                return $each['isComplete'] == true;
+            }, ARRAY_FILTER_USE_BOTH);
+
+            /* And Get Latest 20 Matches */
+            $recent_data = array_splice($data, 0, 20);
+
+            foreach ($recent_data as $key => $data) {
+                $fixture_filter_results = array_filter($data, function ($k) {
+                    return in_array($k, array('fixtureId', 'teamOne', 'teamTwo', 'matchDate', 'time', 'matchType', 'location', 'leagueId', 'leagueName', 'matchID', 't1_logo_file_path', 't2_logo_file_path', 'seriesType'));
+                }, ARRAY_FILTER_USE_KEY);
+
+                /* Get Scorecard for each Match */
+                $score = $this->getMatchScorecard($club_id, $data['matchId']);
+                dd($score);
+
+                /* Filter out Keys that are needed */
+                $score_filtered_results = array_filter($score['matchInfo'], function ($k) {
+                    return in_array($k, array('teamOneName', 'teamOneCode', 'teamOneCaptain', 'teamTwoName', 'teamTwoCode', 'teamTwoCaptain', 'tossWon', 'battingFirst', 'overs', 'winner', 't1total', 't2total', 't1wickets', 't2wickets', 't1balls', 't2balls', 'manOfTheMatch', 'result', 'seriesName', 'liveURL'));
+                }, ARRAY_FILTER_USE_KEY);
+
+                /* Merge all data Together */
+                $match_results[$key] = array_merge($fixture_filter_results, $score_filtered_results);
+            }
+
+            return $match_results;
+        }
+
+        if (empty($response['pastFixtures'])) {
+            return array();
+        }
+
+        $error_message = $response['errorMessage'];
+        echo "<h2>$error_message</h2>";
+        die();
+    }
+
+    public function getAllUpcomingFixtures($club_id, $league_id = null, $team_id = null)
+    {
+        $match_results = array();
+        $url = config('cricclubapi.get_all_upcoming_fixtures');
+        $url = str_replace("{clubId}", $club_id, $url);
+        $url = !empty($league_id) ? $url . '&leagueId=' . $league_id : $url;
+        $url = !empty($team_id) ? $url . '&teamId=' . $team_id : $url;
 
         /* Send out CURL Request to Cric-Club */
         $response = $this->curl_request($url);
@@ -76,18 +128,14 @@ class CricClubApiService
     public function getMatchScorecard($club_id, $match_id)
     {
         $url = config('cricclubapi.get_match_scorecard');
-        $url = str_replace("{clubId}", $club_id, $url);
-        $url = str_replace("{matchId}", $match_id, $url);
-
+        $url = str_replace(array("{clubId}", "{matchId}"), array($club_id, $match_id), $url);
         return $this->curl_request($url);
     }
 
     public function getMatchScoreOverlay($club_id, $match_id, $fixture_id)
     {
         $url = config('cricclubapi.get_match_score_overlay');
-        $url = str_replace("{clubId}", $club_id, $url);
-        $url = str_replace("{matchId}", $match_id, $url);
-        $url = str_replace("{fixtureId}", $match_id, $url);
+        $url = str_replace(array("{clubId}", "{matchId}", "{fixtureId}"), array($club_id, $match_id, $match_id), $url);
 
         return $this->curl_request($url);
     }
@@ -109,6 +157,7 @@ class CricClubApiService
         $response = curl_exec($ch);
         curl_close($ch);
 
-        return json_decode($response, true);
+        $response = json_decode($response, true);
+        return $response['data'];
     }
 }

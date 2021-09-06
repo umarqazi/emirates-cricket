@@ -14,6 +14,7 @@ class FixtureController extends Controller
     }
 
     public function fixtures() {
-        return view('frontend.fixtures');
+        $results = $this->cric_club_service->getAllPastFixtures(env('CRIC_CLUB_ID'));
+        return view('frontend.fixtures', compact('results'));
     }
 }
