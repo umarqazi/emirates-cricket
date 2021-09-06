@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\RoleRequest;
 use App\Services\PermissionService;
 use App\Services\RoleService;
-use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
@@ -88,8 +86,9 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(RoleRequest $request, Role $role)
+    public function update(RoleRequest $request, $role)
     {
+        $role = $this->role_service->findOne(decodeData($role));
         $this->role_service->update($request->except(['_token', '_method']), $role->id);
         return redirect()->route('role.index')->with('success', 'Role has been Updated Successfully!');
     }
