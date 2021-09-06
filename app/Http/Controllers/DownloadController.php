@@ -46,7 +46,7 @@ class DownloadController extends Controller
     public function store(DownloadRequest $request)
     {
         $this->download_service->store($request->except(['_token']));
-        return redirect()->route('download.index')->with('success', 'File has been Added Successfully!');
+        return redirect()->route('download.index')->with('success', 'Download File has been Added Successfully!');
     }
 
     /**
@@ -84,7 +84,7 @@ class DownloadController extends Controller
         $data = $request->except('_token', '_method', 'action');
         $this->download_service->update($data, $download['id']);
 
-        return redirect()->route('download.index')->with('success', 'File has been Updated Successfully!');
+        return redirect()->route('download.index')->with('success', 'Download File has been Updated Successfully!');
     }
 
     /**

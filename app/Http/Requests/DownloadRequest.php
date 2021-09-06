@@ -24,6 +24,7 @@ class DownloadRequest extends FormRequest
     public function rules()
     {
         return [
+            'name'   =>  'required',
             'category'   =>  'required',
             'file'         =>  'required|max:7168',
             'description' => 'required',

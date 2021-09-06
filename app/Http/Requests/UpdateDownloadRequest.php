@@ -24,7 +24,10 @@ class UpdateDownloadRequest extends FormRequest
     public function rules()
     {
         return [
-            'category'   =>  'nullable|required',
+            'name'   =>  'required',
+            'category'   =>  'required',
+            'file'         =>  'nullable|max:7168',
+            'description' => 'required',
         ];
     }
 }

@@ -50,8 +50,8 @@
                                                 <table id="page-length-option" class="display">
                                                     <thead>
                                                     <tr>
+                                                        <th>Name</th>
                                                         <th>Category</th>
-                                                        <th>File</th>
                                                         <th>Actions</th>
                                                     </tr>
                                                     </thead>
@@ -59,8 +59,8 @@
                                                     @if(!$downloads->isEmpty())
                                                         @foreach($downloads as $file)
                                                             <tr>
+                                                                <td>{{$file->name}}</td>
                                                                 <td>{{$file->category}}</td>
-                                                                <td>{{strstr($file->file, '.', true)}}</td>
                                                                 <td>
                                                                     @can('Edit Employee')
                                                                         <a href="{{route('download.edit', encodeData($file->id))}}"><i class="material-icons">edit</i></a>
@@ -85,6 +85,12 @@
                                                     @endif
                                                     </tbody>
                                                     <tfoot>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Category</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                    </tfoot>
 
                                                 </table>
                                             </div>
