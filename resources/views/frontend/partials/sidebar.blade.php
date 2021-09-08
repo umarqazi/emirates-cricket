@@ -31,7 +31,7 @@
             </a>
         </li>
         <li>
-            <a href="{{route('about-us')}}">
+            <a href="#">
                     <span>
                         <img class="nav-icon" src="{{ URL::asset('frontend/assets/images/newspaper.png') }}" alt="">
                     </span>
