@@ -16,11 +16,6 @@
         </div>
     </div>
 
-    <!--    main heading        -->
-    <div class="container">
-        <h1 class="main-heading">About</h1>
-    </div>
-
     <!--     Team section       -->
     <div class="team-section">
         <div class="container">
