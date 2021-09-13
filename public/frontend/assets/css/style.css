@@ -252,7 +252,7 @@ select option{
     line-height: 20px;
     letter-spacing: 0;
     text-transform: uppercase;
-    border-radius: 29px;
+    border-radius: 8px;
     padding: 17px 16px;
     outline: 0;
     box-shadow: 0px 3px 6px #00000029
@@ -793,6 +793,19 @@ body.sidebar-collapse .content-section {
 .news-inner-content {
     margin-bottom: 40px;
 }
+.news-inner-list{
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 3px 10px #9e8b8b29;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+    transition: all 0.5s;
+}
+.news-inner-list:hover{
+    box-shadow: 0px 3px 10px #00000059;
+    transform: translateY(-5px);
+}
 .post-inner {
     /* border-top-left-radius: 22px;
     border-top-right-radius: 22px; */
@@ -976,15 +989,15 @@ body.sidebar-collapse .content-section {
     border-radius: 10px;
     overflow: hidden;
     position: relative;
-    width: 100%;
-    height: 150px;
+    width: 130px;
+    height: 80px;
 }
 .inner-news-uploaded-img{
     border-radius: 10px;
     overflow: hidden;
     position: relative;
-    width: 100%;
-    height: 150px;
+    width: 130px;
+    height: 80px;
 }
 .inner-news-uploaded-img img {
     width: 100%;
@@ -1056,6 +1069,25 @@ body.sidebar-collapse .content-section {
 .inner-news-content p{
     margin-bottom: 0;
     font-size: 13px;
+}
+.inner-news-content-main{
+width: 100%;
+padding: 10px;
+}
+.inner-news-content-main h4{
+font-size: 16px;
+font-weight: 600;
+margin: 0;
+text-align: left!important;
+line-height: 20px;
+color: #000;
+}
+.inner-news-content-main p{
+margin: 0;
+}
+.inner-news-content-main .btn{
+    background: #8D0303;
+    color: #fff !important;
 }
 /* .card-body.international-news-content a, p, h4{
     color:white;
@@ -2104,11 +2136,13 @@ label.terms-label span {
 }
 .download-file-content h3{
     margin-bottom: 8px;
+    min-height: 104px;
 }
 
 .download-file-content{
     padding: 20px 0px;
     text-align: center;
+    min-height: 237px;
 }
 .download-file img {
     max-width: 100px;
@@ -2464,7 +2498,7 @@ border-color: #8D0303;
         max-width: 40px;
     }
     .download-file{
-        min-height: 240px;
+        min-height: 384px;
     }
     .download-file img{
         max-width: 65px;
