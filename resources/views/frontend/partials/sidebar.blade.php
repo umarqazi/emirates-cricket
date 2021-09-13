@@ -46,12 +46,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('mandate')}}">
-                        <i class=" fa-angle-double-right"></i>
-                        <span>Mandate</span>
-                    </a>
-                </li>
-                <li>
                     <a href="#">
                         <i class=" fa-angle-double-right"></i>
                         <span>Councils</span>

@@ -43,8 +43,8 @@
 
                                     <div class="row">
                                         <div class="input-field col m12 s12">
-                                            <input id="title" type="text" name="name" value="{{$employee->name}}" class="validate @error('name') invalid @enderror">
-                                            <label for="title">Enter Employee Name</label>
+                                            <input id="name" type="text" name="name" value="{{$employee->name}}" class="validate @error('name') invalid @enderror">
+                                            <label for="name">Enter Employee Name</label>
 
                                             @error('name')
                                             <span class="invalid-feedback" role="alert">
