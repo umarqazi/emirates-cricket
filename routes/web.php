@@ -36,7 +36,6 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/about', 'AboutUsController@about')->name('about-us');
 
-Route::get('/mandate', 'AboutUsController@mandate')->name('mandate');
 Route::get('/education-and-downloads', 'AboutUsController@education')->name('education');
 Route::get('/councils/{name}', 'AboutUsController@councils')->name('councils');
 

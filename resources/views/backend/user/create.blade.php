@@ -47,8 +47,8 @@
 
                                         <div class="row">
                                             <div class="input-field col m12 s12">
-                                                <input id="title" type="text" name="name" class="validate @error('name') invalid @enderror" value="{{old('name')}}">
-                                                <label for="title">User Name</label>
+                                                <input id="name" type="text" name="name" class="validate @error('name') invalid @enderror" value="{{old('name')}}">
+                                                <label for="name">User Name</label>
 
                                                 @error('name')
                                                 <span class="invalid-feedback" role="alert">
@@ -60,8 +60,8 @@
 
                                         <div class="row">
                                             <div class="input-field col m12 s12">
-                                                <input id="title" type="email" name="email" class="validate @error('email') invalid @enderror" value="{{old('email')}}">
-                                                <label for="title">User Email</label>
+                                                <input id="email" type="email" name="email" class="validate @error('email') invalid @enderror" value="{{old('email')}}">
+                                                <label for="email">User Email</label>
 
                                                 @error('email')
                                                 <span class="invalid-feedback" role="alert">
