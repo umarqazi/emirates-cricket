@@ -34,43 +34,30 @@
             <div class="row justify-content-center">
                 <div class="col-lg-12">
                     <div class="latest-news international-news news-render">
-
                         @if(!empty($news))
                             <div class="news-inner-content">
-                                <div class="row no-gutters">
+                                <div>
+                                    <ul>
                                     @foreach($news as $new)
-                                        <div class="col-lg-3 col-md-4 col-sm-6 p-2">
-                                            <a href="{{route('news-detail',[encodeData($new->id)])}}"
-                                               tabindex="0">
-                                                <div class="inner-news-img-container">
-                                                    @if(file_exists(public_path('storage/uploads/news/'.$new->image)))
-                                                        <div class="inner-news-uploaded-img">
-                                                            <img
-                                                                src="{{ URL::asset('storage/uploads/news/'.$new->image) }}"
-                                                                alt="">
-                                                        </div>
-                                                    @else
-                                                        <div class="inner-news-default-img">
-                                                            <img
-                                                                src="{{URL::asset('frontend/assets/images/default-news-image.jpg')}}">
-                                                        </div>
-
-                                                    @endif
-                                                    <div class="inner-news-content">
-                                                        <h4>{{ \Illuminate\Support\Str::limit($new->headline, 50)}}</h4>
-                                                        <div>
-                                                            <p>
-                                                                {{\Carbon\Carbon::parse($new->date)->format('F d Y')}}
-                                                            </p>
-                                                        </div>
+                                        <li class="news-inner-list">
+                                            <div class="inner-news-content-main">
+                                                <div class="row  align-items-center">
+                                                    <div class="col-md-6">
+                                                    <a href="{{route('news-detail',[encodeData($new->id)])}}"><h4>{{ \Illuminate\Support\Str::limit($new->headline, 150)}}</h4></a>
                                                     </div>
-                                                </div>
-                                            </a>
-                                        </div>
+                                                    <div class="col-md-3"><p>
+                                                                {{\Carbon\Carbon::parse($new->date)->format('F d Y')}}
+                                                            </p></div>
+                                                    <div class="col-md-3"><a href="{{route('news-detail',[encodeData($new->id)])}}" class="btn">View Detail</a></div>
+                                                </div>    
+                                            </div>
+                                        </li>
                                     @endforeach
+                                    </ul>
                                 </div>
                             </div>
                         @endif
+                        
 
                         <div class="paginated_results">
                             @if(request()->get('year'))
