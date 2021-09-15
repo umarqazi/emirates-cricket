@@ -809,7 +809,7 @@ body.sidebar-collapse .content-section {
 .post-inner {
     /* border-top-left-radius: 22px;
     border-top-right-radius: 22px; */
-    height: 300px;
+    /* height: 300px; */
     border-radius: 10px;
     overflow: hidden;
     text-align: left;
