@@ -36,7 +36,7 @@ class HomeController extends Controller
     {
         $setting = $this->setting_service->first();
         $sponsors = $this->sponsor_service->paginatedRecords(7);
-        $news = $this->news_service->getLatestRecords(8);
+        $news = $this->news_service->getLatestRecords(12);
         $international_news = $this->international_service->getLatestRecords(4);
         return view('frontend.index', compact('sponsors', 'news', 'setting', 'international_news'));
     }
