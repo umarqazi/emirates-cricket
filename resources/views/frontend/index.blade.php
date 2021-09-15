@@ -107,29 +107,37 @@
                                         <div class="post-inner">
                                             <a href="{{route('news-detail',[encodeData($eachNews->id)])}}" tabindex="0">
                                                 <div class="row latest-news-wrapper">
-                                                    <div class="col-md-6 latest-news-content"> 
+                                                    <div class="col-md-6 "> 
+                                                        <div class="latest-news-content">
                                                         <h5>{{ \Illuminate\Support\Str::limit($eachNews->headline,110) }}</h5>
                                                         <p class="date">
                                                             <a href="{{route('news-detail',[encodeData($eachNews->id)])}}">{{date('F d, Y', strtotime($eachNews->date))}}</a>
                                                         </p>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-6 latest-news-content">
+                                                    <div class="col-md-6 "> 
+                                                        <div class="latest-news-content">
                                                         <h5>{{ \Illuminate\Support\Str::limit($eachNews->headline,110) }}</h5>
                                                         <p class="date">
                                                             <a href="{{route('news-detail',[encodeData($eachNews->id)])}}">{{date('F d, Y', strtotime($eachNews->date))}}</a>
                                                         </p>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-6 latest-news-content"> 
+                                                    <div class="col-md-6 "> 
+                                                        <div class="latest-news-content">
                                                         <h5>{{ \Illuminate\Support\Str::limit($eachNews->headline,110) }}</h5>
                                                         <p class="date">
                                                             <a href="{{route('news-detail',[encodeData($eachNews->id)])}}">{{date('F d, Y', strtotime($eachNews->date))}}</a>
                                                         </p>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-6 latest-news-content"> 
+                                                    <div class="col-md-6 "> 
+                                                        <div class="latest-news-content">
                                                         <h5>{{ \Illuminate\Support\Str::limit($eachNews->headline,110) }}</h5>
                                                         <p class="date">
                                                             <a href="{{route('news-detail',[encodeData($eachNews->id)])}}">{{date('F d, Y', strtotime($eachNews->date))}}</a>
                                                         </p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 </a>

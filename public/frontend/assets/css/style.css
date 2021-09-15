@@ -825,7 +825,7 @@ body.sidebar-collapse .content-section {
     margin: 10px;
     color: #8D0303;
     padding: 10px;
-    max-width: 47%;
+    width: 100%;
     border-radius: 8px;
     transition: all 0.5s;
 }
@@ -2759,9 +2759,6 @@ border-color: #8D0303;
     }
     .download-file{
         margin-bottom: 30px;
-    }
-    .post-inner .latest-news-content{
-        min-width: 95%;
     }
     .international-news-content h4{
         font-size: 16px;

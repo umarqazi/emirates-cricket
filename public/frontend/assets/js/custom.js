@@ -38,13 +38,13 @@ $(document).ready(function () {
         arrows: false,
         autoplay: true,
         autoplaySpeed: 3000,
-        slidesToShow: 3,
+        slidesToShow: 1,
         slidesToScroll: 1,
         responsive: [
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 1,
                     slidesToScroll: 1
                 }
             },
@@ -218,3 +218,5 @@ $(document).ready(function () {
          });
     });
 });
+
+
