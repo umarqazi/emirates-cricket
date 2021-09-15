@@ -24,9 +24,9 @@
     <!--   download Section     -->
     <div class="download-section">
         <div class="container">
-            <div class="row">
+            <div class="row px-4">
                 @foreach($download_files as $file)
-                    <div class="col-md-4 col-lg-4">
+                    <div class="col-md-4 col-lg-3 px-3">
                         <div class="download-file">
                             <img src="{{ URL::asset('frontend/assets/images/pdf.png') }}" alt="">
                             <div class="download-file-content">

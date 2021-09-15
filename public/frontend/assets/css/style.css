@@ -2130,19 +2130,20 @@ label.terms-label span {
 }
 .download-file-content h3{
     margin-bottom: 8px;
-    min-height: 104px;
+    height: 62px;
+    overflow: hidden;
 }
 
 .download-file-content{
     padding: 20px 0px;
     text-align: center;
-    min-height: 237px;
+    min-height: 160px;
 }
 .download-file img {
     max-width: 100px;
 }
 .download-file-content h3{
-    font-size: 20px;
+    font-size: 16px;
 }
 .download-file-content p{
     color: #c2c2c2;
@@ -2150,6 +2151,7 @@ label.terms-label span {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    margin-bottom: 3px;
 }
 .team-player{
     margin: 10px 0px 20px;
@@ -2492,10 +2494,10 @@ border-color: #8D0303;
         max-width: 40px;
     }
     .download-file{
-        min-height: 384px;
+        min-height: 320px;
     }
     .download-file img{
-        max-width: 65px;
+        max-width: 50px;
     }
     .custom-drag-file img{
         max-width: 140px;
