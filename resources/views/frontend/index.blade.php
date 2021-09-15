@@ -105,31 +105,34 @@
                                 @foreach($news as $eachNews)
                                     <div>
                                         <div class="post-inner">
-                                            <figure>
-                                                @if(file_exists(public_path('storage/uploads/news/'.$eachNews->image)))
-                                                    <div class="international-news-image latest-uploaded-img ">
-                                                        <img
-                                                            src="{{ URL::asset('storage/uploads/news/'.$eachNews->image) }}"
-                                                            alt="">
-                                                    </div>
-                                                @else
-                                                    <div class="international-news-image latest-default-img">
-                                                        <img
-                                                            src="{{URL::asset('frontend/assets/images/default-news-image.jpg')}}">
-                                                    </div>
-                                                @endif
-
-                                                <a href="{{route('news-detail',[encodeData($eachNews->id)])}}"
-                                                   tabindex="0">
-                                                    <figcaption>
-                                                        <h5>{{ \Illuminate\Support\Str::limit($eachNews->title,35) }}</h5>
-                                                        <p>{!! \Illuminate\Support\Str::limit($eachNews->text, 70) !!}</p>
+                                            <a href="{{route('news-detail',[encodeData($eachNews->id)])}}" tabindex="0">
+                                                <div class="row latest-news-wrapper">
+                                                    <div class="col-md-6 latest-news-content"> 
+                                                        <h5>{{ \Illuminate\Support\Str::limit($eachNews->headline,110) }}</h5>
                                                         <p class="date">
                                                             <a href="{{route('news-detail',[encodeData($eachNews->id)])}}">{{date('F d, Y', strtotime($eachNews->date))}}</a>
                                                         </p>
-                                                    </figcaption>
+                                                    </div>
+                                                    <div class="col-md-6 latest-news-content">
+                                                        <h5>{{ \Illuminate\Support\Str::limit($eachNews->headline,110) }}</h5>
+                                                        <p class="date">
+                                                            <a href="{{route('news-detail',[encodeData($eachNews->id)])}}">{{date('F d, Y', strtotime($eachNews->date))}}</a>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-md-6 latest-news-content"> 
+                                                        <h5>{{ \Illuminate\Support\Str::limit($eachNews->headline,110) }}</h5>
+                                                        <p class="date">
+                                                            <a href="{{route('news-detail',[encodeData($eachNews->id)])}}">{{date('F d, Y', strtotime($eachNews->date))}}</a>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-md-6 latest-news-content"> 
+                                                        <h5>{{ \Illuminate\Support\Str::limit($eachNews->headline,110) }}</h5>
+                                                        <p class="date">
+                                                            <a href="{{route('news-detail',[encodeData($eachNews->id)])}}">{{date('F d, Y', strtotime($eachNews->date))}}</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
                                                 </a>
-                                            </figure>
                                         </div>
                                     </div>
                                 @endforeach
@@ -144,14 +147,36 @@
                             <div class="row">
                                 @foreach($international_news as $int_news)
                                     <div class="col-md-6">
-                                        <div class="card international-news-image international-uploaded-img">
+                                        <div class=" international-news-image international-news-wrapper">
                                             <a href="{{route('international-news-detail',[encodeData($int_news->id)])}}">
-                                                <img
-                                                    src="{{ URL::asset('storage/uploads/international-news/'.'/'.$int_news->id.'/'.$int_news->image) }}"
-                                                    alt="">
-                                                <div class="card-body international-news-content">
-                                                    <h4>{{\Illuminate\Support\Str::limit($int_news->title,60)}}</h4>
-                                                    <p>{!! \Illuminate\Support\Str::limit($int_news->description, 200) !!}</p>
+                                                
+                                                <div class=" international-news-content">
+                                                    <h4>{{\Illuminate\Support\Str::limit($int_news->title,150)}}</h4>
+                                                    <!-- <p>{!! \Illuminate\Support\Str::limit($int_news->description, 200) !!}</p> -->
+                                                    <p class="date">
+                                                        <a href="{{route('international-news-detail',[encodeData($int_news->id)])}}">{{date('F d, Y', strtotime($eachNews->date))}}</a>
+                                                    </p>
+                                                    @if(false)
+                                                        <div class="play-video-button">
+                                                            <span><i class="fas fa-play"></i></span>
+                                                            <span> 2:08</span>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div class="row">
+                                @foreach($international_news as $int_news)
+                                    <div class="col-md-6">
+                                        <div class=" international-news-image international-news-wrapper">
+                                            <a href="{{route('international-news-detail',[encodeData($int_news->id)])}}">
+                                                
+                                                <div class=" international-news-content">
+                                                    <h4>{{\Illuminate\Support\Str::limit($int_news->title,150)}}</h4>
+                                                    <!-- <p>{!! \Illuminate\Support\Str::limit($int_news->description, 200) !!}</p> -->
                                                     <p class="date">
                                                         <a href="{{route('international-news-detail',[encodeData($int_news->id)])}}">{{date('F d, Y', strtotime($eachNews->date))}}</a>
                                                     </p>
