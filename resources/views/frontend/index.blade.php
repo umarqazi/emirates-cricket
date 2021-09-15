@@ -106,43 +106,60 @@
                                 @for($loop = 0; $loop < $loopMax; $loop++)
                                     <div>
                                         <div class="post-inner">
+
                                             <div class="row latest-news-wrapper">
                                                 <a href="{{route('news-detail',[encodeData($news[$loop]->id)])}}" tabindex="0">
-                                                    <div class="col-md-6 latest-news-content">
+                                                    <div class="col-md-6">
+                                                        <div class="latest-news-content">
                                                         <h5>{{ \Illuminate\Support\Str::limit($news[$loop]->headline,110) }} {{ $loop }}</h5>
+
                                                         <p class="date">
                                                             <a href="{{route('news-detail',[encodeData($news[$loop]->id)])}}">{{date('F d, Y', strtotime($news[$loop]->date))}}</a>
                                                         </p>
+
                                                         <?php $loop++; ?>
+                                                        </div>
                                                     </div>
                                                 </a>
 
                                                 <a href="{{route('news-detail',[encodeData($news[$loop]->id)])}}" tabindex="0">
-                                                    <div class="col-md-6 latest-news-content">
+                                                    <div class="col-md-6">
+                                                    <div class="latest-news-content">
                                                         <h5>{{ \Illuminate\Support\Str::limit($news[$loop]->headline,110) }} {{ $loop }}</h5>
+
                                                         <p class="date">
                                                             <a href="{{route('news-detail',[encodeData($news[$loop]->id)])}}">{{date('F d, Y', strtotime($news[$loop]->date))}}</a>
                                                         </p>
+
                                                         <?php $loop++; ?>
+                                                        </div>
                                                     </div>
                                                 </a>
 
                                                 <a href="{{route('news-detail',[encodeData($news[$loop]->id)])}}" tabindex="0">
-                                                    <div class="col-md-6 latest-news-content">
+                                                    <div class="col-md-6">
+                                                    <div class="latest-news-content">
                                                         <h5>{{ \Illuminate\Support\Str::limit($news[$loop]->headline,110) }} {{ $loop }}</h5>
+
                                                         <p class="date">
                                                             <a href="{{route('news-detail',[encodeData($news[$loop]->id)])}}">{{date('F d, Y', strtotime($news[$loop]->date))}}</a>
                                                         </p>
+
                                                         <?php $loop++; ?>
+                                                    </div>
                                                     </div>
                                                 </a>
 
                                                 <a href="{{route('news-detail',[encodeData($news[$loop]->id)])}}" tabindex="0">
-                                                    <div class="col-md-6 latest-news-content">
+                                                    <div class="col-md-6">
+                                                    <div class="latest-news-content">
                                                         <h5>{{ \Illuminate\Support\Str::limit($news[$loop]->headline,110) }} {{ $loop }}</h5>
+
                                                         <p class="date">
                                                             <a href="{{route('news-detail',[encodeData($news[$loop]->id)])}}">{{date('F d, Y', strtotime($news[$loop]->date))}}</a>
                                                         </p>
+
+                                                    </div>
                                                     </div>
                                                 </a>
                                             </div>
