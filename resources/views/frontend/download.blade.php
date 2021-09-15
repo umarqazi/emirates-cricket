@@ -24,14 +24,14 @@
     <!--   download Section     -->
     <div class="download-section">
         <div class="container">
-            <div class="row">
+            <div class="row px-4">
                 @foreach($download_files as $file)
-                    <div class="col-md-4 col-lg-4">
+                    <div class="col-md-4 col-lg-3 px-3">
                         <div class="download-file">
                             <img src="{{ URL::asset('frontend/assets/images/pdf.png') }}" alt="">
                             <div class="download-file-content">
-                                <h3>{{$file['name']}}</h3>
-                                <p>{!! $file['description'] !!}</p>
+                                <h3>{{ \Illuminate\Support\Str::limit($file['name'], 80)}}</h3>
+                                <p>{!! \Illuminate\Support\Str::limit($file['description'], 80) !!}</p>
                             </div>
                             <div class="team-player">
                                 <a href="{{ URL::asset('/storage/uploads/downloads/'.$file->file) }}" download>Download</a>

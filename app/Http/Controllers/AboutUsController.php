@@ -120,8 +120,9 @@ class AboutUsController extends Controller
         $chairman = $this->employee_service->findChairman();
         $viceChairman = $this->employee_service->findViceChairman();
         $secretary = $this->employee_service->findSecretary();
+        $members = $this->employee_service->findBoardMembers();
         $employees = $this->employee_service->findEmployees();
-        return view('frontend.about', compact('chairman', 'viceChairman', 'secretary', 'employees'));
+        return view('frontend.about', compact('chairman', 'viceChairman', 'secretary', 'employees', 'members'));
     }
 
     public function mandate()

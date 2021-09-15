@@ -53,13 +53,13 @@
             <div class="container">
                 <div class="news-post-image">
                     @if(file_exists(public_path('storage/uploads/international-news/'.'/'.$international_news->id.'/'.$international_news->image)))
-                        <img src="{{ URL::asset('storage/uploads/international-news/'.'/'.$international_news->id.'/'.$international_news->image) }}" alt="">
+                        <img src="{{ URL::asset('storage/uploads/international-news/'.'/'.$international_news->id.'/'.$international_news->image) }}" alt="" class="feature-image">
                     @else
-                        <img src="{{URL::asset('frontend/assets/images/default-news-image.jpg')}}">
+                        <img src="{{URL::asset('frontend/assets/images/default-news-image.jpg')}}" class="feature-image">
                     @endif
 
                     <span class="p-4">
-                        <img src="{{ URL::asset('frontend/assets/images/calender.png') }}" alt="">
+                        <img src="{{ URL::asset('frontend/assets/images/calender.png') }}" alt="" >
                         Publish at: <strong
                             class="mx-2">{{\Carbon\Carbon::parse($international_news->date)->format('F d Y')}}</strong>
                     </span>

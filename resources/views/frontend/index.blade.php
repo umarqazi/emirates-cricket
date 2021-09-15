@@ -102,37 +102,74 @@
                                 <a href="{{route('news')}}" class="btn">View More</a>
                             </div>
                             <div class="news-slider slider-dots">
-                                @foreach($news as $eachNews)
+                                <?php $loopMax = count($news);  ?>
+                                @for($loop = 0; $loop < $loopMax; $loop++)
                                     <div>
                                         <div class="post-inner">
-                                            <figure>
-                                                @if(file_exists(public_path('storage/uploads/news/'.$eachNews->image)))
-                                                    <div class="international-news-image latest-uploaded-img ">
-                                                        <img
-                                                            src="{{ URL::asset('storage/uploads/news/'.$eachNews->image) }}"
-                                                            alt="">
-                                                    </div>
-                                                @else
-                                                    <div class="international-news-image latest-default-img">
-                                                        <img
-                                                            src="{{URL::asset('frontend/assets/images/default-news-image.jpg')}}">
-                                                    </div>
-                                                @endif
 
-                                                <a href="{{route('news-detail',[encodeData($eachNews->id)])}}"
+                                            <div class="row latest-news-wrapper">
+                                                <a href="{{route('news-detail',[encodeData($news[$loop]->id)])}}"
                                                    tabindex="0">
-                                                    <figcaption>
-                                                        <h5>{{ \Illuminate\Support\Str::limit($eachNews->title,35) }}</h5>
-                                                        <p>{!! \Illuminate\Support\Str::limit($eachNews->text, 70) !!}</p>
-                                                        <p class="date">
-                                                            <a href="{{route('news-detail',[encodeData($eachNews->id)])}}">{{date('F d, Y', strtotime($eachNews->date))}}</a>
-                                                        </p>
-                                                    </figcaption>
+                                                    <div class="col-md-6">
+                                                        <div class="latest-news-content">
+                                                            <h5>{{ \Illuminate\Support\Str::limit($news[$loop]->headline,110) }} {{ $loop }}</h5>
+
+                                                            <p class="date">
+                                                                <a href="{{route('news-detail',[encodeData($news[$loop]->id)])}}">{{date('F d, Y', strtotime($news[$loop]->date))}}</a>
+                                                            </p>
+
+                                                            <?php $loop++; ?>
+                                                        </div>
+                                                    </div>
                                                 </a>
-                                            </figure>
+
+                                                <a href="{{route('news-detail',[encodeData($news[$loop]->id)])}}"
+                                                   tabindex="0">
+                                                    <div class="col-md-6">
+                                                        <div class="latest-news-content">
+                                                            <h5>{{ \Illuminate\Support\Str::limit($news[$loop]->headline,110) }} {{ $loop }}</h5>
+
+                                                            <p class="date">
+                                                                <a href="{{route('news-detail',[encodeData($news[$loop]->id)])}}">{{date('F d, Y', strtotime($news[$loop]->date))}}</a>
+                                                            </p>
+
+                                                            <?php $loop++; ?>
+                                                        </div>
+                                                    </div>
+                                                </a>
+
+                                                <a href="{{route('news-detail',[encodeData($news[$loop]->id)])}}"
+                                                   tabindex="0">
+                                                    <div class="col-md-6">
+                                                        <div class="latest-news-content">
+                                                            <h5>{{ \Illuminate\Support\Str::limit($news[$loop]->headline,110) }} {{ $loop }}</h5>
+
+                                                            <p class="date">
+                                                                <a href="{{route('news-detail',[encodeData($news[$loop]->id)])}}">{{date('F d, Y', strtotime($news[$loop]->date))}}</a>
+                                                            </p>
+
+                                                            <?php $loop++; ?>
+                                                        </div>
+                                                    </div>
+                                                </a>
+
+                                                <a href="{{route('news-detail',[encodeData($news[$loop]->id)])}}"
+                                                   tabindex="0">
+                                                    <div class="col-md-6">
+                                                        <div class="latest-news-content">
+                                                            <h5>{{ \Illuminate\Support\Str::limit($news[$loop]->headline,110) }} {{ $loop }}</h5>
+
+                                                            <p class="date">
+                                                                <a href="{{route('news-detail',[encodeData($news[$loop]->id)])}}">{{date('F d, Y', strtotime($news[$loop]->date))}}</a>
+                                                            </p>
+
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
-                                @endforeach
+                                @endfor
                             </div>
                         </div>
                     @endif
@@ -144,16 +181,14 @@
                             <div class="row">
                                 @foreach($international_news as $int_news)
                                     <div class="col-md-6">
-                                        <div class="card international-news-image international-uploaded-img">
+                                        <div class=" international-news-image international-news-wrapper">
                                             <a href="{{route('international-news-detail',[encodeData($int_news->id)])}}">
-                                                <img
-                                                    src="{{ URL::asset('storage/uploads/international-news/'.'/'.$int_news->id.'/'.$int_news->image) }}"
-                                                    alt="">
-                                                <div class="card-body international-news-content">
-                                                    <h4>{{\Illuminate\Support\Str::limit($int_news->title,60)}}</h4>
-                                                    <p>{!! \Illuminate\Support\Str::limit($int_news->description, 200) !!}</p>
+
+                                                <div class=" international-news-content">
+                                                    <h4>{{\Illuminate\Support\Str::limit($int_news->title,150)}}</h4>
+                                                <!-- <p>{!! \Illuminate\Support\Str::limit($int_news->description, 200) !!}</p> -->
                                                     <p class="date">
-                                                        <a href="{{route('international-news-detail',[encodeData($int_news->id)])}}">{{date('F d, Y', strtotime($eachNews->date))}}</a>
+                                                        <a href="{{route('international-news-detail',[encodeData($int_news->id)])}}">{{date('F d, Y', strtotime($int_news->date))}}</a>
                                                     </p>
                                                     @if(false)
                                                         <div class="play-video-button">

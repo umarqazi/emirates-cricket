@@ -62,6 +62,7 @@ return [
         'Chairman',
         'Vice-Chairman',
         'General Secretary',
+        'Board Member',
         'Employee',
     ],
 

@@ -34,4 +34,9 @@ class EmployeeRepo extends BaseRepo
     {
         return $this->_model::where('designation', 'Employee')->get();
     }
+
+    public function findBoardMembers()
+    {
+        return $this->_model::where('designation', 'Board Member')->get();
+    }
 }
