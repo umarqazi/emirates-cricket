@@ -46,6 +46,11 @@ class EmployeeService
         return $this->employee_repo->findSecretary();
     }
 
+    public function findBoardMembers()
+    {
+        return $this->employee_repo->findBoardMembers();
+    }
+
     public function findEmployees()
     {
         return $this->employee_repo->findEmployees();

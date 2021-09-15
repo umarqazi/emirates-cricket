@@ -38,7 +38,7 @@
 
             <div class="row justify-content-center">
                 <?php if (!empty($viceChairman)) {?>
-                    <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="col-lg-2 col-md-4 col-sm-6">
                     <div class="member">
                         <figure  class="member-default-img member-uploaded-img">
                             <a data-src="#employee_{{$viceChairman->id}}" href="javascript:void(0)" class="about_modal">
@@ -51,8 +51,26 @@
                 </div>
                 <?php  } ?>
 
+                @if(!$members->isEmpty())
+                    @foreach($members as $member)
+                        <div class="col-lg-2 col-md-4 col-sm-6">
+                            <div class="member">
+                                <figure  class="member-default-img member-uploaded-img">
+                                    <a data-src="#employee_{{$member->id}}" href="javascript:void(0)" class="about_modal">
+                                        <img src="{{ URL::asset('storage/uploads/employees/'.$member->image) }}" alt="">
+                                    </a>
+                                </figure>
+                                <h4>{{$member->name}}</h4>
+                                <h5>{{$member->designation}}</h5>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+
+            <div class="row justify-content-center">
                 <?php if (!empty($secretary)) {?>
-                    <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="col-lg-2 col-md-4 col-sm-6">
                     <div class="member">
                         <figure  class="member-default-img member-uploaded-img">
                             <a data-src="#employee_{{$secretary->id}}" href="javascript:void(0)" class="about_modal">
@@ -64,25 +82,6 @@
                     </div>
                 </div>
                 <?php  } ?>
-            </div>
-
-            <div class="row justify-content-center">
-                @if(!$employees->isEmpty())
-                    @foreach($employees as $employee)
-                    <div class="col-lg-2 col-md-4 col-sm-6">
-                            <div class="member">
-                                <!-- <figure  class="member-default-img member-uploaded-img">
-                                    <a data-src="#employee_{{$employee->id}}" href="javascript:void(0)"
-                                       class="about_modal">
-                                        <img src="{{ URL::asset('storage/uploads/employees/'.$employee->image) }}"
-                                             alt="">
-                                    </a>
-                                </figure> -->
-                                <h4>{{$employee->name}}</h4>
-                            </div>
-                        </div>
-                    @endforeach
-                @endif
             </div>
         </div>
     </div>
