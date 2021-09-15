@@ -1270,7 +1270,7 @@ padding: 10px;
     margin-bottom: 30px;
     border-radius: 10px;
     overflow: hidden;
-    height: 264px;
+    height: 167px;
 }
 .member-uploaded-img img {
     width: 100%;
@@ -1290,13 +1290,14 @@ padding: 10px;
 }
 .member h4{
     color: #272727 !important;
-    font-size: 18px;
+    font-size: 16px;
+    line-height: 1.25;
     font-weight: 600;
     margin-bottom: 10px;
 }
 .member h5 {
     text-transform: capitalize;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 700;
 }
 .member h5:last-child{

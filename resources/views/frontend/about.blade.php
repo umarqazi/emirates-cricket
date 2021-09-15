@@ -71,13 +71,13 @@
                     @foreach($employees as $employee)
                     <div class="col-lg-2 col-md-4 col-sm-6">
                             <div class="member">
-                                <figure  class="member-default-img member-uploaded-img">
+                                <!-- <figure  class="member-default-img member-uploaded-img">
                                     <a data-src="#employee_{{$employee->id}}" href="javascript:void(0)"
                                        class="about_modal">
                                         <img src="{{ URL::asset('storage/uploads/employees/'.$employee->image) }}"
                                              alt="">
                                     </a>
-                                </figure>
+                                </figure> -->
                                 <h4>{{$employee->name}}</h4>
                             </div>
                         </div>
