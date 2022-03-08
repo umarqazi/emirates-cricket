@@ -2996,3 +2996,6 @@ ul.sidebar-nav li .sub-menu::after {
     }
 
 }
+.teams-section .container .team-content p {
+    margin-bottom: 0px;
+}
