@@ -45,10 +45,13 @@
 
             <div class="guidlines">
                 <h2>Registration Guidlines</h2>
-                <div class="registration-form">
-                    <img src="{{ URL::asset('frontend/assets/images/pdf.png') }}" alt="">
-                    <a href="#">Download</a>
-                </div>
+                @if(isset($document))
+                        <div class="registration-form">
+                            <img src="{{ URL::asset('frontend/assets/images/pdf.png') }}" alt="">
+                            <a href="{{ URL::asset('/storage/uploads/downloads/'.$document->file) }}" download>Download</a>
+                         </div>
+                @endif
+
             </div>
 
             <div class="general-information">

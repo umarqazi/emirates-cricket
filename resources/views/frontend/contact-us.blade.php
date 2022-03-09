@@ -37,27 +37,7 @@
                             @csrf
 
                             <div class="row no-gutters">
-                                <div class="col-lg-5">
-                                    <div class="contact-left">
-                                        <div class="contact-info">
-                                            <i class="fa fa-map-marker"></i>
-                                            <h6>Our Location</h6>
-                                            <p>EMIRATES CRICKET BOARD PO Box: 111890, Dubai, United Arab Emirates</p>
-                                        </div>
-                                        <div class="contact-info">
-                                            <i class="fa fa-envelope"></i>
-                                            <h6>Contact Details</h6>
-                                            <p><a href="mailto:info@emiratescricket.com">info@emiratescricket.com</a>
-                                            </p>
-                                        </div>
-                                        <div class="contact-info">
-                                            <i class="fa fa-phone"></i>
-                                            <h6>Contact Us</h6>
-                                            <p><a href="tel:971-2345-135">971-2345-135</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-7">
+                                <div class="col-lg-12">
                                     <div class="contact-form-fields">
                                         <h4>Get in Touch</h4>
 

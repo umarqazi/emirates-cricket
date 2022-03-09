@@ -45,6 +45,9 @@ class DownloadController extends Controller
      */
     public function store(DownloadRequest $request)
     {
+        if ($this->download_service->findByClause(['category' => 'Player Registration'])->first()) {
+            return redirect()->route('download.index')->with('error', 'Player Registration document already added!');
+        }
         $this->download_service->store($request->except(['_token']));
         return redirect()->route('download.index')->with('success', 'Download File has been Added Successfully!');
     }
@@ -100,7 +103,7 @@ class DownloadController extends Controller
     }
 
     public function frontend_download_files(){
-        $download_files = $this->download_service->all();
+        $download_files = $this->download_service->findByClause(['category' => 'Downloads'])->get();
         return view('frontend.download', compact('download_files'));
     }
 }

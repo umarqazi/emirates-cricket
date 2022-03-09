@@ -67,4 +67,9 @@ class DownloadService
     {
         return $this->download_repo->destroy($id);
     }
+
+    public function findByClause(array $clause)
+    {
+        return $this->download_repo->findByClause($clause);
+    }
 }
