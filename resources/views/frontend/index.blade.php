@@ -46,48 +46,6 @@
         </div>
     @endif
 
-    <!-- banner content     -->
-{{--    <div class="banner-content">--}}
-{{--        <div class="container">--}}
-{{--            <div class="row justify-content-center">--}}
-{{--                <div class="col-md-10">--}}
-{{--                    <div class="row">--}}
-{{--                        <div class="col-lg-4">--}}
-{{--                            <div class="red-box">--}}
-{{--                                <h3>--}}
-{{--                                    <img src="{{ URL::asset('frontend/assets/images/teams.png') }}" alt="">--}}
-{{--                                    <span>Teams</span>--}}
-{{--                                </h3>--}}
-{{--                                <p>The UAE senior Men's team is the team that represents the United Arab Emirates...</p>--}}
-{{--                                <a href="{{route('team')}}" class="btn">Read More</a>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-lg-4">--}}
-{{--                            <div class="red-box">--}}
-{{--                                <h3>--}}
-{{--                                    <img src="{{ URL::asset('frontend/assets/images/cricket.png') }}" alt="">--}}
-{{--                                    <span>Development</span>--}}
-{{--                                </h3>--}}
-{{--                                <p>Emirates Cricket currently offers the region two development platforms</p>--}}
-{{--                                <a href="{{route('development')}}" class="btn">Read More</a>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-lg-4">--}}
-{{--                            <div class="red-box">--}}
-{{--                                <h3>--}}
-{{--                                    <img src="{{ URL::asset('frontend/assets/images/teams.png') }}" alt="">--}}
-{{--                                    <span>Fixtures</span>--}}
-{{--                                </h3>--}}
-{{--                                <p>Emirates Cricket's National Teams fixtures will be updated throughout...</p>--}}
-{{--                                <a href="{{route('fixtures')}}" class="btn">Read More</a>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-
     <!--  Post Section     -->
     <div class="post-section">
         <div class="container">
@@ -174,37 +132,6 @@
                         </div>
                     @endif
 
-                <!--     International news         -->
-{{--                    @if(!empty($international_news))--}}
-{{--                        <div class="latest-news international-news">--}}
-{{--                            <h2>International News</h2>--}}
-{{--                            <div class="row">--}}
-{{--                                @foreach($international_news as $int_news)--}}
-{{--                                    <div class="col-md-6">--}}
-{{--                                        <div class=" international-news-image international-news-wrapper">--}}
-{{--                                            <a href="{{route('international-news-detail',[encodeData($int_news->id)])}}">--}}
-
-{{--                                                <div class=" international-news-content">--}}
-{{--                                                    <h4>{{\Illuminate\Support\Str::limit($int_news->title,150)}}</h4>--}}
-{{--                                                <!-- <p>{!! \Illuminate\Support\Str::limit($int_news->description, 200) !!}</p> -->--}}
-{{--                                                    <p class="date">--}}
-{{--                                                        <a href="{{route('international-news-detail',[encodeData($int_news->id)])}}">{{date('F d, Y', strtotime($int_news->date))}}</a>--}}
-{{--                                                    </p>--}}
-{{--                                                    @if(false)--}}
-{{--                                                        <div class="play-video-button">--}}
-{{--                                                            <span><i class="fas fa-play"></i></span>--}}
-{{--                                                            <span> 2:08</span>--}}
-{{--                                                        </div>--}}
-{{--                                                    @endif--}}
-{{--                                                </div>--}}
-{{--                                            </a>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                @endforeach--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    @endif--}}
-
                 <!--  Logo slider     -->
                     @if(!$sponsors->isEmpty())
                         <div class="latest-news">
@@ -239,16 +166,6 @@
 
                         <div class="col-lg-12">
                             <div class="twitter-cards fb-post">
-                                <!--                        <div class="fb-page" data-href="https://www.facebook.com/emiratescricket" data-tabs="timeline"
-                                                             data-width="232" data-height="493" data-small-header="true"
-                                                             data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"
-                                                             data-show-posts="true">
-                                                            <div class="fb-xfbml-parse-ignore">
-                                                                <blockquote cite="https://www.facebook.com/emiratescricket"><a
-                                                                        href="https://www.facebook.com/emiratescricket">Emirates Cricket</a>
-                                                                </blockquote>
-                                                            </div>
-                                                        </div>-->
 
                                 <div class="fb-page" data-href="https://www.facebook.com/emiratescricket/"
                                      data-tabs="timeline"

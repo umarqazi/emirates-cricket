@@ -27,11 +27,6 @@
     <!--   Teams Section     -->
     <div class="teams-section">
         <div class="container">
-{{--            @if($development)--}}
-{{--                <div class="team-content developement-child-page">--}}
-{{--                    <a href="{{route('developments', array_search($development->type, config('developments')))}}" class="btn">{{$development->title}}</a>--}}
-{{--                </div>--}}
-{{--            @endif--}}
 
             @if(!empty($development->image))
                 <div class="developement-images">
