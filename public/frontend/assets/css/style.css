@@ -3658,3 +3658,6 @@ body.menu-btn-clicked .hamburger .line.line3 {
     margin-top: -12px;
     width: 50%;
 }
+.teams-section .container .team-content p {
+    margin-bottom: 0px;
+}

@@ -25,14 +25,14 @@
     <!--   Teams Section     -->
     <div class="teams-section">
         <div class="container">
-            <div class="team-content">
-                <a href="{{route('emirati-development-program')}}" class="btn">Emirati Development Programme</a>
-                {!! $emiratiheading !!}
-            </div>
-            <div class="team-content">
-                <a href="{{route('development-pathway')}}" class="btn">Development Pathway</a>
-                {!! $pathwayheading !!}
-            </div>
+            @if(isset($developments))
+                @foreach($developments as $dev)
+                    <div class="team-content">
+                        <a href="{{route('developments', array_search($dev->type, config('developments')))}}" class="btn">{{ $dev->title }}</a>
+                            {!! $dev->heading !!}
+                    </div>
+                @endforeach
+            @endif
         </div>
     </div>
 

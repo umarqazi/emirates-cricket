@@ -54,6 +54,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{route('chairman-message')}}">
+                        <i class=" fa-angle-double-right"></i>
+                        <span>Chairman’s Message</span>
+                    </a>
+                </li>
+                <li>
                     <a href="#">
                         <i class=" fa-angle-double-right"></i>
                         <span>Councils</span>
@@ -146,14 +152,6 @@
                         <img class="nav-icon" src="{{ URL::asset('frontend/assets/images/development.png') }}" alt="">
                     </span>
                 <span>Development</span>
-            </a>
-        </li>
-        <li>
-            <a href="{{route('sponsor')}}">
-                    <span>
-                        <img class="nav-icon" src="{{ URL::asset('frontend/assets/images/sponcer.png') }}" alt="">
-                    </span>
-                <span>Sponsors</span>
             </a>
         </li>
         <li>
