@@ -20,73 +20,30 @@
         <header>
             <div class="header-inner">
                     
-                <div class="header-bottom {{ Request::is('/') ? 'transparent-before-scroll' : '' }}  wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                <div class="header-bottom wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
                     <nav>
                         <ul>
                             <li>
                                 <a href="https://www.iccacademy.com/high-performance">HIGH PERFORMANCE</a>
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
                             </li>
                             <li>
                                 <a href="https://www.iccacademy.com/coaching">COACHING</a>
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
                             </li>
                             <li class="has-dropdown">
                                 <a href="#">TOURNAMENTS</a>
                                 <ul>
                                     <li><a href="https://www.iccacademy.com/indoor-outdoor-league">Tournament &amp; Leagues</a></li>
                                     <li><a href="https://www.iccacademy.com/leagues">Schedule &amp; Fixtures</a></li>
-                                    
-                                    
-                                    
                                 </ul>
                             </li>
                             <li>
                                 <a href="https://www.iccacademy.com/education">EDUCATION</a>
-                                
-                                
-                                
-                                
-                                
-                                
                             </li>
-                            
-                            
-                            
                             <li>
                                 <a href="https://www.iccacademy.com/book-play">BOOK &amp; PLAY</a>
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
                             </li>
                             <li>
                                 <a href="https://www.iccacademy.com/membership">MEMBERSHIP</a>
-                                
-                                
-                                
-                                
-                                
-                                
                             </li>
                             <li><a href="https://www.iccacademy.com/contact-us">CONTACT US</a></li>
                         </ul>
