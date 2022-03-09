@@ -55,7 +55,7 @@ class PlayerController extends Controller
     public function createPlayerRegistration()
     {
         $countries = $this->country_service->all();
-        $document = $this->download_service->findByClause(['category' => 'Player Registration']);
+        $document = $this->download_service->findByClause(['category' => 'Player Registration'])->first();
         return view('frontend.player-registration', compact('countries', 'document'));
     }
 

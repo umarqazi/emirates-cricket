@@ -35,7 +35,7 @@ class BaseRepo implements IRepo
 
     public function findByClause(array $clause)
     {
-        return $this->_model->where($clause)->get();
+        return $this->_model->where($clause);
     }
 
     public function paginatedRecords($records, $column = 'created_at', $order = 'desc')

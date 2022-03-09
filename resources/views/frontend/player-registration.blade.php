@@ -46,12 +46,10 @@
             <div class="guidlines">
                 <h2>Registration Guidlines</h2>
                 @if(isset($document))
-                    @foreach($document as $d)
                         <div class="registration-form">
                             <img src="{{ URL::asset('frontend/assets/images/pdf.png') }}" alt="">
-                            <a href="{{ URL::asset('/storage/uploads/downloads/'.$d->file) }}" download>Download</a>
+                            <a href="{{ URL::asset('/storage/uploads/downloads/'.$document->file) }}" download>Download</a>
                          </div>
-                    @endforeach
                 @endif
 
             </div>
