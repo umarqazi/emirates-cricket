@@ -100,7 +100,7 @@ class DownloadController extends Controller
     }
 
     public function frontend_download_files(){
-        $download_files = $this->download_service->all();
+        $download_files = $this->download_service->findByClause(['category' => 'Downloads']);
         return view('frontend.download', compact('download_files'));
     }
 }

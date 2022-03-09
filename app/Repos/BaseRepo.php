@@ -33,6 +33,11 @@ class BaseRepo implements IRepo
         return $this->_model->where($where)->orderBy($column, $order)->first();
     }
 
+    public function findByClause(array $clause)
+    {
+        return $this->_model->where($clause)->get();
+    }
+
     public function paginatedRecords($records, $column = 'created_at', $order = 'desc')
     {
         return $this->_model->orderBy($column, $order)->paginate($records);
