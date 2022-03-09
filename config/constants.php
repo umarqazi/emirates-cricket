@@ -67,9 +67,8 @@ return [
     ],
 
     'categories' => [
-        'Category Name 1',
-        'Category Name 2',
-        'Category Name 3',
+        'Downloads',
+        'Player Registration',
     ],
 
 ];

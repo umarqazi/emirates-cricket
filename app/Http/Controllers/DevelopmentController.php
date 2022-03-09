@@ -106,26 +106,14 @@ class DevelopmentController extends Controller
 
     public function frontendMainDevelopmentPage()
     {
-        $emiratiheading = $this->development_service->findByType(Development::$EmiratiDevelopment);
-        if ($emiratiheading){
-            $emiratiheading = $emiratiheading->heading;
-        }
-        $pathwayheading = $this->development_service->findByType(Development::$DevelopmentPathway);
-        if ($pathwayheading){
-            $pathwayheading = $pathwayheading->heading;
-        }
-        return view('frontend.development', compact('emiratiheading', 'pathwayheading'));
+        $developments = $this->development_service->all();
+        return view('frontend.development', compact('developments'));
     }
 
-    public function frontendEmiratiDevelopmentPage()
+    public function getDevelopment($type)
     {
-        $emirati = $this->development_service->findByType(Development::$EmiratiDevelopment);
-        return view('frontend.emirati-development-program', compact('emirati'));
+        $development = $this->development_service->findByType(config('developments.' . $type));
+        return view('frontend.development-program', compact('development'));
     }
 
-    public function frontendDevelopmentPathwayPage()
-    {
-        $pathway = $this->development_service->findByType(Development::$DevelopmentPathway);
-        return view('frontend.development-pathway', compact( 'pathway'));
-    }
 }

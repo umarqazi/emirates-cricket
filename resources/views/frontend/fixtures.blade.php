@@ -28,7 +28,7 @@
                         </div>-->
 
             {{--     Fixtures Content      --}}
-            <div class="row">
+            <div class="row mb-5">
                 <div class="col-lg-7">
                     <div class="fixtures-content-section">
                         <div class="batting-stats">

@@ -108,7 +108,7 @@
         Dropzone.options.imageDropzone = {
             url: '{{ route('image.upload') }}',
             params: {'path':storage_path},
-            maxFilesize: 5, // MB
+            maxFilesize: 20, // MB
             addRemoveLinks: false,
             timeout: 180000,
             headers: {

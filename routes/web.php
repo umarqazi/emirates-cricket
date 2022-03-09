@@ -35,7 +35,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/about', 'AboutUsController@about')->name('about-us');
-
+Route::get('/chairman-message', 'AboutUsController@chairmanMessage')->name('chairman-message');
 Route::get('/education-and-downloads', 'AboutUsController@education')->name('education');
 Route::get('/councils/{name}', 'AboutUsController@councils')->name('councils');
 
@@ -44,8 +44,7 @@ Route::post('/contact', 'ContactController@storeContact')->name('submit-contact-
 
 /* Development Routes */
 Route::get('/development', 'DevelopmentController@frontendMainDevelopmentPage')->name('development');
-Route::get('/development-pathway', 'DevelopmentController@frontendDevelopmentPathwayPage')->name('development-pathway');
-Route::get('/emirati-development-program', 'DevelopmentController@frontendEmiratiDevelopmentPage')->name('emirati-development-program');
+Route::get('/developments/{type}', 'DevelopmentController@getDevelopment')->name('developments');
 
 Route::get('/download', 'DownloadController@frontend_download_files')->name('download');
 
@@ -66,11 +65,10 @@ Route::get('/tournament-registration', 'TournamentController@createTournamentReg
 Route::post('/tournament-registration', 'TournamentController@storeTournamentRegistration')->name('submit-tournament-registration');
 
 
-Route::get('/sponsor', 'SponsorController@frontendSponsors')->name('sponsor');
+//Route::get('/sponsor', 'SponsorController@frontendSponsors')->name('sponsor');
 
-Route::get('/team', static function () {
-    return view('frontend.teams');
-})->name('team');
+
+Route::get('/team', 'TeamController@teams')->name('team');
 
 Route::get('/international-news-detail/{id}', 'HomeController@international_news_content')->name('international-news-detail');
 Route::get('/news-detail/{id}', 'HomeController@news_content')->name('news-detail');

@@ -10,6 +10,7 @@ use App\Notifications\PlayerRequestApprovalNotification;
 use App\Notifications\PlayerRequestDeclinedNotification;
 use App\Player;
 use App\Services\CountryService;
+use App\Services\DownloadService;
 use App\Services\PlayerService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
@@ -32,6 +33,7 @@ class PlayerController extends Controller
     {
         $this->player_service = new PlayerService;
         $this->country_service = new CountryService();
+        $this->download_service = new DownloadService();
     }
 
     /**
@@ -53,7 +55,8 @@ class PlayerController extends Controller
     public function createPlayerRegistration()
     {
         $countries = $this->country_service->all();
-        return view('frontend.player-registration', compact('countries'));
+        $document = $this->download_service->findByClause(['category' => 'Player Registration'])->first();
+        return view('frontend.player-registration', compact('countries', 'document'));
     }
 
     /**
