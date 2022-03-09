@@ -485,7 +485,7 @@ ul.sidebar-nav li:last-child{
     margin-bottom: 0;
 }
 ul.sidebar-nav li a {
-    font-size: 14px;
+    font-size: 16px;
     color: #fff;
     font-weight: 500;
     text-transform: uppercase;
@@ -498,6 +498,10 @@ ul.sidebar-nav li a {
 ul.sidebar-nav li a:hover{
     background: #ab4344;
     border-color: #fff;
+}
+ul.sidebar-nav li a .nav-icon {
+    margin-right: 15px;
+    max-width: 22px;
 }
 .top-bar li a .nav-icon{
     margin-right: 15px;
@@ -623,7 +627,7 @@ a.dubai-states {
     height: 100%;
     min-height: 100vh!important;
     padding-bottom: 50px;
-    padding-top: 49px;
+    padding-top: 99px;
 }
 body.sidebar-collapse .content-section {
     max-width: 100%;
@@ -2512,8 +2516,8 @@ border-color: #8D0303;
         max-height: 110px;
     }
     ul.sidebar-nav li a{
-        font-size: 11px;
-        padding: 9px 8px;
+        font-size: 16px;
+        padding: 16px 12px;
     }
     ul.sidebar-nav li a .nav-icon{
         max-width: 18px;
@@ -2527,7 +2531,7 @@ border-color: #8D0303;
         max-width: 30px;
     }
     .sidebar{
-        max-width: 170px;
+        max-width: 250px;
     }
     .content-section{
         /* max-width: calc(100% - 170px); */
@@ -2679,9 +2683,9 @@ border-color: #8D0303;
         flex-direction: column;
         background: transparent;
     }
-    .sidebar {
+    /* .sidebar {
         position: static;
-        /* max-width: 100%; */
+        max-width: 100%;
         left: 0;
         background: transparent;
         display: flex;
@@ -2690,7 +2694,7 @@ border-color: #8D0303;
         padding: 10px 30px;
         max-width: 170px;
         min-height: 100% !important;
-    }
+    } */
     .nav-button{
         display: none;
     }
@@ -2700,12 +2704,12 @@ border-color: #8D0303;
         right: 10px;
     }
     ul.sidebar-nav{
-        display: none;
+        /* display: none; */
         position: absolute;
         background: #8D0303;
         left: 0;
         right: 0;
-        top: 154px!important;
+        top: 90px!important;
         z-index: 22;
     }
     ul.sidebar-nav li{
@@ -2744,6 +2748,7 @@ border-color: #8D0303;
         padding: 0;
     }
     .logo{
+        height: 80px;
         padding: 0;
     }
     .logo .uae-flag{
@@ -2781,7 +2786,7 @@ border-color: #8D0303;
     }
 
     .logo .header-logo {
-        max-width: 60px;
+        max-width: 50px;
         max-height: 110px;
     }
     ul.sidebar-nav{
@@ -2919,6 +2924,13 @@ border-color: #8D0303;
         transition: all .3s ease;
         /*border: 2px solid #fff;*/
     }
+    /* .sidebar-back-layer{
+        position: unset;
+        background-color: unset;
+    } */
+    .sidebar{
+        top:0px;
+    }
 
 }
 
@@ -3049,7 +3061,7 @@ ul.sidebar-nav li .sub-menu::after {
     }
     .sidebar{
         position: fixed;
-        max-width: 170px;
+        max-width: 250px;
     }
 
     .fixed-position {
