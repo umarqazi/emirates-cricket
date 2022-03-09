@@ -1,3 +1,6 @@
+<div class="sidebar-back-layer">
+
+</div>
 <div class="sidebar">
 
     <!--   nav button     -->
@@ -10,6 +13,11 @@
     <div class="logo">
         <img class="uae-flag" src="{{ URL::asset('frontend/assets/images/uae-flag.png') }}" alt="">
         <a href="{{route('home')}}"><img class="header-logo" src="{{ URL::asset('frontend/assets/images/logo.png') }}" alt=""></a>
+        <div class="hamburger mt-2 ps-2">
+                        <div class="line line1"></div>
+                        <div class="line line2"></div>
+                        <div class="line line3"></div>
+                    </div>
     </div>
 
     <!--   Mobile navigation button     -->
@@ -165,15 +173,6 @@
             </a>
         </li>
         <li>
-
-                    <ul class="nav-list-social-icon">
-                        <li><a href="https://www.facebook.com/emiratescricket" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="https://www.instagram.com/uaecricketofficial/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                        <li> <a href="https://twitter.com/EmiratesCricket" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li> <a href="https://www.youtube.com/channel/UCiU6arECb1-EkweiXnCUpPw" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
-                    </ul>
-
-
         </li>
     </ul>
 </div>
