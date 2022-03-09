@@ -9,7 +9,7 @@
             <div class="line line3"></div>
         </div>
     </div>
-    
+
     <div class="marquee">
     <ul class="nav-list-social-icon">
                         <li><a href="https://www.facebook.com/emiratescricket" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -19,38 +19,114 @@
                     </ul>
         <header>
             <div class="header-inner">
-                    
+
                 <div class="header-bottom wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
                     <nav>
                         <ul>
-                            <li>
-                                <a href="https://www.iccacademy.com/high-performance">HIGH PERFORMANCE</a>
-                            </li>
-                            <li>
-                                <a href="https://www.iccacademy.com/coaching">COACHING</a>
-                            </li>
                             <li class="has-dropdown">
-                                <a href="#">TOURNAMENTS</a>
+                                <a href="#">ABOUT</a>
                                 <ul>
-                                    <li><a href="https://www.iccacademy.com/indoor-outdoor-league">Tournament &amp; Leagues</a></li>
-                                    <li><a href="https://www.iccacademy.com/leagues">Schedule &amp; Fixtures</a></li>
+                                    <li>
+                                        <a href="{{route('about-us')}}">
+                                            <i class=" fa-angle-double-right"></i>
+                                            <span>The board</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('chairman-message')}}">
+                                            <i class=" fa-angle-double-right"></i>
+                                            <span>Chairman’s Message</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class=" fa-angle-double-right"></i>
+                                            <span>Councils</span>
+                                        </a>
+                                        <a class="dubai-states" href="https://www.facebook.com/AbuDhabiCricket" target="_blank">
+                                            <i class="fa-angle-right"></i>
+                                            <span>Abu Dhabi</span>
+                                        </a>
+                                        <a class="dubai-states" href="https://www.facebook.com/dubaicricketcouncil" target="_blank">
+                                            <i class="fa-angle-right"></i>
+                                            <span>Dubai</span>
+                                        </a>
+                                        <a class="dubai-states" href="https://www.facebook.com/sharjahcricketstadiumofficial/" target="_blank">
+                                            <i class="fa-angle-right"></i>
+                                            <span>Sharjah</span>
+                                        </a>
+                                        <a class="dubai-states" href="https://www.facebook.com/ajccofficialpage/" target="_blank">
+                                            <i class="fa-angle-right"></i>
+                                            <span>Ajman</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class=" fa-angle-double-right"></i>
+                                            <span>Cricket Governing Bodies</span>
+                                        </a>
+                                        <a class="dubai-states" href="https://www.icc-cricket.com/" target="_blank">
+                                            <i class="fa-angle-right"></i>
+                                            <span>ICC</span>
+                                        </a>
+                                        <a class="dubai-states" href="http://www.asiancricket.org/" target="_blank">
+                                            <i class="fa-angle-right"></i>
+                                            <span>ACC</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('contact')}}">
+                                            <i class=" fa-angle-double-right"></i>
+                                            <span>Contact us</span>
+                                        </a>
+                                    </li>
                                 </ul>
+
                             </li>
                             <li>
-                                <a href="https://www.iccacademy.com/education">EDUCATION</a>
+                                <a href="{{route('fixtures')}}">FIXTURES & RESULTS</a>
                             </li>
                             <li>
-                                <a href="https://www.iccacademy.com/book-play">BOOK &amp; PLAY</a>
+                                <a href="{{route('team')}}">TEAMS</a>
+                                <ul>
+                                    <li>
+                                        <a href="{{route('uae-men')}}">
+                            <span>
+                                <img class="nav-icon" src="{{ URL::asset('frontend/assets/images/under-19.png') }}" alt="">
+                            </span>
+                                            <span>UAE Men's</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('uae-women')}}">
+                            <span>
+                                <img class="nav-icon" src="{{ URL::asset('frontend/assets/images/women.png') }}" alt="">
+                            </span>
+                                            <span>UAE Women's</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('under-19')}}">
+                            <span>
+                                <img class="nav-icon" src="{{ URL::asset('frontend/assets/images/under-19.png') }}" alt="">
+                            </span>
+                                            <span>UAE 19 Men's</span>
+                                        </a>
+                                    </li>
+                                </ul>
+
                             </li>
                             <li>
-                                <a href="https://www.iccacademy.com/membership">MEMBERSHIP</a>
+                                <a href="{{route('development')}}">DEVELOPMENT</a>
                             </li>
-                            <li><a href="https://www.iccacademy.com/contact-us">CONTACT US</a></li>
+                            <li>
+                                <a href="{{route('player-registration')}}">PLAYER REGISTRATION</a>
+                            </li>
                         </ul>
                     </nav>
                 </div>
             </div>
         </header>
     </div>
-   
+
 </div>
