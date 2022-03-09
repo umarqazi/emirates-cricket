@@ -9,7 +9,8 @@ let files = @if(isset($gallery) && $gallery->images) {!! json_encode($gallery->i
     Dropzone.options.imageDropzone = {
         url: upload_url,
         params: {'path': storage_path},
-        maxFilesize: 5, // MB
+        maxFilesize: 20, // MB
+        acceptedFiles: ".jpeg,.jpg,.png",
         addRemoveLinks: addRemoveLinks,
         timeout: 180000,
         headers: {

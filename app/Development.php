@@ -7,8 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Development extends Model
 {
     /* Team Types */
-    public static $EmiratiDevelopment = 1;
-    public static $DevelopmentPathway = 2;
+    public static $Introduction = 1;
+    public static $DomesticMen = 2;
+    public static $Women = 3;
+    public static $InterEmiratesLeague = 4;
+    public static $EmiratiDevelopment = 5;
+    public static $DevelopmentPathway = 6;
 
     /**
      * The attributes that are mass assignable.

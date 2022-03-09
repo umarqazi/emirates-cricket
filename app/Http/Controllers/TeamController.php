@@ -117,4 +117,9 @@ class TeamController extends Controller
         $team = $this->team_service->getOne(array('type' => Team::$U19));
         return view('frontend.under-19', compact('team'));
     }
+
+    public function teams(){
+        $teams = $this->team_service->all();
+        return view('frontend.teams', compact('teams'));
+    }
 }

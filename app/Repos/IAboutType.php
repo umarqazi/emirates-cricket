@@ -11,4 +11,5 @@ interface IAboutType
     public const aboutAcademics = 'Academics';
     public const aboutRegionalCouncils = 'Regional Councils';
     public const aboutEducation = 'Education and Downloads';
+    public const aboutChairmanMessage = "Chairman's Message";
 }

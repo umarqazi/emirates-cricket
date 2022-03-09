@@ -154,4 +154,14 @@ class AboutUsController extends Controller
             return view('frontend.content-page', compact('data'));
         }
     }
+
+    public function chairmanMessage()
+    {
+        $where = array('page_type' => IPageType::aboutPage, 'about_type' => IAboutType::aboutChairmanMessage);
+        $chairman = $this->employee_service->findChairman();
+        if ($chairman) {
+            $data = $this->about_service->findByType($where);
+            return view('frontend.chairman-message', compact('data', 'chairman'));
+        }
+    }
 }
