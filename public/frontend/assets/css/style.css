@@ -698,7 +698,7 @@ body.sidebar-collapse .content-section {
 .marquee {
     overflow: hidden;
     white-space: nowrap;
-    margin: 0 50px;
+    margin:0;
     width: 100%;
 }
 .marquee-content {
