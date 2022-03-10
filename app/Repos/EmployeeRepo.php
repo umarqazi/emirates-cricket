@@ -39,4 +39,9 @@ class EmployeeRepo extends BaseRepo
     {
         return $this->_model::where('designation', 'Board Member')->get();
     }
+
+    public function findCoOptedMember()
+    {
+        return $this->_model::where('designation', 'Co-opted Member')->first();
+    }
 }

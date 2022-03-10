@@ -51,6 +51,11 @@ class EmployeeService
         return $this->employee_repo->findBoardMembers();
     }
 
+    public function findCoOptedMember()
+    {
+        return $this->employee_repo->findCoOptedMember();
+    }
+
     public function findEmployees()
     {
         return $this->employee_repo->findEmployees();
