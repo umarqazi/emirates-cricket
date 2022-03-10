@@ -82,6 +82,19 @@
                     </div>
                 </div>
                 <?php  } ?>
+                    <?php if (!empty($coOptedMember)) {?>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="member">
+                            <figure  class="member-default-img member-uploaded-img">
+                                <a data-src="#employee_{{$coOptedMember->id}}" href="javascript:void(0)" class="about_modal">
+                                    <img src="{{ URL::asset('storage/uploads/employees/'.$coOptedMember->image) }}" alt="">
+                                </a>
+                            </figure>
+                            <h5>{{$coOptedMember->designation}}</h5>
+                            <h4>{{$coOptedMember->name}}</h4>
+                        </div>
+                    </div>
+                    <?php  } ?>
             </div>
         </div>
     </div>
