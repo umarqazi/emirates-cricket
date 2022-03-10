@@ -35,8 +35,8 @@
                 </div>
             </div>
             <?php } ?>
-                <h1 class="main-heading">{{ $data->about_type === \App\Repos\IAboutType::aboutChairmanMessage ? $data->about_type.': '.str_replace('-', ' ', $data->council_type) : strtoupper($data->about_type)}}</h1>
-                <div class="content-page-section">
+                <h1 class="main-heading px-4 mb-0">{{ $data->about_type === \App\Repos\IAboutType::aboutChairmanMessage ? $data->about_type.': '.str_replace('-', ' ', $data->council_type) : strtoupper($data->about_type)}}</h1>
+                <div class="content-page-section px-4 py-2">
                     <div>{!! $data->content !!}</div>
                 </div>
         </div>
