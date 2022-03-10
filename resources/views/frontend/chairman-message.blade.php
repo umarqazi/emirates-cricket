@@ -23,7 +23,7 @@
             <?php if (!empty($chairman)) {?>
             <div class="row justify-content-center">
                 <div class="col-lg-2 col-md-4 col-sm-6">
-                    <div class="member">
+                    <div class="chairman-message">
                         <figure class="member-default-img member-uploaded-img">
                             <a data-src="#employee_{{$chairman->id}}" href="javascript:void(0)" class="about_modal">
                                 <img src="{{ URL::asset('storage/uploads/employees/'.$chairman->image) }}" alt="">

@@ -1340,6 +1340,15 @@ padding: 10px;
 
 /* team section */
 .member figure {
+    display: none;
+    width: 100%;
+    box-shadow: 0px 3px 10px #00000029;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 167px;
+}
+.chairman-message figure {
     width: 100%;
     box-shadow: 0px 3px 10px #00000029;
     margin-bottom: 30px;
@@ -1359,6 +1368,22 @@ padding: 10px;
     object-fit: cover;
     object-position: top;
 } */
+.chairman-message h4{
+    color: #272727 !important;
+    font-size: 18px;
+    line-height: 1.25;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.chairman-message h5{
+    color: #272727 !important;
+    font-size: 16px;
+    line-height: 1.25;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: center;
+}
 .member{
     text-align: center;
     margin-bottom: 50px;
@@ -1370,7 +1395,16 @@ padding: 10px;
     font-weight: 600;
     margin-bottom: 10px;
 }
-.member h5 {
+.member h5{
+    text-transform: capitalize;
+    margin: 10px auto;
+    font-size: 20px;
+    width: fit-content;
+    font-weight: 700;
+    color: rgb(141, 3, 3);
+    border-bottom: 2px solid rgb(141, 3, 3);
+}
+.chairman-message h5 {
     text-transform: capitalize;
     font-size: 18px;
     font-weight: 700;
