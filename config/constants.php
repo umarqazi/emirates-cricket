@@ -64,6 +64,7 @@ return [
         'General Secretary',
         'Board Member',
         'Employee',
+        'Co-opted Member'
     ],
 
     'categories' => [
