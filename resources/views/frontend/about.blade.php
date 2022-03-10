@@ -29,8 +29,8 @@
                                 <img src="{{ URL::asset('storage/uploads/employees/'.$chairman->image) }}" alt="">
                             </a>
                         </figure>
-                        <h4>{{$chairman->name}}</h4>
                         <h5>{{$chairman->designation}}</h5>
+                        <h4>{{$chairman->name}}</h4>
                     </div>
                 </div>
             </div>
@@ -45,8 +45,8 @@
                                 <img src="{{ URL::asset('storage/uploads/employees/'.$viceChairman->image) }}" alt="">
                             </a>
                         </figure>
-                        <h4>{{$viceChairman->name}}</h4>
                         <h5>{{$viceChairman->designation}}</h5>
+                        <h4>{{$viceChairman->name}}</h4>
                     </div>
                 </div>
                 <?php  } ?>
@@ -60,8 +60,8 @@
                                         <img src="{{ URL::asset('storage/uploads/employees/'.$member->image) }}" alt="">
                                     </a>
                                 </figure>
-                                <h4>{{$member->name}}</h4>
                                 <h5>{{$member->designation}}</h5>
+                                <h4>{{$member->name}}</h4>
                             </div>
                         </div>
                     @endforeach
@@ -77,8 +77,8 @@
                                 <img src="{{ URL::asset('storage/uploads/employees/'.$secretary->image) }}" alt="">
                             </a>
                         </figure>
-                        <h4>{{$secretary->name}}</h4>
                         <h5>{{$secretary->designation}}</h5>
+                        <h4>{{$secretary->name}}</h4>
                     </div>
                 </div>
                 <?php  } ?>
