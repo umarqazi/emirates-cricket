@@ -40,7 +40,7 @@
                 <?php if (!empty($viceChairman)) {?>
                 <div class="col-lg-2 col-md-4 col-sm-6">
                     <div class="member">
-                        <figure  class="member-default-img member-uploaded-img">
+                        <figure class="member-default-img member-uploaded-img">
                             <a data-src="#employee_{{$viceChairman->id}}" href="javascript:void(0)" class="about_modal">
                                 <img src="{{ URL::asset('storage/uploads/employees/'.$viceChairman->image) }}" alt="">
                             </a>
@@ -50,13 +50,16 @@
                     </div>
                 </div>
                 <?php  } ?>
+            </div>
 
+            <div class="row justify-content-center">
                 @if(!$members->isEmpty())
                     @foreach($members as $member)
                         <div class="col-lg-2 col-md-4 col-sm-6">
                             <div class="member">
-                                <figure  class="member-default-img member-uploaded-img">
-                                    <a data-src="#employee_{{$member->id}}" href="javascript:void(0)" class="about_modal">
+                                <figure class="member-default-img member-uploaded-img">
+                                    <a data-src="#employee_{{$member->id}}" href="javascript:void(0)"
+                                       class="about_modal">
                                         <img src="{{ URL::asset('storage/uploads/employees/'.$member->image) }}" alt="">
                                     </a>
                                 </figure>
@@ -72,7 +75,7 @@
                 <?php if (!empty($secretary)) {?>
                 <div class="col-lg-2 col-md-4 col-sm-6">
                     <div class="member">
-                        <figure  class="member-default-img member-uploaded-img">
+                        <figure class="member-default-img member-uploaded-img">
                             <a data-src="#employee_{{$secretary->id}}" href="javascript:void(0)" class="about_modal">
                                 <img src="{{ URL::asset('storage/uploads/employees/'.$secretary->image) }}" alt="">
                             </a>
@@ -82,19 +85,20 @@
                     </div>
                 </div>
                 <?php  } ?>
-                    <?php if (!empty($coOptedMember)) {?>
-                    <div class="col-lg-2 col-md-4 col-sm-6">
-                        <div class="member">
-                            <figure  class="member-default-img member-uploaded-img">
-                                <a data-src="#employee_{{$coOptedMember->id}}" href="javascript:void(0)" class="about_modal">
-                                    <img src="{{ URL::asset('storage/uploads/employees/'.$coOptedMember->image) }}" alt="">
-                                </a>
-                            </figure>
-                            <h5>{{$coOptedMember->designation}}</h5>
-                            <h4>{{$coOptedMember->name}}</h4>
-                        </div>
+                <?php if (!empty($coOptedMember)) {?>
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="member">
+                        <figure class="member-default-img member-uploaded-img">
+                            <a data-src="#employee_{{$coOptedMember->id}}" href="javascript:void(0)"
+                               class="about_modal">
+                                <img src="{{ URL::asset('storage/uploads/employees/'.$coOptedMember->image) }}" alt="">
+                            </a>
+                        </figure>
+                        <h5>{{$coOptedMember->designation}}</h5>
+                        <h4>{{$coOptedMember->name}}</h4>
                     </div>
-                    <?php  } ?>
+                </div>
+                <?php  } ?>
             </div>
         </div>
     </div>

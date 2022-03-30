@@ -203,7 +203,7 @@
             <div class="col-md-4">
                 <div class="contact-info">
                     <h6 class="mb-2"><span><i class="fa fa-phone mb-0"></i></span> Contact Us</h6>
-                    <p class="ml-md-4 pl-md-2"><a href="tel:971-2345-135">971-2345-135</a></p>
+                    <p class="ml-md-4 pl-md-2"><a href="tel:+971 (0)4 448 1353">+971 (0)4 448 1353</a></p>
                 </div>
             </div>
         </div>
