@@ -2684,7 +2684,7 @@ border-color: #8D0303;
     }
 
     .top-bar{
-        position: static!important;
+        position: fixed!important;
         width: 100%;
     }
     .content-section{
