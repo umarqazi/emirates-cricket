@@ -350,6 +350,7 @@ select option{
     position: absolute;
     transform: translateX(-100%);
     left: 0;
+    top: 0;
     z-index: 1111;
     min-height: calc(100% - 55px) !important;
     height: 100vh;
@@ -2156,11 +2157,11 @@ label.terms-label span {
 }
 .contact-section {
     position: relative;
-    margin-bottom: 100px;
+    /*margin-bottom: 100px;*/
 }
 .contact-form {
     position: absolute;
-    top: 50px;
+    top: 10px;
     width: 100%;
 }
 .contact-form-inner {
@@ -2688,7 +2689,7 @@ border-color: #8D0303;
         width: 100%;
     }
     .content-section{
-      padding-top: 0!important;
+      /*padding-top: 0!important;*/
     }
 
 }
@@ -2793,7 +2794,7 @@ border-color: #8D0303;
         max-width: 100%;
         /* min-height: auto; */
         padding-bottom: 50px;
-        padding-top: 0;
+        /*padding-top: 0;*/
     }
     .fancybox-content{
         max-width: 100% !important;
