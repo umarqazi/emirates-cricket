@@ -189,7 +189,7 @@
                         <li>
                             <a href="{{route('about-us')}}">
                                 <i class=" fa-angle-double-right"></i>
-                                <span>The board</span>
+                                <span>The Board</span>
                             </a>
                         </li>
                         <li>
